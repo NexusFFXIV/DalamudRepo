@@ -19,7 +19,8 @@ jobs:
   rebuild:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # for committing the regenerated pluginmaster.json
+      contents: write          # for pushing the bot branch
+      pull-requests: write     # for opening + auto-merging the refresh PR
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -36,9 +37,6 @@ jobs:
         # short-lived branch and opens a PR, which auto-merges once GitHub
         # confirms it satisfies the protection rules (no CI checks are required
         # for this repo, only the PR-must-exist gate).
-        permissions:
-          contents: write
-          pull-requests: write
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
