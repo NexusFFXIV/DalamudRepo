@@ -23,14 +23,10 @@
 .PARAMETER OutFile
   Path to the output pluginmaster.json. Defaults to pluginmaster.json.
 
-.PARAMETER IconBaseUrl
-  Base URL for icon paths from plugins.yml. The script appends each plugin's
-  icon path to this base to form the absolute IconUrl in pluginmaster.json.
 #>
 param(
     [string]$PluginsYaml = "plugins.yml",
-    [string]$OutFile = "pluginmaster.json",
-    [string]$IconBaseUrl = "https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main"
+    [string]$OutFile = "pluginmaster.json"
 )
 
 $ErrorActionPreference = 'Stop'
@@ -143,7 +139,7 @@ foreach ($plugin in $config.plugins) {
         DalamudApiLevel = $primaryManifest.DalamudApiLevel
         AssemblyVersion = $primaryManifest.AssemblyVersion
         RepoUrl = "https://github.com/$repo"
-        IconUrl = "$IconBaseUrl/$iconPath"
+        IconUrl = "https://raw.githubusercontent.com/$repo/main/$iconPath"
         AcceptsFeedback = if ($null -ne $primaryManifest.AcceptsFeedback) { $primaryManifest.AcceptsFeedback } else { $true }
         FeedbackMessage = $primaryManifest.FeedbackMessage
         IsHide = $false
