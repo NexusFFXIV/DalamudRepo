@@ -6,7 +6,7 @@
 # entry with the HIGHEST AssemblyVersion wins.
 
 type: external-repos
-out: common-repos.json
+out: common-repo.json
 
 externalRepos:
   - https://raw.githubusercontent.com/LeonBlade/DalamudPlugins/main/repo.json

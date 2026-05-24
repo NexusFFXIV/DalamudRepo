@@ -7,6 +7,6 @@
 #     - internalName: XIVDeck.FFXIVPlugin
 
 type: external-plugins
-out: external.json
+out: external-repo.json
 
 externalPlugins: []

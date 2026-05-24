@@ -23,4 +23,4 @@ sources:
 
 all:
   enabled: true
-  out: all.json
+  out: all-repo.json
