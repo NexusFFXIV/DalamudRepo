@@ -84,15 +84,18 @@ function Get-ManifestFromRelease {
 }
 
 function Get-CumulativeDownloads {
-    # Sum download_count across ALL release assets — past releases included.
-    # Without this, the user-visible "Downloads" number would reset on each
-    # major release because we'd only count the currently-published bundle.
-    # Drafts are excluded (private assets); pre-releases are included.
+    # Sum download_count across the plugin .zip assets of all non-draft
+    # releases (past releases included). The .json manifest assets are
+    # deliberately excluded — this script itself fetches them via the
+    # asset's browser_download_url on every refresh, which would otherwise
+    # inflate the user-facing count by ~4/day per release.
     param($Releases)
     $sum = 0
     foreach ($r in $Releases) {
         if ($r.draft) { continue }
-        foreach ($a in $r.assets) { $sum += $a.download_count }
+        foreach ($a in $r.assets) {
+            if ($a.name -like '*.zip') { $sum += $a.download_count }
+        }
     }
     return $sum
 }
