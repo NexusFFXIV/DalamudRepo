@@ -146,3 +146,7 @@ if ($totalFiltered -gt 0) {
         if ($p.filtered -gt 0) { Write-Host ("  {0}: {1}" -f $p.basename, $p.filtered) }
     }
 }
+if ($script:ZipFallbackRescued -gt 0) {
+    Write-Host ""
+    Write-Host ("Zip fallback rescued {0} entries (API level read from embedded manifest)." -f $script:ZipFallbackRescued)
+}
