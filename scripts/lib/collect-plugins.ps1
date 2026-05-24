@@ -5,7 +5,7 @@
 # logging, and returns @{ entries = @(...); filtered = <int> }.
 #
 # Relies on script-scope vars set by the orchestrator: $MinDalamudApiLevel,
-# $DalamudMasterUrl.
+# $MinTestingDalamudApiLevel, $DalamudMasterUrl.
 
 function Invoke-GhApi {
     param([string]$Path)
@@ -59,11 +59,21 @@ function Get-CumulativeDownloads {
 }
 
 function Test-MeetsApi {
+    # An entry passes if either the stable OR the testing channel meets its
+    # respective minimum API level. This way a plugin whose stable build is
+    # behind but whose testing build keeps up doesn't get dropped from
+    # testing-eligible scopes.
     param($Entry)
     if (-not $Entry) { return $false }
-    $lvl = $Entry.DalamudApiLevel
-    if ($null -eq $lvl) { return $false }
-    try { return ([int]$lvl) -ge $MinDalamudApiLevel } catch { return $false }
+    $prodOk = $false
+    $testOk = $false
+    if ($null -ne $Entry.DalamudApiLevel) {
+        try { $prodOk = ([int]$Entry.DalamudApiLevel) -ge $MinDalamudApiLevel } catch {}
+    }
+    if ($null -ne $Entry.TestingDalamudApiLevel) {
+        try { $testOk = ([int]$Entry.TestingDalamudApiLevel) -ge $MinTestingDalamudApiLevel } catch {}
+    }
+    return ($prodOk -or $testOk)
 }
 
 function Collect-NexusPool {
@@ -145,7 +155,7 @@ function Collect-NexusPool {
         $count++
     }
     if ($count -eq 0) { Write-Host "  (none)" }
-    if ($filtered -gt 0) { Write-Host ("  ($filtered ignored — DalamudApiLevel < $MinDalamudApiLevel)") }
+    if ($filtered -gt 0) { Write-Host ("  ($filtered ignored — both API levels below thresholds ($MinDalamudApiLevel / $MinTestingDalamudApiLevel))") }
     return @{ entries = $entries; filtered = $filtered }
 }
 
@@ -179,7 +189,7 @@ function Collect-ExternalPluginPool {
         $count++
     }
     if ($count -eq 0) { Write-Host "  (none)" }
-    if ($filtered -gt 0) { Write-Host ("  ($filtered ignored — DalamudApiLevel < $MinDalamudApiLevel)") }
+    if ($filtered -gt 0) { Write-Host ("  ($filtered ignored — both API levels below thresholds ($MinDalamudApiLevel / $MinTestingDalamudApiLevel))") }
     return @{ entries = $entries; filtered = $filtered }
 }
 
@@ -221,7 +231,7 @@ function Collect-RepoUrlsPool {
             $added++
         }
         if ($added -eq 0 -and $repoFiltered -eq 0) { Write-Host "    (no usable entries)" }
-        if ($repoFiltered -gt 0) { Write-Host "    ($repoFiltered ignored — DalamudApiLevel < $MinDalamudApiLevel)" }
+        if ($repoFiltered -gt 0) { Write-Host "    ($repoFiltered ignored — both API levels below thresholds ($MinDalamudApiLevel / $MinTestingDalamudApiLevel))" }
     }
     if ($logged -eq 0) { Write-Host "  (none configured)" }
     return @{ entries = $entries; filtered = $filtered }

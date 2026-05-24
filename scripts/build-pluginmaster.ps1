@@ -38,7 +38,8 @@ if (Test-Path $ConfigYaml) {
     try { $buildConfig = Get-Content $ConfigYaml -Raw | ConvertFrom-Yaml }
     catch { Write-Warning "Failed to parse $ConfigYaml — using defaults. $($_.Exception.Message)" }
 }
-$MinDalamudApiLevel = if ($buildConfig -and $buildConfig.minDalamudApiLevel) { [int]$buildConfig.minDalamudApiLevel } else { 15 }
+$MinDalamudApiLevel        = if ($buildConfig -and $buildConfig.minDalamudApiLevel)        { [int]$buildConfig.minDalamudApiLevel }        else { 15 }
+$MinTestingDalamudApiLevel = if ($buildConfig -and $buildConfig.minTestingDalamudApiLevel) { [int]$buildConfig.minTestingDalamudApiLevel } else { 15 }
 $sourceDefault     = if ($buildConfig -and $buildConfig.sources -and $null -ne $buildConfig.sources.default) { [bool]$buildConfig.sources.default } else { $true }
 $allEnabled        = if ($buildConfig -and $buildConfig.all -and $null -ne $buildConfig.all.enabled) { [bool]$buildConfig.all.enabled } else { $true }
 $allOut            = if ($buildConfig -and $buildConfig.all -and $buildConfig.all.out) { [string]$buildConfig.all.out } else { "all.json" }
@@ -50,7 +51,7 @@ function IsSourceEnabled([string]$basename) {
     return [bool]$val
 }
 
-Write-Host "Config: minDalamudApiLevel=$MinDalamudApiLevel; sources.default=$sourceDefault; all.enabled=$allEnabled"
+Write-Host "Config: minDalamudApiLevel=$MinDalamudApiLevel; minTestingDalamudApiLevel=$MinTestingDalamudApiLevel; sources.default=$sourceDefault; all.enabled=$allEnabled"
 
 # ── Enumerate sources/*.yml ──────────────────────────────────────────────────
 if (-not (Test-Path $SourcesDir)) {
@@ -138,7 +139,7 @@ Write-BuildSummary -Outputs $outputs
 $totalFiltered = ($processed | ForEach-Object { $_.filtered } | Measure-Object -Sum).Sum
 if ($totalFiltered -gt 0) {
     Write-Host ""
-    Write-Host ("Total filtered out (DalamudApiLevel < {0}): {1}" -f $MinDalamudApiLevel, $totalFiltered)
+    Write-Host ("Total filtered out (DalamudApiLevel < {0} AND TestingDalamudApiLevel < {1}): {2}" -f $MinDalamudApiLevel, $MinTestingDalamudApiLevel, $totalFiltered)
     foreach ($p in $processed) {
         if ($p.filtered -gt 0) { Write-Host ("  {0}: {1}" -f $p.basename, $p.filtered) }
     }

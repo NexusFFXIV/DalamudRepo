@@ -121,8 +121,8 @@ The diff check covers all five outputs — a change in any single file triggers 
 
 Two knobs:
 
-- **`minDalamudApiLevel`** (default `15`) — entries with `DalamudApiLevel` lower than this are dropped from **every** source (nexus, external, common-repos, gen-repos). Missing field counts as too low. Filtered counts are summarised in the build log; individual entries are not listed.
-- **`repos.<source>`** — set to `false` to skip fetching from that source AND skip writing its output file. The on-disk file is left at its last committed state so subscribers don't see a sudden empty repo. Available toggles: `nexus`, `external`, `commonRepos`, `genRepos`, `all`. Defaults to `true` for all keys.
+- **`minDalamudApiLevel` / `minTestingDalamudApiLevel`** (both default `15`) — an entry is kept if **either** its `DalamudApiLevel` ≥ `minDalamudApiLevel` (prod-ready) **or** its `TestingDalamudApiLevel` ≥ `minTestingDalamudApiLevel` (testing-ready). Entries with neither field meeting its threshold are dropped from every source pool. Filtered counts are summarised in the build log; individual entries are not listed.
+- **`sources.<filename>`** — set to `false` to skip fetching from that source AND skip writing its output file. The on-disk file is left at its last committed state so subscribers don't see a sudden empty repo. `default:` controls behaviour for sources not explicitly listed.
 
 ### plugins.yml — our own plugins
 
