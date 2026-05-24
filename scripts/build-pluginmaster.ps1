@@ -125,11 +125,12 @@ if (Test-Path $ExternalPluginsYaml) {
     }
 }
 
+Write-Host "plugins:"
+$nexusCount = 0
 foreach ($plugin in $config.plugins) {
     $name = $plugin.internalName
     $repo = $plugin.repo
     $iconPath = $plugin.icon
-    Write-Host "==> $name ($repo)"
 
     # Fetch the full releases list ONCE per plugin — used for stable+testing
     # selection AND cumulative download-count aggregation.
@@ -206,25 +207,37 @@ foreach ($plugin in $config.plugins) {
     }
 
     $entries += [pscustomobject]$entry
+    Write-Host ("  -> {0} ({1})" -f $name, $entry.AssemblyVersion)
+    $nexusCount++
 }
+if ($nexusCount -eq 0) { Write-Host "  (none)" }
 
+Write-Host ""
+Write-Host "external:"
+$externalCount = 0
 if ($externalConfig -and $externalConfig.externalPlugins -and $dalamudMaster) {
     foreach ($ext in $externalConfig.externalPlugins) {
         $name = $ext.internalName
-        Write-Host "==> $name (external, from $DalamudMasterUrl)"
         $upstream = $dalamudMaster | Where-Object { $_.InternalName -eq $name } | Select-Object -First 1
         if (-not $upstream) {
+            Write-Host "  -> $name (not found in $DalamudMasterUrl)"
             Write-Warning "External plugin '$name' not found in Dalamud official pluginmaster — skipping."
             continue
         }
         $entries += $upstream
+        Write-Host ("  -> {0} ({1})" -f $upstream.InternalName, $upstream.AssemblyVersion)
+        $externalCount++
     }
 }
+if ($externalCount -eq 0) { Write-Host "  (none)" }
 
 # External repos: pull the whole pluginmaster from each third-party repo and
 # fold every entry into our pool. Third-party repos go down, change format,
 # rate-limit, etc. — any failure on a single repo is logged as a warning and
 # skipped, the rest of the build keeps going.
+Write-Host ""
+Write-Host "external Repos:"
+$externalReposLogged = 0
 if (Test-Path $ExternalReposYaml) {
     $extReposConfig = $null
     try {
@@ -235,16 +248,19 @@ if (Test-Path $ExternalReposYaml) {
     if ($extReposConfig -and $extReposConfig.externalRepos) {
         foreach ($url in $extReposConfig.externalRepos) {
             if (-not $url) { continue }
-            Write-Host "==> external repo $url"
+            Write-Host "  -> ${url}:"
+            $externalReposLogged++
             $resp = $null
             try {
                 $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30
             } catch {
-                Write-Warning "    unreachable / bad response: $($_.Exception.Message)"
+                Write-Host "    (unreachable: $($_.Exception.Message))"
+                Write-Warning "External repo $url unreachable: $($_.Exception.Message)"
                 continue
             }
             if (-not $resp) {
-                Write-Warning "    empty response from $url"
+                Write-Host "    (empty response)"
+                Write-Warning "External repo $url returned empty response"
                 continue
             }
             # Most pluginmasters are JSON arrays; some single-plugin manifests
@@ -254,32 +270,41 @@ if (Test-Path $ExternalReposYaml) {
             foreach ($e in $items) {
                 if ($e -and $e.InternalName) {
                     $entries += $e
+                    Write-Host ("    -> {0} ({1})" -f $e.InternalName, $e.AssemblyVersion)
                     $added++
                 }
             }
-            Write-Host "    added $added entries"
+            if ($added -eq 0) { Write-Host "    (no usable entries)" }
         }
     }
 }
+if ($externalReposLogged -eq 0) { Write-Host "  (none configured)" }
 
 # Deduplicate by InternalName, keeping the entry with the highest
 # AssemblyVersion. Same plugin published by multiple repos is common; this
 # rule picks the most up-to-date copy. Missing/unparseable versions sort
 # below valid ones (treated as 0.0.0.0).
-$beforeCount = $entries.Count
-$entries = $entries `
-    | Group-Object -Property InternalName `
-    | ForEach-Object {
-        $_.Group | Sort-Object -Property @{
-            Expression = {
-                try { [System.Version]$_.AssemblyVersion } catch { [System.Version]"0.0.0.0" }
-            }
-        } -Descending | Select-Object -First 1
-    }
-$afterCount = @($entries).Count
-if ($beforeCount -ne $afterCount) {
-    Write-Host "Deduplicated $($beforeCount - $afterCount) duplicate plugin entries ($beforeCount -> $afterCount)."
+Write-Host ""
+Write-Host "Deduping:"
+$beforeCount = @($entries).Count
+$deduped = @()
+$grouped = $entries | Group-Object -Property InternalName
+foreach ($g in $grouped) {
+    $sorted = $g.Group | Sort-Object -Property @{
+        Expression = {
+            try { [System.Version]$_.AssemblyVersion } catch { [System.Version]"0.0.0.0" }
+        }
+    } -Descending
+    $winner = $sorted | Select-Object -First 1
+    $others = $g.Count - 1
+    $suffix = if ($others -gt 0) { "$others other version$(if ($others -ne 1) { 's' }) in list" } else { "unique" }
+    Write-Host ("Added {0} ({1}) ({2})" -f $winner.InternalName, $winner.AssemblyVersion, $suffix)
+    $deduped += $winner
 }
+$entries = $deduped
+$afterCount = @($entries).Count
+Write-Host ""
+Write-Host "Summary: $beforeCount entries collected, $($beforeCount - $afterCount) duplicates removed, $afterCount final."
 
 $json = $entries | ConvertTo-Json -Depth 10
 # ConvertTo-Json wraps single-element arrays as objects; force an array even if 1 entry.
