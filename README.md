@@ -5,11 +5,11 @@
 [![Update pluginmaster](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml/badge.svg)](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Dalamud API](https://img.shields.io/badge/Dalamud_API-15-9D5BFF)](https://github.com/goatcorp/Dalamud)
-[![All plugins](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json&query=$.length&label=all%20plugins&color=brightgreen)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json)
+[![All plugins](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json&query=$.length&label=all%20plugins&color=brightgreen)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json)
 [![NexusFFXIV](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json&query=$.length&label=nexusffxiv&color=blue)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json)
-[![External](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json&query=$.length&label=external&color=orange)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json)
-[![Common repos](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repos.json&query=$.length&label=common%20repos&color=yellow)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repos.json)
-[![Gen repos](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repos.json&query=$.length&label=gen%20repos&color=lightgrey)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repos.json)
+[![External](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json&query=$.length&label=external&color=orange)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json)
+[![Common repos](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json&query=$.length&label=common%20repos&color=yellow)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json)
+[![Gen repos](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json&query=$.length&label=gen%20repos&color=lightgrey)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json)
 
 > [!TIP]
 > ### 🎮 Quick install
@@ -17,7 +17,7 @@
 > In Dalamud open **Settings → Experimental → Custom Plugin Repositories**, paste the URL below, tick Enabled, hit Save:
 >
 > ```
-> https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json
+> https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json
 > ```
 >
 > Then open `/xlplugins`, switch to **All Plugins**, and you'll see every plugin from this repo. Want a narrower scope (e.g. only NexusFFXIV plugins)? See [Available scopes](#available-scopes) below.
@@ -34,7 +34,7 @@ This repo publishes four pluginmaster manifests that the [Dalamud](https://githu
 4. Open `/xlplugins`, switch to **All Plugins**, search for the plugin you want, click Install.
 
 > [!NOTE]
-> You can add several scope URLs at once — Dalamud merges them. To get *everything*, just add `all.json`.
+> You can add several scope URLs at once — Dalamud merges them. To get *everything*, just add `all-repo.json`.
 
 ## Available scopes
 
@@ -48,34 +48,34 @@ https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json
 
 Only plugins built by NexusFFXIV (currently PlayerNexusTracker).
 
-### External plugins ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json&query=$.length&label=plugins&color=orange)
+### External plugins ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json&query=$.length&label=plugins&color=orange)
 
 ```
-https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json
+https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json
 ```
 
 Third-party plugins imported by `InternalName` from Dalamud's official pluginmaster.
 
-### Common (third-party) repos ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repos.json&query=$.length&label=plugins&color=yellow)
+### Common (third-party) repos ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json&query=$.length&label=plugins&color=yellow)
 
 ```
-https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repos.json
+https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json
 ```
 
 Plugins from popular community-maintained Dalamud repos (the curated `external-repos.yml` list), deduped by `InternalName` (highest `AssemblyVersion` wins).
 
-### All (curated) ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json&query=$.length&label=plugins&color=brightgreen)
+### All (curated) ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json&query=$.length&label=plugins&color=brightgreen)
 
 ```
-https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json
+https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json
 ```
 
-Curated union: NexusFFXIV plugins + external plugins + common (curated) third-party repos, deduped end-to-end. **Does not include the auto-discovered `gen-repos.json` pool** — opt into that separately below if you want the wider catalogue.
+Curated union: NexusFFXIV plugins + external plugins + common (curated) third-party repos, deduped end-to-end. **Does not include the auto-discovered `gen-repo.json` pool** — opt into that separately below if you want the wider catalogue.
 
-### Auto-discovered (gen) ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repos.json&query=$.length&label=plugins&color=lightgrey)
+### Auto-discovered (gen) ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json&query=$.length&label=plugins&color=lightgrey)
 
 ```
-https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repos.json
+https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json
 ```
 
 **Standalone repo built from auto-discovered entries** — a much larger list of third-party Dalamud repos gathered from community aggregators + GitHub code-search. Quality and reachability vary; broken entries log a warning and are skipped. Subscribe in addition to the curated scopes if you want maximum coverage.
@@ -94,10 +94,10 @@ Auto-derived from `plugins.yml`. As of now:
 
 ```
 pluginmaster.json                 ← Dalamud-facing, NexusFFXIV plugins only (default)
-external.json                     ← Dalamud-facing, external-plugins.yml only
-common-repos.json                 ← Dalamud-facing, external-repos.yml only (curated, commonly used)
-gen-repos.json                    ← Dalamud-facing, external-repos-gen.yml only (auto-discovered)
-all.json                          ← Dalamud-facing, curated union (gen excluded)
+external-repo.json                     ← Dalamud-facing, external-plugins.yml only
+common-repo.json                 ← Dalamud-facing, external-repos.yml only (curated, commonly used)
+gen-repo.json                    ← Dalamud-facing, external-repos-gen.yml only (auto-discovered)
+all-repo.json                          ← Dalamud-facing, curated union (gen excluded)
 
 config.yml                        ← build config: min Dalamud API + per-source toggles
 plugins.yml                       ← config: our own plugin repos
@@ -137,11 +137,11 @@ For each entry, the script fetches the latest stable + latest pre-release from G
 
 ### external-plugins.yml — single third-party plugins
 
-Each entry names a plugin by its `InternalName`. The script looks it up in Dalamud's official pluginmaster (`https://kamori.goats.dev/Plugin/PluginMaster`) and copies the entry verbatim — download links keep pointing at the upstream CDN, `IconUrl` stays with the upstream author. Lands in `external.json` and `all.json`.
+Each entry names a plugin by its `InternalName`. The script looks it up in Dalamud's official pluginmaster (`https://kamori.goats.dev/Plugin/PluginMaster`) and copies the entry verbatim — download links keep pointing at the upstream CDN, `IconUrl` stays with the upstream author. Lands in `external-repo.json` and `all-repo.json`.
 
 ### external-repos.yml — third-party Dalamud repos
 
-Each entry is a URL to another Dalamud repo's `pluginmaster.json` (or single-plugin manifest). The script fetches each, folds every entry into the pool, and writes them to `common-repos.json` (and `all.json`).
+Each entry is a URL to another Dalamud repo's `pluginmaster.json` (or single-plugin manifest). The script fetches each, folds every entry into the pool, and writes them to `common-repo.json` (and `all-repo.json`).
 
 When the same `InternalName` appears in multiple sources — whether two external repos, or `external-repos.yml` overlapping with `external-plugins.yml`, or our own `plugins.yml` — the entry with the **highest `AssemblyVersion`** wins. Missing or unparseable versions sort below valid ones.
 
@@ -151,7 +151,7 @@ Unreachable repos (down, bad JSON, rate-limited) log a warning and are skipped; 
 
 Same format and handling as `external-repos.yml`, but **generated** by trawling community aggregators (Akurosia's `MyCustomDalamudPluginRepoCollection`, the Puni.sh directory, GitHub code-search for the `TestingDalamudApiLevel` / `Punchline` fields). Hundreds of URLs in one file; the curated list stays small.
 
-Entries from this file land in **`gen-repos.json` only** — they are **not** folded into `all.json`. Users who want this wider catalogue subscribe to `gen-repos.json` explicitly in addition to (or instead of) `all.json`.
+Entries from this file land in **`gen-repo.json` only** — they are **not** folded into `all-repo.json`. Users who want this wider catalogue subscribe to `gen-repo.json` explicitly in addition to (or instead of) `all-repo.json`.
 
 Don't hand-edit — regenerate on demand. Entries are grouped by host, sorted A-Z, and ones that were unreachable at curation time get an inline `# unreachable` comment (the workflow keeps probing them).
 
