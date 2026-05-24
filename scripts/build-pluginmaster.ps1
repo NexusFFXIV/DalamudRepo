@@ -432,10 +432,12 @@ function Get-Deduped {
 }
 
 function Write-Pluginmaster {
-    param([array]$Entries, [string]$Path)
-    $arr = @($Entries)
-    # Empty array → emit "[]" instead of letting ConvertTo-Json produce "null"
-    # (which would otherwise round-trip to "[ null ]" via the single-entry wrap).
+    param($Entries, [string]$Path)
+    # PowerShell's `return @()` from a function unwraps to $null in the caller's
+    # scope, and `[array]$null` then `@(...)`s into a single-$null array — which
+    # ConvertTo-Json renders as "null" and our single-entry wrap turns into
+    # "[ null ]". Filter $null entries before counting to avoid that.
+    $arr = @(@($Entries) | Where-Object { $null -ne $_ })
     if ($arr.Count -eq 0) {
         Set-Content -Path $Path -Value "[]`n" -NoNewline -Encoding UTF8
         return
