@@ -1,0 +1,30 @@
+name: Feature request
+description: Suggest an addition or change to the repo manifest or its build pipeline.
+title: "[Feature]: "
+labels: ["enhancement", "feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for improvements to **how this repo works** — additional metadata in `pluginmaster.json`, build-script changes, new tracked plugins, etc. Plugin-specific feature requests belong on the plugin's own repo.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed solution (optional)
+      description: "Concrete sketch — JSON snippet, workflow step, build-script change, etc."
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched [existing issues](https://github.com/NexusFFXIV/DalamudRepo/issues?q=is%3Aissue) and discussions for the same idea.
+          required: true
