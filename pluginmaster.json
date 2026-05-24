@@ -3,7 +3,7 @@
     "Author": "nxships",
     "Name": "PlayerNexusTracker",
     "InternalName": "PlayerNexusTracker",
-    "Description": "Track players you meet in FFXIV â€” who they are, when you ran into them, how their characters change over time. A focused social tracker built on the NexusKit framework.\n\nPer-player detail view with Summary, Equipment, Class/Jobs, Achievements, Free Company, Encounters, History and Notes tabs. Optional enrichment from Lodestone (gear, FC link, achievement progress) and FFXIVCollect (mounts, minions, full achievement catalog). Live throttled refresh queue keeps external data fresh without hammering either service.\n\nConfigurable chat and toast notifications when players you've seen before change â€” rename, server transfer, Free Company join/leave/switch, achievement growth, refresh failures. Per-event filtering and history grouping so the chat doesn't drown you.\n\nPowerful player-filter language with live preview to slice your list however you want; encounter history scoped per duty and content type; optional bridges to other Dalamud plugins (Lifestream world-travel, more to come).\n\nLocal-first: all data lives in a single SQLite file under your XIVLauncher config. Automated weekly maintenance keeps it tidy. English and German localization.",
+    "Description": "Track players you meet in FFXIV — who they are, when you ran into them, how their characters change over time. A focused social tracker built on the NexusKit framework.\n\nPer-player detail view with Summary, Equipment, Class/Jobs, Achievements, Free Company, Encounters, History and Notes tabs. Optional enrichment from Lodestone (gear, FC link, achievement progress) and FFXIVCollect (mounts, minions, full achievement catalog). Live throttled refresh queue keeps external data fresh without hammering either service.\n\nConfigurable chat and toast notifications when players you've seen before change — rename, server transfer, Free Company join/leave/switch, achievement growth, refresh failures. Per-event filtering and history grouping so the chat doesn't drown you.\n\nPowerful player-filter language with live preview to slice your list however you want; encounter history scoped per duty and content type; optional bridges to other Dalamud plugins (Lifestream world-travel, more to come).\n\nLocal-first: all data lives in a single SQLite file under your XIVLauncher config. Automated weekly maintenance keeps it tidy. English and German localization.",
     "Punchline": "Track every adventurer you meet in Eorzea.",
     "Tags": [
       "player",
@@ -22,6 +22,7 @@
     "RepoUrl": "https://github.com/NexusFFXIV/PlayerNexusTracker",
     "IconUrl": "https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/images/PlayerNexusTracker.png",
     "AcceptsFeedback": true,
+    "FeedbackMessage": "Thanks for trying PlayerNexusTracker! Bug reports, feature requests, and discussion live on GitHub Issues — please open one at:\n\nhttps://github.com/NexusFFXIV/PlayerNexusTracker/issues/new/choose\n\nFeedback sent through this dialog goes to the Dalamud team and may not reach the plugin author directly.",
     "IsHide": false,
     "IsTestingExclusive": false,
     "LastUpdate": 1779630322,
