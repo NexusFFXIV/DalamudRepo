@@ -6,6 +6,10 @@ CLAUDE.md
 artifacts/
 tmp/
 *.log
+# Defensive — the build script downloads plugin zips into $env:TEMP for the
+# API-level fallback, but if anything ever leaks into the repo dir it must
+# never be committed.
+*.zip
 
 # OS / IDE
 .vs/
