@@ -1,24 +1,26 @@
 # Build configuration for scripts/build-pluginmaster.ps1.
 #
-# minDalamudApiLevel: drop any plugin entry whose `DalamudApiLevel` is below
-# this number from EVERY source (nexus, external, common-repos, gen-repos).
-# Entries missing the field are also dropped. Filtered counts are summarised
-# in the build log; individual entries are not listed.
+# minDalamudApiLevel — drop any entry whose `DalamudApiLevel` is below this
+# from every source pool. Missing field also drops the entry.
 #
-# repos: toggles whether a source is fetched and its output file is written.
-# Defaults to true if the key is missing. Disabling a source skips its loop
-# entirely — the existing output file on disk is left untouched.
-#   nexus       → plugins.yml          → pluginmaster.json
-#   external    → external-plugins.yml → external.json
-#   commonRepos → external-repos.yml   → common-repos.json
-#   genRepos    → external-repos-gen.yml → gen-repos.json
-#   all         → union of the three curated sources → all.json (gen excluded)
+# sources — per-file enable toggles, keyed by the basename of files in
+# sources/. `default:` controls behaviour for any sources/*.yml NOT explicitly
+# listed here:
+#   default: true   = new source files are built automatically
+#   default: false  = new source files are ignored until you opt them in
+# Explicit `true` / `false` per filename always overrides the default.
+#
+# all — the union output (curated sources only, gen scopes are excluded).
 
 minDalamudApiLevel: 15
 
-repos:
-  nexus: true
-  external: true
-  commonRepos: true
-  genRepos: true
-  all: true
+sources:
+  default: false
+  plugins.yml: true
+  external-plugins.yml: true
+  external-repos.yml: true
+  external-repos-gen.yml: true
+
+all:
+  enabled: true
+  out: all.json

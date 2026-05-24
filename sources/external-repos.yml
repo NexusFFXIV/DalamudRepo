@@ -1,12 +1,12 @@
-# Third-party Dalamud plugin repositories that this repo re-exposes for
-# convenience. The build script fetches each pluginmaster.json (or single-plugin
-# manifest) listed here and folds all plugin entries into pluginmaster.json.
+# Curated third-party Dalamud plugin repositories (commonly used).
+# The build script fetches each pluginmaster.json (or single-plugin manifest)
+# and folds entries into common-repos.json — also into all.json (the union).
 #
-# Deduplication: when the same InternalName appears in multiple sources (this
-# file, external-plugins.yml, plugins.yml, or two different external repos),
-# the entry with the HIGHEST AssemblyVersion wins.
-#
-# To add a repo: append its URL. To pause a repo: comment the line out.
+# Deduplication: when the same InternalName appears in multiple sources, the
+# entry with the HIGHEST AssemblyVersion wins.
+
+type: external-repos
+out: common-repos.json
 
 externalRepos:
   - https://raw.githubusercontent.com/LeonBlade/DalamudPlugins/main/repo.json

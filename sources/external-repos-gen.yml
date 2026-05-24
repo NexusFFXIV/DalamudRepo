@@ -1,14 +1,16 @@
 # Auto-generated discovery list — do not hand-edit.
-# (`-gen` in the filename = generated.) Companion to external-repos.yml
-# (curated). The build script reads both.
-# Grouped by host, sorted A-Z. `# unreachable` = 4xx at curation time; the
-# workflow keeps probing them.
+# (`-gen` in the filename = generated.) Standalone — folded into gen-repos.json
+# only; intentionally NOT included in all.json (the curated union).
 #
 # Regenerate when asked: Akurosia/MyCustomDalamudPluginRepoCollection
 # (repo_urls.json) is the main aggregator; puni.sh/directory/repositories
 # lists the puni.sh ones; GitHub code-search for `TestingDalamudApiLevel
 # extension:json` and `Punchline AssemblyVersion` surfaces stragglers.
 # Always re-validate HTTP status before annotating unreachable.
+
+type: external-repos
+out: gen-repos.json
+includeInUnion: false
 
 externalRepos:
 
