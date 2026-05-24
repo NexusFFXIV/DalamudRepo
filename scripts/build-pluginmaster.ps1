@@ -108,10 +108,20 @@ $entries = @()
 $externalConfig = $null
 $dalamudMaster = $null
 if (Test-Path $ExternalPluginsYaml) {
-    $externalConfig = Get-Content $ExternalPluginsYaml -Raw | ConvertFrom-Yaml
-    if ($externalConfig.externalPlugins -and $externalConfig.externalPlugins.Count -gt 0) {
+    try {
+        $externalConfig = Get-Content $ExternalPluginsYaml -Raw | ConvertFrom-Yaml
+    } catch {
+        Write-Warning "Failed to parse $ExternalPluginsYaml — skipping external-plugin imports. $($_.Exception.Message)"
+        $externalConfig = $null
+    }
+    if ($externalConfig -and $externalConfig.externalPlugins -and @($externalConfig.externalPlugins).Count -gt 0) {
         Write-Host "Fetching Dalamud official pluginmaster for external lookups..."
-        $dalamudMaster = Invoke-RestMethod -Uri $DalamudMasterUrl -UseBasicParsing
+        try {
+            $dalamudMaster = Invoke-RestMethod -Uri $DalamudMasterUrl -UseBasicParsing -TimeoutSec 30
+        } catch {
+            Write-Warning "Failed to fetch $DalamudMasterUrl — external-plugin imports will be skipped. $($_.Exception.Message)"
+            $dalamudMaster = $null
+        }
     }
 }
 
@@ -212,17 +222,29 @@ if ($externalConfig -and $externalConfig.externalPlugins -and $dalamudMaster) {
 }
 
 # External repos: pull the whole pluginmaster from each third-party repo and
-# fold every entry into our pool. Failures on a single repo (unreachable, bad
-# JSON, …) are logged and skipped — the rest of the build keeps going.
+# fold every entry into our pool. Third-party repos go down, change format,
+# rate-limit, etc. — any failure on a single repo is logged as a warning and
+# skipped, the rest of the build keeps going.
 if (Test-Path $ExternalReposYaml) {
-    $extReposConfig = Get-Content $ExternalReposYaml -Raw | ConvertFrom-Yaml
-    if ($extReposConfig.externalRepos) {
+    $extReposConfig = $null
+    try {
+        $extReposConfig = Get-Content $ExternalReposYaml -Raw | ConvertFrom-Yaml
+    } catch {
+        Write-Warning "Failed to parse $ExternalReposYaml — skipping external-repo imports. $($_.Exception.Message)"
+    }
+    if ($extReposConfig -and $extReposConfig.externalRepos) {
         foreach ($url in $extReposConfig.externalRepos) {
+            if (-not $url) { continue }
             Write-Host "==> external repo $url"
+            $resp = $null
             try {
                 $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30
             } catch {
-                Write-Warning "Failed to fetch $url — $($_.Exception.Message)"
+                Write-Warning "    unreachable / bad response: $($_.Exception.Message)"
+                continue
+            }
+            if (-not $resp) {
+                Write-Warning "    empty response from $url"
                 continue
             }
             # Most pluginmasters are JSON arrays; some single-plugin manifests
