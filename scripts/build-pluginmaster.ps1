@@ -26,7 +26,9 @@
 #>
 param(
     [string]$PluginsYaml = "plugins.yml",
-    [string]$OutFile = "pluginmaster.json"
+    [string]$ExternalPluginsYaml = "external-plugins.yml",
+    [string]$OutFile = "pluginmaster.json",
+    [string]$DalamudMasterUrl = "https://kamori.goats.dev/Plugin/PluginMaster"
 )
 
 $ErrorActionPreference = 'Stop'
@@ -98,6 +100,19 @@ function Get-CumulativeDownloads {
 
 $config = Get-Content $PluginsYaml -Raw | ConvertFrom-Yaml
 $entries = @()
+
+# External plugins are looked up by InternalName in Dalamud's official
+# pluginmaster and copied verbatim. Fetch the master once so the lookup is
+# cheap for any number of external entries.
+$externalConfig = $null
+$dalamudMaster = $null
+if (Test-Path $ExternalPluginsYaml) {
+    $externalConfig = Get-Content $ExternalPluginsYaml -Raw | ConvertFrom-Yaml
+    if ($externalConfig.externalPlugins -and $externalConfig.externalPlugins.Count -gt 0) {
+        Write-Host "Fetching Dalamud official pluginmaster for external lookups..."
+        $dalamudMaster = Invoke-RestMethod -Uri $DalamudMasterUrl -UseBasicParsing
+    }
+}
 
 foreach ($plugin in $config.plugins) {
     $name = $plugin.internalName
@@ -180,6 +195,19 @@ foreach ($plugin in $config.plugins) {
     }
 
     $entries += [pscustomobject]$entry
+}
+
+if ($externalConfig -and $externalConfig.externalPlugins -and $dalamudMaster) {
+    foreach ($ext in $externalConfig.externalPlugins) {
+        $name = $ext.internalName
+        Write-Host "==> $name (external, from $DalamudMasterUrl)"
+        $upstream = $dalamudMaster | Where-Object { $_.InternalName -eq $name } | Select-Object -First 1
+        if (-not $upstream) {
+            Write-Warning "External plugin '$name' not found in Dalamud official pluginmaster — skipping."
+            continue
+        }
+        $entries += $upstream
+    }
 }
 
 $json = $entries | ConvertTo-Json -Depth 10

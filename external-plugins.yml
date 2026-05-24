@@ -1,0 +1,13 @@
+# External plugins — third-party plugins outside the NexusFFXIV / NexusKit
+# ecosystem that this repo re-exposes for convenience. Each entry is imported
+# as-is by internal name from Dalamud's official pluginmaster (kamori.goats.dev).
+#
+# The build script (scripts/build-pluginmaster.ps1) looks the entry up there and
+# copies the published fields verbatim — download links keep pointing at the
+# upstream CDN, IconUrl stays with the upstream author.
+#
+# To add a third-party plugin: append an entry with its InternalName as it
+# appears in https://kamori.goats.dev/Plugin/PluginMaster.
+
+externalPlugins:
+  - internalName: XIVDeck.FFXIVPlugin
