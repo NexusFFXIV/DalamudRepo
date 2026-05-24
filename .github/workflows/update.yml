@@ -26,17 +26,25 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Rebuild pluginmaster.json
+        # Capture all output streams (incl. Write-Host) via Start-Transcript so
+        # the email step downstream can attach the structured build log.
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./scripts/build-pluginmaster.ps1
+          Start-Transcript -Path build.log -IncludeInvocationHeader:$false | Out-Null
+          try {
+            ./scripts/build-pluginmaster.ps1
+          } finally {
+            Stop-Transcript | Out-Null
+          }
 
       - name: Open PR if changed
         # main is branch-protected (PR required). The bot pushes its diff to a
         # short-lived branch and opens a PR, which auto-merges once GitHub
         # confirms it satisfies the protection rules (no CI checks are required
         # for this repo, only the PR-must-exist gate).
+        id: pr
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -44,8 +52,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git diff --quiet pluginmaster.json; then
             echo "No changes — nothing to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
           BRANCH="bot/refresh-pluginmaster-${{ github.run_id }}"
           DISPATCH_PAYLOAD='${{ toJSON(github.event.client_payload) }}'
           git checkout -b "$BRANCH"
@@ -67,3 +77,25 @@ jobs:
           # the common case here because DalamudRepo has no required CI checks.
           gh pr merge "$BRANCH" --squash --auto --delete-branch \
             || gh pr merge "$BRANCH" --squash --delete-branch
+
+      - name: Email notification on change
+        # Skipped silently if either the file didn't change OR the SMTP_HOST
+        # repo secret isn't configured yet (so the workflow doesn't fail until
+        # the user is ready to receive mails).
+        # Required repo secrets: SMTP_HOST, SMTP_PORT, SMTP_USERNAME,
+        # SMTP_PASSWORD, MAIL_TO.
+        if: steps.pr.outputs.changed == 'true' && env.SMTP_HOST != ''
+        uses: dawidd6/action-send-mail@v4
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          secure: true
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          to: ${{ secrets.MAIL_TO }}
+          from: NexusFFXIV DalamudRepo Bot <${{ secrets.SMTP_USERNAME }}>
+          subject: "[DalamudRepo] pluginmaster.json refreshed (${{ github.event_name }})"
+          body: file://build.log
+          attachments: pluginmaster.json
