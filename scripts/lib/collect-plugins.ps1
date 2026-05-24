@@ -1,7 +1,8 @@
 # Part A — source collectors.
 #
 # Each Collect-* function takes an already-parsed yaml hashtable, fetches
-# its source pool, applies the DalamudApiLevel filter, emits structured
+# its source pool, applies the API-level filter (OR over DalamudApiLevel
+# and TestingDalamudApiLevel — see Test-MeetsApi), emits structured
 # logging, and returns @{ entries = @(...); filtered = <int> }.
 #
 # Relies on script-scope vars set by the orchestrator: $MinDalamudApiLevel,
