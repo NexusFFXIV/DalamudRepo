@@ -1,0 +1,24 @@
+# Build configuration for scripts/build-pluginmaster.ps1.
+#
+# minDalamudApiLevel: drop any plugin entry whose `DalamudApiLevel` is below
+# this number from EVERY source (nexus, external, common-repos, gen-repos).
+# Entries missing the field are also dropped. Filtered counts are summarised
+# in the build log; individual entries are not listed.
+#
+# repos: toggles whether a source is fetched and its output file is written.
+# Defaults to true if the key is missing. Disabling a source skips its loop
+# entirely — the existing output file on disk is left untouched.
+#   nexus       → plugins.yml          → pluginmaster.json
+#   external    → external-plugins.yml → external.json
+#   commonRepos → external-repos.yml   → common-repos.json
+#   genRepos    → external-repos-gen.yml → gen-repos.json
+#   all         → union of the three curated sources → all.json (gen excluded)
+
+minDalamudApiLevel: 15
+
+repos:
+  nexus: true
+  external: true
+  commonRepos: true
+  genRepos: true
+  all: true
