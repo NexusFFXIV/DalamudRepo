@@ -1,10 +1,11 @@
 # Plugins tracked by this Dalamud repo.
 # The build script (scripts/build-pluginmaster.ps1) reads this list, fetches the
 # latest stable + pre-release of each plugin from its GitHub Releases, and
-# rebuilds pluginmaster.json. To add a new plugin: append a new entry, drop the
-# icon into images/, commit. The next workflow run picks it up.
+# rebuilds pluginmaster.json. To add a new plugin: append a new entry pointing
+# at the icon's path inside the plugin's own repo (main branch). The next
+# workflow run picks it up.
 
 plugins:
   - internalName: PlayerNexusTracker
     repo: NexusFFXIV/PlayerNexusTracker
-    icon: images/PlayerNexusTracker.png
+    icon: PlayerNexusTracker.Plugin/images/icon.png
