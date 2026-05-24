@@ -96,6 +96,6 @@ jobs:
           password: ${{ secrets.SMTP_PASSWORD }}
           to: ${{ secrets.MAIL_TO }}
           from: NexusFFXIV DalamudRepo Bot <${{ secrets.SMTP_USERNAME }}>
-          subject: "[DalamudRepo] pluginmaster.json refreshed (${{ github.event_name }})"
+          subject: "NexusFFXIV [DalamudRepo] pluginmaster.json refreshed (${{ github.event_name }})"
           body: file://build.log
           attachments: pluginmaster.json
