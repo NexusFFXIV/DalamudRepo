@@ -1,0 +1,57 @@
+name: Bug in the repo manifest
+description: Something's wrong with pluginmaster.json itself — wrong info, missing plugin, broken download link, the workflow misbehaved.
+title: "[Bug]: "
+labels: ["bug", "feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for problems with the **repo manifest** (`pluginmaster.json`) or the build workflow. For bugs **inside** a specific plugin, please report on the plugin's own repo instead.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What's wrong?
+      options:
+        - A plugin is missing from the listing
+        - A plugin's info is incorrect (description, icon, tags, version…)
+        - A download link returns 404 or points to the wrong asset
+        - Testing/stable pointers are swapped or stale
+        - The update workflow failed
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: plugin-name
+    attributes:
+      label: Affected plugin (if applicable)
+      placeholder: "e.g. PlayerNexusTracker"
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What did you observe?
+      description: |
+        Include URLs, timestamps, and (if relevant) a screenshot of the Dalamud plugin installer view.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+
+  - type: input
+    id: workflow-run
+    attributes:
+      label: Workflow run URL (optional)
+      description: "If the update workflow failed, paste the run URL — e.g. https://github.com/NexusFFXIV/DalamudRepo/actions/runs/…"
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Before submitting
+      options:
+        - label: I checked [existing issues](https://github.com/NexusFFXIV/DalamudRepo/issues?q=is%3Aissue).
+          required: true

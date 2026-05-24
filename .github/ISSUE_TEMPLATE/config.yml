@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Issue with a specific plugin
+    url: https://github.com/NexusFFXIV/PlayerNexusTracker/issues/new/choose
+    about: Crash, wrong behaviour, or feature request for PlayerNexusTracker itself? Report it on the plugin's own repo — Issues here are only for the repo manifest.
+
+  - name: General question or discussion
+    url: https://github.com/NexusFFXIV/DalamudRepo/discussions
+    about: Open-ended question about how this repo works, or how to consume it.
