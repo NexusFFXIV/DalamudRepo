@@ -1,0 +1,15 @@
+# Local-only
+CLAUDE.md
+.claude/
+
+# Workflow scratch
+artifacts/
+tmp/
+*.log
+
+# OS / IDE
+.vs/
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

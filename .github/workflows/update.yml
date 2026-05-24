@@ -1,0 +1,47 @@
+name: Update pluginmaster
+
+# Three triggers, all converge on the same rebuild step:
+#   - repository_dispatch  : sent by a plugin repo's release workflow on tag push (real-time update)
+#   - workflow_dispatch    : manual button in the Actions UI
+#   - schedule (6-hourly)  : safety net if a dispatch is lost or a plugin repo's workflow missed it
+
+on:
+  repository_dispatch:
+    types: [plugin-release]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # for committing the regenerated pluginmaster.json
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Rebuild pluginmaster.json
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ./scripts/build-pluginmaster.ps1
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet pluginmaster.json; then
+            echo "No changes — nothing to commit."
+          else
+            DISPATCH_PAYLOAD="${{ toJSON(github.event.client_payload) }}"
+            git add pluginmaster.json
+            git commit -m "chore: refresh pluginmaster.json" \
+                       -m "Triggered by: ${{ github.event_name }}" \
+                       -m "Payload: $DISPATCH_PAYLOAD"
+            git push origin HEAD:main
+          fi
