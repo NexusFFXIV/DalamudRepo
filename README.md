@@ -1,5 +1,8 @@
 # NexusFFXIV — Dalamud Plugin Repository
 
+[![Update pluginmaster](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml/badge.svg)](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
 This repo hosts the `pluginmaster.json` manifest that the [Dalamud](https://github.com/goatcorp/Dalamud) plugin installer reads to surface NexusFFXIV plugins inside the in-game UI.
 
 ## Install (as a player)
