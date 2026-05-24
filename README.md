@@ -1,28 +1,33 @@
 # NexusFFXIV — Dalamud Plugin Repository
 
+**A custom Dalamud plugin repository for FINAL FANTASY XIV — host for [NexusFFXIV](https://github.com/NexusFFXIV) plugins plus a curated mirror of third-party Dalamud repos.**
+
 [![Update pluginmaster](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml/badge.svg)](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Dalamud API](https://img.shields.io/badge/Dalamud_API-15-9D5BFF)](https://github.com/goatcorp/Dalamud)
 [![All plugins](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json&query=$.length&label=all%20plugins&color=brightgreen)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json)
 [![NexusFFXIV](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json&query=$.length&label=nexusffxiv&color=blue)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json)
 [![External](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json&query=$.length&label=external&color=orange)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json)
 [![Repos](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/repos.json&query=$.length&label=external%20repos&color=yellow)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/repos.json)
 
+## Overview
+
 This repo publishes four pluginmaster manifests that the [Dalamud](https://github.com/goatcorp/Dalamud) plugin installer can read. Each one is scoped differently — pick the URL that matches what you want to see in Dalamud.
 
 ## Install (as a player)
 
-In Dalamud:
-
-1. Open **Settings → Experimental** (the small ⚠️ tab in the Settings window).
-2. Under **Custom Plugin Repositories**, paste **one** of the URLs below (or several — Dalamud merges them).
-3. Hit Save.
+1. Open Dalamud's **Settings → Experimental** tab (the ⚠️ icon in the Settings window).
+2. Under **Custom Plugin Repositories**, paste one of the URLs from [Available scopes](#available-scopes) below and hit Save.
+3. Reopen **Settings → Experimental** if needed and tick the new entry as **Enabled**.
 4. Open `/xlplugins`, switch to **All Plugins**, search, Install.
 
-### Available scopes
+> You can add several scope URLs at once — Dalamud merges them.
 
-Each block below has its own URL — hover over the code block and click the copy icon (top-right) to grab it for Dalamud.
+## Available scopes
 
-#### NexusFFXIV plugins (default) ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json&query=$.length&label=plugins&color=blue)
+Hover over a code block and click the copy icon (top-right) to grab the URL.
+
+### NexusFFXIV plugins (default) ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json&query=$.length&label=plugins&color=blue)
 
 ```
 https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json
@@ -30,7 +35,7 @@ https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json
 
 Only plugins built by NexusFFXIV (currently PlayerNexusTracker).
 
-#### External plugins ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json&query=$.length&label=plugins&color=orange)
+### External plugins ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json&query=$.length&label=plugins&color=orange)
 
 ```
 https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json
@@ -38,7 +43,7 @@ https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json
 
 Third-party plugins imported by `InternalName` from Dalamud's official pluginmaster.
 
-#### External repos ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/repos.json&query=$.length&label=plugins&color=yellow)
+### External repos ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/repos.json&query=$.length&label=plugins&color=yellow)
 
 ```
 https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/repos.json
@@ -46,7 +51,7 @@ https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/repos.json
 
 Whole pluginmaster.jsons pulled from third-party Dalamud repos, deduped by `InternalName` (highest `AssemblyVersion` wins).
 
-#### All ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json&query=$.length&label=plugins&color=brightgreen)
+### All ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json&query=$.length&label=plugins&color=brightgreen)
 
 ```
 https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json
