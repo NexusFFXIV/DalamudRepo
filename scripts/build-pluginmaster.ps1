@@ -133,6 +133,7 @@ foreach ($plugin in $config.plugins) {
         RepoUrl = "https://github.com/$repo"
         IconUrl = "$IconBaseUrl/$iconPath"
         AcceptsFeedback = if ($null -ne $primaryManifest.AcceptsFeedback) { $primaryManifest.AcceptsFeedback } else { $true }
+        FeedbackMessage = $primaryManifest.FeedbackMessage
         IsHide = $false
         IsTestingExclusive = $isTestingExclusive
         LastUpdate = [DateTimeOffset]::Parse($primaryRelease.published_at).ToUnixTimeSeconds()
