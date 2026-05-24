@@ -279,8 +279,14 @@ function Collect-RepoUrlsPool {
         $items = if ($resp -is [System.Array]) { $resp } else { @($resp) }
         $added = 0
         $repoFiltered = 0
+        # Count entries from THIS repo whose api-level fields are missing —
+        # used to flag the repo as badly formatted in the log + mail.
+        $repoMissingFields = 0
         foreach ($e in $items) {
             if (-not ($e -and $e.InternalName)) { continue }
+            if ($null -eq $e.DalamudApiLevel -or $null -eq $e.TestingDalamudApiLevel) {
+                $repoMissingFields++
+            }
             if (-not (Test-MeetsApi $e)) { $repoFiltered++; $filtered++; continue }
             $entries += $e
             Write-Host ("    -> {0} ({1})" -f $e.InternalName, $e.AssemblyVersion)
@@ -288,6 +294,10 @@ function Collect-RepoUrlsPool {
         }
         if ($added -eq 0 -and $repoFiltered -eq 0) { Write-Host "    (no usable entries)" }
         if ($repoFiltered -gt 0) { Write-Host "    ($repoFiltered ignored — both API levels below thresholds ($MinDalamudApiLevel / $MinTestingDalamudApiLevel))" }
+        if ($repoMissingFields -gt 0) {
+            Write-Host "    (badly formatted: $repoMissingFields plugin(s) missing api-level field — zip fallback used)"
+            Write-Warning "Badly formatted repo $url — $repoMissingFields plugin(s) missing DalamudApiLevel and/or TestingDalamudApiLevel; api level was read from the zip's embedded manifest."
+        }
     }
     if ($logged -eq 0) { Write-Host "  (none configured)" }
     return @{ entries = $entries; filtered = $filtered }
