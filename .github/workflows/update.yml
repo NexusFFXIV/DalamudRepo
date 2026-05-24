@@ -62,4 +62,8 @@ jobs:
 
           Triggered by: \`${{ github.event_name }}\`
           Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          gh pr merge "$BRANCH" --squash --auto --delete-branch
+          # Try auto-merge first (sets the queue if checks are pending); fall back
+          # to a direct merge when the PR is already in 'clean' status — which is
+          # the common case here because DalamudRepo has no required CI checks.
+          gh pr merge "$BRANCH" --squash --auto --delete-branch \
+            || gh pr merge "$BRANCH" --squash --delete-branch
