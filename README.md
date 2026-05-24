@@ -20,16 +20,39 @@ In Dalamud:
 
 ### Available scopes
 
-Base URL: `https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/`
+Each block below has its own URL — hover over the code block and click the copy icon (top-right) to grab it for Dalamud.
 
-| Scope | File | Plugins | Contents |
-|---|---|---|---|
-| **NexusFFXIV plugins** (default) | `pluginmaster.json` | ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json&query=$.length&label=%20&color=blue) | Only plugins built by NexusFFXIV (currently PlayerNexusTracker). |
-| **External plugins** | `external.json` | ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json&query=$.length&label=%20&color=orange) | Third-party plugins imported by `InternalName` from Dalamud's official pluginmaster. |
-| **External repos** | `repos.json` | ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/repos.json&query=$.length&label=%20&color=yellow) | Whole pluginmaster.jsons pulled from third-party Dalamud repos, deduped by `InternalName` (highest `AssemblyVersion` wins). |
-| **All** | `all.json` | ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json&query=$.length&label=%20&color=brightgreen) | Union of the three above, deduped end-to-end. One URL, everything. |
+#### NexusFFXIV plugins (default) ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json&query=$.length&label=plugins&color=blue)
 
-Subscribe by pasting `<base-url><file>` into Dalamud's Custom Plugin Repositories field.
+```
+https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json
+```
+
+Only plugins built by NexusFFXIV (currently PlayerNexusTracker).
+
+#### External plugins ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json&query=$.length&label=plugins&color=orange)
+
+```
+https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json
+```
+
+Third-party plugins imported by `InternalName` from Dalamud's official pluginmaster.
+
+#### External repos ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/repos.json&query=$.length&label=plugins&color=yellow)
+
+```
+https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/repos.json
+```
+
+Whole pluginmaster.jsons pulled from third-party Dalamud repos, deduped by `InternalName` (highest `AssemblyVersion` wins).
+
+#### All ![](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json&query=$.length&label=plugins&color=brightgreen)
+
+```
+https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json
+```
+
+Union of the three above, deduped end-to-end. One URL, everything.
 
 ### Testing builds (opt-in)
 
