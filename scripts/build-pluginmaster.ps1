@@ -28,7 +28,13 @@ param(
     [string]$PluginsYaml = "plugins.yml",
     [string]$ExternalPluginsYaml = "external-plugins.yml",
     [string]$ExternalReposYaml = "external-repos.yml",
+    # Four outputs — one per source plus the merged "all" file. Users subscribe
+    # to whichever scope they want; the default `pluginmaster.json` URL keeps
+    # working and now only contains our own plugins.
     [string]$OutFile = "pluginmaster.json",
+    [string]$ExternalPluginsOutFile = "external.json",
+    [string]$ExternalReposOutFile = "repos.json",
+    [string]$FullOutFile = "all.json",
     [string]$DalamudMasterUrl = "https://kamori.goats.dev/Plugin/PluginMaster"
 )
 
@@ -100,7 +106,12 @@ function Get-CumulativeDownloads {
 }
 
 $config = Get-Content $PluginsYaml -Raw | ConvertFrom-Yaml
-$entries = @()
+
+# Each source feeds its own pool so we can emit a per-source pluginmaster
+# alongside the merged "full" one.
+$nexusEntries = @()
+$externalPluginEntries = @()
+$externalRepoEntries = @()
 
 # External plugins are looked up by InternalName in Dalamud's official
 # pluginmaster and copied verbatim. Fetch the master once so the lookup is
@@ -206,7 +217,7 @@ foreach ($plugin in $config.plugins) {
         $entry.DownloadLinkUpdate = $testingZip
     }
 
-    $entries += [pscustomobject]$entry
+    $nexusEntries += [pscustomobject]$entry
     Write-Host ("  -> {0} ({1})" -f $name, $entry.AssemblyVersion)
     $nexusCount++
 }
@@ -224,7 +235,7 @@ if ($externalConfig -and $externalConfig.externalPlugins -and $dalamudMaster) {
             Write-Warning "External plugin '$name' not found in Dalamud official pluginmaster — skipping."
             continue
         }
-        $entries += $upstream
+        $externalPluginEntries += $upstream
         Write-Host ("  -> {0} ({1})" -f $upstream.InternalName, $upstream.AssemblyVersion)
         $externalCount++
     }
@@ -269,7 +280,7 @@ if (Test-Path $ExternalReposYaml) {
             $added = 0
             foreach ($e in $items) {
                 if ($e -and $e.InternalName) {
-                    $entries += $e
+                    $externalRepoEntries += $e
                     Write-Host ("    -> {0} ({1})" -f $e.InternalName, $e.AssemblyVersion)
                     $added++
                 }
@@ -280,36 +291,66 @@ if (Test-Path $ExternalReposYaml) {
 }
 if ($externalReposLogged -eq 0) { Write-Host "  (none configured)" }
 
-# Deduplicate by InternalName, keeping the entry with the highest
+# Deduplicate each pool by InternalName, keeping the entry with the highest
 # AssemblyVersion. Same plugin published by multiple repos is common; this
 # rule picks the most up-to-date copy. Missing/unparseable versions sort
 # below valid ones (treated as 0.0.0.0).
+function Resolve-Version {
+    param($Entry)
+    try { [System.Version]$Entry.AssemblyVersion } catch { [System.Version]"0.0.0.0" }
+}
+
+function Get-Deduped {
+    param([array]$Entries)
+    $arr = @($Entries)
+    if ($arr.Count -eq 0) { return @() }
+    $result = @()
+    foreach ($g in ($arr | Group-Object -Property InternalName)) {
+        $winner = $g.Group | Sort-Object -Property { Resolve-Version $_ } -Descending | Select-Object -First 1
+        $result += $winner
+    }
+    return $result
+}
+
+function Write-Pluginmaster {
+    param([array]$Entries, [string]$Path)
+    $arr = @($Entries)
+    $json = $arr | ConvertTo-Json -Depth 10
+    # ConvertTo-Json wraps single-element arrays as objects; force an array even if <=1 entry.
+    if ($arr.Count -le 1) { $json = "[`n" + ($json -replace '(?ms)^', '  ') + "`n]" }
+    Set-Content -Path $Path -Value $json -Encoding UTF8 -NoNewline
+    Add-Content -Path $Path -Value "`n" -NoNewline
+}
+
+$nexusDeduped = Get-Deduped $nexusEntries
+$externalPluginDeduped = Get-Deduped $externalPluginEntries
+$externalRepoDeduped = Get-Deduped $externalRepoEntries
+
+# Verbose dedup logging happens on the full union — that's where cross-source
+# collisions actually matter ("plugin X also exists in repo Y at older version").
 Write-Host ""
-Write-Host "Deduping:"
-$beforeCount = @($entries).Count
-$deduped = @()
-$grouped = $entries | Group-Object -Property InternalName
-foreach ($g in $grouped) {
-    $sorted = $g.Group | Sort-Object -Property @{
-        Expression = {
-            try { [System.Version]$_.AssemblyVersion } catch { [System.Version]"0.0.0.0" }
-        }
-    } -Descending
+Write-Host "Deduping (full pluginmaster):"
+$allEntries = $nexusEntries + $externalPluginEntries + $externalRepoEntries
+$beforeFullCount = @($allEntries).Count
+$fullDeduped = @()
+foreach ($g in ($allEntries | Group-Object -Property InternalName)) {
+    $sorted = $g.Group | Sort-Object -Property { Resolve-Version $_ } -Descending
     $winner = $sorted | Select-Object -First 1
     $others = $g.Count - 1
     $suffix = if ($others -gt 0) { "$others other version$(if ($others -ne 1) { 's' }) in list" } else { "unique" }
     Write-Host ("Added {0} ({1}) ({2})" -f $winner.InternalName, $winner.AssemblyVersion, $suffix)
-    $deduped += $winner
+    $fullDeduped += $winner
 }
-$entries = $deduped
-$afterCount = @($entries).Count
+
+Write-Pluginmaster $nexusDeduped $OutFile
+Write-Pluginmaster $externalPluginDeduped $ExternalPluginsOutFile
+Write-Pluginmaster $externalRepoDeduped $ExternalReposOutFile
+Write-Pluginmaster $fullDeduped $FullOutFile
+
+$dupesRemoved = $beforeFullCount - @($fullDeduped).Count
 Write-Host ""
-Write-Host "Summary: $beforeCount entries collected, $($beforeCount - $afterCount) duplicates removed, $afterCount final."
-
-$json = $entries | ConvertTo-Json -Depth 10
-# ConvertTo-Json wraps single-element arrays as objects; force an array even if 1 entry.
-if ($entries.Count -le 1) { $json = "[`n" + ($json -replace '(?ms)^', '  ') + "`n]" }
-
-Set-Content -Path $OutFile -Value $json -Encoding UTF8 -NoNewline
-Add-Content -Path $OutFile -Value "`n" -NoNewline
-Write-Host "Wrote $OutFile with $($entries.Count) entries"
+Write-Host "Summary:"
+Write-Host ("  {0,-40} {1} entries" -f $OutFile, @($nexusDeduped).Count)
+Write-Host ("  {0,-40} {1} entries" -f $ExternalPluginsOutFile, @($externalPluginDeduped).Count)
+Write-Host ("  {0,-40} {1} entries" -f $ExternalReposOutFile, @($externalRepoDeduped).Count)
+Write-Host ("  {0,-40} {1} entries ({2} duplicates removed)" -f $FullOutFile, @($fullDeduped).Count, $dupesRemoved)
