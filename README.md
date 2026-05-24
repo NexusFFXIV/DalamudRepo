@@ -2,6 +2,17 @@
 
 **A custom Dalamud plugin repository for FINAL FANTASY XIV — host for [NexusFFXIV](https://github.com/NexusFFXIV) plugins plus a curated mirror of third-party Dalamud repos.**
 
+> [!TIP]
+> ### 🎮 Quick install
+>
+> In Dalamud open **Settings → Experimental → Custom Plugin Repositories**, paste the URL below, tick Enabled, hit Save:
+>
+> ```
+> https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json
+> ```
+>
+> Then open `/xlplugins`, switch to **All Plugins**, and you'll see every plugin from this repo. Want a narrower scope (e.g. only NexusFFXIV plugins)? See [Available scopes](#available-scopes) below.
+
 [![Update pluginmaster](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml/badge.svg)](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Dalamud API](https://img.shields.io/badge/Dalamud_API-15-9D5BFF)](https://github.com/goatcorp/Dalamud)
@@ -14,14 +25,15 @@
 
 This repo publishes four pluginmaster manifests that the [Dalamud](https://github.com/goatcorp/Dalamud) plugin installer can read. Each one is scoped differently — pick the URL that matches what you want to see in Dalamud.
 
-## Install (as a player)
+## 📥 Install (as a player)
 
 1. Open Dalamud's **Settings → Experimental** tab (the ⚠️ icon in the Settings window).
-2. Under **Custom Plugin Repositories**, paste one of the URLs from [Available scopes](#available-scopes) below and hit Save.
-3. Reopen **Settings → Experimental** if needed and tick the new entry as **Enabled**.
-4. Open `/xlplugins`, switch to **All Plugins**, search, Install.
+2. Under **Custom Plugin Repositories**, paste one of the URLs from [Available scopes](#available-scopes) below.
+3. Tick the new entry as **Enabled** and hit Save.
+4. Open `/xlplugins`, switch to **All Plugins**, search for the plugin you want, click Install.
 
-> You can add several scope URLs at once — Dalamud merges them.
+> [!NOTE]
+> You can add several scope URLs at once — Dalamud merges them. To get *everything*, just add `all.json`.
 
 ## Available scopes
 
