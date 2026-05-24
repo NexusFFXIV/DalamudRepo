@@ -1,7 +1,9 @@
 # Build configuration for scripts/build-pluginmaster.ps1.
 #
-# minDalamudApiLevel — drop any entry whose `DalamudApiLevel` is below this
-# from every source pool. Missing field also drops the entry.
+# minDalamudApiLevel / minTestingDalamudApiLevel — an entry is kept if
+# EITHER its `DalamudApiLevel` ≥ minDalamudApiLevel (prod-ready) OR its
+# `TestingDalamudApiLevel` ≥ minTestingDalamudApiLevel (testing-ready).
+# Entries with neither field satisfying its threshold are dropped.
 #
 # sources — per-file enable toggles, keyed by the basename of files in
 # sources/. `default:` controls behaviour for any sources/*.yml NOT explicitly
@@ -13,6 +15,7 @@
 # all — the union output (curated sources only, gen scopes are excluded).
 
 minDalamudApiLevel: 15
+minTestingDalamudApiLevel: 15
 
 sources:
   default: false
