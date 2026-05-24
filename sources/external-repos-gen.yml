@@ -9,7 +9,7 @@
 # Always re-validate HTTP status before annotating unreachable.
 
 type: external-repos
-out: gen-repos.json
+out: gen-repo.json
 includeInUnion: false
 
 externalRepos:

@@ -52,7 +52,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          PM_FILES="pluginmaster.json external.json common-repos.json gen-repos.json all.json"
+          PM_FILES="pluginmaster.json external-repo.json common-repo.json gen-repo.json all-repo.json"
           if git diff --quiet -- $PM_FILES; then
             echo "No changes — nothing to commit."
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -103,4 +103,4 @@ jobs:
           from: NexusFFXIV DalamudRepo Bot <${{ secrets.SMTP_USERNAME }}>
           subject: "NexusFFXIV [DalamudRepo] pluginmaster.json refreshed (${{ github.event_name }})"
           body: file://build.log
-          attachments: pluginmaster.json,external.json,common-repos.json,gen-repos.json,all.json
+          attachments: pluginmaster.json,external-repo.json,common-repo.json,gen-repo.json,all-repo.json
