@@ -54,9 +54,8 @@ function Invoke-GhApi {
 }
 
 function Get-LatestRelease {
-    param([string]$Repo, [bool]$Prerelease)
-    $releases = Invoke-GhApi "repos/$Repo/releases"
-    $filtered = @($releases | Where-Object { -not $_.draft -and $_.prerelease -eq $Prerelease })
+    param($Releases, [bool]$Prerelease)
+    $filtered = @($Releases | Where-Object { -not $_.draft -and $_.prerelease -eq $Prerelease })
     if ($filtered.Count -eq 0) { return $null }
     return $filtered | Sort-Object -Property published_at -Descending | Select-Object -First 1
 }
@@ -84,10 +83,17 @@ function Get-ManifestFromRelease {
     }
 }
 
-function Get-TotalDownloads {
-    param($Release)
+function Get-CumulativeDownloads {
+    # Sum download_count across ALL release assets — past releases included.
+    # Without this, the user-visible "Downloads" number would reset on each
+    # major release because we'd only count the currently-published bundle.
+    # Drafts are excluded (private assets); pre-releases are included.
+    param($Releases)
     $sum = 0
-    foreach ($a in $Release.assets) { $sum += $a.download_count }
+    foreach ($r in $Releases) {
+        if ($r.draft) { continue }
+        foreach ($a in $r.assets) { $sum += $a.download_count }
+    }
     return $sum
 }
 
@@ -100,8 +106,11 @@ foreach ($plugin in $config.plugins) {
     $iconPath = $plugin.icon
     Write-Host "==> $name ($repo)"
 
-    $stable = Get-LatestRelease -Repo $repo -Prerelease $false
-    $testing = Get-LatestRelease -Repo $repo -Prerelease $true
+    # Fetch the full releases list ONCE per plugin — used for stable+testing
+    # selection AND cumulative download-count aggregation.
+    $allReleases = Invoke-GhApi "repos/$repo/releases"
+    $stable = Get-LatestRelease -Releases $allReleases -Prerelease $false
+    $testing = Get-LatestRelease -Releases $allReleases -Prerelease $true
 
     if (-not $stable -and -not $testing) {
         Write-Warning "No releases for $name — skipping."
@@ -137,7 +146,7 @@ foreach ($plugin in $config.plugins) {
         IsHide = $false
         IsTestingExclusive = $isTestingExclusive
         LastUpdate = [DateTimeOffset]::Parse($primaryRelease.published_at).ToUnixTimeSeconds()
-        DownloadCount = Get-TotalDownloads $primaryRelease
+        DownloadCount = Get-CumulativeDownloads $allReleases
     }
 
     # Stable Install/Update links
