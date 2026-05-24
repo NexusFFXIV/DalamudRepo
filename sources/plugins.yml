@@ -1,0 +1,11 @@
+# Plugins tracked by this Dalamud repo (NexusFFXIV-built).
+# type+out tell the build script how to handle this file; new sources/*.yml
+# files are auto-discovered by the orchestrator.
+
+type: nexus
+out: pluginmaster.json
+
+plugins:
+  - internalName: PlayerNexusTracker
+    repo: NexusFFXIV/PlayerNexusTracker
+    icon: PlayerNexusTracker.Plugin/images/icon.png
