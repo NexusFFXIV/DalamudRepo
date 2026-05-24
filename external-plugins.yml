@@ -7,7 +7,12 @@
 # upstream CDN, IconUrl stays with the upstream author.
 #
 # To add a third-party plugin: append an entry with its InternalName as it
-# appears in https://kamori.goats.dev/Plugin/PluginMaster.
+# appears in https://kamori.goats.dev/Plugin/PluginMaster. An empty list
+# (or this whole file missing) is fine — the build script just skips this
+# import step.
+#
+# Example:
+#   externalPlugins:
+#     - internalName: XIVDeck.FFXIVPlugin
 
-externalPlugins:
-  - internalName: XIVDeck.FFXIVPlugin
+externalPlugins: []
