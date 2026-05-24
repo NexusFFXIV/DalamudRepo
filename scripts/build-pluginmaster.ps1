@@ -12,8 +12,10 @@
   the per-source output). Optional `includeInUnion: false` keeps the source's
   entries out of the merged `all.json`.
 
-  `config.yml` (repo root) controls minDalamudApiLevel + per-source enable
-  toggles (with a `default:` flag for sources not explicitly listed).
+  `config.yml` (repo root) controls minDalamudApiLevel /
+  minTestingDalamudApiLevel + per-source enable toggles (with a `default:`
+  flag for sources not explicitly listed). Filter is OR: an entry is kept
+  when either the stable or the testing channel meets its threshold.
 #>
 
 param(
