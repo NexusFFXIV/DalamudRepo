@@ -1,5 +1,31 @@
 [
   {
+    "Author": "SHOEGAZEssb",
+    "Name": "AchManager",
+    "Punchline": "Get notifications for achievement progress!",
+    "Description": "Lets you watch achievements that will be checked for progress when certain things happen.",
+    "Changelog": "",
+    "InternalName": "AchManager",
+    "AssemblyVersion": "1.7.0.0",
+    "RepoUrl": "https://github.com/SHOEGAZEssb/AchManager",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "achievements"
+    ],
+    "DalamudApiLevel": 15,
+    "IconUrl": "",
+    "ImageUrls": [
+      ""
+    ],
+    "DownloadLinkInstall": "https://github.com/SHOEGAZEssb/AchManager/releases/download/v1.7.0.0/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/SHOEGAZEssb/AchManager/releases/download/v1.7.0.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/SHOEGAZEssb/AchManager/releases/download/v1.7.0.0/latest.zip",
+    "DownloadCount": 1305,
+    "LastUpdate": "1777995656"
+  },
+  {
     "Author": "The Combat Reborn Team",
     "Name": "ActionTimeline Reborn",
     "InternalName": "ActionTimelineReborn",
@@ -27,6 +53,32 @@
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/releases/download/7.5.0.4/ActionTimelineReborn.zip",
     "Changelog": "## What's Changed\r\n* Making the READMEs look the samesies. by @Nonunon in https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/pull/16\r\n\r\n## New Contributors\r\n* @Nonunon made their first contribution in https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/pull/16\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/compare/7.5.0.3...7.5.0.4",
     "DownloadCount": 30355
+  },
+  {
+    "Author": "Valenth Siveria",
+    "Name": "Active Venue Finder",
+    "Punchline": "Browse FFXIV venues and teleport to them with one click.",
+    "Description": "Discover active FFXIV venues with data powered by the FFXIV Venues API. Browse currently open and upcoming venues in a sortable table featuring color-coded data centers, opening times, and a visual timeline. Filter by region, search by name, and adjust the lookahead window to find venues opening soon.\n\nSave favorites, blacklist venues, and add your own custom venues with custom schedules and tags. Lifestream integration lets you teleport directly to any venue, while a compact popout window gives you a quick overview at a glance.\n\nUse /avf to open.",
+    "Tags": [
+      "Venue",
+      "RP",
+      "Teleport",
+      "Lifestream"
+    ],
+    "InternalName": "ActiveVenueFinder",
+    "RepoUrl": "https://github.com/NeoGriever/ActiveVenueFinder",
+    "DownloadCount": 204,
+    "LastUpdate": 1777720283,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/129/ActiveVenueFinder/versions/2.1.0.1/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/129/ActiveVenueFinder/versions/2.1.0.1/update/latest.zip",
+    "AssemblyVersion": "2.1.0.1",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "v2.1.0.1\n\n- bugfix: editing times of entries resulted in loss of times\n- added: reset custom settings for entries",
+    "IconUrl": "https://s3.puni.sh/media/plugin/129/icon-as0nyayo54e.png",
+    "ImageUrls": [
+      "https://s3.puni.sh/media/plugin/129/image-f40fot6m5jm.png"
+    ]
   },
   {
     "AcceptsFeedback": false,
@@ -72,6 +124,55 @@
     "IconUrl": "https://raw.githubusercontent.com/NightmareXIV/AntiAfkKick/master/AntiAfkKick-Dalamud/images/icon.png"
   },
   {
+    "Author": "zbee",
+    "Name": "ARC",
+    "Punchline": "Better AutoRetainer Venture Planner",
+    "Description": "Instead of manually managing retainer plans for each individual character, which can get fairly tedious fairly quickly, we optimize this a bit and only manage \"high-level\" plans.\n\nOriginally made by Liza Carvelli - thank you for your work.",
+    "Tags": [
+      "ar",
+      "autoretainer",
+      "retainers",
+      "retainer",
+      "venture",
+      "ventures",
+      "venture lists"
+    ],
+    "InternalName": "ARControl",
+    "RepoUrl": "https://github.com/zbee/ARC",
+    "DownloadCount": 3121,
+    "LastUpdate": 1777656078,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/99/ARControl/versions/8.5/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/99/ARControl/versions/8.5/update/latest.zip",
+    "AssemblyVersion": "8.5",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "Update for 7.5",
+    "IconUrl": "https://s3.puni.sh/media/plugin/99/icon-d3y870xqs28.png"
+  },
+  {
+    "Author": "vera.lyn",
+    "Name": "Discard Helper",
+    "Punchline": "Discard items automatically via a command or as a post-venture task for AutoRetainer",
+    "Description": "Small plugin to help keep your inventory organized (especially when automating retainers or submersibles) by discarding items you don't want (e.g. Stuffed Alphas)",
+    "Tags": [
+      "autoretainer",
+      "automation",
+      "discard",
+      "yeet"
+    ],
+    "InternalName": "ARDiscard",
+    "RepoUrl": "https://github.com/VeraNala/ARDiscard",
+    "DownloadCount": 3335,
+    "LastUpdate": 1777603212,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/80/ARDiscard/versions/8.5/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/80/ARDiscard/versions/8.5/update/latest.zip",
+    "AssemblyVersion": "8.5",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "",
+    "IconUrl": "https://s3.puni.sh/media/plugin/80/icon-u0a94p5z87.png"
+  },
+  {
     "Author": "Taurenkey, kawaii, NightmareXIV",
     "Name": "Artisan",
     "Punchline": "A 'simple' crafting plugin.",
@@ -95,6 +196,59 @@
     "IconUrl": "https://s3.puni.sh/media/plugin/6/icon-3h8wd5b9qr.png"
   },
   {
+    "Author": "Athavar",
+    "Name": "Athavar's ToolBox",
+    "Punchline": "Various tools for private use.",
+    "Description": "Various tools for private use. Module: AutoSpear, CraftQueue, Dps, DutyHistory, Instancinator, Macro, OpcodeWizard, SliceIsRight, Yes",
+    "Changelog": "Go to https://github.com/Athavar/Athavar.FFXIV.Plugin/releases/latest to find the last changes.",
+    "InternalName": "Athavar.FFXIV.Plugin",
+    "AssemblyVersion": "2.5.0.1",
+    "RepoUrl": "https://github.com/Athavar/Athavar.FFXIV.Plugin",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "IconUrl": "https://raw.githubusercontent.com/Athavar/Athavar.FFXIV.DalaRepo/master/plugins/Athavar.FFXIV.Plugin/images/icon.png",
+    "ImageUrls": [],
+    "LoadSync": false,
+    "AcceptsFeedback": false,
+    "LoadPriority": 0,
+    "CanUnloadAsync": false,
+    "DownloadLinkInstall": "https://github.com/Athavar/Athavar.FFXIV.Plugin/releases/download/v2.5.0.1/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/Athavar/Athavar.FFXIV.Plugin/releases/download/v2.5.0.1/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Athavar/Athavar.FFXIV.Plugin/releases/download/v2.5.0.1/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdated": "1777999552"
+  },
+  {
+    "Author": "erdelf, Herculezz",
+    "Name": "AutoDuty",
+    "Punchline": "Dungeons while you sleep, eat, or work. (Swimsuit Shtola made easy.)",
+    "Description": "A plugin to run dungeons for you with Trust, Duty Support, Squadrons, Variants, and Regular, Requires BossMod, vnavmesh and a Rotation Plugin (BossMod AutoRotation, Wrath or RotationSolverReborn)",
+    "Tags": [],
+    "InternalName": "AutoDuty",
+    "RepoUrl": "https://github.com/erdelf/AutoDuty",
+    "DownloadCount": 1579367,
+    "LastUpdate": 1778713704,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/54/AutoDuty/versions/0.0.0.310/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/54/AutoDuty/versions/0.0.0.310/update/latest.zip",
+    "AssemblyVersion": "0.0.0.310",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "## What's Changed\r\n* Pictomancy update by @erdelf in https://github.com/erdelf/AutoDuty/pull/320\r\n\r\n\r\n**Full Changelog**: https://github.com/erdelf/AutoDuty/compare/0.0.0.309...0.0.0.310",
+    "TestingAssemblyVersion": "0.0.0.312",
+    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/54/AutoDuty/versions/0.0.0.312/install/testing.zip",
+    "TestingDalamudApiLevel": "15",
+    "IconUrl": "https://s3.puni.sh/media/plugin/54/icon-15ug2vnr9m1.png",
+    "ImageUrls": [
+      "https://s3.puni.sh/media/plugin/54/image-15l1o9gf3yg.png",
+      "https://s3.puni.sh/media/plugin/54/image-gc84lu4pdpb.png",
+      "https://s3.puni.sh/media/plugin/54/image-vkvtqki3ggh.png",
+      "https://s3.puni.sh/media/plugin/54/image-pw9lcsan22.png",
+      "https://s3.puni.sh/media/plugin/54/image-5lu04i95hz8.png"
+    ]
+  },
+  {
     "Author": "Det, Taurenkey",
     "Name": "AutoHook",
     "Punchline": "Makes fishing less (or more) boring",
@@ -114,6 +268,32 @@
     "DalamudApiLevel": "15",
     "Changelog": "",
     "IconUrl": "https://s3.puni.sh/media/plugin/47/icon-k1slevjorpo.png"
+  },
+  {
+    "Author": "llock",
+    "Name": "Auto Jail Marker",
+    "Punchline": "Simple Jails",
+    "Description": "A scuffed uwu jail auto marker",
+    "Tags": [
+      "titan",
+      "jails",
+      "uwu"
+    ],
+    "InternalName": "AutoJailMarker",
+    "AssemblyVersion": "3.4.3.1",
+    "RepoUrl": "https://github.com/LockonS483/AutoJailMarker",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "LoadPriority": 0,
+    "ImageUrls": null,
+    "IconUrl": "https://raw.githubusercontent.com/LockonS483/AutoJailMarker/master/Data/TitIco.png",
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "LastUpdated": "1777497341",
+    "DownloadCount": 0,
+    "DownloadLinkInstall": "https://github.com/LockonS483/AutoJailMarker/releases/download/3.4.3.1/AutoJailMarker.zip",
+    "DownloadLinkTesting": "https://github.com/LockonS483/AutoJailMarker/releases/download/3.4.3.1/AutoJailMarker.zip",
+    "DownloadLinkUpdate": "https://github.com/LockonS483/AutoJailMarker/releases/download/3.4.3.1/AutoJailMarker.zip"
   },
   {
     "Author": "Aida Enna",
@@ -138,6 +318,28 @@
     "DownloadLinkInstall": "https://github.com/Aida-Enna/XIVPlugins/blob/main/Plogon/AutoLogin.zip?raw=true",
     "DownloadLinkTesting": "https://github.com/Aida-Enna/XIVPlugins/blob/main/Plogon/AutoLogin.zip?raw=true",
     "DownloadLinkUpdate": "https://github.com/Aida-Enna/XIVPlugins/blob/main/Plogon/AutoLogin.zip?raw=true"
+  },
+  {
+    "Author": "croizat",
+    "Name": "CBT 🐎",
+    "Punchline": "Extra illegal",
+    "Description": "Yet another tweaks collection plugin.",
+    "Tags": [
+      "automation",
+      "plugin",
+      "tweaks"
+    ],
+    "InternalName": "Automaton",
+    "RepoUrl": "https://github.com/Jaksuhn/Automaton",
+    "DownloadCount": 665358,
+    "LastUpdate": 1779261302,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/34/Automaton/versions/69.182.0.0/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/34/Automaton/versions/69.182.0.0/update/latest.zip",
+    "AssemblyVersion": "69.182.0.0",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "",
+    "IconUrl": "https://s3.puni.sh/media/plugin/34/icon-z405dwrdjem.png"
   },
   {
     "Author": "kawaii, NightmareXIV",
@@ -182,6 +384,84 @@
     "DownloadLinkTesting": "https://puni.sh/api/plugins/download/11/Avarice/versions/2.2.0.5/install/testing.zip",
     "TestingDalamudApiLevel": "14",
     "IconUrl": "https://s3.puni.sh/media/plugin/11/icon-d95r9462spc.png"
+  },
+  {
+    "Author": "BardToolbox",
+    "Name": "BardToolbox",
+    "InternalName": "BardToolbox",
+    "AssemblyVersion": "2.2.5.7",
+    "Description": "",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://discord.gg/h9Nt5NXZWz",
+    "Tags": [
+      "bard",
+      "midi",
+      "play",
+      "band",
+      "music",
+      "perform",
+      "performance",
+      "party",
+      "teleport",
+      "invite",
+      "disband",
+      "local",
+      "hack",
+      "cam",
+      "camera",
+      "camerahack",
+      "window",
+      "size",
+      "title",
+      "layout",
+      "resolution",
+      "cpu",
+      "affinity",
+      "sync",
+      "key",
+      "command",
+      "broad",
+      "broadcast",
+      "multi",
+      "multibox",
+      "move",
+      "movement",
+      "follow",
+      "formation",
+      "auto",
+      "login",
+      "autologin",
+      "travel",
+      "macro",
+      "macrochain",
+      "item",
+      "isboxer",
+      "midibard",
+      "sandbox",
+      "btb",
+      "plugin",
+      "utility"
+    ],
+    "CategoryTags": [
+      "utility",
+      "other"
+    ],
+    "DalamudApiLevel": 15,
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "CanUnloadAsync": false,
+    "LoadPriority": 0,
+    "IconUrl": "https://i.imgur.com/5BsJD3g.png",
+    "Punchline": "An all-in-one toolbox, providing all the essentials bards & bands would need every day.\nSPECIAL THANKS to MidiBard and FFXIV Bards & Bands Community. Join: discord.gg/ff14bard",
+    "Changelog": "Update for Dawntrail 7.5, Dalamud API 15 Update\n\nThanks for your support!",
+    "AcceptsFeedback": false,
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "DownloadCount": 62310,
+    "LastUpdate": "1779144883",
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/BardToolbox/BardToolbox-Release/master/plugins/BardToolbox/latest.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/BardToolbox/BardToolbox-Release/master/plugins/BardToolbox/latest.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/BardToolbox/BardToolbox-Release/master/plugins/BardToolbox/latest.zip"
   },
   {
     "Author": "NightmareXIV",
@@ -235,6 +515,48 @@
     "DownloadLinkUpdate": "https://github.com/LeonBlade/BDTHPlugin/releases/download/1.7.4.1/BDTHPlugin.zip"
   },
   {
+    "Author": "VariableVixen",
+    "Name": "BetterFateList",
+    "Description": "Provides a list of all FATEs in the current zone, with their type, sorted by maximum level and distance from you.",
+    "InternalName": "BetterFateList",
+    "AssemblyVersion": "1.1.4",
+    "RepoUrl": "https://github.com/VariableVixen/BetterFateList",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "fate"
+    ],
+    "DalamudApiLevel": 15,
+    "DownloadLinkInstall": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/BetterFateList/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/BetterFateList/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/BetterFateList/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdated": "1779474182"
+  },
+  {
+    "Author": "Valenth Siveria",
+    "Name": "BlackJack Buttler",
+    "Punchline": "Good evening. I'm your BlackJack Buttler - quietly tracking the table and offering the right hint at the right time.",
+    "Description": "/bjb - opens the blackjack buttler tool",
+    "Tags": [
+      "BlackJack",
+      "Helper",
+      "Chat"
+    ],
+    "InternalName": "BlackJackButtler",
+    "RepoUrl": "https://github.com/NeoGriever/BlackJackButtler",
+    "DownloadCount": 1068,
+    "LastUpdate": 1779422058,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/118/BlackJackButtler/versions/1.8.2.2/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/118/BlackJackButtler/versions/1.8.2.2/update/latest.zip",
+    "AssemblyVersion": "1.8.2.2",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "\n  ### Fixed\n  - Fixed a startup race where ImGui text could become transparent or unreadable after plugin load.\n  - Added automatic ImGui text-style recovery during the first startup frames.\n  - Added a periodic safety monitor that restores text visibility if ImGui alpha/text colors become transparent again later.\n  - Restored sane defaults for normal text, disabled text, global style alpha, and missing text-selection background.\n  - Removed the old DEBUG-only temporary ImGui recovery path and replaced it with a release-safe runtime guard.\n  - Added warning logs when the plugin recovers transparent ImGui text styling, making the issue easier to diagnose.",
+    "IconUrl": "https://s3.puni.sh/media/plugin/118/icon-0kpu5mkzds3.png"
+  },
+  {
     "Author": "veyn, xan_0",
     "Name": "Boss Mod",
     "Punchline": "Don't fail at raid mechanics anymore",
@@ -242,7 +564,7 @@
     "Tags": [],
     "InternalName": "BossMod",
     "RepoUrl": "https://github.com/awgil/ffxiv_bossmod",
-    "DownloadCount": 2027140,
+    "DownloadCount": 2027141,
     "LastUpdate": 1779462517,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.0.15/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.0.15/update/latest.zip",
@@ -330,6 +652,82 @@
     ]
   },
   {
+    "Author": "abyeon",
+    "Name": "Buildingway",
+    "Punchline": "/gamemode creative",
+    "Description": "Build anything, anywhere. Jump puzzles, castles, whatever you can think of.",
+    "Tags": [
+      "housing",
+      "pose",
+      "util",
+      "jump"
+    ],
+    "InternalName": "Buildingway",
+    "RepoUrl": "https://github.com/Abyeon/Buildingway",
+    "DownloadCount": 468,
+    "LastUpdate": 1777498681,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/120/Buildingway/versions/1.0.0.7/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/120/Buildingway/versions/1.0.0.7/update/latest.zip",
+    "AssemblyVersion": "1.0.0.7",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "- API bump",
+    "IconUrl": "https://s3.puni.sh/media/plugin/120/icon-pa8jeg9bwvn.png",
+    "ImageUrls": [
+      "https://s3.puni.sh/media/plugin/120/image-dbn113ijmti.png",
+      "https://s3.puni.sh/media/plugin/120/image-yhh6m0frx1d.png",
+      "https://s3.puni.sh/media/plugin/120/image-zigc0q28b1m.png"
+    ]
+  },
+  {
+    "Author": "UnknownX",
+    "Name": "Cammy",
+    "Punchline": "A simple editor for the game's camera settings",
+    "Description": "A simple camera editor to change various game defaults such as zoom and fov.\nThis is a zoom hack, if you aren't comfortable with that fact, don't install it.",
+    "Changelog": "Fix camera resetting to default on zoning (Thanks to Chat Ja)",
+    "InternalName": "Cammy",
+    "AssemblyVersion": "2.1.1.2",
+    "RepoUrl": "https://github.com/UnknownX7/Cammy",
+    "ApplicableVersion": "any",
+    "CategoryTags": [
+      "utility"
+    ],
+    "DalamudApiLevel": 15,
+    "IconUrl": "https://raw.githubusercontent.com/UnknownX7/DalamudPluginRepo/master/plugins/Cammy/images/icon.png",
+    "ImageUrls": [
+      "https://raw.githubusercontent.com/UnknownX7/DalamudPluginRepo/master/plugins/Cammy/images/image1.png"
+    ],
+    "DownloadLinkInstall": "https://github.com/UnknownX7/Cammy/releases/download/v2.1.1.2/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/UnknownX7/Cammy/releases/download/v2.1.1.2/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/UnknownX7/Cammy/releases/download/v2.1.1.2/latest.zip",
+    "DownloadCount": 33328,
+    "LastUpdate": "1777904465"
+  },
+  {
+    "Author": "spider",
+    "Name": "CCAnonymizer",
+    "Punchline": "Preserving your mental since season 11",
+    "Description": "Hides Adventurer plates, Usernames, and Player Appearance when in Crystaline Conflict. Enjoy worry-free laddering!",
+    "Tags": [
+      "pvp",
+      "cc",
+      "anonymizer"
+    ],
+    "InternalName": "CCAnonymizer",
+    "RepoUrl": "https://github.com/spide-r/CCAnonymizer",
+    "DownloadCount": 295,
+    "LastUpdate": 1777571150,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/72/CCAnonymizer/versions/0.4.1.1/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/72/CCAnonymizer/versions/0.4.1.1/update/latest.zip",
+    "AssemblyVersion": "0.4.1.1",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "help me im stuck in a dalamud changelog please get me out of here",
+    "IconUrl": "https://s3.puni.sh/media/plugin/72/icon-yqwjxo7rdo.png"
+  },
+  {
     "Author": "Anya Hichu",
     "Name": "ChatDeathRoll",
     "InternalName": "ChatDeathRoll",
@@ -361,6 +759,55 @@
     "LastUpdate": 1777755014
   },
   {
+    "Author": "Serifine",
+    "Name": "Chat Tools",
+    "Punchline": "Filter messages in crowded environments, bringing some sanity back to RP.",
+    "Description": "Chat Tools was developed to cut through the cluttered chat that can happen at large RP events, or in crowded environments.\n\nJust some of the things you can do with Chat Tools is:\n- Filter messages in crowded environments\n- Set up windows to watch specific characters of your choice\n- Set up windows to watch for messages from a group of characters\n- Quickly scan what your selected or hovered targets have said\n- Search through your message history\n- Preserve messages on logout",
+    "InternalName": "ChatTools",
+    "AssemblyVersion": "5.0.2.0",
+    "Tags": [
+      "Social",
+      "UI",
+      "Chat",
+      "RP"
+    ],
+    "RepoUrl": "https://github.com/serifine/XIV-Chat-Tools",
+    "IconUrl": "https://raw.githubusercontent.com/serifine/XIV-Chat-Tools/main/ChatTools/images/icon.png",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "LastUpdate": 1777573804615,
+    "DownloadCount": 10236,
+    "DownloadLinkInstall": "https://github.com/serifine/XIV-Chat-Tools/releases/download/5.0.2/ChatTools.zip",
+    "DownloadLinkTesting": "https://github.com/serifine/XIV-Chat-Tools/releases/download/5.0.2/ChatTools.zip",
+    "DownloadLinkUpdate": "https://github.com/serifine/XIV-Chat-Tools/releases/download/5.0.2/ChatTools.zip"
+  },
+  {
+    "Author": "Paissa Heavy Industries",
+    "Name": "Chibi Omega",
+    "Punchline": "Aww, he's so cute! But don't let his diminished stature fool you; his damage output has not scaled to match.",
+    "InternalName": "Chibi Omega",
+    "AssemblyVersion": "1.0.1.7",
+    "RepoUrl": "https://github.com/paissaheavyindustries/Chibi-Omega",
+    "IconUrl": "https://raw.githubusercontent.com/paissaheavyindustries/Dalamud-Repo/main/icons/chibi_omega.png",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "omega",
+      "smolmega",
+      "cute",
+      "meow"
+    ],
+    "DalamudApiLevel": 15,
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "LastUpdated": 0,
+    "DownloadCount": 0,
+    "DownloadLinkInstall": "https://github.com/paissaheavyindustries/Chibi-Omega/releases/download/v1.0.1.7/Chibi_Omega_1_0_1_7.zip",
+    "DownloadLinkTesting": "https://github.com/paissaheavyindustries/Chibi-Omega/releases/download/v1.0.1.7/Chibi_Omega_1_0_1_7.zip",
+    "DownloadLinkUpdate": "https://github.com/paissaheavyindustries/Chibi-Omega/releases/download/v1.0.1.7/Chibi_Omega_1_0_1_7.zip"
+  },
+  {
     "Author": "Ice",
     "Name": "Chilled Leves",
     "Punchline": "I heard you like your leves on the rocks.",
@@ -381,6 +828,75 @@
     "DalamudApiLevel": "15",
     "Changelog": "API 15 bump",
     "IconUrl": "https://s3.puni.sh/media/plugin/68/icon-0esyieh5s897.png"
+  },
+  {
+    "Author": "kawaii",
+    "Name": "Chocoholic",
+    "Punchline": "Kweh!",
+    "Description": "Chocoholic is a plugin to automatically queue for and complete Chocobo races in FFXIV.",
+    "Tags": [
+      "chocobo",
+      "gold saucer",
+      "race",
+      "mgp"
+    ],
+    "InternalName": "Chocoholic",
+    "RepoUrl": "https://github.com/kawaii/Chocoholic",
+    "DownloadCount": 3521,
+    "LastUpdate": 1778089832,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/116/Chocoholic/versions/0.0.0.3/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/116/Chocoholic/versions/0.0.0.3/update/latest.zip",
+    "AssemblyVersion": "0.0.0.3",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "Update for Dalamud API 15 and 2026.04.21.0000.0000.",
+    "IconUrl": "https://s3.puni.sh/media/plugin/116/icon-by8ews68c19.png"
+  },
+  {
+    "Author": "Akechi",
+    "Name": "Chroma",
+    "Punchline": "Taste the rainbow.",
+    "Description": "Chroma is a simple accessibility tool that allows full color customization of all AOE omens/indicators - and then some.",
+    "Tags": [
+      "accessibility",
+      "omens",
+      "indicators",
+      "color"
+    ],
+    "InternalName": "Chroma",
+    "RepoUrl": "https://github.com/Akechi-kun/Chroma",
+    "DownloadCount": 812,
+    "LastUpdate": 1777745911,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/102/Chroma/versions/1.2.0.2/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/102/Chroma/versions/1.2.0.2/update/latest.zip",
+    "AssemblyVersion": "1.2.0.2",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "- Updated dependencies",
+    "IconUrl": "https://s3.puni.sh/media/plugin/102/icon-6k2llkm3iym.png"
+  },
+  {
+    "Author": "DodingDaga",
+    "Name": "Right Back At You",
+    "InternalName": "Copycat",
+    "AssemblyVersion": "7.5.0.0",
+    "Description": "For the lulz",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/dodingdaga/DalamudPlugins",
+    "Tags": [
+      "plugin",
+      "emote"
+    ],
+    "DalamudApiLevel": 15,
+    "LoadPriority": 0,
+    "Punchline": "Nothing but a second-rate, trying hard, copycat!",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadCount": 0,
+    "LastUpdated": "1777699342",
+    "DownloadLinkInstall": "https://github.com/dodingdaga/DalamudPlugins/releases/download/7.5.0.0/latest_cc.zip",
+    "DownloadLinkTesting": "https://github.com/dodingdaga/DalamudPlugins/releases/download/7.5.0.0/latest_cc.zip",
+    "DownloadLinkUpdate": "https://github.com/dodingdaga/DalamudPlugins/releases/download/7.5.0.0/latest_cc.zip"
   },
   {
     "Author": "Risa and Contributors",
@@ -408,9 +924,52 @@
       "Customization",
       "Appearance",
       "Character",
-      "Aether Tools",
-      "Sea Of Stars"
+      "Aether Tools"
     ]
+  },
+  {
+    "Author": "SHOEGAZEssb",
+    "Name": "Dagobert",
+    "Punchline": "Penny pinching to the extreme",
+    "Description": "Automates market board penny pinching",
+    "Changelog": "",
+    "InternalName": "Dagobert",
+    "AssemblyVersion": "1.12.1.0",
+    "RepoUrl": "https://github.com/SHOEGAZEssb/Dagobert",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "Utility"
+    ],
+    "DalamudApiLevel": 15,
+    "IconUrl": "",
+    "ImageUrls": [
+      ""
+    ],
+    "DownloadLinkInstall": "https://github.com/SHOEGAZEssb/Dagobert/releases/download/v1.12.1.0/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/SHOEGAZEssb/Dagobert/releases/download/v1.12.1.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/SHOEGAZEssb/Dagobert/releases/download/v1.12.1.0/latest.zip",
+    "DownloadCount": 14877,
+    "LastUpdate": "1779650258"
+  },
+  {
+    "Author": "vera.lyn",
+    "Name": "Deliveroo",
+    "Punchline": "Better Grand Company Deliveries",
+    "Description": "Better Grand Company Deliveries",
+    "Tags": [],
+    "InternalName": "Deliveroo",
+    "RepoUrl": "https://github.com/VeraNala/Deliveroo",
+    "DownloadCount": 15424,
+    "LastUpdate": 1777864065,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/79/Deliveroo/versions/7.5.0.2/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/79/Deliveroo/versions/7.5.0.2/update/latest.zip",
+    "AssemblyVersion": "7.5.0.2",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "API 15 Bump",
+    "IconUrl": "https://s3.puni.sh/media/plugin/79/icon-e4lpgxbbi8u.png"
   },
   {
     "Author": "Anya Hichu",
@@ -498,6 +1057,26 @@
     "_Dip17Channel": null
   },
   {
+    "Author": "kawaii",
+    "Name": "Dropbox",
+    "Punchline": "Your personal vending machine.",
+    "Description": "Your personal vending machine.",
+    "Tags": [],
+    "InternalName": "Dropbox",
+    "RepoUrl": "https://github.com/kawaii/Dropbox",
+    "DownloadCount": 38945,
+    "LastUpdate": 1777528891,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/27/Dropbox/versions/1.0.2.13/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/27/Dropbox/versions/1.0.2.13/update/latest.zip",
+    "AssemblyVersion": "1.0.2.13",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "- 7.5",
+    "TestingAssemblyVersion": "1.0.2.14",
+    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/27/Dropbox/versions/1.0.2.14/install/testing.zip",
+    "TestingDalamudApiLevel": "15"
+  },
+  {
     "Author": "NightmareXIV",
     "Name": "DSR Toolbox",
     "Punchline": "A helper plugin for Dragonsong's Reprise (Ultimate).",
@@ -531,7 +1110,6 @@
     "AssemblyVersion": "1.0.8.8",
     "TestingAssemblyVersion": "1.0.8.5",
     "IsTestingExclusive": false,
-    "RepoUrl": "https://github.com/Limiana/DynamicBridgeStandalone",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "TestingDalamudApiLevel": 13,
@@ -541,10 +1119,7 @@
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/DynamicBridge/releases/download/1.0.8.8/latest.zip",
     "DownloadLinkTesting": "https://github.com/NightmareXIV/DynamicBridge/releases/download/1.0.8.5/latest.zip",
     "SupportsProfiles": true,
-    "IconUrl": "https://raw.githubusercontent.com/NightmareXIV/DynamicBridge/main/DynamicBridge/images/icon.png",
-    "Tags": [
-      "Sea Of Stars"
-    ]
+    "IconUrl": "https://raw.githubusercontent.com/NightmareXIV/DynamicBridge/main/DynamicBridge/images/icon.png"
   },
   {
     "Author": "The Combat Reborn Team",
@@ -599,6 +1174,116 @@
     "IconUrl": "https://s3.puni.sh/media/plugin/64/icon-vw3ucktk0f.png"
   },
   {
+    "Author": "Aireil",
+    "Name": "FF Logs Viewer",
+    "Punchline": "View FF Logs ranking percentiles in-game.",
+    "Description": "View FF Logs ranking percentiles in-game. Add a context menu to open someone's logs. Layout, style, stats, default metric, and more are all customizable in the settings.",
+    "Changelog": "-2.5.2.0\n    Enable context menus on Chat 2.\n-2.5.1.3\n    Fix resizing not properly working on fixed window size.\n-2.5.1.2\n    Fix player name parsing on CN version.\n-2.5.1.1\n    Fix clipboard search not working due to Dalamud-related changes.\n-2.5.1.0\n    Add support for CN client. Thank you to Nukoooo for the changes and for having supported it since 2022.\n-2.5.0.1\n    Update for 7.5 patch.",
+    "InternalName": "FFLogsViewer",
+    "AssemblyVersion": "2.5.2.0",
+    "RepoUrl": "https://github.com/Aireil/FFLogsViewer",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "FFLogs"
+    ],
+    "DalamudApiLevel": 15,
+    "IconUrl": "https://github.com/Aireil/FFLogsViewer/raw/master/res/icon.png",
+    "ImageUrls": [
+      "https://github.com/Aireil/FFLogsViewer/raw/master/res/image1.png",
+      "https://github.com/Aireil/FFLogsViewer/raw/master/res/image2.png"
+    ],
+    "DownloadLinkInstall": "https://github.com/Aireil/MyDalamudPlugins/raw/master/plugins/FFLogsViewer/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/Aireil/MyDalamudPlugins/raw/master/plugins/FFLogsViewer/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Aireil/MyDalamudPlugins/raw/master/plugins/FFLogsViewer/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdate": "1779191568"
+  },
+  {
+    "Author": "Kirin",
+    "Name": "Truth or Dare",
+    "InternalName": "FFToD",
+    "AssemblyVersion": "2.4.8.0",
+    "Description": "[UNMAINTAINED - Seeking new owner] Truth or Dare mini-game automation plugin. Source: github.com/kirin-xiv/OpenToD",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/kirin-xiv/FFToD-Release",
+    "Tags": [
+      "minigame",
+      "social",
+      "chat",
+      "automation",
+      "rolls"
+    ],
+    "DalamudApiLevel": 15,
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "CanUnloadAsync": false,
+    "LoadPriority": 0,
+    "Punchline": "Run ToD, Brain off!",
+    "AcceptsFeedback": true,
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkInstall": "https://github.com/kirin-xiv/OpenToD/releases/download/v2.4.8.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/kirin-xiv/OpenToD/releases/download/v2.4.8.0/latest.zip",
+    "DownloadLinkTesting": "https://github.com/kirin-xiv/OpenToD/releases/download/v2.4.8.0/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdate": 0,
+    "IconUrl": "https://raw.githubusercontent.com/kirin-xiv/KirinPlugins/main/icons/FFToD.ico",
+    "ImageUrls": [],
+    "Changelog": "Version 2.4.8.0 - Updated to Dalamud API 15 for latest FFXIV patch compatibility."
+  },
+  {
+    "Author": "sourpuh",
+    "Name": "Fidget Spinner",
+    "Punchline": "like a record baby",
+    "Description": "spin in place",
+    "Tags": [
+      "spin"
+    ],
+    "InternalName": "FidgetSpinner",
+    "RepoUrl": "https://github.com/sourpuh/ffxiv_fidgetspinner",
+    "DownloadCount": 224,
+    "LastUpdate": 1777707298,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/133/FidgetSpinner/versions/0.0.0.3/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/133/FidgetSpinner/versions/0.0.0.3/update/latest.zip",
+    "AssemblyVersion": "0.0.0.3",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "",
+    "TestingAssemblyVersion": "0.0.0.3",
+    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/133/FidgetSpinner/versions/0.0.0.3/install/testing.zip",
+    "TestingDalamudApiLevel": "15",
+    "IconUrl": "https://s3.puni.sh/media/plugin/133/icon-hm43f98yi6g.png"
+  },
+  {
+    "Author": "Pistachio Herald",
+    "Name": "Flash On Ready Check",
+    "Punchline": "I'm ready, I was just alt tabbed!",
+    "Description": "Flash FFXIV's program on the taskbar when a /readycheck starts. Use /readyflash to test the window flashing.",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "ready",
+      "check",
+      "alt",
+      "tab",
+      "party",
+      "duty",
+      "alert"
+    ],
+    "TestingDalamudApiLevel": 13,
+    "TestingAssemblyVersion": "0.1.0.0",
+    "TestingChangelog": "- Initial Release",
+    "DownloadLinkTesting": "https://github.com/Pistachio-dev/FlashOnReadyCheck/releases/download/0.1.0.0_testing/FlashOnReadyCheck.zip",
+    "DalamudApiLevel": 15,
+    "AssemblyVersion": "0.1.0.2",
+    "Changelog": "- 7.5 patch",
+    "DownloadLinkInstall": "https://github.com/Pistachio-dev/FlashOnReadyCheck/releases/download/0.1.0.1_release/FlashOnReadyCheck.zip",
+    "DownloadLinkUpdate": "https://github.com/Pistachio-dev/FlashOnReadyCheck/releases/download/0.1.0.1_release/FlashOnReadyCheck.zip",
+    "LastUpdate": 1766258508,
+    "InternalName": "FlashOnReadyCheck"
+  },
+  {
     "Author": "The Combat Reborn Team",
     "Name": "GatherBuddy Reborn",
     "InternalName": "GatherBuddyReborn",
@@ -638,6 +1323,27 @@
     "DownloadCount": 936368
   },
   {
+    "Author": "vera.lyn",
+    "Name": "Gearsetter",
+    "Punchline": "Find gear upgrades",
+    "Description": "Browse through all gear pieces available for each class/job and show possible upgrades",
+    "Tags": [
+      "gearset",
+      "gearsets"
+    ],
+    "InternalName": "Gearsetter",
+    "RepoUrl": "https://git.carvel.li/liza/Gearsetter",
+    "DownloadCount": 27327,
+    "LastUpdate": 1777759856,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/98/Gearsetter/versions/4.3/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/98/Gearsetter/versions/4.3/update/latest.zip",
+    "AssemblyVersion": "4.3",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "API 15",
+    "IconUrl": "https://s3.puni.sh/media/plugin/98/icon-f68zzcti46.png"
+  },
+  {
     "Author": "Ottermandias",
     "Name": "Glamourer",
     "Punchline": "Change and save appearance of players.",
@@ -672,6 +1378,49 @@
     "IconUrl": "https://raw.githubusercontent.com/Ottermandias/Glamourer/main/images/icon.png"
   },
   {
+    "Author": "Haselnussbomber",
+    "Name": "HaselDebug",
+    "InternalName": "HaselDebug",
+    "AssemblyVersion": "1.58.2.0",
+    "Description": "For developers.",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/Haselnussbomber/HaselDebug",
+    "DalamudApiLevel": 15,
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "CanUnloadAsync": false,
+    "LoadPriority": 0,
+    "Punchline": "Various tools to debug things.",
+    "AcceptsFeedback": true,
+    "Changelog": "- Updated: Clicking on the set name in the Outfits tab now previews the full set.\n- Updated: ClientStructs now at 1c23f405 (compare).",
+    "DownloadCount": 329,
+    "LastUpdate": 1779194616,
+    "DownloadLinkInstall": "https://github.com/Haselnussbomber/HaselDebug/releases/download/v1.58.2/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Haselnussbomber/HaselDebug/releases/download/v1.58.2/latest.zip"
+  },
+  {
+    "Author": "Haselnussbomber",
+    "Name": "HaselTweaks",
+    "InternalName": "HaselTweaks",
+    "AssemblyVersion": "46.0.0.0",
+    "Description": "Keep on tweaking.",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/Haselnussbomber/HaselTweaks",
+    "DalamudApiLevel": 15,
+    "LoadRequiredState": 1,
+    "LoadSync": false,
+    "CanUnloadAsync": false,
+    "LoadPriority": 0,
+    "IconUrl": "https://raw.githubusercontent.com/Haselnussbomber/HaselTweaks/refs/heads/main/HaselTweaks/Assets/Icon.png",
+    "Punchline": "A collection of quality of life tweaks.",
+    "AcceptsFeedback": true,
+    "Changelog": "HaselTweaks\n\n- Added: Japanese translations by @kxffkx. Thanks!\n\nNew Tweak: Disable Reward Popups\n\nDisables reward popups from appearing after completing activities.\n\nConfiguration options:\n\n- Hide for FATE rewards\n- Hide for MGP rewards in the Gold Saucer\n- Hide for Stellar Mission rewards in the Cosmic Exploration\n\nShop Item Icons\n\n- Added: Support for icons in the Retainer Buyback window.",
+    "DownloadCount": 0,
+    "LastUpdate": 1779631646,
+    "DownloadLinkInstall": "https://github.com/Haselnussbomber/HaselTweaks/releases/download/v46.0.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Haselnussbomber/HaselTweaks/releases/download/v46.0.0/latest.zip"
+  },
+  {
     "ApplicableVersion": "any",
     "AssemblyVersion": "4.8.1.0",
     "Author": "Anna",
@@ -702,6 +1451,50 @@
     "TestingDalamudApiLevel": 13
   },
   {
+    "Author": "Knightmore",
+    "Name": "Henchman",
+    "Punchline": "What's my next mission, boss?",
+    "Description": "Your personal Henchman doing all the heavy lifting for you!\n\n- A/B Rank Farmer\n- Hunt Logs\n- Hunt Bills\n- Retainer Creation\n- Character Creation\n- Multi Account Trading\n- Ocean Fishing\n- Chocobokeeps\nand more to come.",
+    "Tags": [],
+    "InternalName": "Henchman",
+    "RepoUrl": "https://github.com/Knightmore/Henchman",
+    "DownloadCount": 102125,
+    "LastUpdate": 1779557093,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/85/Henchman/versions/2.0.5.6/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/85/Henchman/versions/2.0.5.6/update/latest.zip",
+    "AssemblyVersion": "2.0.5.6",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "On Your Mark:\n  - Fix to make it work with non-english languages",
+    "TestingAssemblyVersion": "2.0.5.2",
+    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/85/Henchman/versions/2.0.5.2/install/testing.zip",
+    "TestingDalamudApiLevel": "15",
+    "IconUrl": "https://s3.puni.sh/media/plugin/85/icon-vlex66k1ins.png"
+  },
+  {
+    "Author": "abyeon",
+    "Name": "Housing Cull Fix",
+    "Punchline": "Now with void lighting fixed!",
+    "Description": "Removes the annoying 400 housing item display limit.",
+    "Tags": [
+      "housing",
+      "cull",
+      "fix",
+      "utility"
+    ],
+    "InternalName": "HousingCullFix",
+    "RepoUrl": "https://github.com/Abyeon/HousingCullFix",
+    "DownloadCount": 4326,
+    "LastUpdate": 1778900186,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/132/HousingCullFix/versions/0.0.1.8/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/132/HousingCullFix/versions/0.0.1.8/update/latest.zip",
+    "AssemblyVersion": "0.0.1.8",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "- Fix festivals not being loaded correctly. My fault.",
+    "IconUrl": "https://s3.puni.sh/media/plugin/132/icon-d4au3x00r6t.png"
+  },
+  {
     "Author": "NightmareXIV",
     "Name": "HuntTrainAssistant",
     "Punchline": "Hunt train assistance tool.",
@@ -723,6 +1516,51 @@
     "DownloadLinkTesting": "https://github.com/NightmareXIV/HuntTrainAssistant/releases/download/1.0.2.6/latest.zip",
     "SupportsProfiles": true,
     "IconUrl": "https://raw.githubusercontent.com/NightmareXIV/HuntTrainAssistant/master/HuntTrainAssistant/images/icon.png"
+  },
+  {
+    "Author": "kawaii, NightmareXIV",
+    "Name": "Hyperborea",
+    "Punchline": "What if we GPosed in the Mordion Gaol?",
+    "Description": "Load and explore any zone in relative safety, mainly for taking GPoses in now inaccessible locations.",
+    "Tags": [
+      "gpose"
+    ],
+    "InternalName": "Hyperborea",
+    "RepoUrl": "https://github.com/kawaii/Hyperborea",
+    "DownloadCount": 37492,
+    "LastUpdate": 1777529233,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/45/Hyperborea/versions/1.0.0.34/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/45/Hyperborea/versions/1.0.0.34/update/latest.zip",
+    "AssemblyVersion": "1.0.0.34",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "- 7.5",
+    "IconUrl": "https://s3.puni.sh/media/plugin/45/icon-jat15i16tp.png",
+    "ImageUrls": [
+      "https://s3.puni.sh/media/plugin/45/image-qh8re4eb0f.png"
+    ]
+  },
+  {
+    "Author": "Valenth Siveria",
+    "Name": "I Am Ready",
+    "Punchline": "Automatically accept or decline Duty Finder ready checks based on a configurable counter.",
+    "Description": "# I Am Ready\n\n**I Am Ready** is a Dalamud plugin for Final Fantasy XIV that automatically accepts or declines Party and Alliance Ready Checks based on a customizable counter. \n\nWhether you are stepping away for a moment or just tired of clicking, this plugin handles ready checks for you while mimicking human reaction times.\n\n## ✨ Features\n\n* **Auto-Answer Ready Checks:** Automatically clicks \"Yes\" or \"No\" when a ready check appears.\n* **Configurable \"Yes\" Counter:** Set a specific number of times you want to automatically answer \"Yes\". Once that limit is reached, the plugin will automatically start answering \"No\" to prevent pulling when you are actually away.\n* **Natural Delay:** Enable a randomized delay (0.7 to 2.5 seconds) before the plugin answers, making it look like a natural human reaction.\n* **Smart Chat Triggers (Regex):** Add custom text phrases to the plugin. If someone says one of these phrases in Party or Alliance chat (e.g., \"reset\", \"pulling\"), your counter will automatically reset back to zero.\n* **Bilingual Support:** The user interface is available in both English and German.\n\n## 🚀 Usage\n\n1. Type `/iar` in the in-game chat to open the configuration window.\n2. Click the **Inactive/Active** button at the top to turn the auto-responder on or off.\n3. Adjust the **Yes Count** slider. For example, if set to `5`, the plugin will answer \"Yes\" to the next 5 ready checks, and \"No\" to any checks after that.\n4. Click the **Start** button at any time to manually reset your current counter back to zero.\n\n### Chat Triggers (Regex Patterns)\nAt the bottom of the window, you can expand the **Regex Patterns** section. Here you can add simple words or complex regex patterns. \nIf the plugin reads a matching message in your Party or Cross-World Party chat, it will instantly reset your counter to zero, assuming a new pull or instance is starting!\n\n/iar - opens the I Am Ready tool",
+    "Tags": [
+      "DutyFinder",
+      "Auto",
+      "Ready"
+    ],
+    "InternalName": "IAmReady",
+    "RepoUrl": "https://github.com/NeoGriever/IAmReady",
+    "DownloadCount": 77,
+    "LastUpdate": 1778900353,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/121/IAmReady/versions/1.1.0.0/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/121/IAmReady/versions/1.1.0.0/update/latest.zip",
+    "AssemblyVersion": "1.1.0.0",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "API15 finally",
+    "IconUrl": "https://s3.puni.sh/media/plugin/121/icon-0a2y015hp31.png"
   },
   {
     "Author": "Ice",
@@ -751,6 +1589,30 @@
     ]
   },
   {
+    "Author": "Usagi",
+    "Name": "IINACT",
+    "InternalName": "IINACT",
+    "AssemblyVersion": "2.10.1.4",
+    "TestingAssemblyVersion": "2.10.1.4",
+    "Description": "A plugin to run the FFXIV_ACT_Plugin in an ACT-like environment with a heavily modified port of Overlay Plugin for modern .NET",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/marzent/IINACT",
+    "Tags": [
+      "parsing",
+      "plugin",
+      "ACT"
+    ],
+    "DalamudApiLevel": 15,
+    "LoadPriority": 0,
+    "IconUrl": "https://raw.githubusercontent.com/marzent/IINACT/master/images/icon.png",
+    "Punchline": "A parsing plugin.",
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "DownloadLinkInstall": "https://github.com/marzent/IINACT/releases/download/v2.10.1.4/IINACT.zip",
+    "DownloadLinkTesting": "https://github.com/marzent/IINACT/releases/download/v2.10.1.4/IINACT.zip",
+    "DownloadLinkUpdate": "https://github.com/marzent/IINACT/releases/download/v2.10.1.4/IINACT.zip"
+  },
+  {
     "Author": "NightmareXIV",
     "Name": "Imagenation",
     "Punchline": "An image drawing backend. To be used together with Triggernometry.",
@@ -767,6 +1629,27 @@
     "DownloadLinkInstall": "https://github.com/NightmareXIV/Imagenation/releases/download/1.0.0.11/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/Imagenation/releases/download/1.0.0.11/latest.zip",
     "SupportsProfiles": true
+  },
+  {
+    "Author": "sourpuh",
+    "Name": "Interjection",
+    "Punchline": "Better interrupt and enmity tracking",
+    "Description": "Show which casts are interruptible in the Enemy List. Color enmity gems when enemies are targeting other tanks.",
+    "Tags": [],
+    "InternalName": "Interjection",
+    "RepoUrl": "https://github.com/sourpuh/ffxiv_interjection",
+    "DownloadCount": 842,
+    "LastUpdate": 1777663581,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/63/Interjection/versions/0.0.0.5/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/63/Interjection/versions/0.0.0.5/update/latest.zip",
+    "AssemblyVersion": "0.0.0.5",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "",
+    "IconUrl": "https://s3.puni.sh/media/plugin/63/icon-ogeu0gg4g6h.png",
+    "ImageUrls": [
+      "https://s3.puni.sh/media/plugin/63/image-w9qpjb1phr.png"
+    ]
   },
   {
     "Author": "Chirp, Cazzar, Bwuny and contributors",
@@ -791,6 +1674,25 @@
     "DownloadLinkUpdate": "https://github.com/ktisis-tools/Ktisis/releases/download/v0.2.31.3/latest.zip"
   },
   {
+    "Author": "Laci Synchroni Team and Contributors",
+    "Name": "Laci Synchroni",
+    "Punchline": "Let others see you as you see yourself.",
+    "Description": "Connect to multiple servers at once to share how you look to those you're paired with.",
+    "InternalName": "LaciSynchroni",
+    "AssemblyVersion": "2.0.12.0",
+    "TestingAssemblyVersion": "2.0.13.0",
+    "IsTestingExclusive": false,
+    "RepoUrl": "https://github.com/LaciSynchroni/client",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "TestingDalamudApiLevel": 15,
+    "LastUpdate": 1778967510,
+    "DownloadLinkInstall": "https://github.com/LaciSynchroni/client/releases/download/2.0.12/LaciSynchroni_v2.0.12.zip",
+    "DownloadLinkUpdate": "https://github.com/LaciSynchroni/client/releases/download/2.0.12/LaciSynchroni_v2.0.12.zip",
+    "DownloadLinkTesting": "https://github.com/LaciSynchroni/client/releases/download/testing_2.0.13.0/LaciSynchroni_v2.0.13.0.zip",
+    "IconUrl": "https://raw.githubusercontent.com/LaciSynchroni/repo/main/images/icon.png"
+  },
+  {
     "Author": "Taurenkey, Gid, NightmareXIV",
     "Name": "LazyLoot",
     "Punchline": "Dungeon Loot but Lazy.",
@@ -812,6 +1714,70 @@
     "DalamudApiLevel": "15",
     "Changelog": "- 7.5",
     "IconUrl": "https://s3.puni.sh/media/plugin/9/icon-zjun2qgmfbe.png"
+  },
+  {
+    "Author": "Paissa Heavy Industries",
+    "Name": "Lemegeton",
+    "Description": "Your ultimate ingame companion; spells and enchantments to make your gameplay experience a little more magical.",
+    "InternalName": "Lemegeton",
+    "AssemblyVersion": "1.0.8.0",
+    "RepoUrl": "https://github.com/paissaheavyindustries/Lemegeton",
+    "IconUrl": "https://raw.githubusercontent.com/paissaheavyindustries/Dalamud-Repo/main/icons/lemegeton.png",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "meow"
+    ],
+    "DalamudApiLevel": 15,
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "LastUpdated": 0,
+    "DownloadCount": 0,
+    "DownloadLinkInstall": "https://github.com/paissaheavyindustries/Lemegeton/releases/download/v1.0.8.0/Lemegeton_1_0_8_0.zip",
+    "DownloadLinkTesting": "https://github.com/paissaheavyindustries/Lemegeton/releases/download/v1.0.8.0/Lemegeton_1_0_8_0.zip",
+    "DownloadLinkUpdate": "https://github.com/paissaheavyindustries/Lemegeton/releases/download/v1.0.8.0/Lemegeton_1_0_8_0.zip"
+  },
+  {
+    "Author": "yasatoma",
+    "Name": "LeveDelivery",
+    "Punchline": "Leve Automation.",
+    "Description": "A plugin that automatically accepts and delivers leves.",
+    "InternalName": "LeveDelivery",
+    "AssemblyVersion": "1.3.0.0",
+    "RepoUrl": "",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "LoadPriority": 0,
+    "IconUrl": "https://raw.githubusercontent.com/yasatoma/MyDalamudPlugins/master/plugins/LeveDelivery/Icon.png",
+    "ImageUrls": [],
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/yasatoma/MyDalamudPlugins/master/plugins/LeveDelivery/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/yasatoma/MyDalamudPlugins/master/plugins/LeveDelivery/latest.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/yasatoma/MyDalamudPlugins/master/plugins/LeveDelivery/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdate": "1777601186"
+  },
+  {
+    "Author": "Haselnussbomber",
+    "Name": "LeveHelper",
+    "InternalName": "LeveHelper",
+    "AssemblyVersion": "2.5.6.0",
+    "Description": "A little helper to check which Levequests have been completed and which are missing.",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/Haselnussbomber/LeveHelper",
+    "DalamudApiLevel": 15,
+    "LoadRequiredState": 1,
+    "LoadSync": false,
+    "CanUnloadAsync": true,
+    "LoadPriority": 0,
+    "IconUrl": "https://raw.githubusercontent.com/Haselnussbomber/LeveHelper/refs/heads/main/LeveHelper/Assets/Icon.png",
+    "Punchline": "A little helper for Levequests.",
+    "AcceptsFeedback": true,
+    "Changelog": "Update for 7.5 (Dalamud API 15).",
+    "DownloadCount": 2457,
+    "LastUpdate": 1777545202,
+    "DownloadLinkInstall": "https://github.com/Haselnussbomber/LeveHelper/releases/download/v2.5.6/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Haselnussbomber/LeveHelper/releases/download/v2.5.6/latest.zip"
   },
   {
     "Author": "NightmareXIV",
@@ -1004,6 +1970,27 @@
     ]
   },
   {
+    "Author": "Nala Praline",
+    "Name": "NalaPF",
+    "Punchline": "Auto-recreate your Party Finder after reco or datacenter switch",
+    "Description": "Captures your PF configuration and automatically recreates it after a disconnect or datacenter switch.\n\nCommands:\n/pfr",
+    "Tags": [
+      "party finder",
+      "pf"
+    ],
+    "InternalName": "NalaPF",
+    "RepoUrl": null,
+    "DownloadCount": 12,
+    "LastUpdate": 1779248281,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/140/NalaPF/versions/1.0.0.0/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/140/NalaPF/versions/1.0.0.0/update/latest.zip",
+    "AssemblyVersion": "1.0.0.0",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "Initial release.",
+    "IconUrl": "https://s3.puni.sh/media/plugin/140/icon-wtylfexh0l.png"
+  },
+  {
     "Author": "jukka",
     "Name": "NecroLens",
     "Punchline": "A true Necromancer always know the DeepDungeon ... everyone else just uses a high tech!",
@@ -1032,6 +2019,107 @@
     "ImageUrls": [
       "https://s3.puni.sh/media/plugin/53/image-lfoiry0hm9.png"
     ]
+  },
+  {
+    "Author": "Meisterlala",
+    "Name": "Neko Fans",
+    "InternalName": "Neko",
+    "AssemblyVersion": "1.4.0",
+    "Description": "Shows you an image of a random neko character. Click on the image to view the next one.\nYou can choose different image sources, allowing you to look at Catboys, Waifus, Cats, Dogs and more.\n\nSupported APIs:\nnekos.best, Nekosia, NekosAPI, Nekos.life, Dog CEO, The Cat API, Pic.re, Purrbot and Waifu.im\n\nWarning: You might see naughty images",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/Meisterlala/NekoFans",
+    "Tags": [
+      "anime",
+      "neko",
+      "waifu",
+      "miqote",
+      "image"
+    ],
+    "CategoryTags": [
+      "UI"
+    ],
+    "DalamudApiLevel": 15,
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "CanUnloadAsync": true,
+    "LoadPriority": 0,
+    "ImageUrls": [
+      "https://raw.githubusercontent.com/Meisterlala/NekoFans/master/images/image1.png",
+      "https://raw.githubusercontent.com/Meisterlala/NekoFans/master/images/image2.png"
+    ],
+    "IconUrl": "https://raw.githubusercontent.com/Meisterlala/NekoFans/master/icon.png",
+    "Punchline": "Frustrated in a dungeon? Look at a cute cat girl!",
+    "AcceptsFeedback": true,
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "LastUpdated": 1779143007,
+    "DownloadCount": 51,
+    "DownloadLinkInstall": "https://github.com/Meisterlala/NekoFans/releases/download/1.4.0/NekoFans.zip",
+    "DownloadLinkTesting": "https://github.com/Meisterlala/NekoFans/releases/download/1.4.0/NekoFans.zip",
+    "DownloadLinkUpdate": "https://github.com/Meisterlala/NekoFans/releases/download/1.4.0/NekoFans.zip"
+  },
+  {
+    "Author": "Meisterlala",
+    "Name": "Neko Fans NSFW 18+ Patch",
+    "InternalName": "NekoLewd",
+    "AssemblyVersion": "1.0.11",
+    "Description": "This Plugin does nothing on its own. Neko Fans needs to be installed.\nYou now have access to NSFW images in Neko Fans.",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/Meisterlala/NekoFans",
+    "Tags": [
+      "anime",
+      "neko",
+      "waifu",
+      "miqote",
+      "image",
+      "NSFW"
+    ],
+    "CategoryTags": [
+      "UI"
+    ],
+    "DalamudApiLevel": 15,
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "CanUnloadAsync": false,
+    "LoadPriority": 0,
+    "IconUrl": "https://raw.githubusercontent.com/Meisterlala/NekoFans/master/icon18.png",
+    "Punchline": "Frustrated in a dungeon? Look at a cute cat girl! Or look at sexy anime tiddies!",
+    "AcceptsFeedback": true,
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "LastUpdated": 1777643992,
+    "DownloadCount": 746,
+    "DownloadLinkInstall": "https://github.com/Meisterlala/NekoFans/releases/download/1.0.11-NSFW/NekoFansLewd.zip",
+    "DownloadLinkTesting": "https://github.com/Meisterlala/NekoFans/releases/download/1.0.11-NSFW/NekoFansLewd.zip",
+    "DownloadLinkUpdate": "https://github.com/Meisterlala/NekoFans/releases/download/1.0.11-NSFW/NekoFansLewd.zip",
+    "IsThirdParty": "True"
+  },
+  {
+    "Author": "UnknownX",
+    "Name": "NoClippy",
+    "Punchline": "Reduces the effects of lag on certain aspects of the game, and can show GCD clips",
+    "Description": "Reduces the effects of lag on certain aspects of the game, such as weaving and statuses. Usable as an alternative, or in addition, to XivAlexander.",
+    "Changelog": "Fixed for 7.5 (Thanks to Zeffuro)",
+    "InternalName": "NoClippy",
+    "AssemblyVersion": "0.5.0.24",
+    "RepoUrl": "https://github.com/UnknownX7/NoClippy",
+    "ApplicableVersion": "any",
+    "CategoryTags": [
+      "jobs",
+      "utility"
+    ],
+    "DalamudApiLevel": 15,
+    "IconUrl": "",
+    "ImageUrls": [
+      ""
+    ],
+    "DownloadLinkInstall": "https://github.com/UnknownX7/NoClippy/releases/download/v0.5.0.24/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/UnknownX7/NoClippy/releases/download/v0.5.0.24/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/UnknownX7/NoClippy/releases/download/v0.5.0.24/latest.zip",
+    "DownloadCount": 494,
+    "LastUpdate": "1777510404"
   },
   {
     "Author": "The Combat Reborn Team",
@@ -1104,6 +2192,25 @@
     "DalamudApiLevel": "15",
     "Changelog": "- 7.5",
     "IconUrl": "https://s3.puni.sh/media/plugin/12/icon-o94qaw6cyn.png"
+  },
+  {
+    "Author": "wah",
+    "Name": "PaissaWah",
+    "Punchline": "LifeStream must be installed to travel!",
+    "Description": "PassiaDB Search",
+    "Tags": [
+      "wah"
+    ],
+    "InternalName": "PaissaWah",
+    "RepoUrl": "https://github.com/Brappp/PaissaWah",
+    "DownloadCount": 93,
+    "LastUpdate": 1778548030,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/139/PaissaWah/versions/1.0.0.7/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/139/PaissaWah/versions/1.0.0.7/update/latest.zip",
+    "AssemblyVersion": "1.0.0.7",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": ""
   },
   {
     "Author": "kawaii, jukka",
@@ -1238,7 +2345,31 @@
     "DownloadLinkInstall": "https://github.com/xivdev/Penumbra/releases/download/1.6.1.10/Penumbra.zip",
     "DownloadLinkTesting": "https://github.com/xivdev/Penumbra/releases/download/1.6.1.10/Penumbra.zip",
     "DownloadLinkUpdate": "https://github.com/xivdev/Penumbra/releases/download/1.6.1.10/Penumbra.zip",
-    "IconUrl": "https://raw.githubusercontent.com/xivdev/Penumbra/master/images/icon.png"
+    "IconUrl": "https://raw.githubusercontent.com/xivdev/Penumbra/master/images/icon.png",
+    "Tags": [
+      "Sea Of Stars"
+    ]
+  },
+  {
+    "Author": "yasatoma",
+    "Name": "PikuminMarker",
+    "Punchline": "Add Marker for Pikumin.",
+    "Description": "Puts a marker on the specified player. If the target player travels to DC, the internal ID will change and the marker will be invalid.",
+    "InternalName": "PikuminMarker",
+    "AssemblyVersion": "1.4.1.0",
+    "RepoUrl": "https://github.com/yasatoma/PikuminMarker",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "LoadPriority": 0,
+    "IconUrl": "https://raw.githubusercontent.com/yasatoma/MyDalamudPlugins/master/plugins/PikuminMarker/Icon.png",
+    "ImageUrls": [],
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/yasatoma/MyDalamudPlugins/master/plugins/PikuminMarker/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/yasatoma/MyDalamudPlugins/master/plugins/PikuminMarker/latest.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/yasatoma/MyDalamudPlugins/master/plugins/PikuminMarker/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdate": "1778316814"
   },
   {
     "Author": "nxships",
@@ -1273,6 +2404,28 @@
     "DownloadLinkTesting": "https://github.com/NexusFFXIV/PlayerNexusTracker/releases/download/v0.1.0/PlayerNexusTracker-0.1.0.zip",
     "TestingAssemblyVersion": "0.1.0.0",
     "TestingDalamudApiLevel": 15
+  },
+  {
+    "Author": "wah",
+    "Name": "Plugin Preset Manager",
+    "Punchline": "Manage plugin presets with always-on support.",
+    "Description": "Create and manage plugin presets with support for always-on plugins. Commands: /ppreset",
+    "Tags": [
+      "plugin",
+      "preset",
+      "manager",
+      "utility"
+    ],
+    "InternalName": "PluginPresetManager",
+    "RepoUrl": "https://github.com/Brappp/PluginPresetManager",
+    "DownloadCount": 463,
+    "LastUpdate": 1777495807,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/105/PluginPresetManager/versions/1.0.5.0/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/105/PluginPresetManager/versions/1.0.5.0/update/latest.zip",
+    "AssemblyVersion": "1.0.5.0",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": ""
   },
   {
     "Author": "NightmareXIV",
@@ -1314,6 +2467,29 @@
     "DownloadLinkTesting": "https://github.com/Ricimon/FFXIV-ProximityVoiceChat/releases/download/v0.5.16-beta/ProximityVoiceChat_v0.5.16.zip",
     "DownloadLinkUpdate": "https://github.com/Ricimon/FFXIV-ProximityVoiceChat/releases/download/v0.5.16-beta/ProximityVoiceChat_v0.5.16.zip",
     "Changelog": "New audio processing algorithm to improve audio quality. Fix bugs with individual volume sliders."
+  },
+  {
+    "Author": "DodingDaga",
+    "Name": "Puppet Master",
+    "InternalName": "PuppetMaster",
+    "AssemblyVersion": "7.5.0.0",
+    "Description": "For the lulz",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/dodingdaga/DalamudPlugins",
+    "Tags": [
+      "emote",
+      "plugin"
+    ],
+    "DalamudApiLevel": 15,
+    "LoadPriority": 0,
+    "Punchline": "Let others tell you what to do.",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadCount": 0,
+    "LastUpdated": "1777699342",
+    "DownloadLinkInstall": "https://github.com/dodingdaga/DalamudPlugins/releases/download/7.5.0.0/latest_pp.zip",
+    "DownloadLinkTesting": "https://github.com/dodingdaga/DalamudPlugins/releases/download/7.5.0.0/latest_pp.zip",
+    "DownloadLinkUpdate": "https://github.com/dodingdaga/DalamudPlugins/releases/download/7.5.0.0/latest_pp.zip"
   },
   {
     "Author": "Anya Hichu",
@@ -1394,6 +2570,49 @@
     "DownloadLinkTesting": "https://github.com/Ricimon/FFXIV-RaidsRewritten/releases/download/v1.2.2/RaidsRewritten_v1.2.2.zip",
     "DownloadLinkUpdate": "https://github.com/Ricimon/FFXIV-RaidsRewritten/releases/download/v1.2.2/RaidsRewritten_v1.2.2.zip",
     "Changelog": "Fix hook signature"
+  },
+  {
+    "Author": "UnknownX",
+    "Name": "ReAction",
+    "Punchline": "QoL for the battle system.",
+    "Description": "Improves aspects of the battle system with action stacks (like MOAction) and various QoL settings.",
+    "Changelog": "Added a blacklist for turbo hotbar keybinds",
+    "InternalName": "ReAction",
+    "AssemblyVersion": "1.3.5.1",
+    "RepoUrl": "https://github.com/UnknownX7/ReAction",
+    "ApplicableVersion": "any",
+    "CategoryTags": [
+      "jobs"
+    ],
+    "DalamudApiLevel": 15,
+    "IconUrl": "",
+    "ImageUrls": [
+      ""
+    ],
+    "DownloadLinkInstall": "https://github.com/UnknownX7/ReAction/releases/download/v1.3.5.1/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/UnknownX7/ReAction/releases/download/v1.3.5.1/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/UnknownX7/ReAction/releases/download/v1.3.5.1/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdate": "1777513055"
+  },
+  {
+    "Author": "Taurenkey, NightmareXIV",
+    "Name": "ReActionEx",
+    "Punchline": "QoL for the battle system.",
+    "Description": "Improves aspects of the battle system with action stacks (like MOAction) and various QoL settings. Now with more devious features.",
+    "Tags": [],
+    "InternalName": "ReActionEx",
+    "RepoUrl": "https://puni.sh/api/repository/taurenkey",
+    "DownloadCount": 7145,
+    "LastUpdate": 1777883909,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/55/ReActionEx/versions/1.0.1.2/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/55/ReActionEx/versions/1.0.1.2/update/latest.zip",
+    "AssemblyVersion": "1.0.1.2",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "- Fix queue more crashing"
   },
   {
     "Author": "The Combat Reborn Team",
@@ -1567,6 +2786,26 @@
     "IconUrl": "https://raw.githubusercontent.com/NightmareXIV/SelectString/master/SelectString/images/icon.png"
   },
   {
+    "Author": "glyceri",
+    "Name": "Silence No More",
+    "Punchline": "Shows whispers normally blocked during duties.",
+    "Description": "Shows whispers normally blocked during duties.",
+    "Tags": [
+      "Duty",
+      "Chat"
+    ],
+    "InternalName": "SilenceNoMore",
+    "RepoUrl": "https://github.com/Glyceri/SilenceNoMore",
+    "DownloadCount": 1992,
+    "LastUpdate": 1778738818,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/106/SilenceNoMore/versions/1.4.0.1/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/106/SilenceNoMore/versions/1.4.0.1/update/latest.zip",
+    "AssemblyVersion": "1.4.0.1",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "API16=5"
+  },
+  {
     "Author": "Caraxi",
     "Name": "Simple Heels",
     "InternalName": "SimpleHeels",
@@ -1612,6 +2851,36 @@
     "DownloadLinkUpdate": "https://raw.githubusercontent.com/a08381/Dalamud.SkipCutscene/3f2e55f615b56c0c8f507020ac717bfbc9a2b5d4/latest.zip"
   },
   {
+    "Author": "Boxu",
+    "Name": "Skippy",
+    "Punchline": "Allows you to skip a lot of categories of cutscenes, including MSQ Roulette Dungeons & Trials, Inn Login Sequence, Ocean Fishing and more!",
+    "Description": "Skip all of the Cutscenes that bother you (MSQ Roulette for example) so you can actually play the game!",
+    "Tags": [
+      "Boxu",
+      "Skippy",
+      "SkipCutscene",
+      "Skip",
+      "Cutscene"
+    ],
+    "InternalName": "Skippy",
+    "RepoUrl": "https://github.com/BoxuChan/Skippy",
+    "DownloadCount": 1377,
+    "LastUpdate": 1778506288,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/130/Skippy/versions/2.2.4.2/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/130/Skippy/versions/2.2.4.2/update/latest.zip",
+    "AssemblyVersion": "2.2.4.2",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "Global: (Bugfix) Fixed Porta Decumana cutscene not skipping even with the right toggles on.\nGlobal: (Bugfix) Hopefully properly fixed skip categories spilling over other categories and affecting their skipping abilities.\nLogger: Enhanced the logging capabilities of Skippy for research purposes.\nUI: Added a button to the topbar to toggle the Tester badge visibility on/off.",
+    "TestingAssemblyVersion": "2.2.4.2",
+    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/130/Skippy/versions/2.2.4.2/install/testing.zip",
+    "TestingDalamudApiLevel": "15",
+    "IconUrl": "https://s3.puni.sh/media/plugin/130/icon-1932fpslkn5.png",
+    "ImageUrls": [
+      "https://s3.puni.sh/media/plugin/130/image-oxn9cs0hnsm.png"
+    ]
+  },
+  {
     "Author": "Ricimon",
     "Name": "SmartPings",
     "Description": "Send other players ground pings and status information.",
@@ -1631,6 +2900,57 @@
     "DownloadLinkTesting": "https://github.com/Ricimon/FFXIV-SmartPings/releases/download/v0.3.12-beta/SmartPings_v0.3.12.zip",
     "DownloadLinkUpdate": "https://github.com/Ricimon/FFXIV-SmartPings/releases/download/v0.3.12-beta/SmartPings_v0.3.12.zip",
     "Changelog": "Fix indefinite mouse capture in main menu with certain keybinds"
+  },
+  {
+    "Author": "croizat",
+    "Name": "Something Need Doing",
+    "Punchline": "Work work.",
+    "Description": "Now for more than crafting!",
+    "Tags": [],
+    "InternalName": "SomethingNeedDoing",
+    "RepoUrl": "https://github.com/Jaksuhn/SomethingNeedDoing",
+    "DownloadCount": 729625,
+    "LastUpdate": 1777592392,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/25/SomethingNeedDoing/versions/15.2.0.0/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/25/SomethingNeedDoing/versions/15.2.0.0/update/latest.zip",
+    "AssemblyVersion": "15.2.0.0",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "",
+    "IconUrl": "https://s3.puni.sh/media/plugin/25/icon-6h5x17j9gpr.png"
+  },
+  {
+    "Author": "Kirin",
+    "Name": "SpamrollGiveaway",
+    "InternalName": "SpamrollGiveaway",
+    "AssemblyVersion": "2.3.7.0",
+    "Description": "[UNMAINTAINED - Seeking new owner] Giveaway management plugin. Source: github.com/kirin-xiv/OpenSpamroll",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/kirin-xiv/OpenSpamroll",
+    "Tags": [
+      "giveaway",
+      "random",
+      "contest",
+      "ffxiv",
+      "minigame"
+    ],
+    "DalamudApiLevel": 15,
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "CanUnloadAsync": false,
+    "LoadPriority": 0,
+    "Punchline": "Random number giveaway system where players type /random to win.",
+    "AcceptsFeedback": true,
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkInstall": "https://github.com/kirin-xiv/OpenSpamroll/releases/download/v2.3.7.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/kirin-xiv/OpenSpamroll/releases/download/v2.3.7.0/latest.zip",
+    "DownloadLinkTesting": "https://github.com/kirin-xiv/OpenSpamroll/releases/download/v2.3.7.0/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdate": 0,
+    "IconUrl": "https://raw.githubusercontent.com/kirin-xiv/KirinPlugins/main/icons/SpamrollGiveaway.ico",
+    "ImageUrls": [],
+    "Changelog": "Version 2.3.7.0 - Updated to Dalamud API 15. Now open source."
   },
   {
     "Author": "NightmareXIV",
@@ -1655,6 +2975,28 @@
     "DownloadLinkTesting": "https://puni.sh/api/plugins/download/10/Splatoon/versions/3.9.1.10/install/testing.zip",
     "TestingDalamudApiLevel": "15",
     "IconUrl": "https://s3.puni.sh/media/plugin/10/icon-cchf5yumm2p.png"
+  },
+  {
+    "Author": "vera.lyn",
+    "Name": "Squadronista",
+    "Punchline": "Squadron Mission Solver",
+    "Description": "Helps optimize squadron mission compositions",
+    "Tags": [
+      "squadron",
+      "grand company",
+      "missions"
+    ],
+    "InternalName": "Squadronista",
+    "RepoUrl": "https://github.com/yourusername/Squadronista",
+    "DownloadCount": 6545,
+    "LastUpdate": 1778554077,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/101/Squadronista/versions/7.5.0.0/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/101/Squadronista/versions/7.5.0.0/update/latest.zip",
+    "AssemblyVersion": "7.5.0.0",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "API15",
+    "IconUrl": "https://s3.puni.sh/media/plugin/101/icon-xwugrtw9vk.png"
   },
   {
     "Author": "NightmareXIV",
@@ -1699,6 +3041,59 @@
     "IconUrl": "https://raw.githubusercontent.com/NightmareXIV/Stylist/main/Stylist/images/icon.png"
   },
   {
+    "Author": "Paissa Heavy Industries",
+    "Name": "Tallafell",
+    "Punchline": "They hide inside bosses' legs! Clothing! Other players! No longer, I say -- it's time to put an end to the Lalafell menace.",
+    "InternalName": "Tallafell",
+    "AssemblyVersion": "1.0.0.6",
+    "RepoUrl": "https://github.com/paissaheavyindustries/Tallafell",
+    "IconUrl": "https://raw.githubusercontent.com/paissaheavyindustries/Dalamud-Repo/main/icons/tallafell.png",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "lalafell",
+      "tol",
+      "tallafell",
+      "cursed",
+      "creepy",
+      "nope",
+      "every day we stray further from god's light",
+      "meow"
+    ],
+    "DalamudApiLevel": 15,
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "LastUpdated": 0,
+    "DownloadCount": 0,
+    "DownloadLinkInstall": "https://github.com/paissaheavyindustries/Tallafell/releases/download/v1.0.0.6/Tallafell_1_0_0_6.zip",
+    "DownloadLinkTesting": "https://github.com/paissaheavyindustries/Tallafell/releases/download/v1.0.0.6/Tallafell_1_0_0_6.zip",
+    "DownloadLinkUpdate": "https://github.com/paissaheavyindustries/Tallafell/releases/download/v1.0.0.6/Tallafell_1_0_0_6.zip"
+  },
+  {
+    "Author": "Paissa Heavy Industries",
+    "Name": "Telesto",
+    "Description": "This plugin allows Triggernometry (and other programs, why not) some means to interact with the game directly.",
+    "InternalName": "Telesto",
+    "AssemblyVersion": "1.0.1.0",
+    "RepoUrl": "https://github.com/paissaheavyindustries/Telesto",
+    "IconUrl": "https://raw.githubusercontent.com/paissaheavyindustries/Dalamud-Repo/main/icons/telesto.png",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "telesto",
+      "prrp",
+      "trigger",
+      "triggernometry",
+      "meow"
+    ],
+    "DalamudApiLevel": 15,
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "LastUpdated": 0,
+    "DownloadCount": 0,
+    "DownloadLinkInstall": "https://github.com/paissaheavyindustries/Telesto/releases/download/v1.0.1.0/Telesto_1_0_1_0.zip",
+    "DownloadLinkTesting": "https://github.com/paissaheavyindustries/Telesto/releases/download/v1.0.1.0/Telesto_1_0_1_0.zip",
+    "DownloadLinkUpdate": "https://github.com/paissaheavyindustries/Telesto/releases/download/v1.0.1.0/Telesto_1_0_1_0.zip"
+  },
+  {
     "Author": "NightmareXIV",
     "Name": "TextAdvance",
     "Punchline": "Quest speedrunning assistance tool. Automatically skips subtitle boxes and confirms cutscene skipping",
@@ -1720,6 +3115,23 @@
     "DownloadLinkTesting": "https://github.com/NightmareXIV/TextAdvance/releases/download/3.2.3.0/latest.zip",
     "SupportsProfiles": true,
     "IconUrl": "https://raw.githubusercontent.com/NightmareXIV/TextAdvance/master/TextAdvance/images/icon.png"
+  },
+  {
+    "Author": "VariableVixen",
+    "Name": "TinyCommands",
+    "Description": "Adds tiny and simple but useful chat commands, and nothing more. It doesn't even have a UI.",
+    "InternalName": "TinyCmds",
+    "AssemblyVersion": "8.10.4",
+    "RepoUrl": "https://github.com/VariableVixen/TinyCommands",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "DownloadLinkInstall": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/TinyCmds/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/TinyCmds/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/TinyCmds/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdated": "1779474182"
   },
   {
     "Author": "Churin",
@@ -1771,6 +3183,30 @@
     "DownloadLinkInstall": "https://github.com/NightmareXIV/UnloadErrorFuckOff/releases/download/1.0.0.10/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/UnloadErrorFuckOff/releases/download/1.0.0.10/latest.zip",
     "SupportsProfiles": true
+  },
+  {
+    "Author": "Nala Praline, asunapahlo",
+    "Name": "VenueScope",
+    "Punchline": "Browse FFXIV community events in-game.",
+    "Description": "Browse FFXIV community events directly in-game. Filter by data center, time, and tags.\n\nCommands:\n/venuescope or /vs: open VenueScope",
+    "Tags": [
+      "events",
+      "venue",
+      "community",
+      "partake",
+      "ffxivenue"
+    ],
+    "InternalName": "VenueScope",
+    "RepoUrl": null,
+    "DownloadCount": 8242,
+    "LastUpdate": 1778639067,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/122/VenueScope/versions/1.0.9.3/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/122/VenueScope/versions/1.0.9.3/update/latest.zip",
+    "AssemblyVersion": "1.0.9.3",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "Fix syncshell district matching for FFXIV Venues; syncshell data now auto-refreshes every minute",
+    "IconUrl": "https://s3.puni.sh/media/plugin/122/icon-7m4zbcwlg53.png"
   },
   {
     "Author": "veyn, croizat",
@@ -1827,6 +3263,33 @@
     "IconUrl": "https://s3.puni.sh/media/plugin/28/icon-lruwx4y549.png"
   },
   {
+    "Author": "vera.lyn",
+    "Name": "Vera's Integrated World Improvements",
+    "Punchline": "Vera's Integrated World Improvements",
+    "Description": "A collection of plugins-turned-modules, QoL improvements, and Automation features.",
+    "Tags": [
+      "\"VIWI\"",
+      "\"viwi\"",
+      "\"Vera\"",
+      "\"Workshoppa\"",
+      "\"Deliveroo\"",
+      "\"AutoLogin\"",
+      "\"Login\"",
+      "\"AoE\""
+    ],
+    "InternalName": "VIWI",
+    "RepoUrl": null,
+    "DownloadCount": 35289,
+    "LastUpdate": 1778353976,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/108/VIWI/versions/0.0.0.60/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/108/VIWI/versions/0.0.0.60/update/latest.zip",
+    "AssemblyVersion": "0.0.0.60",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "Definitely not more Workshoppa fixes",
+    "IconUrl": "https://s3.puni.sh/media/plugin/108/icon-aab5kumn3gi.png"
+  },
+  {
     "Author": "veyn, xan_0",
     "Name": "vnavmesh",
     "Punchline": "Move around!",
@@ -1866,6 +3329,71 @@
     "IconUrl": "https://s3.puni.sh/media/plugin/58/icon-hffi2ft0zlg.png"
   },
   {
+    "Author": "wah",
+    "Name": "WahJumps",
+    "Punchline": "Jumping Puzzle Directory",
+    "Description": "Jumping Puzzle Directory for the Strange Housing Discord",
+    "Tags": [],
+    "InternalName": "WahJumps",
+    "RepoUrl": null,
+    "DownloadCount": 1435,
+    "LastUpdate": 1777495141,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/93/WahJumps/versions/1.0.9.0/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/93/WahJumps/versions/1.0.9.0/update/latest.zip",
+    "AssemblyVersion": "1.0.9.0",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "",
+    "IconUrl": "https://s3.puni.sh/media/plugin/93/icon-o1vuzx17obo.png"
+  },
+  {
+    "Author": "wah",
+    "Name": "wahventory",
+    "Punchline": "Advanced inventory management with safety filters and auto-discard",
+    "Description": "Advanced inventory management with safety filters and auto-discard",
+    "Tags": [],
+    "InternalName": "wahventory",
+    "RepoUrl": null,
+    "DownloadCount": 60058,
+    "LastUpdate": 1779287741,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/91/wahventory/versions/4.5.1.0/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/91/wahventory/versions/4.5.1.0/update/latest.zip",
+    "AssemblyVersion": "4.5.1.0",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": ""
+  },
+  {
+    "Author": "sourpuh",
+    "Name": "Waymark Studio",
+    "Punchline": "The Ultimate FFXIV Waymark Plugin",
+    "Description": "A total replacement for the in-game waymark editor and Waymark Preset plugin. It provides a suite of tools to make placing and loading waymark presets simple, fast, and accurate.",
+    "Tags": [
+      "waymark",
+      "studio",
+      "preset",
+      "marker"
+    ],
+    "InternalName": "WaymarkStudio",
+    "RepoUrl": "https://github.com/sourpuh/ffxiv_waymarkstudio",
+    "DownloadCount": 61260,
+    "LastUpdate": 1778724776,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/62/WaymarkStudio/versions/0.0.0.48/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/62/WaymarkStudio/versions/0.0.0.48/update/latest.zip",
+    "AssemblyVersion": "0.0.0.48",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "",
+    "TestingAssemblyVersion": "0.0.0.48",
+    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/62/WaymarkStudio/versions/0.0.0.48/install/testing.zip",
+    "TestingDalamudApiLevel": "15",
+    "IconUrl": "https://s3.puni.sh/media/plugin/62/icon-lwttlf8wkto.png",
+    "ImageUrls": [
+      "https://s3.puni.sh/media/plugin/62/image-3wzsk69fih2.png",
+      "https://s3.puni.sh/media/plugin/62/image-cz33a2rx09l.png"
+    ]
+  },
+  {
     "Author": "NightmareXIV",
     "Name": "WeathermanExtras",
     "Punchline": "Experimental Weatherman functions. ",
@@ -1883,6 +3411,46 @@
     "DownloadLinkInstall": "https://github.com/NightmareXIV/WExtras/releases/download/1.0.0.10/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/WExtras/releases/download/1.0.0.10/latest.zip",
     "SupportsProfiles": true
+  },
+  {
+    "Author": "Paissa Heavy Industries",
+    "Name": "Where's Mouse?",
+    "Description": "An accessibility plugin to help you locate your mouse cursor when you need it the most.",
+    "InternalName": "WheresMouse",
+    "AssemblyVersion": "1.0.0.9",
+    "RepoUrl": "https://github.com/paissaheavyindustries/WheresMouse",
+    "IconUrl": "https://raw.githubusercontent.com/paissaheavyindustries/Dalamud-Repo/main/icons/wheresmouse.png",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "mouse",
+      "accessibility",
+      "meow"
+    ],
+    "DalamudApiLevel": 15,
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "LastUpdated": 0,
+    "DownloadCount": 0,
+    "DownloadLinkInstall": "https://github.com/paissaheavyindustries/WheresMouse/releases/download/v1.0.0.9/WheresMouse_1_0_0_9.zip",
+    "DownloadLinkTesting": "https://github.com/paissaheavyindustries/WheresMouse/releases/download/v1.0.0.9/WheresMouse_1_0_0_9.zip",
+    "DownloadLinkUpdate": "https://github.com/paissaheavyindustries/WheresMouse/releases/download/v1.0.0.9/WheresMouse_1_0_0_9.zip"
+  },
+  {
+    "Author": "VariableVixen",
+    "Name": "WoLua",
+    "Description": "Write custom chat commands by creating lua scripts",
+    "InternalName": "WoLua",
+    "AssemblyVersion": "4.3.4",
+    "RepoUrl": "https://github.com/VariableVixen/WoLua",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "DownloadLinkInstall": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/WoLua/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/WoLua/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/WoLua/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdated": "1779474182"
   },
   {
     "Author": "Team Wrath",
@@ -1904,6 +3472,23 @@
     "DownloadLinkTesting": "https://puni.sh/api/plugins/download/60/WrathCombo/versions/1.0.2.24/install/testing.zip",
     "TestingDalamudApiLevel": "13",
     "IconUrl": "https://s3.puni.sh/media/plugin/60/icon-2bwhkn3zf1f.png"
+  },
+  {
+    "Author": "wah",
+    "Name": "Wrath Auto Toggle",
+    "Punchline": "Wrath Auto Toggle",
+    "Description": "Wrath Auto Toggle",
+    "Tags": [],
+    "InternalName": "WrathIcon",
+    "RepoUrl": null,
+    "DownloadCount": 1026,
+    "LastUpdate": 1778844086,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/92/WrathIcon/versions/0.0.3.0/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/92/WrathIcon/versions/0.0.3.0/update/latest.zip",
+    "AssemblyVersion": "0.0.3.0",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": ""
   },
   {
     "Author": "attick, daemitus, Khayle",
@@ -1933,6 +3518,68 @@
     "LastUpdate": "1777596682"
   },
   {
+    "Author": "attick, daemitus, alymphocyte, grammernatzi",
+    "Name": "XIV Combo Expandedest",
+    "Punchline": "Condenses combos and mutually exclusive abilities onto a single button. Plus extras.",
+    "Description": "This is an enhanced version of XIVCombo with a variety of new added features.\nThis is mutually exclusive with other XIVCombo versions, so make sure they do not conflict!",
+    "Changelog": "New features unlikely to be added until Evercold releases. Bug fixes will still happen, though.\r\n    \r\n    1.5.0.91: \r\n    * Removed Burst Strike/Fated Circle to Bloodfest as you now cannot overcap with Bloodfest.\r\n    * Added Bloodfest to No Mercy.\r\n    * Fixed a bug where Blizzard/Fire switcher did not work without Enochian unlocked.\r\n\r\n    1.5.0.90: \r\n    * Updated to 7.4.\r\n    * Some more changes coming soon but emergency maintenance started RIP\r\n    \r\n    1.5.0.82:\r\n    * Reawakened Fangs Feature now also applies to Steel Maw.\r\n    \r\n    1.5.0.79:\r\n    * Phlegma into Eukrasian Dyskrasia added.\r\n    \r\n    1.5.0.73:\r\n    * Meisui/Tenri priority fixed and DWaD to Meisui added.\r\n    * Monk's Draconic Leap feature now properly syncs below level 50 when you don't have a form.\r\n    * Raise Hard Target Lockout Feature added.\r\n    \r\n    1.5.0.72:\r\n    * Double Down features now account for its new cost.\r\n    * New option for Royal Authority to Atonement where it will only activate if you are about to overwrite Sword Oath in your combo.\r\n    * Empyreal Arrow will no longer turn into Pitch Perfect under any circumstances.\r\n    \r\n    1.5.0.71:\r\n    * Updated for 7.1 compatibility.\r\n    * Devilment to Starfall Dance feature removed as it is now vanilla.\r\n    * Removed Jump to Mirage Dive due to it being vanilla, as I completely forgot to earlier.\r\n    * Added an 'Only When Full' option to Sidewinder to Pitch Perfect.\r\n\r\n    1.5.0.70:\r\n    * Added Comet Overwrite Prevention feature. Or did I?\r\n    * Removed Holy overcap features (it made no sense when you gain, not lose, DPS by letting it overcap).\r\n    \r\n    1.5.0.69 (Nice):\r\n    * Sacrificium Feature added.\r\n    * Despair to Flare Star added.\r\n    * Dragon Kick to Forbidden Chakra added.\r\n    \r\n    1.5.0.67:\r\n    * Blizzard 3 & 2 to Flare Star feature added.\r\n    \r\n    1.5.0.61:\r\n    * Lucid Dreaming Reminders now have a configurable MP threshold, as well as a configurable cooldown remaining offset where they stop replacing the cooldown.\r\n    \r\n    1.5.0.60:\r\n    * Combos to Saber Dance during Devilment feature added.\r\n    * Some other stuff added to Dancer, too. Maybe.\r\n    * Phlegma to Psyche added.\r\n    \r\n    1.5.0.59:\r\n    * Isle Sprint feature added.\r\n    \r\n    1.5.0.53:\r\n    * Reaving Steel added from regular XIVComboExpanded. Maybe something else, too? Tis a secret.\r\n    * Hooking Hooksets and Chummy Cast added.\r\n    \r\n    1.5.0.51:\r\n    * Chaotic Glide added.\r\n    \r\n    1.5.0.49:\r\n    * Standard Step into Technical Step added.\r\n    \r\n    1.5.0.41:\r\n    * Viper features added. Please look forward to it (happening right now).",
+    "InternalName": "XIVComboExpandedest",
+    "AssemblyVersion": "1.5.0.95",
+    "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "LoadPriority": 0,
+    "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
+    "ImageUrls": [],
+    "DownloadLinkInstall": "https://github.com/grammernatzi/MyDalamudPlugins/raw/master/plugins/XIVComboExpandedest/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/grammernatzi/MyDalamudPlugins/raw/master/plugins/XIVComboExpandedest/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/grammernatzi/MyDalamudPlugins/raw/master/plugins/XIVComboExpandedest/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdate": "1777673938"
+  },
+  {
+    "Author": "attick, daemitus, VariableVixen",
+    "Name": "XIV Combo Very Expanded",
+    "Description": "This plugin condenses combos and mutually exclusive abilities onto a single button. To a degree that some would call absurd, but that's why it's all configurable. Let the players decide.",
+    "InternalName": "XIVComboVX",
+    "AssemblyVersion": "9.35.3",
+    "RepoUrl": "https://github.com/VariableVixen/XIVComboPlugin",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "DownloadLinkInstall": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/XIVComboVX/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/XIVComboVX/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/XIVComboVX/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdated": "1779474182"
+  },
+  {
+    "Author": "VariableVixen",
+    "Name": "XivEsp",
+    "Description": "If you've ever spent ten minutes looking for your hunt target, this is the plugin for you. Set a case-insensitive substring, glob, or regular expression, and all nearby game objects with matching names will be tagged on your screen!",
+    "InternalName": "XivEsp",
+    "AssemblyVersion": "1.11.3",
+    "RepoUrl": "https://github.com/VariableVixen/XivEsp",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "search",
+      "esp",
+      "find",
+      "locate"
+    ],
+    "DalamudApiLevel": 15,
+    "DownloadLinkInstall": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/XivEsp/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/XivEsp/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/XivEsp/latest.zip",
+    "DownloadCount": 0,
+    "LastUpdated": "1779474182"
+  },
+  {
     "Author": "Team Sloth",
     "Name": "XIVSlothComboX",
     "Punchline": "Condenses combos and mutually exclusive abilities onto a single button - and then some.",
@@ -1952,6 +3599,34 @@
     "DownloadLinkUpdate": "https://raw.githubusercontent.com/44451516/XIVSlothCombo/CN/release/XIVSlothComboX/latest.zip",
     "DownloadCount": 0,
     "LastUpdated": "1724608643"
+  },
+  {
+    "Author": "keifufu",
+    "Name": "XivVoices",
+    "Punchline": "Transforming Final Fantasy XIV by voicing every piece of dialogue!",
+    "Description": "A plugin that voices every NPC dialogue, battle interaction, and more.",
+    "Tags": [
+      "xivvoices",
+      "xivv"
+    ],
+    "IsHide": false,
+    "InternalName": "XivVoices",
+    "AssemblyVersion": "1.4.0.5",
+    "TestingAssemblyVersion": null,
+    "IsTestingExclusive": false,
+    "RepoUrl": "https://github.com/keifufu/XivVoices",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "TestingDalamudApiLevel": 0,
+    "DownloadCount": 10282,
+    "LastUpdate": 1778374594,
+    "DownloadLinkInstall": "https://github.com/keifufu/XivVoices/releases/download/1.4.0.5/XivVoices.zip",
+    "DownloadLinkUpdate": "https://github.com/keifufu/XivVoices/releases/download/1.4.0.5/XivVoices.zip",
+    "DownloadLinkTesting": "https://github.com/keifufu/XivVoices/releases/download/1.4.0.5/XivVoices.zip",
+    "LoadRequiredState": 2,
+    "LoadSync": true,
+    "LoadPriority": 0,
+    "IconUrl": "https://raw.githubusercontent.com/keifufu/XivVoices/main/XivVoices/assets/logo.png"
   },
   {
     "Author": "daemitus, kawaii",
