@@ -315,9 +315,15 @@ function Get-Deduped {
 function Write-Pluginmaster {
     param([array]$Entries, [string]$Path)
     $arr = @($Entries)
+    # Empty array → emit "[]" instead of letting ConvertTo-Json produce "null"
+    # (which would otherwise round-trip to "[ null ]" via the single-entry wrap).
+    if ($arr.Count -eq 0) {
+        Set-Content -Path $Path -Value "[]`n" -NoNewline -Encoding UTF8
+        return
+    }
     $json = $arr | ConvertTo-Json -Depth 10
-    # ConvertTo-Json wraps single-element arrays as objects; force an array even if <=1 entry.
-    if ($arr.Count -le 1) { $json = "[`n" + ($json -replace '(?ms)^', '  ') + "`n]" }
+    # ConvertTo-Json renders a single-element array as a bare object; force an array.
+    if ($arr.Count -eq 1) { $json = "[`n" + ($json -replace '(?ms)^', '  ') + "`n]" }
     Set-Content -Path $Path -Value $json -Encoding UTF8 -NoNewline
     Add-Content -Path $Path -Value "`n" -NoNewline
 }

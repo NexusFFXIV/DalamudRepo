@@ -16,12 +16,16 @@ In Dalamud:
 
 ### Available scopes
 
-| Scope | URL | Contents |
+Base URL: `https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/`
+
+| Scope | File | Contents |
 |---|---|---|
-| **Default — NexusFFXIV plugins** | `https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json` | Only plugins built by NexusFFXIV (currently PlayerNexusTracker). |
-| **External plugins** | `https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external.json` | Hand-picked third-party plugins imported by `InternalName` from Dalamud's official pluginmaster. |
-| **External repos** | `https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/repos.json` | Whole pluginmaster.jsons pulled from third-party Dalamud repos, deduplicated by `InternalName` (highest `AssemblyVersion` wins). |
-| **All** | `https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all.json` | Union of the three above, deduplicated end-to-end. One URL, everything. |
+| **NexusFFXIV plugins** (default) | `pluginmaster.json` | Only plugins built by NexusFFXIV (currently PlayerNexusTracker). |
+| **External plugins** | `external.json` | Third-party plugins imported by `InternalName` from Dalamud's official pluginmaster. |
+| **External repos** | `repos.json` | Whole pluginmaster.jsons pulled from third-party Dalamud repos, deduped by `InternalName` (highest `AssemblyVersion` wins). |
+| **All** | `all.json` | Union of the three above, deduped end-to-end. One URL, everything. |
+
+Subscribe by pasting `<base-url><file>` into Dalamud's Custom Plugin Repositories field.
 
 ### Testing builds (opt-in)
 
