@@ -26,7 +26,7 @@
     "AssemblyVersion": "7.5.0.4",
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/releases/download/7.5.0.4/ActionTimelineReborn.zip",
     "Changelog": "## What's Changed\r\n* Making the READMEs look the samesies. by @Nonunon in https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/pull/16\r\n\r\n## New Contributors\r\n* @Nonunon made their first contribution in https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/pull/16\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/compare/7.5.0.3...7.5.0.4",
-    "DownloadCount": 30357
+    "DownloadCount": 30365
   },
   {
     "AcceptsFeedback": false,
@@ -242,7 +242,7 @@
     "Tags": [],
     "InternalName": "BossMod",
     "RepoUrl": "https://github.com/awgil/ffxiv_bossmod",
-    "DownloadCount": 2027261,
+    "DownloadCount": 2027303,
     "LastUpdate": 1779462517,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.0.15/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.0.15/update/latest.zip",
@@ -292,7 +292,7 @@
     "DownloadLinkTesting": "https://github.com/FFXIV-CombatReborn/BossmodReborn/releases/download/7.4.5.11/latest.zip",
     "TestingAssemblyVersion": "7.4.5.11",
     "Changelog": "## What's Changed\r\n* Feature/thirdwalk shinryu paradox floor aoe by @wen-ff in https://github.com/FFXIV-CombatReborn/BossmodReborn/pull/1199\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/BossmodReborn/compare/7.5.0.43...7.5.0.44",
-    "DownloadCount": 2947090
+    "DownloadCount": 2947450
   },
   {
     "Author": "Minmoose, Asgard and Contributors",
@@ -372,7 +372,7 @@
     ],
     "InternalName": "ChilledLeves",
     "RepoUrl": "https://github.com/LeontopodiumNivale14/LeveItAlone",
-    "DownloadCount": 101271,
+    "DownloadCount": 101272,
     "LastUpdate": 1777774705,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/68/ChilledLeves/versions/1.0.1.24/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/68/ChilledLeves/versions/1.0.1.24/update/latest.zip",
@@ -574,7 +574,7 @@
     "AssemblyVersion": "7.5.0.3",
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/EasyZoomReborn/releases/download/7.5.0.3/EasyZoomReborn.zip",
     "Changelog": "## What's Changed\r\n* Added pr buildtest by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/EasyZoomReborn/pull/17\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/EasyZoomReborn/compare/7.5.0.2...7.5.0.3",
-    "DownloadCount": 55594
+    "DownloadCount": 55600
   },
   {
     "Author": "Ice",
@@ -588,7 +588,7 @@
     ],
     "InternalName": "ExplorersIcebox",
     "RepoUrl": "https://github.com/LeontopodiumNivale14/Explorers-Icebox/tree/master",
-    "DownloadCount": 37198,
+    "DownloadCount": 37220,
     "LastUpdate": 1779582511,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/64/ExplorersIcebox/versions/1.1.0.0/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/64/ExplorersIcebox/versions/1.1.0.0/update/latest.zip",
@@ -635,7 +635,7 @@
     "DownloadLinkTesting": "https://github.com/FFXIV-CombatReborn/GatherBuddyReborn/releases/download/7.4.5.17/GatherbuddyReborn.zip",
     "TestingAssemblyVersion": "7.4.5.17",
     "Changelog": "## What's Changed\r\n* Allagan Plugin gates by @Deathbeyond87 in https://github.com/FFXIV-CombatReborn/GatherBuddyReborn/pull/627\r\n* Shadow Wizard Crafting Gang: \"We love making gil\" by @CritoCantCode in https://github.com/FFXIV-CombatReborn/GatherBuddyReborn/pull/625\r\n* Mob tracking by @Deathbeyond87 in https://github.com/FFXIV-CombatReborn/GatherBuddyReborn/pull/628\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/GatherBuddyReborn/compare/7.5.0.10...7.5.0.11",
-    "DownloadCount": 936410
+    "DownloadCount": 936454
   },
   {
     "Author": "Ottermandias",
@@ -734,7 +734,7 @@
     ],
     "InternalName": "ICE",
     "RepoUrl": "https://github.com/LeontopodiumNivale14/Ices-Cosmic-Exploration",
-    "DownloadCount": 837029,
+    "DownloadCount": 837055,
     "LastUpdate": 1779289936,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/70/ICE/versions/0.0.77.13/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/70/ICE/versions/0.0.77.13/update/latest.zip",
@@ -1090,7 +1090,7 @@
     "AssemblyVersion": "7.5.0.2",
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/NoSillyReborn/releases/download/7.5.0.2/latest.zip",
     "Changelog": "## What's Changed\r\n* Fix manifest mismatch and update ecommons, remove stg from build by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/NoSillyReborn/pull/4\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/NoSillyReborn/compare/7.5.0.1...7.5.0.2",
-    "DownloadCount": 2784
+    "DownloadCount": 2787
   },
   {
     "Author": "Waitsnake",
@@ -1228,7 +1228,7 @@
     "AssemblyVersion": "7.5.0.10",
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/PassportCheckerReborn/releases/download/7.5.0.10/latest.zip",
     "Changelog": "## What's Changed\r\n* Party list enhancements and notes on hidden passports by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/PassportCheckerReborn/pull/19\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/PassportCheckerReborn/compare/7.5.0.9...7.5.0.10",
-    "DownloadCount": 15303
+    "DownloadCount": 15309
   },
   {
     "Author": "Anya Hichu",
@@ -1302,19 +1302,19 @@
     ],
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
-    "AssemblyVersion": "0.1.0.0",
+    "AssemblyVersion": "0.1.1.0",
     "RepoUrl": "https://github.com/NexusFFXIV/PlayerNexusTracker",
     "IconUrl": "https://raw.githubusercontent.com/NexusFFXIV/PlayerNexusTracker/main/PlayerNexusTracker.Plugin/images/icon.png",
     "AcceptsFeedback": true,
     "FeedbackMessage": "Please send feedback over to GitHub instead of using this dialog — the form there lets you pick the right category (Bug report, Feature request, or General question via Discussions) and asks for the context we need to act on the report (plugin version, repro steps, etc).\n\nOpen the chooser at:\nhttps://github.com/NexusFFXIV/PlayerNexusTracker/issues/new/choose\n\nNote: text you type in this Dalamud dialog goes to the Dalamud team aggregator and does not reach the plugin author directly.",
     "IsHide": false,
     "IsTestingExclusive": false,
-    "LastUpdate": 1779650011,
+    "LastUpdate": 1779664035,
     "DownloadCount": 3,
-    "DownloadLinkInstall": "https://github.com/NexusFFXIV/PlayerNexusTracker/releases/download/v0.1.0/PlayerNexusTracker-0.1.0.zip",
-    "DownloadLinkUpdate": "https://github.com/NexusFFXIV/PlayerNexusTracker/releases/download/v0.1.0/PlayerNexusTracker-0.1.0.zip",
-    "DownloadLinkTesting": "https://github.com/NexusFFXIV/PlayerNexusTracker/releases/download/v0.1.0/PlayerNexusTracker-0.1.0.zip",
-    "TestingAssemblyVersion": "0.1.0.0",
+    "DownloadLinkInstall": "https://github.com/NexusFFXIV/PlayerNexusTracker/releases/download/v0.1.1/PlayerNexusTracker-0.1.1.zip",
+    "DownloadLinkUpdate": "https://github.com/NexusFFXIV/PlayerNexusTracker/releases/download/v0.1.1/PlayerNexusTracker-0.1.1.zip",
+    "DownloadLinkTesting": "https://github.com/NexusFFXIV/PlayerNexusTracker/releases/download/v0.1.1/PlayerNexusTracker-0.1.1.zip",
+    "TestingAssemblyVersion": "0.1.1.0",
     "TestingDalamudApiLevel": 15
   },
   {
@@ -1463,7 +1463,7 @@
     "AssemblyVersion": "7.5.0.0",
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/RebornToolbox/releases/download/7.5.0.0/RebornToolbox.zip",
     "Changelog": "## What's Changed\r\n* api15 by @Shiori-Zephyr in https://github.com/FFXIV-CombatReborn/RebornToolbox/pull/16\r\n* API 15 compatibility by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/RebornToolbox/pull/17\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/RebornToolbox/compare/7.4.5.0...7.5.0.0",
-    "DownloadCount": 26067
+    "DownloadCount": 26071
   },
   {
     "Author": "Anya Hichu",
@@ -1558,7 +1558,7 @@
     "DownloadLinkTesting": "https://github.com/FFXIV-CombatReborn/RotationSolverReborn/releases/download/7.4.1.2/latest.zip",
     "TestingAssemblyVersion": "7.4.1.2",
     "Changelog": "## What's Changed\r\n* update range of action ahead by @NanaRaku in https://github.com/FFXIV-CombatReborn/RotationSolverReborn/pull/1268\r\n* Add config strategies for GNB heals, NIN mudra prio fix, mob distance calc fix by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/RotationSolverReborn/pull/1270\r\n\r\n## New Contributors\r\n* @NanaRaku made their first contribution in https://github.com/FFXIV-CombatReborn/RotationSolverReborn/pull/1268\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/RotationSolverReborn/compare/7.5.0.33...7.5.0.34",
-    "DownloadCount": 2592257
+    "DownloadCount": 2592330
   },
   {
     "Author": "Taurenkey, Kage, NightmareXIV",
@@ -1794,7 +1794,7 @@
     "AssemblyVersion": "1.0.0.8",
     "DownloadLinkUpdate": "https://github.com/aventurescence/Understudy/releases/download/v1.0.0.8/latest.zip",
     "Changelog": "### chore: update Dalamud API level to 15 in pluginmanifest\r\n\n\n---\n*Assembly version: 1.0.0.8*\n\n\n**Full Changelog**: https://github.com/aventurescence/Understudy/compare/v1.0.0.7...v1.0.0.8",
-    "DownloadCount": 1158
+    "DownloadCount": 1159
   },
   {
     "Author": "NightmareXIV",
@@ -2047,6 +2047,6 @@
     "DownloadLinkTesting": "https://github.com/FFXIV-CombatReborn/ZodiacBuddyReborn/releases/download/7.2.5.3/ZodiacBuddyReborn.zip",
     "TestingAssemblyVersion": "7.2.5.3",
     "Changelog": "## What's Changed\r\n* Add pr test and bump ecommons by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/ZodiacBuddyReborn/pull/8\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/ZodiacBuddyReborn/compare/7.5.0.0...7.5.0.1",
-    "DownloadCount": 14396
+    "DownloadCount": 14399
   }
 ]

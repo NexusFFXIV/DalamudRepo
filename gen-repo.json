@@ -52,7 +52,7 @@
     "AssemblyVersion": "7.5.0.4",
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/releases/download/7.5.0.4/ActionTimelineReborn.zip",
     "Changelog": "## What's Changed\r\n* Making the READMEs look the samesies. by @Nonunon in https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/pull/16\r\n\r\n## New Contributors\r\n* @Nonunon made their first contribution in https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/pull/16\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/compare/7.5.0.3...7.5.0.4",
-    "DownloadCount": 30357
+    "DownloadCount": 30365
   },
   {
     "Author": "Valenth Siveria",
@@ -162,7 +162,7 @@
     ],
     "InternalName": "ARDiscard",
     "RepoUrl": "https://github.com/VeraNala/ARDiscard",
-    "DownloadCount": 3336,
+    "DownloadCount": 3337,
     "LastUpdate": 1777603212,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/80/ARDiscard/versions/8.5/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/80/ARDiscard/versions/8.5/update/latest.zip",
@@ -228,7 +228,7 @@
     "Tags": [],
     "InternalName": "AutoDuty",
     "RepoUrl": "https://github.com/erdelf/AutoDuty",
-    "DownloadCount": 1579449,
+    "DownloadCount": 1579478,
     "LastUpdate": 1778713704,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/54/AutoDuty/versions/0.0.0.310/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/54/AutoDuty/versions/0.0.0.310/update/latest.zip",
@@ -331,7 +331,7 @@
     ],
     "InternalName": "Automaton",
     "RepoUrl": "https://github.com/Jaksuhn/Automaton",
-    "DownloadCount": 665395,
+    "DownloadCount": 665411,
     "LastUpdate": 1779261302,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/34/Automaton/versions/69.182.0.0/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/34/Automaton/versions/69.182.0.0/update/latest.zip",
@@ -564,7 +564,7 @@
     "Tags": [],
     "InternalName": "BossMod",
     "RepoUrl": "https://github.com/awgil/ffxiv_bossmod",
-    "DownloadCount": 2027261,
+    "DownloadCount": 2027303,
     "LastUpdate": 1779462517,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.0.15/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.0.15/update/latest.zip",
@@ -614,7 +614,7 @@
     "DownloadLinkTesting": "https://github.com/FFXIV-CombatReborn/BossmodReborn/releases/download/7.4.5.11/latest.zip",
     "TestingAssemblyVersion": "7.4.5.11",
     "Changelog": "## What's Changed\r\n* Feature/thirdwalk shinryu paradox floor aoe by @wen-ff in https://github.com/FFXIV-CombatReborn/BossmodReborn/pull/1199\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/BossmodReborn/compare/7.5.0.43...7.5.0.44",
-    "DownloadCount": 2947090
+    "DownloadCount": 2947450
   },
   {
     "Author": "Minmoose, Asgard and Contributors",
@@ -842,7 +842,7 @@
     ],
     "InternalName": "Chocoholic",
     "RepoUrl": "https://github.com/kawaii/Chocoholic",
-    "DownloadCount": 3522,
+    "DownloadCount": 3523,
     "LastUpdate": 1778089832,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/116/Chocoholic/versions/0.0.0.3/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/116/Chocoholic/versions/0.0.0.3/update/latest.zip",
@@ -1064,7 +1064,7 @@
     "Tags": [],
     "InternalName": "Dropbox",
     "RepoUrl": "https://github.com/kawaii/Dropbox",
-    "DownloadCount": 38947,
+    "DownloadCount": 38950,
     "LastUpdate": 1777528891,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/27/Dropbox/versions/1.0.2.13/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/27/Dropbox/versions/1.0.2.13/update/latest.zip",
@@ -1149,7 +1149,7 @@
     "AssemblyVersion": "7.5.0.3",
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/EasyZoomReborn/releases/download/7.5.0.3/EasyZoomReborn.zip",
     "Changelog": "## What's Changed\r\n* Added pr buildtest by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/EasyZoomReborn/pull/17\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/EasyZoomReborn/compare/7.5.0.2...7.5.0.3",
-    "DownloadCount": 55594
+    "DownloadCount": 55600
   },
   {
     "Author": "Ice",
@@ -1163,7 +1163,7 @@
     ],
     "InternalName": "ExplorersIcebox",
     "RepoUrl": "https://github.com/LeontopodiumNivale14/Explorers-Icebox/tree/master",
-    "DownloadCount": 37198,
+    "DownloadCount": 37220,
     "LastUpdate": 1779582511,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/64/ExplorersIcebox/versions/1.1.0.0/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/64/ExplorersIcebox/versions/1.1.0.0/update/latest.zip",
@@ -1320,7 +1320,7 @@
     "DownloadLinkTesting": "https://github.com/FFXIV-CombatReborn/GatherBuddyReborn/releases/download/7.4.5.17/GatherbuddyReborn.zip",
     "TestingAssemblyVersion": "7.4.5.17",
     "Changelog": "## What's Changed\r\n* Allagan Plugin gates by @Deathbeyond87 in https://github.com/FFXIV-CombatReborn/GatherBuddyReborn/pull/627\r\n* Shadow Wizard Crafting Gang: \"We love making gil\" by @CritoCantCode in https://github.com/FFXIV-CombatReborn/GatherBuddyReborn/pull/625\r\n* Mob tracking by @Deathbeyond87 in https://github.com/FFXIV-CombatReborn/GatherBuddyReborn/pull/628\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/GatherBuddyReborn/compare/7.5.0.10...7.5.0.11",
-    "DownloadCount": 936410
+    "DownloadCount": 936454
   },
   {
     "Author": "vera.lyn",
@@ -1333,7 +1333,7 @@
     ],
     "InternalName": "Gearsetter",
     "RepoUrl": "https://git.carvel.li/liza/Gearsetter",
-    "DownloadCount": 27333,
+    "DownloadCount": 27340,
     "LastUpdate": 1777759856,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/98/Gearsetter/versions/4.3/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/98/Gearsetter/versions/4.3/update/latest.zip",
@@ -1458,7 +1458,7 @@
     "Tags": [],
     "InternalName": "Henchman",
     "RepoUrl": "https://github.com/Knightmore/Henchman",
-    "DownloadCount": 102171,
+    "DownloadCount": 102183,
     "LastUpdate": 1779557093,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/85/Henchman/versions/2.0.5.6/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/85/Henchman/versions/2.0.5.6/update/latest.zip",
@@ -1527,7 +1527,7 @@
     ],
     "InternalName": "Hyperborea",
     "RepoUrl": "https://github.com/kawaii/Hyperborea",
-    "DownloadCount": 37492,
+    "DownloadCount": 37493,
     "LastUpdate": 1777529233,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/45/Hyperborea/versions/1.0.0.34/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/45/Hyperborea/versions/1.0.0.34/update/latest.zip",
@@ -1594,7 +1594,7 @@
     ],
     "InternalName": "ICE",
     "RepoUrl": "https://github.com/LeontopodiumNivale14/Ices-Cosmic-Exploration",
-    "DownloadCount": 837029,
+    "DownloadCount": 837055,
     "LastUpdate": 1779289936,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/70/ICE/versions/0.0.77.13/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/70/ICE/versions/0.0.77.13/update/latest.zip",
@@ -2230,7 +2230,7 @@
     "AssemblyVersion": "7.5.0.2",
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/NoSillyReborn/releases/download/7.5.0.2/latest.zip",
     "Changelog": "## What's Changed\r\n* Fix manifest mismatch and update ecommons, remove stg from build by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/NoSillyReborn/pull/4\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/NoSillyReborn/compare/7.5.0.1...7.5.0.2",
-    "DownloadCount": 2784
+    "DownloadCount": 2787
   },
   {
     "Author": "Waitsnake",
@@ -2387,7 +2387,7 @@
     "AssemblyVersion": "7.5.0.10",
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/PassportCheckerReborn/releases/download/7.5.0.10/latest.zip",
     "Changelog": "## What's Changed\r\n* Party list enhancements and notes on hidden passports by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/PassportCheckerReborn/pull/19\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/PassportCheckerReborn/compare/7.5.0.9...7.5.0.10",
-    "DownloadCount": 15303
+    "DownloadCount": 15309
   },
   {
     "Author": "Anya Hichu",
@@ -2700,7 +2700,7 @@
     "Tags": [],
     "InternalName": "ReActionEx",
     "RepoUrl": "https://puni.sh/api/repository/taurenkey",
-    "DownloadCount": 7145,
+    "DownloadCount": 7146,
     "LastUpdate": 1777883909,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/55/ReActionEx/versions/1.0.1.2/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/55/ReActionEx/versions/1.0.1.2/update/latest.zip",
@@ -2734,7 +2734,7 @@
     "AssemblyVersion": "7.5.0.0",
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/RebornToolbox/releases/download/7.5.0.0/RebornToolbox.zip",
     "Changelog": "## What's Changed\r\n* api15 by @Shiori-Zephyr in https://github.com/FFXIV-CombatReborn/RebornToolbox/pull/16\r\n* API 15 compatibility by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/RebornToolbox/pull/17\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/RebornToolbox/compare/7.4.5.0...7.5.0.0",
-    "DownloadCount": 26067
+    "DownloadCount": 26071
   },
   {
     "Author": "Anya Hichu",
@@ -2829,7 +2829,7 @@
     "DownloadLinkTesting": "https://github.com/FFXIV-CombatReborn/RotationSolverReborn/releases/download/7.4.1.2/latest.zip",
     "TestingAssemblyVersion": "7.4.1.2",
     "Changelog": "## What's Changed\r\n* update range of action ahead by @NanaRaku in https://github.com/FFXIV-CombatReborn/RotationSolverReborn/pull/1268\r\n* Add config strategies for GNB heals, NIN mudra prio fix, mob distance calc fix by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/RotationSolverReborn/pull/1270\r\n\r\n## New Contributors\r\n* @NanaRaku made their first contribution in https://github.com/FFXIV-CombatReborn/RotationSolverReborn/pull/1268\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/RotationSolverReborn/compare/7.5.0.33...7.5.0.34",
-    "DownloadCount": 2592257
+    "DownloadCount": 2592330
   },
   {
     "Author": "Taurenkey, Kage, NightmareXIV",
@@ -2959,7 +2959,7 @@
     ],
     "InternalName": "Skippy",
     "RepoUrl": "https://github.com/BoxuChan/Skippy",
-    "DownloadCount": 1377,
+    "DownloadCount": 1378,
     "LastUpdate": 1778506288,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/130/Skippy/versions/2.2.4.2/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/130/Skippy/versions/2.2.4.2/update/latest.zip",
@@ -3258,7 +3258,7 @@
     "AssemblyVersion": "1.0.0.8",
     "DownloadLinkUpdate": "https://github.com/aventurescence/Understudy/releases/download/v1.0.0.8/latest.zip",
     "Changelog": "### chore: update Dalamud API level to 15 in pluginmanifest\r\n\n\n---\n*Assembly version: 1.0.0.8*\n\n\n**Full Changelog**: https://github.com/aventurescence/Understudy/compare/v1.0.0.7...v1.0.0.8",
-    "DownloadCount": 1158
+    "DownloadCount": 1159
   },
   {
     "Author": "NightmareXIV",
@@ -3374,7 +3374,7 @@
     ],
     "InternalName": "VIWI",
     "RepoUrl": null,
-    "DownloadCount": 35291,
+    "DownloadCount": 35292,
     "LastUpdate": 1778353976,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/108/VIWI/versions/0.0.0.60/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/108/VIWI/versions/0.0.0.60/update/latest.zip",
@@ -3449,7 +3449,7 @@
     "Tags": [],
     "InternalName": "wahventory",
     "RepoUrl": null,
-    "DownloadCount": 60061,
+    "DownloadCount": 60062,
     "LastUpdate": 1779287741,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/91/wahventory/versions/4.5.1.0/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/91/wahventory/versions/4.5.1.0/update/latest.zip",
@@ -3471,7 +3471,7 @@
     ],
     "InternalName": "WaymarkStudio",
     "RepoUrl": "https://github.com/sourpuh/ffxiv_waymarkstudio",
-    "DownloadCount": 61264,
+    "DownloadCount": 61265,
     "LastUpdate": 1778724776,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/62/WaymarkStudio/versions/0.0.0.48/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/62/WaymarkStudio/versions/0.0.0.48/update/latest.zip",
@@ -3774,6 +3774,6 @@
     "DownloadLinkTesting": "https://github.com/FFXIV-CombatReborn/ZodiacBuddyReborn/releases/download/7.2.5.3/ZodiacBuddyReborn.zip",
     "TestingAssemblyVersion": "7.2.5.3",
     "Changelog": "## What's Changed\r\n* Add pr test and bump ecommons by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/ZodiacBuddyReborn/pull/8\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/ZodiacBuddyReborn/compare/7.5.0.0...7.5.0.1",
-    "DownloadCount": 14396
+    "DownloadCount": 14399
   }
 ]
