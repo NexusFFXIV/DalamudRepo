@@ -27,6 +27,7 @@
 param(
     [string]$PluginsYaml = "plugins.yml",
     [string]$ExternalPluginsYaml = "external-plugins.yml",
+    [string]$ExternalReposYaml = "external-repos.yml",
     [string]$OutFile = "pluginmaster.json",
     [string]$DalamudMasterUrl = "https://kamori.goats.dev/Plugin/PluginMaster"
 )
@@ -208,6 +209,54 @@ if ($externalConfig -and $externalConfig.externalPlugins -and $dalamudMaster) {
         }
         $entries += $upstream
     }
+}
+
+# External repos: pull the whole pluginmaster from each third-party repo and
+# fold every entry into our pool. Failures on a single repo (unreachable, bad
+# JSON, …) are logged and skipped — the rest of the build keeps going.
+if (Test-Path $ExternalReposYaml) {
+    $extReposConfig = Get-Content $ExternalReposYaml -Raw | ConvertFrom-Yaml
+    if ($extReposConfig.externalRepos) {
+        foreach ($url in $extReposConfig.externalRepos) {
+            Write-Host "==> external repo $url"
+            try {
+                $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30
+            } catch {
+                Write-Warning "Failed to fetch $url — $($_.Exception.Message)"
+                continue
+            }
+            # Most pluginmasters are JSON arrays; some single-plugin manifests
+            # are a bare object. Normalize to an array either way.
+            $items = if ($resp -is [System.Array]) { $resp } else { @($resp) }
+            $added = 0
+            foreach ($e in $items) {
+                if ($e -and $e.InternalName) {
+                    $entries += $e
+                    $added++
+                }
+            }
+            Write-Host "    added $added entries"
+        }
+    }
+}
+
+# Deduplicate by InternalName, keeping the entry with the highest
+# AssemblyVersion. Same plugin published by multiple repos is common; this
+# rule picks the most up-to-date copy. Missing/unparseable versions sort
+# below valid ones (treated as 0.0.0.0).
+$beforeCount = $entries.Count
+$entries = $entries `
+    | Group-Object -Property InternalName `
+    | ForEach-Object {
+        $_.Group | Sort-Object -Property @{
+            Expression = {
+                try { [System.Version]$_.AssemblyVersion } catch { [System.Version]"0.0.0.0" }
+            }
+        } -Descending | Select-Object -First 1
+    }
+$afterCount = @($entries).Count
+if ($beforeCount -ne $afterCount) {
+    Write-Host "Deduplicated $($beforeCount - $afterCount) duplicate plugin entries ($beforeCount -> $afterCount)."
 }
 
 $json = $entries | ConvertTo-Json -Depth 10
