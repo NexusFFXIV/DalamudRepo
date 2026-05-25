@@ -1,18 +1,4 @@
 {
-  "ActionEffectRange": {
-    "InternalName": "ActionEffectRange",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "2.0.1.0",
-    "TestingDalamudApiLevel": 9
-  },
-  "AetherCompassPreview": {
-    "InternalName": "AetherCompassPreview",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.6.3.0",
-    "TestingDalamudApiLevel": 9
-  },
   "CraftingList": {
     "InternalName": "CraftingList",
     "AssemblyVersion": "2.5.8",
@@ -34,6 +20,13 @@
     "TestingAssemblyVersion": null,
     "TestingDalamudApiLevel": null
   },
+  "IINACT": {
+    "InternalName": "IINACT",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "2.10.1.4",
+    "TestingDalamudApiLevel": 15
+  },
   "LMeter": {
     "InternalName": "LMeter",
     "AssemblyVersion": null,
@@ -45,7 +38,7 @@
     "InternalName": "MaterialUI",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.4.8",
+    "TestingAssemblyVersion": "1.4.13",
     "TestingDalamudApiLevel": 9
   },
   "MinionRoulette": {
@@ -89,13 +82,6 @@
     "DalamudApiLevel": null,
     "TestingAssemblyVersion": "0.3.12.0",
     "TestingDalamudApiLevel": 15
-  },
-  "TitleRenamed": {
-    "InternalName": "TitleRenamed",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.0.4.1",
-    "TestingDalamudApiLevel": 7
   },
   "XIVAuras": {
     "InternalName": "XIVAuras",
