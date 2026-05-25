@@ -5,11 +5,14 @@
 [![Update pluginmaster](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml/badge.svg)](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Dalamud API](https://img.shields.io/badge/Dalamud_API-15-9D5BFF)](https://github.com/goatcorp/Dalamud)
-[![All plugins](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json&query=$.length&label=all%20plugins&color=brightgreen)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json)
-[![NexusFFXIV](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json&query=$.length&label=nexusffxiv&color=blue)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json)
-[![External](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json&query=$.length&label=external&color=orange)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json)
-[![Common repos](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json&query=$.length&label=common%20repos&color=yellow)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json)
-[![Gen repos](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json&query=$.length&label=gen%20repos&color=lightgrey)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json)
+
+| Repo file | Plugin count | Scope |
+|---|---|---|
+| [`all-repo.json`](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json) | [![all-repo](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json&query=$.length&label=all--repo&color=brightgreen)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json) | Curated union — default subscribe URL |
+| [`pluginmaster.json`](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json) | [![pluginmaster](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json&query=$.length&label=pluginmaster&color=blue)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json) | NexusFFXIV plugins only |
+| [`external-repo.json`](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json) | [![external-repo](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json&query=$.length&label=external--repo&color=orange)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json) | Third-party plugins imported by name from Dalamud's official pluginmaster |
+| [`common-repo.json`](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json) | [![common-repo](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json&query=$.length&label=common--repo&color=yellow)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json) | Curated third-party Dalamud repos |
+| [`gen-repo.json`](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json) | [![gen-repo](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json&query=$.length&label=gen--repo&color=lightgrey)](https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json) | Auto-discovered third-party repos (standalone, not in `all-repo`) |
 
 > [!TIP]
 > ### 🎮 Quick install

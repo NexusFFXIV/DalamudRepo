@@ -1,8 +1,15 @@
 # Part B — output builders: dedup, write, summary.
 
 function Resolve-Version {
+    # Effective version for cross-source winner selection: max of
+    # AssemblyVersion / TestingAssemblyVersion. A source that ships only a
+    # newer testing build still wins dedup against a source whose stable is
+    # older — the user explicitly wanted this so a single source's "100%
+    # truth" view drives the choice, not just the prod channel.
     param($Entry)
-    try { [System.Version]$Entry.AssemblyVersion } catch { [System.Version]"0.0.0.0" }
+    $av  = try { [System.Version]$Entry.AssemblyVersion }        catch { [System.Version]"0.0.0.0" }
+    $tav = try { [System.Version]$Entry.TestingAssemblyVersion } catch { [System.Version]"0.0.0.0" }
+    if ($tav -gt $av) { return $tav } else { return $av }
 }
 
 function Get-Deduped {
