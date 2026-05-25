@@ -6,7 +6,16 @@
 # logging, and returns @{ entries = @(...); filtered = <int> }.
 #
 # Relies on script-scope vars set by the orchestrator: $MinDalamudApiLevel,
-# $MinTestingDalamudApiLevel, $DalamudMasterUrl.
+# $MinTestingDalamudApiLevel.
+
+# Upstream Dalamud master plugin list — source for `type: external-plugins`
+# entries (we pull individual plugins out of it by InternalName).
+$DalamudMasterUrl = "https://kamori.goats.dev/Plugin/PluginMaster"
+
+# Durable cache file for zip-fallback api-level lookups. Kept under cache/
+# (separate from sources/ which is for plugin source definitions) so it's
+# obviously a build artifact.
+$SnapshotPath = "cache/snapshot.json"
 
 function Invoke-GhApi {
     param([string]$Path)
@@ -59,18 +68,121 @@ function Get-CumulativeDownloads {
     return $sum
 }
 
-# Some badly-formatted upstream repos omit DalamudApiLevel /
-# TestingDalamudApiLevel from their pluginmaster entries. In that case we
-# download the linked zip and read the API level out of the embedded
-# <InternalName>.json that DalamudPackager generates inside it. Cached per
-# URL so we don't re-download anything.
+# =============================================================================
+# Snapshot cache for badly-formatted upstream entries
+# =============================================================================
+#
+# Purpose
+# -------
+# Some upstream pluginmaster entries omit DalamudApiLevel /
+# TestingDalamudApiLevel. When we hit one we have to download the linked zip
+# and read the level out of the embedded <InternalName>.json. Every zip GET
+# counts toward the upstream release's download_count — without a cache, each
+# workflow run would inflate that counter, the next run would see the new
+# value, and a "refresh" PR would open every cycle for no real reason.
+#
+# The cache exists for that single purpose: avoid unnecessary zip downloads.
+# Nothing else. It does not mirror upstream data, it is not a backup of the
+# pluginmaster, it doesn't store anything we'd serve to consumers.
+#
+# Layers
+# ------
+#   * $script:ZipApiLevelCache — per-run dedup, keyed by URL.
+#   * $script:Snapshot         — durable cross-run cache (one entry per
+#                                plugin, keyed by InternalName), persisted
+#                                to cache/snapshot.json.
+#
+# Snapshot value schema (per plugin):
+#   { InternalName, AssemblyVersion, DalamudApiLevel,
+#                   TestingAssemblyVersion, TestingDalamudApiLevel }
+#
+# Resolve priority per channel (prod and testing run independently):
+#   1. Upstream entry has the level                  → use it, no cache touch
+#   2. Snapshot has matching AssemblyVersion + level → use it (snapshot hit)
+#   3. Download the zip                              → use, store in snapshot
+#
+# AssemblyVersion mismatch between cache and upstream invalidates the cached
+# level for that channel and falls through to steps 1/3 — which is why a
+# version bump doesn't automatically cause a zip download (upstream may have
+# fixed its formatting between releases).
+#
+# Per-channel write/cleanup rules
+# -------------------------------
+# Cache fields are stored/dropped per channel, never all-or-nothing:
+#   * channel resolved via fallback this run     → its fields are stored
+#   * channel where upstream provides the level  → its fields drop to null
+#   * channel that doesn't exist on this plugin  → its fields stay null
+# When both channels end up null the whole entry is removed.
+#
+# Edge case matrix (one row per plugin shape we've thought about):
+#
+#   Plugin shape                              | Outcome
+#   ------------------------------------------|----------------------------------
+#   prod-only, upstream broken                | cache holds prod fields
+#   prod-only, upstream fixed                 | cache entry deleted
+#   testing-only fresh plugin, upstream broken| cache holds testing fields
+#   testing-only fresh plugin, upstream fixed | cache entry deleted
+#   both channels broken                      | cache holds both
+#   both channels, only prod fixed            | cache holds testing only
+#   both channels, only testing fixed         | cache holds prod only
+#   both channels fully fixed                 | cache entry deleted
+#   AV bumped on a channel, level missing     | cache ignored, fresh resolve
+#   AV bumped, upstream now provides level    | cache ignored, used directly
+#   testing channel newly added (broken)      | cache gains testing fields
+#   testing channel removed by upstream       | cache testing fields drop
+#   zip download failed                       | level stays null, not cached
+#                                             | (no "failure cache")
+#
+# Counters surfaced in the orchestrator summary:
+#   $script:SnapshotHits       - resolves served from snapshot
+#   $script:ZipDownloads       - actual HTTP fetches
+#   $script:ZipFallbackRescued - entries kept that would have been filtered
+#                                otherwise
+# =============================================================================
 $script:ZipApiLevelCache = @{}
 $script:ZipFallbackRescued = 0
+$script:SnapshotHits = 0
+$script:ZipDownloads = 0
+
+$script:Snapshot = @{}
+
+function Initialize-Snapshot {
+    $script:Snapshot = @{}
+    if (Test-Path $SnapshotPath) {
+        try {
+            $loaded = Get-Content $SnapshotPath -Raw | ConvertFrom-Json -AsHashtable
+            if ($loaded) { $script:Snapshot = $loaded }
+        } catch {
+            Write-Warning "Failed to parse snapshot at $SnapshotPath — starting fresh. $($_.Exception.Message)"
+        }
+    }
+}
+
+function Save-Snapshot {
+    # Create the cache dir on demand — fresh clones / first runs after a
+    # rename won't have it yet.
+    $parent = Split-Path $SnapshotPath -Parent
+    if ($parent -and -not (Test-Path $parent)) {
+        New-Item -ItemType Directory -Path $parent -Force | Out-Null
+    }
+    # Sort by InternalName for stable, diff-friendly output across runs.
+    $sorted = [ordered]@{}
+    foreach ($k in ($script:Snapshot.Keys | Sort-Object)) { $sorted[$k] = $script:Snapshot[$k] }
+    ($sorted | ConvertTo-Json -Depth 5) + "`n" | Set-Content -Path $SnapshotPath -Encoding UTF8 -NoNewline
+}
 
 function Get-ZipManifestApiLevel {
+    # Pure: download the zip, read DalamudApiLevel from the embedded
+    # manifest, return it (or $null on any failure). All caching happens at
+    # the caller (Resolve-EntryApiLevels) — this function just does the I/O.
+    # The URL-keyed in-process map is the one piece of dedup that lives here,
+    # to cover the (rare) case of two entries pointing at the same zip in
+    # one run.
     param([string]$Url, [string]$InternalName)
     if (-not $Url -or -not $InternalName) { return $null }
     if ($script:ZipApiLevelCache.ContainsKey($Url)) { return $script:ZipApiLevelCache[$Url] }
+
+    $script:ZipDownloads++
     $result = $null
     $tmp = $null
     try {
@@ -97,37 +209,103 @@ function Get-ZipManifestApiLevel {
     return $result
 }
 
+function Resolve-EntryApiLevels {
+    # Resolves DalamudApiLevel + TestingDalamudApiLevel for one upstream
+    # entry, falling back to the snapshot cache and then to the zip
+    # manifest. Full design notes (priority order, per-channel write rules,
+    # edge case matrix) live in the snapshot-cache header block above.
+    param($Entry)
+    if (-not $Entry -or -not $Entry.InternalName) {
+        return [pscustomobject]@{ DalamudApiLevel = $null; TestingDalamudApiLevel = $null }
+    }
+    $cached  = $script:Snapshot[$Entry.InternalName]
+    $prodAv  = if ($Entry.AssemblyVersion)        { [string]$Entry.AssemblyVersion }        else { $null }
+    $prodLvl = $Entry.DalamudApiLevel
+    $testAv  = if ($Entry.TestingAssemblyVersion) { [string]$Entry.TestingAssemblyVersion } else { $null }
+    $testLvl = $Entry.TestingDalamudApiLevel
+
+    $prodFromFallback = $false
+    $testFromFallback = $false
+
+    if ($null -eq $prodLvl -and $prodAv) {
+        if ($cached -and ([string]$cached.AssemblyVersion -eq $prodAv) -and ($null -ne $cached.DalamudApiLevel)) {
+            $prodLvl = [int]$cached.DalamudApiLevel
+            $script:SnapshotHits++
+            Write-Host ("    [cache] {0} prod {1} api={2}" -f $Entry.InternalName, $prodAv, $prodLvl)
+        } else {
+            $url = if ($Entry.DownloadLinkInstall) { $Entry.DownloadLinkInstall } else { $Entry.DownloadLinkUpdate }
+            $prodLvl = Get-ZipManifestApiLevel -Url $url -InternalName $Entry.InternalName
+            if ($null -ne $prodLvl) {
+                $script:ZipFallbackRescued++
+                Write-Host ("    [zip]   {0} prod {1} api={2}" -f $Entry.InternalName, $prodAv, $prodLvl)
+            } else {
+                Write-Host ("    [zip-fail] {0} prod {1} (api level could not be read)" -f $Entry.InternalName, $prodAv)
+            }
+        }
+        $prodFromFallback = $true
+    }
+
+    if ($null -eq $testLvl -and $testAv) {
+        if ($cached -and ([string]$cached.TestingAssemblyVersion -eq $testAv) -and ($null -ne $cached.TestingDalamudApiLevel)) {
+            $testLvl = [int]$cached.TestingDalamudApiLevel
+            $script:SnapshotHits++
+            Write-Host ("    [cache] {0} test {1} api={2}" -f $Entry.InternalName, $testAv, $testLvl)
+        } else {
+            $testLvl = Get-ZipManifestApiLevel -Url $Entry.DownloadLinkTesting -InternalName $Entry.InternalName
+            if ($null -ne $testLvl) {
+                $script:ZipFallbackRescued++
+                Write-Host ("    [zip]   {0} test {1} api={2}" -f $Entry.InternalName, $testAv, $testLvl)
+            } else {
+                Write-Host ("    [zip-fail] {0} test {1} (api level could not be read)" -f $Entry.InternalName, $testAv)
+            }
+        }
+        $testFromFallback = $true
+    }
+
+    # Per-channel decision: each channel's cache fields are kept only when
+    # we actually needed the fallback path to resolve that channel. Upstream
+    # providing the level directly (or the channel not existing at all) is
+    # enough to drop just that channel's cache — independent of the other.
+    # The cache exists purely to avoid re-downloading zips, so any channel
+    # that no longer needs a zip lookup has no reason to stay cached.
+    $keepProd = $prodFromFallback -and ($null -ne $prodLvl)
+    $keepTest = $testFromFallback -and ($null -ne $testLvl)
+
+    if ($keepProd -or $keepTest) {
+        $script:Snapshot[$Entry.InternalName] = [ordered]@{
+            InternalName           = $Entry.InternalName
+            AssemblyVersion        = if ($keepProd) { $prodAv }       else { $null }
+            DalamudApiLevel        = if ($keepProd) { [int]$prodLvl } else { $null }
+            TestingAssemblyVersion = if ($keepTest) { $testAv }       else { $null }
+            TestingDalamudApiLevel = if ($keepTest) { [int]$testLvl } else { $null }
+        }
+    } elseif ($cached) {
+        $script:Snapshot.Remove($Entry.InternalName) | Out-Null
+    }
+
+    return [pscustomobject]@{
+        DalamudApiLevel        = $prodLvl
+        TestingDalamudApiLevel = $testLvl
+    }
+}
+
 function Test-MeetsApi {
     # An entry passes if either the stable OR the testing channel meets its
     # respective minimum API level. This way a plugin whose stable build is
     # behind but whose testing build keeps up doesn't get dropped from
-    # testing-eligible scopes.
-    #
-    # Fallback: if a level field is missing from the upstream entry we look
-    # it up in the embedded <InternalName>.json inside the corresponding zip
-    # (install/update zip for prod, testing zip for testing). Rescued
-    # entries bump $script:ZipFallbackRescued so the orchestrator can show
-    # how many entries were saved that way.
+    # testing-eligible scopes. Resolve-EntryApiLevels handles the
+    # snapshot/zip fallback for missing levels — see that function for the
+    # full lookup order.
     param($Entry)
     if (-not $Entry) { return $false }
-    $prodLvl = $Entry.DalamudApiLevel
-    $testLvl = $Entry.TestingDalamudApiLevel
-    if ($null -eq $prodLvl) {
-        $url = if ($Entry.DownloadLinkInstall) { $Entry.DownloadLinkInstall } else { $Entry.DownloadLinkUpdate }
-        $prodLvl = Get-ZipManifestApiLevel -Url $url -InternalName $Entry.InternalName
-        if ($null -ne $prodLvl) { $script:ZipFallbackRescued++ }
-    }
-    if ($null -eq $testLvl) {
-        $testLvl = Get-ZipManifestApiLevel -Url $Entry.DownloadLinkTesting -InternalName $Entry.InternalName
-        if ($null -ne $testLvl) { $script:ZipFallbackRescued++ }
-    }
+    $resolved = Resolve-EntryApiLevels $Entry
     $prodOk = $false
     $testOk = $false
-    if ($null -ne $prodLvl) {
-        try { $prodOk = ([int]$prodLvl) -ge $MinDalamudApiLevel } catch {}
+    if ($null -ne $resolved.DalamudApiLevel) {
+        try { $prodOk = ([int]$resolved.DalamudApiLevel) -ge $MinDalamudApiLevel } catch {}
     }
-    if ($null -ne $testLvl) {
-        try { $testOk = ([int]$testLvl) -ge $MinTestingDalamudApiLevel } catch {}
+    if ($null -ne $resolved.TestingDalamudApiLevel) {
+        try { $testOk = ([int]$resolved.TestingDalamudApiLevel) -ge $MinTestingDalamudApiLevel } catch {}
     }
     return ($prodOk -or $testOk)
 }
