@@ -86,11 +86,14 @@ jobs:
 
           Triggered by: \`${{ github.event_name }}\`
           Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          # Try auto-merge first (sets the queue if checks are pending); fall back
-          # to a direct merge when the PR is already in 'clean' status — which is
-          # the common case here because DalamudRepo has no required CI checks.
-          gh pr merge "$BRANCH" --squash --auto --delete-branch \
-            || gh pr merge "$BRANCH" --squash --delete-branch
+          # Direct merge — DalamudRepo has no required CI checks, so --auto
+          # would just queue a merge that resolves immediately anyway. We tried
+          # that pattern (--auto || direct) and it left bot branches orphaned:
+          # the --auto path occasionally accepted the call silently (queueing
+          # the merge) but never honored the delete-branch preference, so the
+          # fallback never ran and the branch stayed behind. Direct merge with
+          # --delete-branch deletes reliably.
+          gh pr merge "$BRANCH" --squash --delete-branch
 
       - name: Email notification on change
         # Skipped silently if either the file didn't change OR the SMTP_HOST
