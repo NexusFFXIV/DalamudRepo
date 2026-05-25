@@ -1,1 +1,107 @@
-{}
+{
+  "ActionEffectRange": {
+    "InternalName": "ActionEffectRange",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "2.0.1.0",
+    "TestingDalamudApiLevel": 9
+  },
+  "AetherCompassPreview": {
+    "InternalName": "AetherCompassPreview",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.6.3.0",
+    "TestingDalamudApiLevel": 9
+  },
+  "CraftingList": {
+    "InternalName": "CraftingList",
+    "AssemblyVersion": "2.5.8",
+    "DalamudApiLevel": 11,
+    "TestingAssemblyVersion": null,
+    "TestingDalamudApiLevel": null
+  },
+  "FullscreenToggle": {
+    "InternalName": "FullscreenToggle",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.1.3",
+    "TestingDalamudApiLevel": 6
+  },
+  "HypnotoadPlugin": {
+    "InternalName": "HypnotoadPlugin",
+    "AssemblyVersion": "0.0.3.2",
+    "DalamudApiLevel": 15,
+    "TestingAssemblyVersion": null,
+    "TestingDalamudApiLevel": null
+  },
+  "LMeter": {
+    "InternalName": "LMeter",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.4.4.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "MaterialUI": {
+    "InternalName": "MaterialUI",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.4.8",
+    "TestingDalamudApiLevel": 9
+  },
+  "MinionRoulette": {
+    "InternalName": "MinionRoulette",
+    "AssemblyVersion": "1.2.0.3",
+    "DalamudApiLevel": 15,
+    "TestingAssemblyVersion": null,
+    "TestingDalamudApiLevel": null
+  },
+  "NotesPal": {
+    "InternalName": "NotesPal",
+    "AssemblyVersion": "0.2.0.0",
+    "DalamudApiLevel": 15,
+    "TestingAssemblyVersion": null,
+    "TestingDalamudApiLevel": null
+  },
+  "ProximityVoiceChat": {
+    "InternalName": "ProximityVoiceChat",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.5.16.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "RaidsRewritten": {
+    "InternalName": "RaidsRewritten",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.2.2.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "Resonant": {
+    "InternalName": "Resonant",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.0.0.6",
+    "TestingDalamudApiLevel": 5
+  },
+  "SmartPings": {
+    "InternalName": "SmartPings",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.3.12.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "TitleRenamed": {
+    "InternalName": "TitleRenamed",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.4.1",
+    "TestingDalamudApiLevel": 7
+  },
+  "XIVAuras": {
+    "InternalName": "XIVAuras",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.2.5.0",
+    "TestingDalamudApiLevel": 8
+  }
+}
