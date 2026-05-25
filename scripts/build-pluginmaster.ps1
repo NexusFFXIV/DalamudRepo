@@ -20,8 +20,7 @@
 
 param(
     [string]$ConfigYaml = "config.yml",
-    [string]$SourcesDir = "sources",
-    [string]$DalamudMasterUrl = "https://kamori.goats.dev/Plugin/PluginMaster"
+    [string]$SourcesDir = "sources"
 )
 
 $ErrorActionPreference = 'Stop'
@@ -33,6 +32,12 @@ Import-Module powershell-yaml
 
 . "$PSScriptRoot\lib\collect-plugins.ps1"
 . "$PSScriptRoot\lib\build-outputs.ps1"
+
+# Durable cache for zip-fallback api-level lookups. Without it, each run
+# re-downloads the same upstream zips, which inflates the upstream
+# download_count and produces a "refresh" PR every cycle even when nothing
+# real changed. See Get-ZipManifestApiLevel for the lookup logic.
+Initialize-Snapshot
 
 # ── Build config ─────────────────────────────────────────────────────────────
 $buildConfig = $null
@@ -149,4 +154,7 @@ if ($totalFiltered -gt 0) {
 if ($script:ZipFallbackRescued -gt 0) {
     Write-Host ""
     Write-Host ("Zip fallback rescued {0} entries (API level read from embedded manifest)." -f $script:ZipFallbackRescued)
+    Write-Host ("  Snapshot hits: {0}; fresh zip downloads: {1}." -f $script:SnapshotHits, $script:ZipDownloads)
 }
+
+Save-Snapshot

@@ -3,14 +3,19 @@ name: Update pluginmaster
 # Three triggers, all converge on the same rebuild step:
 #   - repository_dispatch  : sent by a plugin repo's release workflow on tag push (real-time update)
 #   - workflow_dispatch    : manual button in the Actions UI
-#   - schedule (6-hourly)  : safety net if a dispatch is lost or a plugin repo's workflow missed it
+#   - schedule (every 48h) : safety net for missed dispatches + drift in external upstream pools.
+#                            48h instead of 6h: the zip-fallback used to inflate upstream
+#                            download_counts on every run, which produced fake "refresh" PRs.
+#                            With snapshot.json caching that's gone, but a long cadence is still
+#                            the right default — external repos don't ping us, but they also
+#                            don't release every six hours.
 
 on:
   repository_dispatch:
     types: [plugin-release]
   workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 0 */2 * *'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -44,8 +49,10 @@ jobs:
         # short-lived branch and opens a PR, which auto-merges once GitHub
         # confirms it satisfies the protection rules (no CI checks are required
         # for this repo, only the PR-must-exist gate).
-        # Diff covers all four output files — a change in any one of them
-        # (own plugins / external / repos / all) triggers a refresh PR.
+        # Diff covers all four pluginmaster outputs plus snapshot.json — a
+        # change in any of them triggers a refresh PR. Including snapshot.json
+        # in the diff makes the zip-fallback cache durable: new (plugin,
+        # version) entries get persisted on the same run that needed them.
         id: pr
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -53,10 +60,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           PM_FILES="pluginmaster.json external-repo.json common-repo.json gen-repo.json all-repo.json"
+          TRACKED_FILES="$PM_FILES cache/snapshot.json"
           # Stage first so newly-created files (not in HEAD) also show up in
           # the diff — plain `git diff` would miss untracked outputs.
-          git add -- $PM_FILES
-          if git diff --cached --quiet -- $PM_FILES; then
+          git add -- $TRACKED_FILES
+          if git diff --cached --quiet -- $TRACKED_FILES; then
             echo "No changes — nothing to commit."
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
@@ -65,7 +73,7 @@ jobs:
           BRANCH="bot/refresh-pluginmaster-${{ github.run_id }}"
           DISPATCH_PAYLOAD='${{ toJSON(github.event.client_payload) }}'
           git checkout -b "$BRANCH"
-          git add -- $PM_FILES
+          git add -- $TRACKED_FILES
           git commit -m "chore: refresh pluginmaster.json" \
                      -m "Triggered by: ${{ github.event_name }}" \
                      -m "Payload: $DISPATCH_PAYLOAD"
