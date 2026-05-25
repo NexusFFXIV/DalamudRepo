@@ -427,56 +427,136 @@ function Collect-ExternalPluginPool {
     return @{ entries = $entries; filtered = $filtered }
 }
 
+function Test-IsOriginalUpstream {
+    # Heuristic tiebreaker: when the source URL we're fetching from sits on
+    # the same host as the plugin's own RepoUrl, we treat that source as the
+    # plugin's original upstream and prefer it over aggregator-style mirrors.
+    param([string]$SourceUrl, $Entry)
+    if (-not $Entry.RepoUrl -or -not $SourceUrl) { return $false }
+    try {
+        return ([uri]$SourceUrl).Host -eq ([uri]$Entry.RepoUrl).Host
+    } catch { return $false }
+}
+
+function Select-RepoWinners {
+    # Cross-repo dedup for external-repos pools: pick one winner per
+    # InternalName so we never merge fields from multiple sources.
+    #
+    # Winner priority:
+    #   1. highest effective version (max of AssemblyVersion / TestingAssemblyVersion)
+    #   2. candidate whose source URL host matches its RepoUrl host
+    #      (the plugin's own upstream beats third-party mirrors)
+    #   3. first wins (input order)
+    #
+    # Dropped candidates are logged for debuggability — you can see at a
+    # glance which source got picked over which.
+    param($Candidates)
+    $byName = @{}
+    foreach ($c in $Candidates) {
+        $name = $c.entry.InternalName
+        if (-not $name) { continue }
+        if (-not $byName.ContainsKey($name)) { $byName[$name] = @() }
+        $byName[$name] += $c
+    }
+    $winners = @()
+    foreach ($name in $byName.Keys) {
+        $group = $byName[$name]
+        if ($group.Count -eq 1) {
+            $winners += $group[0]
+            continue
+        }
+        $scored = foreach ($c in $group) {
+            [pscustomobject]@{
+                cand   = $c
+                eff    = Resolve-Version $c.entry
+                origin = Test-IsOriginalUpstream -SourceUrl $c.sourceUrl -Entry $c.entry
+            }
+        }
+        $sorted = $scored | Sort-Object @{Expression={ $_.eff };    Descending=$true},
+                                         @{Expression={ $_.origin }; Descending=$true}
+        $winners += $sorted[0].cand
+        for ($i = 1; $i -lt $sorted.Count; $i++) {
+            Write-Host ("    [dedup] {0} v{1} from {2} dropped (winner: v{3} from {4})" -f `
+                $name, `
+                $sorted[$i].eff, `
+                $sorted[$i].cand.sourceUrl, `
+                $sorted[0].eff, `
+                $sorted[0].cand.sourceUrl)
+        }
+    }
+    return $winners
+}
+
 function Collect-RepoUrlsPool {
-    # Shared loop for any source with an `externalRepos:` list of URLs.
+    # Three-phase collection for an `externalRepos:` source:
+    #
+    #   1. Fetch every URL, gather raw candidates (entry + sourceUrl)
+    #   2. Cross-repo dedup by InternalName → one winner per plugin
+    #      (see Select-RepoWinners for the rules)
+    #   3. Filter winners via Test-MeetsApi
+    #
+    # Filtering + cache writes only happen in phase 3, so losing duplicates
+    # never touch the snapshot. This stops the cache from being overwritten
+    # by whichever source happened to be processed last.
     param([Parameter(Mandatory)]$Yaml, [Parameter(Mandatory)][string]$SectionLabel)
-    $entries = @()
-    $filtered = 0
-    $logged = 0
     if (-not $Yaml.externalRepos) {
         Write-Host "  (none configured)"
-        return @{ entries = $entries; filtered = $filtered }
+        return @{ entries = @(); filtered = 0 }
     }
+
+    $candidates = @()
+    $logged = 0
     foreach ($url in $Yaml.externalRepos) {
         if (-not $url) { continue }
-        Write-Host "  -> ${url}:"
         $logged++
         $resp = $null
         try {
             $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30
         } catch {
-            Write-Host "    (unreachable: $($_.Exception.Message))"
+            Write-Host "  -> ${url}: (unreachable: $($_.Exception.Message))"
             Write-Warning "$SectionLabel repo $url unreachable: $($_.Exception.Message)"
             continue
         }
         if (-not $resp) {
-            Write-Host "    (empty response)"
+            Write-Host "  -> ${url}: (empty response)"
             Write-Warning "$SectionLabel repo $url returned empty response"
             continue
         }
         $items = if ($resp -is [System.Array]) { $resp } else { @($resp) }
-        $added = 0
-        $repoFiltered = 0
-        # Count entries from THIS repo whose api-level fields are missing —
-        # used to flag the repo as badly formatted in the log + mail.
-        $repoMissingFields = 0
+        $hereCount = 0
         foreach ($e in $items) {
             if (-not ($e -and $e.InternalName)) { continue }
-            if ($null -eq $e.DalamudApiLevel -or $null -eq $e.TestingDalamudApiLevel) {
-                $repoMissingFields++
-            }
-            if (-not (Test-MeetsApi $e)) { $repoFiltered++; $filtered++; continue }
-            $entries += $e
-            Write-Host ("    -> {0} ({1})" -f $e.InternalName, $e.AssemblyVersion)
-            $added++
+            $candidates += @{ entry = $e; sourceUrl = $url }
+            $hereCount++
         }
-        if ($added -eq 0 -and $repoFiltered -eq 0) { Write-Host "    (no usable entries)" }
-        if ($repoFiltered -gt 0) { Write-Host "    ($repoFiltered ignored — both API levels below thresholds ($MinDalamudApiLevel / $MinTestingDalamudApiLevel))" }
-        if ($repoMissingFields -gt 0) {
-            Write-Host "    (badly formatted: $repoMissingFields plugin(s) missing api-level field — zip fallback used)"
-            Write-Warning "Badly formatted repo $url — $repoMissingFields plugin(s) missing DalamudApiLevel and/or TestingDalamudApiLevel; api level was read from the zip's embedded manifest."
-        }
+        Write-Host ("  -> ${url}: $hereCount candidate(s)")
     }
     if ($logged -eq 0) { Write-Host "  (none configured)" }
+
+    $winners = Select-RepoWinners $candidates
+
+    $entries = @()
+    $filtered = 0
+    $repoMissingFields = @{}
+    foreach ($w in $winners) {
+        $e = $w.entry
+        if ($null -eq $e.DalamudApiLevel -or $null -eq $e.TestingDalamudApiLevel) {
+            if (-not $repoMissingFields.ContainsKey($w.sourceUrl)) { $repoMissingFields[$w.sourceUrl] = 0 }
+            $repoMissingFields[$w.sourceUrl]++
+        }
+        if (-not (Test-MeetsApi $e)) { $filtered++; continue }
+        $entries += $e
+        Write-Host ("    -> {0} ({1})" -f $e.InternalName, $e.AssemblyVersion)
+    }
+
+    foreach ($u in $repoMissingFields.Keys) {
+        $cnt = $repoMissingFields[$u]
+        Write-Host "    (badly formatted: $cnt winner(s) missing api-level field from $u — zip fallback used)"
+        Write-Warning "Badly formatted repo $u — $cnt plugin(s) missing DalamudApiLevel and/or TestingDalamudApiLevel; api level was read from the zip's embedded manifest."
+    }
+    if ($filtered -gt 0) {
+        Write-Host "    ($filtered ignored — both API levels below thresholds ($MinDalamudApiLevel / $MinTestingDalamudApiLevel))"
+    }
+
     return @{ entries = $entries; filtered = $filtered }
 }
