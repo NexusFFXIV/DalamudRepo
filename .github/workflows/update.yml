@@ -28,7 +28,7 @@ jobs:
       pull-requests: write     # for opening + auto-merging the refresh PR
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Rebuild pluginmaster.json
         # Capture all output streams (incl. Write-Host) via Start-Transcript so
@@ -102,7 +102,7 @@ jobs:
         # Required repo secrets: SMTP_HOST, SMTP_PORT, SMTP_USERNAME,
         # SMTP_PASSWORD, MAIL_TO.
         if: steps.pr.outputs.changed == 'true' && env.SMTP_HOST != ''
-        uses: dawidd6/action-send-mail@v17
+        uses: dawidd6/action-send-mail@v18
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
         with:
