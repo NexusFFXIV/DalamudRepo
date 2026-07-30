@@ -310,6 +310,50 @@ function Test-MeetsApi {
     return ($prodOk -or $testOk)
 }
 
+function Warn-OnVersionMismatch {
+    # Flags an entry whose advertised version disagrees with the release tag its
+    # download link points at.
+    #
+    # Dalamud decides whether an update exists by comparing the AssemblyVersion
+    # here against the installed assembly. When the two disagree the failure is
+    # silent and nasty: pluginmaster looks healthy, the link points at the new
+    # zip, and yet nobody is offered the update because the version says they
+    # already have it. PlayerNexusTracker v0.2.0 shipped exactly that way — the
+    # tag said v0.2.0, the manifest said 0.1.2.0.
+    #
+    # A warning rather than an error on purpose: external plugins are not ours to
+    # gate, and plenty of upstreams version their assemblies independently of
+    # their tags. Anything whose tag is not a plain version is skipped instead of
+    # guessed at.
+    param(
+        [string] $InternalName,
+        [string] $Label,
+        [string] $Url,
+        [string] $AssemblyVersion
+    )
+    if ([string]::IsNullOrWhiteSpace($Url) -or [string]::IsNullOrWhiteSpace($AssemblyVersion)) { return }
+    if ($Url -notmatch '/releases/download/([^/]+)/') { return }
+
+    $tag = $Matches[1]
+    $numeric = ($tag.TrimStart('v', 'V') -split '-')[0]
+    if ($numeric -notmatch '^\d+\.\d+(\.\d+)?$') { return }
+
+    $av = $null; $tv = $null
+    try { $av = [version]$AssemblyVersion } catch { return }
+    try { $tv = [version]$numeric } catch { return }
+
+    # Compare only the components the tag actually states; AssemblyVersion
+    # carries a fourth (revision) part that no tag expresses.
+    $mismatch = ($av.Major -ne $tv.Major) -or ($av.Minor -ne $tv.Minor)
+    if (-not $mismatch -and $tv.Build -ge 0) {
+        $mismatch = ([Math]::Max($av.Build, 0) -ne $tv.Build)
+    }
+    if ($mismatch) {
+        Write-Host ("::warning::{0}: {1} is {2} but its download link points at tag {3}. Dalamud compares that version against the installed plugin, so users already on {2} will not be offered this release." -f `
+            $InternalName, $Label, $AssemblyVersion, $tag)
+    }
+}
+
 function Collect-NexusPool {
     param([Parameter(Mandatory)]$Yaml)
     $entries = @()
@@ -384,6 +428,10 @@ function Collect-NexusPool {
 
         $obj = [pscustomobject]$entry
         if (-not (Test-MeetsApi $obj)) { $filtered++; continue }
+        Warn-OnVersionMismatch -InternalName $name -Label "AssemblyVersion" `
+            -Url $entry.DownloadLinkInstall -AssemblyVersion $entry.AssemblyVersion
+        Warn-OnVersionMismatch -InternalName $name -Label "TestingAssemblyVersion" `
+            -Url $entry.DownloadLinkTesting -AssemblyVersion $entry.TestingAssemblyVersion
         $entries += $obj
         Write-Host ("  -> {0} ({1})" -f $name, $entry.AssemblyVersion)
         $count++

@@ -88,6 +88,14 @@ https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json
 </tbody>
 </table>
 
+## Version consistency check
+
+The build script warns when an entry's `AssemblyVersion` or `TestingAssemblyVersion` disagrees with the release tag its download link points at, e.g. a link to `v0.2.0` next to an `AssemblyVersion` of `0.1.2.0`.
+
+That combination is worth flagging because it fails silently. Dalamud decides whether an update exists by comparing the version in this file against the installed assembly, so a stale version means the entry looks healthy, the link points at the new zip, and **no user is ever offered the update**. PlayerNexusTracker v0.2.0 shipped that way once; the plugin repo now gates its own releases on tag/manifest/assembly agreement, and this is the second net.
+
+It stays a warning rather than a hard failure: external plugins are not ours to gate, and some upstreams version their assemblies independently of their tags. Tags that are not plain versions (`release-2024-01`, and similar) are skipped rather than guessed at.
+
 ## 📥 Install (as a player)
 
 1. Open Dalamud's **Settings → Experimental** tab (the ⚠️ icon in the Settings window).
