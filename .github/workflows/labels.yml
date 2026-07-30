@@ -1,0 +1,30 @@
+name: Labels
+
+# Dependabot refuses an update outright when a label named in dependabot.yml
+# does not exist, and opens no pull request — so a missing label silently stops
+# dependency updates. This keeps the referenced labels present.
+on:
+  workflow_dispatch:
+  # Runs when the config that names the labels changes, so a new ecosystem or
+  # label is usable on the next Dependabot run rather than after the next cron.
+  push:
+    branches: [main]
+    paths: ['.github/dependabot.yml']
+  schedule:
+    - cron: '0 3 1 * *'
+
+permissions:
+  issues: write
+
+jobs:
+  sync:
+    name: sync
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Sync Dependabot labels
+        uses: NexusFFXIV/.github/.github/actions/sync-labels@main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
