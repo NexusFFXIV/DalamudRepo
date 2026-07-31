@@ -26,10 +26,28 @@ scripts/build-pluginmaster.ps1   ← rebuild script — emits all five .json fil
 All five `.json` files are **generated**, not edited by hand. The workflow runs on:
 
 - `repository_dispatch` events emitted by each plugin's release workflow (immediate update on tag push)
-- `workflow_dispatch` (manual trigger)
-- A 48-hour cron (safety net if a dispatch fails)
+- `workflow_dispatch` (manual trigger, with optional force inputs — see below)
+- A daily cron (safety net if a dispatch fails)
 
 The diff check covers all five outputs plus `cache/snapshot.json` — a change in any single one triggers one combined refresh PR.
+
+### What counts as a change worth publishing
+
+**`DownloadCount` alone never triggers a republish.** Upstream counters tick constantly; before this gate existed, 27 of 27 consecutive bot commits carried counter changes and in most of them that was ~60% of the entire diff. The "no changes, nothing to commit" branch had never once been taken.
+
+The rule now:
+
+- An entry whose **only** difference from the published one is a volatile field (currently just `DownloadCount`) is left exactly as it is.
+- Any **other** difference — version, download links, description, API level, changelog — republishes the entry **in full, including its fresh counter**.
+- A plugin whose own release pipeline just published is always republished in full: the `repository_dispatch` payload's `plugin` is forwarded to the build as `-ForcePlugin`.
+
+Implemented by reusing the previously published object *verbatim* rather than by stripping fields, which is why a frozen entry produces an empty diff rather than a small one — and why a field-merge can never pair an old download link with a new version.
+
+Consequence to be aware of: an external plugin's published counter freezes until that plugin changes for a real reason. That is deliberate — the counters are not comparable across upstreams anyway (each repo counts differently, and some publish none), and Dalamud only uses them for the number on the plugin card and the "sort by downloads" option. Nothing functional depends on them.
+
+To adopt every fresh counter on demand, run the workflow manually with **force_refresh** ticked; `force_plugin` republishes a single `InternalName`. Neither is on by default, including for manual runs — pressing the button means "check for updates", not "give me the counter commit back".
+
+The build log names every frozen entry (`[keep] <name> (DownloadCount x -> y not adopted)`) and prints a total, so "found nothing to publish" and "the gate swallowed a real change" cannot look alike.
 
 ### config.yml — build configuration
 

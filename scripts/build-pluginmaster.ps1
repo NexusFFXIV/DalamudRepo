@@ -20,8 +20,25 @@
 
 param(
     [string]$ConfigYaml = "config.yml",
-    [string]$SourcesDir = "sources"
+    [string]$SourcesDir = "sources",
+
+    # InternalName(s) whose own release pipeline just published — republished in
+    # full, fresh DownloadCount included, bypassing the republish gate. Matched
+    # across every pool, not just the nexus one: that is what one would expect
+    # from the flag, and dispatch runs are rare.
+    #
+    # Barely load-bearing in practice: a genuine release moves AssemblyVersion,
+    # DownloadLink* and LastUpdate, so the entry is never frozen anyway. It
+    # matters for a re-dispatch at an unchanged version — edited release notes,
+    # a re-run of the release workflow, a re-uploaded asset.
+    [string[]]$ForcePlugin = @(),
+
+    # Adopt every fresh DownloadCount this run, gate off. Bulk escape hatch;
+    # produces a large diff by design.
+    [switch]$ForceAll
 )
+
+$ForcePlugin = @($ForcePlugin | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
 
 $ErrorActionPreference = 'Stop'
 
@@ -108,6 +125,16 @@ foreach ($file in $sourceFiles) {
         }
     }
 
+    # Republish gate. Must run BEFORE anything is written to $out, and the result
+    # is assigned back into $r.entries so both the per-source file and the union
+    # pool below see the same objects — that is what keeps all-repo.json
+    # consistent with the per-source output for free. The @() wrap matters: a
+    # single-element array would otherwise unroll.
+    $published = Get-PublishedEntryMap $out
+    $keep = Resolve-PublishedEntries -NewEntries $r.entries -Published $published `
+                                     -ForceNames $ForcePlugin -ForceAll:$ForceAll
+    $r.entries = @($keep.entries)
+
     $deduped = Get-Deduped $r.entries
     Write-Pluginmaster $deduped $out
     $processed += @{
@@ -117,6 +144,7 @@ foreach ($file in $sourceFiles) {
         entries        = $r.entries
         deduped        = $deduped
         filtered       = $r.filtered
+        frozen         = $keep.frozen
         enabled        = $true
         includeInUnion = $includeInUnion
     }
@@ -134,7 +162,7 @@ if ($allEnabled) { Write-Pluginmaster $union.entries $allOut }
 $outputs = @()
 foreach ($p in $processed) {
     if ($p.enabled) {
-        $outputs += @{ name = $p.out; count = @($p.deduped).Count; enabled = $true }
+        $outputs += @{ name = $p.out; count = @($p.deduped).Count; enabled = $true; frozen = $p.frozen }
     } else {
         $outputs += @{ name = $p.basename; count = 0; enabled = $false }
     }
@@ -155,6 +183,14 @@ if ($script:ZipFallbackRescued -gt 0) {
     Write-Host ""
     Write-Host ("Zip fallback rescued {0} entries (API level read from embedded manifest)." -f $script:ZipFallbackRescued)
     Write-Host ("  Snapshot hits: {0}; fresh zip downloads: {1}." -f $script:SnapshotHits, $script:ZipDownloads)
+}
+
+# A -ForcePlugin that matched nothing usually means a typo in a plugin's release
+# workflow dispatch. Surface it instead of silently doing nothing.
+foreach ($name in $ForcePlugin) {
+    if (-not $script:ForceMatched.ContainsKey($name)) {
+        Write-Host ("::warning::-ForcePlugin '{0}' matched no entry in any source pool." -f $name)
+    }
 }
 
 Save-Snapshot

@@ -1,21 +1,37 @@
 name: Update pluginmaster
 
 # Three triggers, all converge on the same rebuild step:
-#   - repository_dispatch  : sent by a plugin repo's release workflow on tag push (real-time update)
-#   - workflow_dispatch    : manual button in the Actions UI
-#   - schedule (every 48h) : safety net for missed dispatches + drift in external upstream pools.
-#                            48h instead of 6h: the zip-fallback used to inflate upstream
-#                            download_counts on every run, which produced fake "refresh" PRs.
-#                            With snapshot.json caching that's gone, but a long cadence is still
-#                            the right default — external repos don't ping us, but they also
-#                            don't release every six hours.
+#   - repository_dispatch  : sent by a plugin repo's release workflow on tag push (real-time update).
+#                            Its client_payload.plugin is forwarded to the build as -ForcePlugin, so
+#                            the plugin that just published is always republished in full.
+#   - workflow_dispatch    : manual button in the Actions UI, with optional force inputs.
+#   - schedule (daily)     : safety net for missed dispatches + drift in external upstream pools.
+#
+# The cadence used to be 48h to dampen fake "refresh" PRs: upstream download
+# counters tick constantly, and every tick rewrote an entry. That is now handled
+# at the source — build-outputs.ps1 keeps the previously published entry verbatim
+# when only volatile fields moved, so a quiet run produces no commit at all. With
+# the noise gone a daily cadence is affordable again and real upstream releases
+# show up sooner.
+#
+# Also note the old '0 0 */2 * *' was not actually every 48h: day-of-month steps
+# restart each month, so it fired on days 1,3,…,31 and the 31st->1st gap was 24h.
 
 on:
   repository_dispatch:
     types: [plugin-release]
   workflow_dispatch:
+    inputs:
+      force_refresh:
+        description: 'Adopt fresh DownloadCounts even for otherwise-unchanged entries (large diff)'
+        type: boolean
+        default: false
+      force_plugin:
+        description: 'InternalName to republish in full (blank = none)'
+        type: string
+        default: ''
   schedule:
-    - cron: '0 0 */2 * *'
+    - cron: '0 0 * * *'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -36,10 +52,20 @@ jobs:
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Passed as env, never interpolated into the script body: client_payload
+          # is attacker-shaped input (anyone holding a token that can dispatch this
+          # repo controls it), and ${{ }} inside `run:` is textual substitution —
+          # a payload like '; <arbitrary pwsh>; ' would execute.
+          # On `schedule` both render empty, so cron never forces.
+          FORCE_PLUGIN: ${{ github.event.client_payload.plugin || inputs.force_plugin }}
+          FORCE_ALL: ${{ inputs.force_refresh }}
         run: |
+          $buildArgs = @{}
+          if (-not [string]::IsNullOrWhiteSpace($env:FORCE_PLUGIN)) { $buildArgs.ForcePlugin = $env:FORCE_PLUGIN }
+          if ($env:FORCE_ALL -eq 'true') { $buildArgs.ForceAll = $true }
           Start-Transcript -Path build.log -IncludeInvocationHeader:$false | Out-Null
           try {
-            ./scripts/build-pluginmaster.ps1
+            ./scripts/build-pluginmaster.ps1 @buildArgs
           } finally {
             Stop-Transcript | Out-Null
           }
@@ -49,13 +75,18 @@ jobs:
         # short-lived branch and opens a PR, which auto-merges once GitHub
         # confirms it satisfies the protection rules (no CI checks are required
         # for this repo, only the PR-must-exist gate).
-        # Diff covers all four pluginmaster outputs plus snapshot.json — a
+        # Diff covers all five pluginmaster outputs plus snapshot.json — a
         # change in any of them triggers a refresh PR. Including snapshot.json
         # in the diff makes the zip-fallback cache durable: new (plugin,
         # version) entries get persisted on the same run that needed them.
         id: pr
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Via env, not ${{ }} inside the script: client_payload is untrusted
+          # input and ${{ }} in a `run:` block is textual substitution, so a
+          # crafted payload could break out of the quotes and execute.
+          DISPATCH_PAYLOAD: ${{ toJSON(github.event.client_payload) }}
+          TRIGGERED_BY: ${{ github.event_name }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -71,11 +102,10 @@ jobs:
           fi
           echo "changed=true" >> "$GITHUB_OUTPUT"
           BRANCH="bot/refresh-pluginmaster-${{ github.run_id }}"
-          DISPATCH_PAYLOAD='${{ toJSON(github.event.client_payload) }}'
           git checkout -b "$BRANCH"
           git add -- $TRACKED_FILES
           git commit -m "chore: refresh pluginmaster.json" \
-                     -m "Triggered by: ${{ github.event_name }}" \
+                     -m "Triggered by: $TRIGGERED_BY" \
                      -m "Payload: $DISPATCH_PAYLOAD"
           git push origin "$BRANCH"
           gh pr create \
