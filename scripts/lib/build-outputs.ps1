@@ -28,8 +28,22 @@ function Get-Deduped {
 function Write-Pluginmaster {
     # Writes a clean JSON array. Empty / null-only input → "[]" (avoids the
     # "[ null ]" trap from ConvertTo-Json's single-element wrap on $null).
+    #
+    # Entries are sorted by InternalName here, the single choke point for all
+    # five outputs. The A-Z order these files already have is NOT produced by
+    # the pipeline — it falls out of Group-Object's key ordering under pwsh 7,
+    # which is what CI runs. Windows PowerShell 5.1 preserves input order
+    # instead, and Select-RepoWinners iterates a plain hashtable in bucket
+    # order, so nothing upstream of here guarantees anything. Pinning the order
+    # means a change in that behaviour — or a refactor away from Group-Object —
+    # cannot reshuffle a 155-entry file in one commit.
+    #
+    # Deliberately the culture-aware default comparer, not StringComparer
+    # .Ordinal: the committed files sort AntiAfkKick-Dalamud before ARDiscard,
+    # which is culture order. Switching to ordinal would rewrite every output
+    # once for no benefit.
     param($Entries, [string]$Path)
-    $arr = @(@($Entries) | Where-Object { $null -ne $_ })
+    $arr = @(@($Entries) | Where-Object { $null -ne $_ } | Sort-Object -Property InternalName)
     if ($arr.Count -eq 0) {
         Set-Content -Path $Path -Value "[]`n" -NoNewline -Encoding UTF8
         return
