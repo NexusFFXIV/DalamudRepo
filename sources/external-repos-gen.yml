@@ -60,7 +60,11 @@ externalRepos:
   - https://raw.githubusercontent.com/Matthew-Rennie/BisBunToolkit-distrib/main/pluginmaster.json  # unreachable
   - https://raw.githubusercontent.com/Maxunit/MyDalamudPlugins/master/pluginmaster.json
   - https://raw.githubusercontent.com/Meisterlala/NekoFans/master/repo.json
-  - https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json
+  # NOT NexusFFXIV/DalamudRepo — round-tripping our own pluginmaster.json back in
+  # through the CDN buys nothing and actively hurts: the fetched copy is the last
+  # commit, so the gen pool would see a lagging DownloadCount for our plugin,
+  # freeze it under the republish gate, and then advertise a stale count in
+  # gen-repo.json indefinitely while pluginmaster.json carries the fresh one.
   - https://raw.githubusercontent.com/NightmareXIV/MyDalamudPlugins/main/pluginmaster.json
   - https://raw.githubusercontent.com/Nik-Potokar/MyDalamudPlugins/main/pluginmaster.json
   - https://raw.githubusercontent.com/Nik-Potokar/Personal/main/pluginmaster.json  # unreachable
