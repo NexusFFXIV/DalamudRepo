@@ -24,7 +24,7 @@
     "InternalName": "IINACT",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "2.10.3.5",
+    "TestingAssemblyVersion": "2.10.3.6",
     "TestingDalamudApiLevel": 15
   },
   "LMeter": {
