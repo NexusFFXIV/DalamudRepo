@@ -508,7 +508,7 @@
     "Name": "BetterFateList",
     "Description": "Provides a list of all FATEs in the current zone, with their type, sorted by maximum level and distance from you.",
     "InternalName": "BetterFateList",
-    "AssemblyVersion": "1.1.4",
+    "AssemblyVersion": "1.1.5",
     "RepoUrl": "https://github.com/VariableVixen/BetterFateList",
     "ApplicableVersion": "any",
     "Tags": [
@@ -521,7 +521,7 @@
     "DownloadLinkTesting": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/BetterFateList/latest.zip",
     "DownloadLinkUpdate": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/BetterFateList/latest.zip",
     "DownloadCount": 0,
-    "LastUpdated": "1779474182"
+    "LastUpdated": "1787188914"
   },
   {
     "Author": "Valenth Siveria",
@@ -549,30 +549,29 @@
     ]
   },
   {
-    "Author": "veyn, xan_0",
+    "Author": "veyn",
     "Name": "Boss Mod",
-    "Punchline": "Don't fail at raid mechanics anymore",
-    "Description": "A bunch of utilities to simplify bosses. Currently supports endwalker content.",
-    "Tags": [],
     "InternalName": "BossMod",
-    "RepoUrl": "https://github.com/awgil/ffxiv_bossmod",
-    "DownloadCount": 2453433,
-    "LastUpdate": 1787005305,
-    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.5.8/install/latest.zip",
-    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.5.8/update/latest.zip",
     "AssemblyVersion": "7.5.5.8",
+    "Description": "2026081801-请支持逆光喵，谢谢喵-画得更全喵",
     "ApplicableVersion": "any",
-    "DalamudApiLevel": "15",
-    "Changelog": "",
-    "TestingAssemblyVersion": "7.5.5.6",
-    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.5.6/install/testing.zip",
-    "TestingDalamudApiLevel": "15",
-    "IconUrl": "https://puni.sh/api/plugins/icon/30",
+    "RepoUrl": "https://github.com/44451516/ffxiv_bossmod",
+    "Changelog": "请支持逆光喵，谢谢喵",
+    "DalamudApiLevel": 15,
+    "LoadPriority": 0,
     "ImageUrls": [
-      "https://s3.puni.sh/media/plugin/30/image-4mbxiq5k4pl.png",
-      "https://s3.puni.sh/media/plugin/30/image-nc231jzj2gb.png",
-      "https://s3.puni.sh/media/plugin/30/image-3nufuhgwbhl.png"
-    ]
+      "https://raw.githubusercontent.com/awgil/ffxiv_bossmod/master/Data/image1.png",
+      "https://raw.githubusercontent.com/awgil/ffxiv_bossmod/master/Data/image2.png",
+      "https://raw.githubusercontent.com/awgil/ffxiv_bossmod/master/Data/image3.png"
+    ],
+    "IconUrl": "https://raw.githubusercontent.com/awgil/ffxiv_bossmod/f4efcb5dc279d21ee16185d5a9f2d09a3a2bc58b/Data/icon.png",
+    "Punchline": "Don't fail at raid mechanics anymore",
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "LastUpdate": "1658532627",
+    "DownloadLinkInstall": "https://github.com/44451516/ffxiv_bossmod/raw/CN/release/BossMod/latest.zip",
+    "DownloadLinkTesting": "https://github.com/44451516/ffxiv_bossmod/raw/CN/release/BossMod/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/44451516/ffxiv_bossmod/raw/CN/release/BossMod/latest.zip"
   },
   {
     "Author": "The Combat Reborn Team",
@@ -1617,14 +1616,14 @@
     "Tags": [],
     "InternalName": "Henchman",
     "RepoUrl": "https://github.com/Knightmore/Henchman",
-    "DownloadCount": 162095,
-    "LastUpdate": 1786885814,
-    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/85/Henchman/versions/3.0.1.15/install/latest.zip",
-    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/85/Henchman/versions/3.0.1.15/update/latest.zip",
-    "AssemblyVersion": "3.0.1.15",
+    "DownloadCount": 164283,
+    "LastUpdate": 1787158981,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/85/Henchman/versions/3.0.1.17/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/85/Henchman/versions/3.0.1.17/update/latest.zip",
+    "AssemblyVersion": "3.0.1.17",
     "ApplicableVersion": "any",
     "DalamudApiLevel": "15",
-    "Changelog": "Bump On A Log:\n  - Adding unsync for the rank up quest duties\n\nTestyTrader:\n  - Fixed Yesno bug for french game language\n\nCombat:\n  - Added auto rotation fallback if the selected rotation plugin in global settings is not available. (Priority: VBM -> Wrath -> RSR)",
+    "Changelog": "On A Boat:\n  - Added maxlevel input to config\n\nMovement:\n  - Detour through Camp Drybone if Little Ala Mhigo is not unlocked\n\nAuto Rotations:\n  - Added a bit more logging",
     "TestingAssemblyVersion": "3.0.1.16",
     "DownloadLinkTesting": "https://puni.sh/api/plugins/download/85/Henchman/versions/3.0.1.16/install/testing.zip",
     "TestingDalamudApiLevel": "15",
@@ -2746,14 +2745,14 @@
     ],
     "InternalName": "Questionable",
     "RepoUrl": "https://github.com/PunishXIV/Questionable",
-    "DownloadCount": 1840690,
-    "LastUpdate": 1787082583,
-    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/94/Questionable/versions/15.306.2.2/install/latest.zip",
-    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/94/Questionable/versions/15.306.2.2/update/latest.zip",
-    "AssemblyVersion": "15.306.2.2",
+    "DownloadCount": 1854424,
+    "LastUpdate": 1787150220,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/94/Questionable/versions/15.306.2.4/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/94/Questionable/versions/15.306.2.4/update/latest.zip",
+    "AssemblyVersion": "15.306.2.4",
     "ApplicableVersion": "any",
     "DalamudApiLevel": "15",
-    "Changelog": "- Bug fix: locked allied society quests fixed -Asha0",
+    "Changelog": "- Bug fix: Aetheryte shortcuts within zones were being skipped due to broken logic -alydev",
     "TestingAssemblyVersion": "15.293.1.0",
     "DownloadLinkTesting": "https://puni.sh/api/plugins/download/94/Questionable/versions/15.293.1.0/install/testing.zip",
     "TestingDalamudApiLevel": "15",
@@ -3015,7 +3014,7 @@
     "Author": "Caraxi",
     "Name": "Simple Heels",
     "InternalName": "SimpleHeels",
-    "AssemblyVersion": "0.11.1.8",
+    "AssemblyVersion": "0.11.1.9",
     "Description": "Adjust the position of your character model",
     "ApplicableVersion": "any",
     "RepoUrl": "https://github.com/Caraxi/SimpleHeels",
@@ -3025,12 +3024,12 @@
     "CanUnloadAsync": false,
     "LoadPriority": 0,
     "Punchline": "Adjust the position of your character model",
-    "LastUpdate": 1784356854,
-    "DownloadLinkInstall": "https://repo.caraxian.com/plugins/SimpleHeels/0.11.1.8.zip",
-    "DownloadLinkTesting": "https://repo.caraxian.com/plugins/SimpleHeels/0.11.1.8.zip",
-    "DownloadLinkUpdate": "https://repo.caraxian.com/plugins/SimpleHeels/0.11.1.8.zip",
+    "LastUpdate": 1787126643,
+    "DownloadLinkInstall": "https://repo.caraxian.com/plugins/SimpleHeels/0.11.1.9.zip",
+    "DownloadLinkTesting": "https://repo.caraxian.com/plugins/SimpleHeels/0.11.1.9.zip",
+    "DownloadLinkUpdate": "https://repo.caraxian.com/plugins/SimpleHeels/0.11.1.9.zip",
     "TestingDalamudApiLevel": 15,
-    "TestingAssemblyVersion": "0.11.1.8",
+    "TestingAssemblyVersion": "0.11.1.9",
     "Tags": [
       "Sea Of Stars"
     ]
@@ -3337,7 +3336,7 @@
     "DownloadLinkTesting": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/TinyCmds/latest.zip",
     "DownloadLinkUpdate": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/TinyCmds/latest.zip",
     "DownloadCount": 0,
-    "LastUpdated": "1779474182"
+    "LastUpdated": "1787188914"
   },
   {
     "Author": "alydev",
@@ -3680,7 +3679,7 @@
     "DownloadLinkTesting": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/WoLua/latest.zip",
     "DownloadLinkUpdate": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/WoLua/latest.zip",
     "DownloadCount": 0,
-    "LastUpdated": "1779474182"
+    "LastUpdated": "1787188914"
   },
   {
     "Author": "Team Wrath",
@@ -3797,7 +3796,7 @@
     "DownloadLinkTesting": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/XIVComboVX/latest.zip",
     "DownloadLinkUpdate": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/XIVComboVX/latest.zip",
     "DownloadCount": 0,
-    "LastUpdated": "1779474182"
+    "LastUpdated": "1787188914"
   },
   {
     "Author": "VariableVixen",
@@ -3820,7 +3819,7 @@
     "DownloadLinkTesting": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/XivEsp/latest.zip",
     "DownloadLinkUpdate": "https://github.com/VariableVixen/MyDalamudPlugins/raw/master/plugins/XivEsp/latest.zip",
     "DownloadCount": 0,
-    "LastUpdated": "1779474182"
+    "LastUpdated": "1787188914"
   },
   {
     "Author": "Team Sloth",
