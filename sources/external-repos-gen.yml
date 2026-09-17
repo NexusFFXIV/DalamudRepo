@@ -162,6 +162,7 @@ externalRepos:
   - https://raw.githubusercontent.com/zhudotexe/FFXIV_DalamudPlugins/main/manifest.json
 
   # ─── Additional discovered feeds (GitHub / Codeberg / GitLab) ──────────────
+  # ─── GitLab feeds ──────────────────────────────────────────────────────────
   - https://gitlab.com/wingar/LMeter/-/raw/master/repo.json
   - https://gitlab.com/tancred/mit-display/-/raw/main/repo.json
   - https://gitlab.com/silusffxi/dalamud-plugins/-/raw/main/pluginmaster.json
@@ -173,7 +174,12 @@ externalRepos:
   - https://gitlab.com/Sylvia-Skrell/sylvs-l-meter-modifications/-/raw/master/repo.json
   - https://gitlab.com/SiliconExarch/LMeter/-/raw/master/repo.json
   - https://gitlab.com/Dalamud/DalamudPlugins/-/raw/main/pluginmaster.json
+
+  # ─── Codeberg feeds ────────────────────────────────────────────────────────
   - https://codeberg.org/ribbon-studios/Puppets/raw/branch/main/repo.json
+  - https://codeberg.org/eorzeavibes/eorzeamapper-plugin/raw/branch/main/EorzeaVibesMapper/PluginRepo.json
+
+  # ─── GitHub feeds (additional discoveries) ─────────────────────────────────
   - https://raw.githubusercontent.com/zunetrix/DalamudPlugins/main/pluginmaster.json
   - https://raw.githubusercontent.com/zhouhuichen741/dalamud-plugins/master/repo.json
   - https://raw.githubusercontent.com/xStarryNight/OutfitManager/main/OutfitManager/latest/OutfitManager.json
@@ -546,7 +552,6 @@ externalRepos:
   - https://raw.githubusercontent.com/AEBus/FFXIV-Login-Commands/master/repo.json
   - https://raw.githubusercontent.com/44451516-ff14/DalamudPlugins/master/pluginmaster.json
   - https://raw.githubusercontent.com/0ceal0t/Dalamud-VFXEditor/main/repo.json
-  - https://codeberg.org/eorzeavibes/eorzeamapper-plugin/raw/branch/main/EorzeaVibesMapper/PluginRepo.json
 
   # ─── Puni.sh (puni.sh + love.puni.sh) ──────────────────────────────────────
   - https://love.puni.sh/ment.json
