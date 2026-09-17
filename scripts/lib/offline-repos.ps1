@@ -24,8 +24,14 @@ function Initialize-OfflineRepos {
         try {
             $doc = Get-Content -LiteralPath $ReposPath -Raw -Encoding UTF8 | ConvertFrom-Yaml
             if ($doc -and $doc.offlineRepos) {
-                foreach ($section in $doc.offlineRepos.PSObject.Properties) {
-                    $script:OfflineRepos[$section.Name] = @($section.Value)
+                if ($doc.offlineRepos -is [System.Collections.IDictionary]) {
+                    foreach ($section in $doc.offlineRepos.Keys) {
+                        $script:OfflineRepos[[string]$section] = @($doc.offlineRepos[$section])
+                    }
+                } else {
+                    foreach ($section in $doc.offlineRepos.PSObject.Properties) {
+                        $script:OfflineRepos[$section.Name] = @($section.Value)
+                    }
                 }
             }
         } catch {
@@ -51,6 +57,14 @@ function Get-OfflineUrls {
     param([Parameter(Mandatory)][string]$Section)
     if ($script:OfflineRepos.ContainsKey($Section)) { return @($script:OfflineRepos[$Section]) }
     return @()
+}
+
+function Get-OfflineSectionForUrl {
+    param([Parameter(Mandatory)][string]$Url)
+    foreach ($section in $script:OfflineRepos.Keys) {
+        if (@($script:OfflineRepos[$section]) -contains $Url) { return $section }
+    }
+    return $null
 }
 
 function Test-RepositoryReachable {

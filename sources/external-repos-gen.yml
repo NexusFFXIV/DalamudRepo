@@ -6,7 +6,10 @@
 # (repo_urls.json) is the main aggregator; puni.sh/directory/repositories
 # lists the puni.sh ones; GitHub code-search for `TestingDalamudApiLevel
 # extension:json` and `Punchline AssemblyVersion` surfaces stragglers.
-# Always re-validate HTTP status before annotating unreachable.
+# Always re-validate HTTP status before annotating unreachable. URLs listed in
+# `offline-repos.yml` are authoritative: if a pull request re-adds one, the
+# generator removes the duplicate automatically and keeps the URL archived
+# until its original source is reachable again.
 
 type: external-repos
 out: gen-repo.json

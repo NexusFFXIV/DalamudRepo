@@ -132,8 +132,25 @@ foreach ($file in $sourceFiles) {
                 $yaml.externalRepos = @($yaml.externalRepos) + $offlineUrl
             }
         }
-        $stillOffline = @(Get-OfflineUrls $offlineSection)
-        $yaml.externalRepos = @($yaml.externalRepos | Where-Object { $_ -notin $stillOffline })
+        # A pull request may re-introduce an URL that is already archived, or
+        # duplicate it in another external-repository source. Remove every
+        # such active occurrence before probing so it cannot reset/bypass the
+        # archived failure counter. The original archive section remains the
+        # source of truth for a later automatic restore.
+        $activeUrls = @($yaml.externalRepos)
+        $keptUrls = @()
+        foreach ($url in $activeUrls) {
+            $offlineOwner = Get-OfflineSectionForUrl $url
+            if ($offlineOwner) {
+                Set-UrlInSourceFile -Path $sourcePath -Url $url -Present $false
+                if ($offlineOwner -ne $offlineSection) {
+                    $script:OfflineChanges += "REMOVED-DUPLICATE [$offlineSection; archived=$offlineOwner] $url"
+                }
+                continue
+            }
+            $keptUrls += $url
+        }
+        $yaml.externalRepos = @($keptUrls | Sort-Object -Unique)
     }
 
     switch ($type) {
