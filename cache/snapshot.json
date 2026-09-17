@@ -1,4 +1,39 @@
 {
+  "Aetherphone": {
+    "InternalName": "Aetherphone",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.3.2",
+    "TestingDalamudApiLevel": 15
+  },
+  "AutoDailyTribes": {
+    "InternalName": "AutoDailyTribes",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "2.3.0.1",
+    "TestingDalamudApiLevel": 15
+  },
+  "AutoFateGrind": {
+    "InternalName": "AutoFateGrind",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "2.9.0.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "AutoHuntGrinder": {
+    "InternalName": "AutoHuntGrinder",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.1.0.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "AutoPvpSeriesGrind": {
+    "InternalName": "AutoPvpSeriesGrind",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "2.1.0.0",
+    "TestingDalamudApiLevel": 15
+  },
   "CraftingList": {
     "InternalName": "CraftingList",
     "AssemblyVersion": "2.5.8",
@@ -60,6 +95,13 @@
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
     "TestingAssemblyVersion": "0.5.16.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "PvpAutoLb": {
+    "InternalName": "PvpAutoLb",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.1.0.0",
     "TestingDalamudApiLevel": 15
   },
   "RaidsRewritten": {
