@@ -122,7 +122,7 @@
     "InternalName": "Chronofoil.Plugin",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.0.4.15",
+    "TestingAssemblyVersion": "1.0.4.16",
     "TestingDalamudApiLevel": 15
   },
   "CombatStatistics": {
@@ -290,7 +290,7 @@
     "InternalName": "IINACT",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "2.10.3.7",
+    "TestingAssemblyVersion": "2.10.3.8",
     "TestingDalamudApiLevel": 15
   },
   "IINACTNativeOverlay": {
