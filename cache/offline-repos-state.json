@@ -11,10 +11,6 @@
     "failures": 3,
     "lastFailure": "2026-09-17T11:24:35.9234567Z"
   },
-  "external-repos-gen|https://raw.githubusercontent.com/Akurosia/DalamudPlugins/master/pluginmaster.json": {
-    "failures": 3,
-    "lastFailure": "2026-09-17T11:24:35.9242741Z"
-  },
   "external-repos-gen|https://raw.githubusercontent.com/Ank164/DalamudRepo/main/pluginmaster.json": {
     "failures": 3,
     "lastFailure": "2026-09-17T11:24:35.9250744Z"
@@ -58,14 +54,6 @@
   "external-repos-gen|https://raw.githubusercontent.com/EtheirysIO/repo/master/pluginmaster.json": {
     "failures": 3,
     "lastFailure": "2026-09-17T11:24:35.9325582Z"
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/ffxivita/XIVITADalamudPlugins/main/dist/pluginmaster.json": {
-    "failures": 3,
-    "lastFailure": "2026-09-17T11:24:35.9333329Z"
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/ik2h/DalamudPluginRepo-Origin/master/pluginmaster.json": {
-    "failures": 3,
-    "lastFailure": "2026-09-17T11:24:35.9341160Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Kaedemi/MakePlacePlugin/master/MakePlacePlugin.json": {
     "failures": 3,
@@ -119,10 +107,6 @@
     "failures": 3,
     "lastFailure": "2026-09-17T11:24:35.9476362Z"
   },
-  "external-repos-gen|https://raw.githubusercontent.com/tssailzz8/MyCustomDalamudPluginRepoCollection/main/ffxiv_custom_repo.json": {
-    "failures": 3,
-    "lastFailure": "2026-09-17T11:24:35.9484064Z"
-  },
   "external-repos-gen|https://raw.githubusercontent.com/vamdoza/Dalamud-Repo/main/repo.json": {
     "failures": 3,
     "lastFailure": "2026-09-17T11:24:35.9491903Z"
@@ -138,10 +122,6 @@
   "external-repos-gen|https://raw.githubusercontent.com/ykoneee/CraftingList/main/CraftingList/repo.json": {
     "failures": 3,
     "lastFailure": "2026-09-17T11:24:35.9523137Z"
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/yschuurmans/FFXIVMoneyTracker/master/repo.json": {
-    "failures": 3,
-    "lastFailure": "2026-09-17T11:24:35.9535315Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/ZhyraPlugins/repo/main/plugins.json": {
     "failures": 3,
