@@ -11,6 +11,8 @@
   `type:` (nexus / external-plugins / external-repos) and `out:` (filename of
   the per-source output). Optional `includeInUnion: false` keeps the source's
   entries out of the merged `all.json`.
+  `sources/offline-repos.yml` is an archive and is intentionally excluded from
+  source enumeration.
 
   `config.yml` (repo root) controls minDalamudApiLevel /
   minTestingDalamudApiLevel + per-source enable toggles (with a `default:`
@@ -49,6 +51,7 @@ Import-Module powershell-yaml
 
 . "$PSScriptRoot\lib\collect-plugins.ps1"
 . "$PSScriptRoot\lib\build-outputs.ps1"
+. "$PSScriptRoot\lib\offline-repos.ps1"
 
 # Durable cache for zip-fallback api-level lookups. Without it, each run
 # re-downloads the same upstream zips, which inflates the upstream
@@ -69,6 +72,14 @@ $allEnabled        = if ($buildConfig -and $buildConfig.all -and $null -ne $buil
 $allOut            = if ($buildConfig -and $buildConfig.all -and $buildConfig.all.out) { [string]$buildConfig.all.out } else { "all.json" }
 $fullEnabled       = if ($buildConfig -and $buildConfig.full -and $null -ne $buildConfig.full.enabled) { [bool]$buildConfig.full.enabled } else { $true }
 $fullOut           = if ($buildConfig -and $buildConfig.full -and $buildConfig.full.out) { [string]$buildConfig.full.out } else { "full-repo.json" }
+$offlineEnabled    = if ($buildConfig -and $buildConfig.offline -and $null -ne $buildConfig.offline.enabled) { [bool]$buildConfig.offline.enabled } else { $true }
+$offlineGraceRuns  = if ($buildConfig -and $buildConfig.offline -and $buildConfig.offline.graceRuns) { [int]$buildConfig.offline.graceRuns } else { 10 }
+
+$offlineReposPath = Join-Path $SourcesDir "offline-repos.yml"
+$offlineStatePath = "cache/offline-repos-state.json"
+if ($offlineEnabled) {
+    Initialize-OfflineRepos -ReposPath $offlineReposPath -StatePath $offlineStatePath -GraceRuns $offlineGraceRuns
+}
 
 function IsSourceEnabled([string]$basename) {
     if (-not $buildConfig -or -not $buildConfig.sources) { return $sourceDefault }
@@ -83,7 +94,8 @@ Write-Host "Config: minDalamudApiLevel=$MinDalamudApiLevel; minTestingDalamudApi
 if (-not (Test-Path $SourcesDir)) {
     throw "Sources directory '$SourcesDir' not found."
 }
-$sourceFiles = Get-ChildItem -Path $SourcesDir -Filter "*.yml" -File | Sort-Object Name
+$sourceFiles = Get-ChildItem -Path $SourcesDir -Filter "*.yml" -File |
+    Where-Object { $_.Name -ne "offline-repos.yml" } | Sort-Object Name
 
 # Per-source results accumulated for the union + summary.
 $processed = @()  # array of @{ basename; type; out; entries; deduped; filtered; enabled; includeInUnion }
@@ -111,6 +123,19 @@ foreach ($file in $sourceFiles) {
     if (-not $out)  { Write-Warning "$basename has no 'out' — skipping."; continue }
     $includeInUnion = if ($null -eq $yaml.includeInUnion) { $true } else { [bool]$yaml.includeInUnion }
 
+    $offlineSection = [IO.Path]::GetFileNameWithoutExtension($basename)
+    $sourcePath = $file.FullName
+    if ($offlineEnabled -and $type -eq "external-repos") {
+        foreach ($offlineUrl in @(Get-OfflineUrls $offlineSection)) {
+            if (Test-RepositoryReachable $offlineUrl) {
+                Restore-OfflineRepository -Section $offlineSection -Url $offlineUrl -SourcePath $sourcePath
+                $yaml.externalRepos = @($yaml.externalRepos) + $offlineUrl
+            }
+        }
+        $stillOffline = @(Get-OfflineUrls $offlineSection)
+        $yaml.externalRepos = @($yaml.externalRepos | Where-Object { $_ -notin $stillOffline })
+    }
+
     switch ($type) {
         "nexus" {
             $r = Collect-NexusPool -Yaml $yaml
@@ -125,6 +150,11 @@ foreach ($file in $sourceFiles) {
             Write-Warning "Unknown source type '$type' in $basename — skipping."
             continue
         }
+    }
+
+    if ($offlineEnabled -and $type -eq "external-repos") {
+        foreach ($url in @($r.reachable)) { Register-OfflineSuccess -Section $offlineSection -Url $url }
+        foreach ($url in @($r.unreachable)) { Register-OfflineFailure -Section $offlineSection -Url $url -SourcePath $sourcePath }
     }
 
     # Republish gate. Must run BEFORE anything is written to $out, and the result
@@ -206,3 +236,8 @@ foreach ($name in $ForcePlugin) {
 }
 
 Save-Snapshot
+if ($offlineEnabled) {
+    Save-OfflineRepos
+    Save-OfflineState
+    Write-OfflineSummary
+}

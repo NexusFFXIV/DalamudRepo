@@ -1,0 +1,5 @@
+# Repositories temporarily removed after repeated failed probes.
+# URLs are automatically restored to their original source when reachable again.
+offlineRepos:
+  external-repos: []
+  external-repos-gen: []

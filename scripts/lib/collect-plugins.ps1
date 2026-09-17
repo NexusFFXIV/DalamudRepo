@@ -549,10 +549,12 @@ function Collect-RepoUrlsPool {
     param([Parameter(Mandatory)]$Yaml, [Parameter(Mandatory)][string]$SectionLabel)
     if (-not $Yaml.externalRepos) {
         Write-Host "  (none configured)"
-        return @{ entries = @(); filtered = 0 }
+        return @{ entries = @(); filtered = 0; unreachable = @(); reachable = @() }
     }
 
     $candidates = @()
+    $unreachable = @()
+    $reachable = @()
     $logged = 0
     foreach ($url in $Yaml.externalRepos) {
         if (-not $url) { continue }
@@ -563,13 +565,16 @@ function Collect-RepoUrlsPool {
         } catch {
             Write-Host "  -> ${url}: (unreachable: $($_.Exception.Message))"
             Write-Warning "$SectionLabel repo $url unreachable: $($_.Exception.Message)"
+            $unreachable += $url
             continue
         }
         if (-not $resp) {
             Write-Host "  -> ${url}: (empty response)"
             Write-Warning "$SectionLabel repo $url returned empty response"
+            $unreachable += $url
             continue
         }
+        $reachable += $url
         $items = if ($resp -is [System.Array]) { $resp } else { @($resp) }
         $hereCount = 0
         foreach ($e in $items) {
@@ -606,5 +611,5 @@ function Collect-RepoUrlsPool {
         Write-Host "    ($filtered ignored — both API levels below thresholds ($MinDalamudApiLevel / $MinTestingDalamudApiLevel))"
     }
 
-    return @{ entries = $entries; filtered = $filtered }
+    return @{ entries = $entries; filtered = $filtered; unreachable = $unreachable; reachable = $reachable }
 }

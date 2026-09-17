@@ -32,6 +32,16 @@ All six `.json` files are **generated**, not edited by hand. The workflow runs o
 
 The diff check covers all six outputs plus `cache/snapshot.json` — a change in any single one triggers one combined refresh PR.
 
+### Offline repository lifecycle
+
+The generator tracks consecutive failures for external repository URLs in
+`cache/offline-repos-state.json`. After the configured grace period (10 runs by
+default), it removes the URL from its active source and archives it under the
+matching section in `sources/offline-repos.yml`. The URL is probed on every
+subsequent run and is automatically restored to its original source when it
+becomes reachable again. The archive is written before the active source is
+edited, so an interrupted run cannot lose a URL.
+
 ### What counts as a change worth publishing
 
 **`DownloadCount` alone never triggers a republish.** Upstream counters tick constantly; before this gate existed, 27 of 27 consecutive bot commits carried counter changes and in most of them that was ~60% of the entire diff. The "no changes, nothing to commit" branch had never once been taken.
