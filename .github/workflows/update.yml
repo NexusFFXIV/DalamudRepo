@@ -80,8 +80,9 @@ jobs:
         # short-lived branch and opens a PR, which auto-merges once GitHub
         # confirms it satisfies the protection rules (no CI checks are required
         # for this repo, only the PR-must-exist gate).
-        # Diff covers all six pluginmaster outputs plus snapshot.json — a
-        # change in any of them triggers a refresh PR. Including snapshot.json
+        # Diff covers all six pluginmaster outputs, source lifecycle files and
+        # snapshot state — a change in any of them triggers one refresh PR.
+        # Including snapshot.json
         # in the diff makes the zip-fallback cache durable: new (plugin,
         # version) entries get persisted on the same run that needed them.
         id: pr
@@ -96,7 +97,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           PM_FILES="pluginmaster.json external-repo.json common-repo.json gen-repo.json all-repo.json full-repo.json"
-          TRACKED_FILES="$PM_FILES cache/snapshot.json"
+          TRACKED_FILES="$PM_FILES cache/snapshot.json cache/offline-repos-state.json sources/external-repos.yml sources/external-repos-gen.yml sources/offline-repos.yml"
           # Stage first so newly-created files (not in HEAD) also show up in
           # the diff — plain `git diff` would miss untracked outputs.
           git add -- $TRACKED_FILES
