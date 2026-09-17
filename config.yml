@@ -13,6 +13,7 @@
 # Explicit `true` / `false` per filename always overrides the default.
 #
 # all — the union output (curated sources only, gen scopes are excluded).
+# full — the union of all enabled sources, including auto-discovered sources.
 
 minDalamudApiLevel: 15
 minTestingDalamudApiLevel: 15
@@ -27,3 +28,7 @@ sources:
 all:
   enabled: true
   out: all-repo.json
+
+full:
+  enabled: true
+  out: full-repo.json

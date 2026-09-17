@@ -85,6 +85,20 @@ https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json
 
 </td>
 </tr>
+<tr>
+<td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json"><code>full-repo.json</code></a></td>
+<td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json"><img alt="full-repo" src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json&query=$.length&label=full-repo&color=brightgreen"></a></td>
+<td><strong>Everything above, plus auto-discovered sources</strong></td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json
+```
+
+</td>
+</tr>
 </tbody>
 </table>
 

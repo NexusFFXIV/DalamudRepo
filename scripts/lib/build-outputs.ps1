@@ -205,7 +205,7 @@ function Write-Pluginmaster {
     # "[ null ]" trap from ConvertTo-Json's single-element wrap on $null).
     #
     # Entries are sorted by InternalName here, the single choke point for all
-    # five outputs. The A-Z order these files already have is NOT produced by
+    # six outputs. The A-Z order these files already have is NOT produced by
     # the pipeline — it falls out of Group-Object's key ordering under pwsh 7,
     # which is what CI runs. Windows PowerShell 5.1 preserves input order
     # instead, and Select-RepoWinners iterates a plain hashtable in bucket

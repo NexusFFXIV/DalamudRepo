@@ -67,6 +67,8 @@ $MinTestingDalamudApiLevel = if ($buildConfig -and $buildConfig.minTestingDalamu
 $sourceDefault     = if ($buildConfig -and $buildConfig.sources -and $null -ne $buildConfig.sources.default) { [bool]$buildConfig.sources.default } else { $true }
 $allEnabled        = if ($buildConfig -and $buildConfig.all -and $null -ne $buildConfig.all.enabled) { [bool]$buildConfig.all.enabled } else { $true }
 $allOut            = if ($buildConfig -and $buildConfig.all -and $buildConfig.all.out) { [string]$buildConfig.all.out } else { "all.json" }
+$fullEnabled       = if ($buildConfig -and $buildConfig.full -and $null -ne $buildConfig.full.enabled) { [bool]$buildConfig.full.enabled } else { $true }
+$fullOut           = if ($buildConfig -and $buildConfig.full -and $buildConfig.full.out) { [string]$buildConfig.full.out } else { "full-repo.json" }
 
 function IsSourceEnabled([string]$basename) {
     if (-not $buildConfig -or -not $buildConfig.sources) { return $sourceDefault }
@@ -158,6 +160,14 @@ foreach ($p in $processed) {
 $union = Build-FullUnion -NexusEntries @() -ExternalPluginEntries @() -CommonRepoEntries $unionPool
 if ($allEnabled) { Write-Pluginmaster $union.entries $allOut }
 
+# ── Full union (curated + auto-discovered sources) ───────────────────────────
+$fullPool = @()
+foreach ($p in $processed) {
+    if ($p.enabled) { $fullPool += $p.entries }
+}
+$fullUnion = Build-FullUnion -NexusEntries @() -ExternalPluginEntries @() -CommonRepoEntries $fullPool
+if ($fullEnabled) { Write-Pluginmaster $fullUnion.entries $fullOut }
+
 # ── Summary ──────────────────────────────────────────────────────────────────
 $outputs = @()
 foreach ($p in $processed) {
@@ -169,6 +179,8 @@ foreach ($p in $processed) {
 }
 $dupesRemoved = $union.before - $union.after
 $outputs += @{ name = $allOut; count = $union.after; enabled = $allEnabled; extra = "($dupesRemoved duplicates removed)" }
+$fullDupesRemoved = $fullUnion.before - $fullUnion.after
+$outputs += @{ name = $fullOut; count = $fullUnion.after; enabled = $fullEnabled; extra = "($fullDupesRemoved duplicates removed)" }
 Write-BuildSummary -Outputs $outputs
 
 $totalFiltered = ($processed | ForEach-Object { $_.filtered } | Measure-Object -Sum).Sum
