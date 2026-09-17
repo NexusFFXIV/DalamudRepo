@@ -161,7 +161,7 @@ externalRepos:
   - https://raw.githubusercontent.com/yschuurmans/FFXIVMoneyTracker/master/repo.json  # unreachable
   - https://raw.githubusercontent.com/zhudotexe/FFXIV_DalamudPlugins/main/manifest.json
 
-  # ─── Puni.sh (puni.sh + love.puni.sh) ──────────────────────────────────────
+  # ─── Additional discovered feeds (GitHub / Codeberg / GitLab) ──────────────
   - https://gitlab.com/wingar/LMeter/-/raw/master/repo.json
   - https://gitlab.com/tancred/mit-display/-/raw/main/repo.json
   - https://gitlab.com/silusffxi/dalamud-plugins/-/raw/main/pluginmaster.json
@@ -546,10 +546,9 @@ externalRepos:
   - https://raw.githubusercontent.com/AEBus/FFXIV-Login-Commands/master/repo.json
   - https://raw.githubusercontent.com/44451516-ff14/DalamudPlugins/master/pluginmaster.json
   - https://raw.githubusercontent.com/0ceal0t/Dalamud-VFXEditor/main/repo.json
-  - https://kirisamevanilla.github.io/ffxiv/dalamudrepo.json
-  - https://karou.ca/xiv/repo.json
-  - https://kamori.goats.dev/Plugin/PluginMaster
   - https://codeberg.org/eorzeavibes/eorzeamapper-plugin/raw/branch/main/EorzeaVibesMapper/PluginRepo.json
+
+  # ─── Puni.sh (puni.sh + love.puni.sh) ──────────────────────────────────────
   - https://love.puni.sh/ment.json
   - https://puni.sh/api/repository/abe
   - https://puni.sh/api/repository/akechi
@@ -578,5 +577,8 @@ externalRepos:
   # ─── Other hosts (custom domains) ──────────────────────────────────────────
   - https://aemiliusxiv.github.io/DalamudPlugins/pluginmaster.json
   - https://echoxiv.com/pluginmaster.json
+  - https://karou.ca/xiv/repo.json
+  - https://kirisamevanilla.github.io/ffxiv/dalamudrepo.json
+  - https://kamori.goats.dev/Plugin/PluginMaster
   - https://plugin.lop-sync.com/repo.json
   - https://repo.lightless-sync.org/
