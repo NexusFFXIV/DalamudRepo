@@ -1,150 +1,150 @@
 {
   "external-repos-gen|https://puni.sh/api/repository/det": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3458099Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.8996972Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/AjisaiMirai/plugins/main/repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3812105Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9222595Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/aka-tamagotchi/EgirlPlugins/main/repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3828071Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9234567Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Akurosia/DalamudPlugins/master/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3868111Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9242741Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Ank164/DalamudRepo/main/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3878029Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9250744Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Ank164/MyDalamudPlugins/master/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3887747Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9258143Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/aRkker/DalamudPlugins/master/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3897172Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9265612Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/ars-magna/MyDalamudPlugins/master/plugins/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3906579Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9273118Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/cecilia-sanare/DalamudPlugins/main/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3915985Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9280497Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/cecilia-sanare/Puppets/main/repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3925197Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9287576Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/chirpcodes/OnlyFandaniels/main/repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3934369Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9295890Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/damolitionn/MyDalamudPlugins/master/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3943709Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9303546Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/dodingdaga/DalamudPlugins/main/MidiBard.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3952296Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9311009Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Eclipsum/Astro/main/Astro/Astro.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3961557Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9318454Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/EtheirysIO/repo/master/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3970527Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9325582Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/ffxivita/XIVITADalamudPlugins/main/dist/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3979588Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9333329Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/ik2h/DalamudPluginRepo-Origin/master/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3989130Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9341160Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Kaedemi/MakePlacePlugin/master/MakePlacePlugin.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.3998205Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9348962Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/lolhackjp/MyDalamudPlugins/main/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4007148Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9356015Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/lolhackjp/sl/main/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4016289Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9363637Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Matthew-Rennie/BisBunToolkit-distrib/main/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4025379Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9371651Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/mokyu/MakePlacePlugin/master/MakePlacePlugin.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4034168Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9378998Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/neonmaus/RoleplayersToolbox/main/repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4043141Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9386050Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Nik-Potokar/MyDalamudPlugins/main/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4051915Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9393526Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Nik-Potokar/Personal/main/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4061102Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9437158Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/postcards114/Hypnotoad-Plugin/master/PluginDir/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4070469Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9445883Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/PunishedPineapple/DalamudPluginRepo/main/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4079496Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9454163Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/redeven/BetterTargetPlugin/master/repository.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4088673Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9461771Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/RikaKagurasaka/MyDalamudPlugins/main/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4097912Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9469147Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Speshkitty/DalamudPlugins/main/repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4107291Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9476362Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/tssailzz8/MyCustomDalamudPluginRepoCollection/main/ffxiv_custom_repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4116772Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9484064Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/vamdoza/Dalamud-Repo/main/repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4125919Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9491903Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/xPumaa/AutoJailMarker/master/AutoJailMarker/repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4135889Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9499470Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/xPumaa/DalamudPlugins/main/pluginmaster.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4149493Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9511098Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/ykoneee/CraftingList/main/CraftingList/repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4164370Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9523137Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/yschuurmans/FFXIVMoneyTracker/master/repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4178395Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9535315Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/ZhyraPlugins/repo/main/plugins.json": {
-    "failures": 2,
-    "lastFailure": "2026-09-17T11:08:44.4191600Z"
+    "failures": 3,
+    "lastFailure": "2026-09-17T11:24:35.9547065Z"
   }
 }

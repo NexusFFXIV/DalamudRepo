@@ -1,10 +1,45 @@
 {
+  "AbyssosToolbox": {
+    "InternalName": "AbyssosToolbox",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.0.8",
+    "TestingDalamudApiLevel": 9
+  },
+  "ActionTimelineReplacement": {
+    "InternalName": "ActionTimelineReplacement",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.0.4",
+    "TestingDalamudApiLevel": 15
+  },
   "Aetherphone": {
     "InternalName": "Aetherphone",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
     "TestingAssemblyVersion": "1.0.3.2",
     "TestingDalamudApiLevel": 15
+  },
+  "AnimSync": {
+    "InternalName": "AnimSync",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.2.4.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "ArmouryCleaner": {
+    "InternalName": "ArmouryCleaner",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.18.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "Astral.Plugin": {
+    "InternalName": "Astral.Plugin",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.1",
+    "TestingDalamudApiLevel": 14
   },
   "AutoDailyTribes": {
     "InternalName": "AutoDailyTribes",
@@ -34,11 +69,81 @@
     "TestingAssemblyVersion": "2.1.0.0",
     "TestingDalamudApiLevel": 15
   },
+  "BagAssistant": {
+    "InternalName": "BagAssistant",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.32.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "BetterTargetingSystemPvP": {
+    "InternalName": "BetterTargetingSystemPvP",
+    "AssemblyVersion": "1.0.0.6",
+    "DalamudApiLevel": 10,
+    "TestingAssemblyVersion": null,
+    "TestingDalamudApiLevel": null
+  },
+  "BLMInTheShell": {
+    "InternalName": "BLMInTheShell",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.7.0.0",
+    "TestingDalamudApiLevel": 15
+  },
   "CactusWatcher": {
     "InternalName": "CactusWatcher",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
     "TestingAssemblyVersion": "1.0.0.11",
+    "TestingDalamudApiLevel": 15
+  },
+  "CarbunclePartner": {
+    "InternalName": "CarbunclePartner",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.4.0.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "CharacterSelectPlugin": {
+    "InternalName": "CharacterSelectPlugin",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "2.1.2.2",
+    "TestingDalamudApiLevel": 15
+  },
+  "Chocobot": {
+    "InternalName": "Chocobot",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.1.1.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "Chronofoil.Plugin": {
+    "InternalName": "Chronofoil.Plugin",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.4.15",
+    "TestingDalamudApiLevel": 15
+  },
+  "CombatStatistics": {
+    "InternalName": "CombatStatistics",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.8.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "CommandPanelPersist": {
+    "InternalName": "CommandPanelPersist",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.1.0.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "Consolidator": {
+    "InternalName": "Consolidator",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.3.6.1",
     "TestingDalamudApiLevel": 15
   },
   "CraftingList": {
@@ -48,6 +153,76 @@
     "TestingAssemblyVersion": null,
     "TestingDalamudApiLevel": null
   },
+  "CriticalHPIndicator": {
+    "InternalName": "CriticalHPIndicator",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.0.0.3",
+    "TestingDalamudApiLevel": 15
+  },
+  "CursorTrailIndicators": {
+    "InternalName": "CursorTrailIndicators",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.1.0.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "CutsceneTranscripts": {
+    "InternalName": "CutsceneTranscripts",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.1.3.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "Dalamud.Tomestone": {
+    "InternalName": "Dalamud.Tomestone",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.4.0.14",
+    "TestingDalamudApiLevel": 15
+  },
+  "DeathKeyChord": {
+    "InternalName": "DeathKeyChord",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.0.0.4",
+    "TestingDalamudApiLevel": 14
+  },
+  "EasyChatlog": {
+    "InternalName": "EasyChatlog",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.1.9.5",
+    "TestingDalamudApiLevel": 15
+  },
+  "Echosync": {
+    "InternalName": "Echosync",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.10.0.0",
+    "TestingDalamudApiLevel": 14
+  },
+  "Encore": {
+    "InternalName": "Encore",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.1.2",
+    "TestingDalamudApiLevel": 15
+  },
+  "FantasiaPlus": {
+    "InternalName": "FantasiaPlus",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.0.9.4",
+    "TestingDalamudApiLevel": 9
+  },
+  "FCTracker": {
+    "InternalName": "FCTracker",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.9.0.0",
+    "TestingDalamudApiLevel": 15
+  },
   "FullscreenToggle": {
     "InternalName": "FullscreenToggle",
     "AssemblyVersion": null,
@@ -55,10 +230,59 @@
     "TestingAssemblyVersion": "1.0.1.3",
     "TestingDalamudApiLevel": 6
   },
+  "GagSpeak": {
+    "InternalName": "GagSpeak",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "3.1.3.0",
+    "TestingDalamudApiLevel": 9
+  },
+  "GlamourDocumenter": {
+    "InternalName": "GlamourDocumenter",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.1.2.7",
+    "TestingDalamudApiLevel": 15
+  },
+  "GlamourerRoulette": {
+    "InternalName": "GlamourerRoulette",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.2.1",
+    "TestingDalamudApiLevel": 9
+  },
+  "GoodOmen": {
+    "InternalName": "GoodOmen",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.2.7.1",
+    "TestingDalamudApiLevel": 15
+  },
+  "HousingLottoTracker": {
+    "InternalName": "HousingLottoTracker",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.3.4",
+    "TestingDalamudApiLevel": 15
+  },
+  "HousingMarketShopper": {
+    "InternalName": "HousingMarketShopper",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.1.1.0",
+    "TestingDalamudApiLevel": 15
+  },
   "HypnotoadPlugin": {
     "InternalName": "HypnotoadPlugin",
     "AssemblyVersion": "0.0.3.2",
     "DalamudApiLevel": 15,
+    "TestingAssemblyVersion": null,
+    "TestingDalamudApiLevel": null
+  },
+  "HypnotoadUi": {
+    "InternalName": "HypnotoadUi",
+    "AssemblyVersion": "0.0.2.12",
+    "DalamudApiLevel": 11,
     "TestingAssemblyVersion": null,
     "TestingDalamudApiLevel": null
   },
@@ -69,6 +293,13 @@
     "TestingAssemblyVersion": "2.10.3.7",
     "TestingDalamudApiLevel": 15
   },
+  "IINACTNativeOverlay": {
+    "InternalName": "IINACTNativeOverlay",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.2.2.0",
+    "TestingDalamudApiLevel": 15
+  },
   "LMeter": {
     "InternalName": "LMeter",
     "AssemblyVersion": null,
@@ -76,12 +307,47 @@
     "TestingAssemblyVersion": "0.4.4.0",
     "TestingDalamudApiLevel": 15
   },
+  "Macrology": {
+    "InternalName": "Macrology",
+    "AssemblyVersion": "1.0.5.0",
+    "DalamudApiLevel": 15,
+    "TestingAssemblyVersion": null,
+    "TestingDalamudApiLevel": null
+  },
+  "MahjongAdvisor": {
+    "InternalName": "MahjongAdvisor",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.2.1.11",
+    "TestingDalamudApiLevel": 15
+  },
+  "MarketHelper": {
+    "InternalName": "MarketHelper",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.17.2.0",
+    "TestingDalamudApiLevel": 15
+  },
   "MaterialUI": {
     "InternalName": "MaterialUI",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.4.13",
+    "TestingAssemblyVersion": "1.4.13.0",
     "TestingDalamudApiLevel": 9
+  },
+  "Mendingway": {
+    "InternalName": "Mendingway",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.1.4",
+    "TestingDalamudApiLevel": 9
+  },
+  "MinimapPlugin": {
+    "InternalName": "MinimapPlugin",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.1.4.0",
+    "TestingDalamudApiLevel": 15
   },
   "MinionRoulette": {
     "InternalName": "MinionRoulette",
@@ -90,12 +356,33 @@
     "TestingAssemblyVersion": null,
     "TestingDalamudApiLevel": null
   },
+  "NoClippyUnchained": {
+    "InternalName": "NoClippyUnchained",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.4.0",
+    "TestingDalamudApiLevel": 15
+  },
   "NotesPal": {
     "InternalName": "NotesPal",
     "AssemblyVersion": "0.2.0.0",
     "DalamudApiLevel": 15,
     "TestingAssemblyVersion": null,
     "TestingDalamudApiLevel": null
+  },
+  "PalettePlus": {
+    "InternalName": "PalettePlus",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.3.14",
+    "TestingDalamudApiLevel": 9
+  },
+  "PenumbraSort": {
+    "InternalName": "PenumbraSort",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.2.3.0",
+    "TestingDalamudApiLevel": 15
   },
   "ProximityVoiceChat": {
     "InternalName": "ProximityVoiceChat",
@@ -111,11 +398,32 @@
     "TestingAssemblyVersion": "1.1.0.0",
     "TestingDalamudApiLevel": 15
   },
+  "QuestNav": {
+    "InternalName": "QuestNav",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.1.21.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "RaidNotes": {
+    "InternalName": "RaidNotes",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.0.0.5",
+    "TestingDalamudApiLevel": 15
+  },
   "RaidsRewritten": {
     "InternalName": "RaidsRewritten",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
     "TestingAssemblyVersion": "1.2.2.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "ResetCamera": {
+    "InternalName": "ResetCamera",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.2.3",
     "TestingDalamudApiLevel": 15
   },
   "Resonant": {
@@ -125,6 +433,34 @@
     "TestingAssemblyVersion": "0.0.0.6",
     "TestingDalamudApiLevel": 5
   },
+  "RoleplayingVoiceDalamud": {
+    "InternalName": "RoleplayingVoiceDalamud",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.6.1.8",
+    "TestingDalamudApiLevel": 15
+  },
+  "RPLogger": {
+    "InternalName": "RPLogger",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.2.0.13",
+    "TestingDalamudApiLevel": 15
+  },
+  "Search Comment (Ultimate)": {
+    "InternalName": "Search Comment (Ultimate)",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.4.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "Slidecaster": {
+    "InternalName": "Slidecaster",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.0.17.0",
+    "TestingDalamudApiLevel": 15
+  },
   "SmartPings": {
     "InternalName": "SmartPings",
     "AssemblyVersion": null,
@@ -132,11 +468,88 @@
     "TestingAssemblyVersion": "0.3.12.0",
     "TestingDalamudApiLevel": 15
   },
+  "SmartStrafe": {
+    "InternalName": "SmartStrafe",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.1.0.1",
+    "TestingDalamudApiLevel": 15
+  },
+  "SubDataLogger": {
+    "InternalName": "SubDataLogger",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.0.0.12",
+    "TestingDalamudApiLevel": 15
+  },
+  "Tabnado": {
+    "InternalName": "Tabnado",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.7.0.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "teleportaethernet": {
+    "InternalName": "teleportaethernet",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.1.0.0",
+    "TestingDalamudApiLevel": 10
+  },
+  "TimelineAnimator": {
+    "InternalName": "TimelineAnimator",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.1.7.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "UndercutterFFXIV": {
+    "InternalName": "UndercutterFFXIV",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.1.57.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "VaelarisUnlockList": {
+    "InternalName": "VaelarisUnlockList",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.1.26.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "VenueHelper": {
+    "InternalName": "VenueHelper",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.5.0.2",
+    "TestingDalamudApiLevel": 15
+  },
+  "VisitorsPass": {
+    "InternalName": "VisitorsPass",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.1.3.0",
+    "TestingDalamudApiLevel": 15
+  },
   "XIVAuras": {
     "InternalName": "XIVAuras",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "0.2.5.0",
-    "TestingDalamudApiLevel": 8
+    "TestingAssemblyVersion": "0.3.0.8",
+    "TestingDalamudApiLevel": 9
+  },
+  "xivclone": {
+    "InternalName": "xivclone",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.0.0.13",
+    "TestingDalamudApiLevel": 15
+  },
+  "XivMediaPlayer": {
+    "InternalName": "XivMediaPlayer",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "0.1.7.0",
+    "TestingDalamudApiLevel": 15
   }
 }
