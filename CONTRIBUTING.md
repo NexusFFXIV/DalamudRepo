@@ -9,6 +9,7 @@ This repo aggregates several Dalamud plugin source lists into the JSON files tha
 [common-repo.json](#external-reposyml--third-party-dalamud-repos)        ← Dalamud-facing, external-repos.yml (curated)
 [external-repo.json](#external-pluginsyml--single-third-party-plugins)      ← Dalamud-facing, external-plugins.yml only
 all-repo.json           ← Dalamud-facing, curated union (gen excluded)
+full-repo.json          ← Dalamud-facing, full union (all sources)
 [gen-repo.json](#external-repos-genyml--auto-discovered-third-party-repos)           ← Dalamud-facing, external-repos-gen.yml (auto-discovered, standalone)
 
 [config.yml](#configyml--build-configuration)              ← build config: min Dalamud API + per-source toggles
@@ -17,19 +18,19 @@ all-repo.json           ← Dalamud-facing, curated union (gen excluded)
 [external-plugins.yml](#external-pluginsyml--single-third-party-plugins)    ← third-party plugins to re-publish by name
 [external-repos-gen.yml](#external-repos-genyml--auto-discovered-third-party-repos)  ← third-party Dalamud repos (auto-discovered)
 
-scripts/build-pluginmaster.ps1   ← rebuild script — emits all five .json files
+scripts/build-pluginmaster.ps1   ← rebuild script — emits all six .json files
 .github/workflows/update.yml     ← runs the script, opens a PR when any output changed
 ```
 
 ### When the repo refreshes
 
-All five `.json` files are **generated**, not edited by hand. The workflow runs on:
+All six `.json` files are **generated**, not edited by hand. The workflow runs on:
 
 - `repository_dispatch` events emitted by each plugin's release workflow (immediate update on tag push)
 - `workflow_dispatch` (manual trigger, with optional force inputs — see below)
 - A daily cron (safety net if a dispatch fails)
 
-The diff check covers all five outputs plus `cache/snapshot.json` — a change in any single one triggers one combined refresh PR.
+The diff check covers all six outputs plus `cache/snapshot.json` — a change in any single one triggers one combined refresh PR.
 
 ### What counts as a change worth publishing
 
@@ -82,6 +83,9 @@ Each entry names a plugin by its `InternalName`. The script looks it up in Dalam
 Same format and handling as `external-repos.yml`, but **generated** by trawling community aggregators (Akurosia's `MyCustomDalamudPluginRepoCollection`, the Puni.sh directory, GitHub code-search for the `TestingDalamudApiLevel` / `Punchline` fields). Hundreds of URLs in one file; the curated list stays small.
 
 Entries from this file land in **`gen-repo.json` only** — they are **not** folded into `all-repo.json`. Users who want this wider catalogue subscribe to `gen-repo.json` explicitly in addition to (or instead of) `all-repo.json`.
+
+`full-repo.json` is the complete deduplicated union of all enabled source files,
+including the auto-discovered entries from `external-repos-gen.yml`.
 
 Don't hand-edit — regenerate on demand. Entries are grouped by host, sorted A-Z, and ones that were unreachable at curation time get an inline `# unreachable` comment (the workflow keeps probing them).
 
