@@ -1,6 +1,7 @@
 name: Update pluginmaster
 
 # Three triggers, all converge on the same rebuild step:
+#   - push (main, sources/**): rebuild immediately when a curated source changes.
 #   - repository_dispatch  : sent by a plugin repo's release workflow on tag push (real-time update).
 #                            Its client_payload.plugin is forwarded to the build as -ForcePlugin, so
 #                            the plugin that just published is always republished in full.
@@ -18,6 +19,10 @@ name: Update pluginmaster
 # restart each month, so it fired on days 1,3,…,31 and the 31st->1st gap was 24h.
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/**'
   repository_dispatch:
     types: [plugin-release]
   workflow_dispatch:
