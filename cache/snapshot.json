@@ -20,12 +20,26 @@
     "TestingAssemblyVersion": null,
     "TestingDalamudApiLevel": null
   },
+  "IINACT": {
+    "InternalName": "IINACT",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "2.10.3.7",
+    "TestingDalamudApiLevel": 15
+  },
   "LMeter": {
     "InternalName": "LMeter",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
     "TestingAssemblyVersion": "0.4.4.0",
     "TestingDalamudApiLevel": 15
+  },
+  "MaterialUI": {
+    "InternalName": "MaterialUI",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.4.13",
+    "TestingDalamudApiLevel": 9
   },
   "MinionRoulette": {
     "InternalName": "MinionRoulette",
