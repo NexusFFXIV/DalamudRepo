@@ -218,7 +218,28 @@ function Write-Pluginmaster {
     # which is culture order. Switching to ordinal would rewrite every output
     # once for no benefit.
     param($Entries, [string]$Path)
-    $arr = @(@($Entries) | Where-Object { $null -ne $_ } | Sort-Object -Property InternalName)
+    # Dalamud deserializes AssemblyVersion (and TestingAssemblyVersion when
+    # present) directly as System.Version. A few upstream feeds publish
+    # template placeholders such as "{version}.0"; emitting those makes the
+    # entire generated repository unloadable. Drop only malformed entries at
+    # this final common choke point so every generated JSON is protected.
+    $valid = @()
+    foreach ($entry in @($Entries)) {
+        if ($null -eq $entry) { continue }
+        $assemblyOk = $false
+        try { [void]([System.Version]$entry.AssemblyVersion); $assemblyOk = $true } catch {}
+        $testingOk = $true
+        if (-not [string]::IsNullOrWhiteSpace([string]$entry.TestingAssemblyVersion)) {
+            try { [void]([System.Version]$entry.TestingAssemblyVersion) } catch { $testingOk = $false }
+        }
+        if (-not $assemblyOk -or -not $testingOk) {
+            Write-Warning ("Skipping malformed plugin entry '{0}' in {1}: AssemblyVersion='{2}', TestingAssemblyVersion='{3}'" -f `
+                $entry.InternalName, $Path, $entry.AssemblyVersion, $entry.TestingAssemblyVersion)
+            continue
+        }
+        $valid += $entry
+    }
+    $arr = @($valid | Sort-Object -Property InternalName)
     if ($arr.Count -eq 0) {
         Set-Content -Path $Path -Value "[]`n" -NoNewline -Encoding UTF8
         return

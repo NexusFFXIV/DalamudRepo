@@ -593,6 +593,42 @@ function Collect-RepoUrlsPool {
     $repoMissingFields = @{}
     foreach ($w in $winners) {
         $e = $w.entry
+        # Some feeds publish a release-template value (for example
+        # "{version}.0") instead of a real AssemblyVersion. Try to recover the
+        # version from the released plugin DLL before the entry reaches any
+        # generated output. This is deliberately limited to GitHub release
+        # zips and remains protected by Write-Pluginmaster's final validator.
+        try { [void]([System.Version]$e.AssemblyVersion) }
+        catch {
+            $repoMatch = [regex]::Match([string]$e.RepoUrl, 'github\.com/([^/]+)/([^/#]+)')
+            $tag = $null
+            if ($repoMatch.Success) {
+                try {
+                    $release = Invoke-RestMethod -Uri ("https://api.github.com/repos/{0}/{1}/releases/latest" -f $repoMatch.Groups[1].Value, $repoMatch.Groups[2].Value) -Headers @{ 'User-Agent' = 'DalamudRepoGenerator' } -TimeoutSec 20
+                    $tag = [string]$release.tag_name
+                } catch { Write-Warning ("Could not resolve latest release for {0}: {1}" -f $e.InternalName, $_.Exception.Message) }
+            }
+            if ($tag) {
+                $download = [string]$e.DownloadLinkInstall -replace '\{version\}', $tag -replace '\{tag\}', $tag
+                try {
+                    $tmpZip = New-TemporaryFile
+                    Invoke-WebRequest -Uri $download -OutFile $tmpZip.FullName -UseBasicParsing -TimeoutSec 30
+                    $tmpDir = Join-Path ([IO.Path]::GetTempPath()) ([IO.Path]::GetRandomFileName())
+                    Expand-Archive -LiteralPath $tmpZip.FullName -DestinationPath $tmpDir
+                    $dll = Get-ChildItem -LiteralPath $tmpDir -Recurse -Filter ([string]$e.InternalName + '.dll') | Select-Object -First 1
+                    if (-not $dll) { $dll = Get-ChildItem -LiteralPath $tmpDir -Recurse -Filter '*.dll' | Select-Object -First 1 }
+                    if ($dll) {
+                        $e.AssemblyVersion = ([System.Reflection.AssemblyName]::GetAssemblyName($dll.FullName).Version.ToString())
+                        foreach ($field in 'DownloadLinkInstall','DownloadLinkUpdate','DownloadLinkTesting') {
+                            if ($e.$field) { $e.$field = ([string]$e.$field -replace '\{version\}', $tag -replace '\{tag\}', $tag) }
+                        }
+                        Write-Host ("    [dll]   {0} AssemblyVersion recovered as {1}" -f $e.InternalName, $e.AssemblyVersion)
+                    }
+                    Remove-Item -LiteralPath $tmpDir -Recurse -Force -ErrorAction SilentlyContinue
+                    Remove-Item -LiteralPath $tmpZip.FullName -Force -ErrorAction SilentlyContinue
+                } catch { Write-Warning ("Could not recover AssemblyVersion from {0}: {1}" -f $e.InternalName, $_.Exception.Message) }
+            }
+        }
         if ($null -eq $e.DalamudApiLevel -or $null -eq $e.TestingDalamudApiLevel) {
             if (-not $repoMissingFields.ContainsKey($w.sourceUrl)) { $repoMissingFields[$w.sourceUrl] = 0 }
             $repoMissingFields[$w.sourceUrl]++
