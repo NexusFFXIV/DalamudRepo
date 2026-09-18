@@ -241,7 +241,7 @@
     "InternalName": "GlamourDocumenter",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "0.1.2.7",
+    "TestingAssemblyVersion": "0.1.2.8",
     "TestingDalamudApiLevel": 15
   },
   "GlamourerRoulette": {
