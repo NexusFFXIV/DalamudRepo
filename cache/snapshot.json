@@ -17,7 +17,7 @@
     "InternalName": "Aetherphone",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.0.3.2",
+    "TestingAssemblyVersion": "1.0.3.3",
     "TestingDalamudApiLevel": 15
   },
   "AnimSync": {
@@ -192,7 +192,7 @@
     "InternalName": "EasyChatlog",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "0.1.9.5",
+    "TestingAssemblyVersion": "0.1.9.6",
     "TestingDalamudApiLevel": 15
   },
   "Echosync": {
