@@ -78,8 +78,8 @@
   },
   "BetterTargetingSystemPvP": {
     "InternalName": "BetterTargetingSystemPvP",
-    "AssemblyVersion": "1.0.0.6",
-    "DalamudApiLevel": 10,
+    "AssemblyVersion": "1.0.0.5",
+    "DalamudApiLevel": 9,
     "TestingAssemblyVersion": null,
     "TestingDalamudApiLevel": null
   },
@@ -192,7 +192,7 @@
     "InternalName": "EasyChatlog",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "0.1.9.6",
+    "TestingAssemblyVersion": "0.1.9.7",
     "TestingDalamudApiLevel": 15
   },
   "Echosync": {
