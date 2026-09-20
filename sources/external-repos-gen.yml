@@ -554,10 +554,14 @@ externalRepos:
   - https://raw.githubusercontent.com/0ceal0t/Dalamud-VFXEditor/main/repo.json
 
   # ─── Puni.sh (puni.sh + love.puni.sh) ──────────────────────────────────────
+  # Discovery directory: https://puni.sh/directory/repositories
+  # Re-check this directory regularly when looking for newly published feeds.
   - https://love.puni.sh/ment.json
   - https://puni.sh/api/repository/abe
   - https://puni.sh/api/repository/akechi
   - https://puni.sh/api/repository/aly
+  - https://puni.sh/api/repository/aetherlove
+  - https://puni.sh/api/repository/asuna
   - https://puni.sh/api/repository/boxu
   - https://puni.sh/api/repository/croizat
   - https://puni.sh/api/repository/det
@@ -569,8 +573,13 @@ externalRepos:
   - https://puni.sh/api/repository/jukka
   - https://puni.sh/api/repository/justbees
   - https://puni.sh/api/repository/kawaii
+  - https://puni.sh/api/repository/kage
   - https://puni.sh/api/repository/knightmore
   - https://puni.sh/api/repository/nala
+  - https://puni.sh/api/repository/nainai
+  - https://puni.sh/api/repository/nexai
+  - https://puni.sh/api/repository/oof-games
+  - https://puni.sh/api/repository/raya
   - https://puni.sh/api/repository/sourpuh
   - https://puni.sh/api/repository/spider
   - https://puni.sh/api/repository/taurenkey
