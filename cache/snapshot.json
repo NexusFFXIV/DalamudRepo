@@ -465,7 +465,7 @@
     "InternalName": "SmartPings",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "0.3.12.0",
+    "TestingAssemblyVersion": "0.3.13.0",
     "TestingDalamudApiLevel": 15
   },
   "SmartStrafe": {
