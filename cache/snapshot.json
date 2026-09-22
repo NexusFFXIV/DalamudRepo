@@ -45,28 +45,35 @@
     "InternalName": "AutoDailyTribes",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "2.3.0.1",
+    "TestingAssemblyVersion": "2.5.0.0",
     "TestingDalamudApiLevel": 15
   },
   "AutoFateGrind": {
     "InternalName": "AutoFateGrind",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "2.9.0.0",
+    "TestingAssemblyVersion": "2.10.0.0",
     "TestingDalamudApiLevel": 15
   },
   "AutoHuntGrinder": {
     "InternalName": "AutoHuntGrinder",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.1.0.0",
+    "TestingAssemblyVersion": "1.2.0.0",
     "TestingDalamudApiLevel": 15
   },
   "AutoPvpSeriesGrind": {
     "InternalName": "AutoPvpSeriesGrind",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "2.1.0.0",
+    "TestingAssemblyVersion": "2.3.0.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "AutoSightseeingLog": {
+    "InternalName": "AutoSightseeingLog",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.1.0.0",
     "TestingDalamudApiLevel": 15
   },
   "BagAssistant": {

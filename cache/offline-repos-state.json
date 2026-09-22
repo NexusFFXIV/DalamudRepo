@@ -9,7 +9,7 @@
   },
   "external-repos-gen|https://raw.githubusercontent.com/aka-tamagotchi/EgirlPlugins/main/repo.json": {
     "failures": 10,
-    "lastFailure": "2026-09-21T04:29:09.9185220Z"
+    "lastFailure": "2026-09-21T04:29:09.918522Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Ank164/DalamudRepo/main/pluginmaster.json": {
     "failures": 10,
@@ -28,8 +28,8 @@
     "lastFailure": "2026-09-21T04:29:09.9260562Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/BrakusTapus/PluginHUB/main/pluginmaster.json": {
-    "failures": 3,
-    "lastFailure": "2026-09-21T04:29:09.9287838Z"
+    "failures": 4,
+    "lastFailure": "2026-09-22T04:24:34.2260715Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/cecilia-sanare/DalamudPlugins/main/pluginmaster.json": {
     "failures": 10,
@@ -105,7 +105,7 @@
   },
   "external-repos-gen|https://raw.githubusercontent.com/RikaKagurasaka/MyDalamudPlugins/main/pluginmaster.json": {
     "failures": 10,
-    "lastFailure": "2026-09-21T04:29:09.9697090Z"
+    "lastFailure": "2026-09-21T04:29:09.969709Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Speshkitty/DalamudPlugins/main/repo.json": {
     "failures": 10,
