@@ -28,8 +28,8 @@
     "lastFailure": "2026-09-21T04:29:09.9260562Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/BrakusTapus/PluginHUB/main/pluginmaster.json": {
-    "failures": 4,
-    "lastFailure": "2026-09-22T04:24:34.2260715Z"
+    "failures": 5,
+    "lastFailure": "2026-09-22T18:22:44.4309876Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/cecilia-sanare/DalamudPlugins/main/pluginmaster.json": {
     "failures": 10,
