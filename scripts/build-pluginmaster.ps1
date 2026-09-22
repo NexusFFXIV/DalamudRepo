@@ -53,6 +53,20 @@ Import-Module powershell-yaml
 . "$PSScriptRoot\lib\build-outputs.ps1"
 . "$PSScriptRoot\lib\offline-repos.ps1"
 
+# Dalamud rejects third-party repositories that replace an official plugin.
+# Load the official PluginMaster once and use its InternalName set as a
+# deny-list for every generated output. If unavailable, fail safe.
+$officialPluginNames = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::Ordinal)
+try {
+    $officialMaster = Invoke-RestMethod -Uri $DalamudMasterUrl -UseBasicParsing -TimeoutSec 30
+    foreach ($official in @($officialMaster)) {
+        if ($official.InternalName) { [void]$officialPluginNames.Add([string]$official.InternalName) }
+    }
+    Write-Host ("Official PluginMaster: {0} plugin names loaded for exclusion" -f $officialPluginNames.Count)
+} catch {
+    Write-Warning "Could not load official PluginMaster for exclusion; no official entries will be removed. $($_.Exception.Message)"
+}
+
 # Durable cache for zip-fallback api-level lookups. Without it, each run
 # re-downloads the same upstream zips, which inflates the upstream
 # download_count and produces a "refresh" PR every cycle even when nothing
@@ -167,6 +181,10 @@ foreach ($file in $sourceFiles) {
             Write-Warning "Unknown source type '$type' in $basename — skipping."
             continue
         }
+    }
+
+    if ($officialPluginNames.Count -gt 0) {
+        $r.entries = @(Remove-OfficialEntries -Entries $r.entries -SourceLabel $basename -OfficialNames $officialPluginNames)
     }
 
     if ($offlineEnabled -and $type -eq "external-repos") {

@@ -29,6 +29,22 @@ $script:VolatileEntryFields = @('DownloadCount')
 $script:PublishedCache = @{}
 $script:FrozenTotal = 0
 $script:ForceMatched = @{}
+$script:OfficialRemoved = @()
+
+function Remove-OfficialEntries {
+    param($Entries, [string]$SourceLabel, [System.Collections.Generic.HashSet[string]]$OfficialNames)
+    $kept = @()
+    foreach ($entry in @($Entries)) {
+        if ($null -eq $entry) { continue }
+        $name = [string]$entry.InternalName
+        if ($name -and $OfficialNames.Contains($name)) {
+            $script:OfficialRemoved += [pscustomobject]@{ Source = $SourceLabel; InternalName = $name }
+            continue
+        }
+        $kept += $entry
+    }
+    return @($kept)
+}
 
 function Get-EntryFingerprint {
     # Canonical JSON of one entry with the volatile fields removed.
@@ -290,5 +306,13 @@ function Write-BuildSummary {
         Write-Host ""
         Write-Host ("Kept as published (only volatile fields moved): {0}" -f $script:FrozenTotal)
         Write-Host ("  Volatile fields: {0}" -f ($script:VolatileEntryFields -join ', '))
+    }
+
+    if (@($script:OfficialRemoved).Count -gt 0) {
+        Write-Host ""
+        Write-Host ("Excluded official plugins (by source): {0}" -f @($script:OfficialRemoved).Count)
+        foreach ($group in @($script:OfficialRemoved | Group-Object Source | Sort-Object Name)) {
+            Write-Host ("  {0}: {1}" -f $group.Name, (($group.Group | ForEach-Object InternalName | Sort-Object -Unique) -join ', '))
+        }
     }
 }
