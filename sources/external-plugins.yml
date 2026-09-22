@@ -1,10 +1,5 @@
-# External plugins — third-party plugins imported by InternalName from
-# Dalamud's official pluginmaster (kamori.goats.dev). Each entry is copied
-# verbatim; upstream download links and IconUrl stay with the upstream author.
-#
-# Example:
-#   externalPlugins:
-#     - internalName: XIVDeck.FFXIVPlugin
+# Official-plugin imports are intentionally disabled. The official PluginMaster
+# is used only as a deny-list to protect external repository aggregation.
 
 type: external-plugins
 out: external-repo.json
