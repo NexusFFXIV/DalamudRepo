@@ -84,9 +84,9 @@ Each entry is a URL to another Dalamud repo's `pluginmaster.json` (or single-plu
 
 Unreachable repos (down, bad JSON, rate-limited) log a warning and are skipped; the rest of the rebuild keeps going.
 
-### external-plugins.yml — single third-party plugins
+### external-plugins.yml — disabled official-plugin import
 
-Each entry names a plugin by its `InternalName`. The script looks it up in Dalamud's official pluginmaster (`https://kamori.goats.dev/Plugin/PluginMaster`) and copies the entry verbatim — download links keep pointing at the upstream CDN, `IconUrl` stays with the upstream author. Lands in `external-repo.json` and `all-repo.json`.
+This source is retained for compatibility but official Dalamud plugins are no longer imported or re-published. The official PluginMaster (`https://kamori.goats.dev/Plugin/PluginMaster`) is used only as a deny-list to remove official plugins accidentally found in third-party feeds.
 
 ### external-repos-gen.yml — auto-discovered third-party repos
 
@@ -123,11 +123,5 @@ externalRepos:
 
 ### A third-party plugin by name
 
-Append an entry to `external-plugins.yml`:
-
-```yaml
-externalPlugins:
-  - internalName: SomePlugin.InternalName
-```
-
-The name must match what appears in https://kamori.goats.dev/Plugin/PluginMaster.
+Add its repository URL to `external-repos.yml` instead. Direct imports by
+`InternalName` from the official PluginMaster are intentionally unsupported.

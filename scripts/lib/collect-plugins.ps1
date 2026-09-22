@@ -443,36 +443,15 @@ function Collect-NexusPool {
 
 function Collect-ExternalPluginPool {
     param([Parameter(Mandatory)]$Yaml)
-    $entries = @()
-    $filtered = 0
-    $count = 0
-    if (-not $Yaml.externalPlugins -or @($Yaml.externalPlugins).Count -eq 0) {
-        Write-Host "  (none)"
-        return @{ entries = $entries; filtered = $filtered }
+    # Official Dalamud plugins must never be re-published through this
+    # repository. The official PluginMaster is used only as the deny-list in
+    # build-pluginmaster.ps1 for filtering third-party feeds.
+    if ($Yaml.externalPlugins -and @($Yaml.externalPlugins).Count -gt 0) {
+        Write-Warning "external-plugins.yml entries are disabled: official Dalamud plugins are not imported or re-published."
+    } else {
+        Write-Host "  (official plugin imports disabled)"
     }
-    $dalamudMaster = $null
-    try {
-        $dalamudMaster = Invoke-RestMethod -Uri $DalamudMasterUrl -UseBasicParsing -TimeoutSec 30
-    } catch {
-        Write-Warning "Failed to fetch $DalamudMasterUrl — external imports skipped. $($_.Exception.Message)"
-        return @{ entries = $entries; filtered = $filtered }
-    }
-    foreach ($ext in $Yaml.externalPlugins) {
-        $name = $ext.internalName
-        $upstream = $dalamudMaster | Where-Object { $_.InternalName -eq $name } | Select-Object -First 1
-        if (-not $upstream) {
-            Write-Host "  -> $name (not found in $DalamudMasterUrl)"
-            Write-Warning "External plugin '$name' not found upstream — skipping."
-            continue
-        }
-        if (-not (Test-MeetsApi $upstream)) { $filtered++; continue }
-        $entries += $upstream
-        Write-Host ("  -> {0} ({1})" -f $upstream.InternalName, $upstream.AssemblyVersion)
-        $count++
-    }
-    if ($count -eq 0) { Write-Host "  (none)" }
-    if ($filtered -gt 0) { Write-Host ("  ($filtered ignored — both API levels below thresholds ($MinDalamudApiLevel / $MinTestingDalamudApiLevel))") }
-    return @{ entries = $entries; filtered = $filtered }
+    return @{ entries = @(); filtered = 0 }
 }
 
 function Test-IsOriginalUpstream {
