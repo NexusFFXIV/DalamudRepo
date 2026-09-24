@@ -17,7 +17,7 @@
     "InternalName": "Aetherphone",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.0.3.3",
+    "TestingAssemblyVersion": "1.0.3.4",
     "TestingDalamudApiLevel": 15
   },
   "AnimSync": {
@@ -59,7 +59,7 @@
     "InternalName": "AutoHuntGrinder",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.4.0.0",
+    "TestingAssemblyVersion": "1.5.0.0",
     "TestingDalamudApiLevel": 15
   },
   "AutoPvpSeriesGrind": {
@@ -73,7 +73,7 @@
     "InternalName": "AutoSightseeingLog",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.5.0.0",
+    "TestingAssemblyVersion": "1.6.0.0",
     "TestingDalamudApiLevel": 15
   },
   "BagAssistant": {
