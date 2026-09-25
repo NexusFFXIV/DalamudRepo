@@ -45,35 +45,42 @@
     "InternalName": "AutoDailyTribes",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "2.8.0.0",
+    "TestingAssemblyVersion": "2.9.0.0",
     "TestingDalamudApiLevel": 15
   },
   "AutoFateGrind": {
     "InternalName": "AutoFateGrind",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "2.12.0.0",
+    "TestingAssemblyVersion": "2.13.0.0",
     "TestingDalamudApiLevel": 15
   },
   "AutoHuntGrinder": {
     "InternalName": "AutoHuntGrinder",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.5.0.0",
+    "TestingAssemblyVersion": "1.7.0.0",
     "TestingDalamudApiLevel": 15
   },
   "AutoPvpSeriesGrind": {
     "InternalName": "AutoPvpSeriesGrind",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "2.5.0.0",
+    "TestingAssemblyVersion": "2.7.0.0",
     "TestingDalamudApiLevel": 15
   },
   "AutoSightseeingLog": {
     "InternalName": "AutoSightseeingLog",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.6.0.0",
+    "TestingAssemblyVersion": "1.8.0.0",
+    "TestingDalamudApiLevel": 15
+  },
+  "AutoTripleTriadGrind": {
+    "InternalName": "AutoTripleTriadGrind",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "TestingAssemblyVersion": "1.1.0.0",
     "TestingDalamudApiLevel": 15
   },
   "BagAssistant": {
@@ -402,7 +409,7 @@
     "InternalName": "PvpAutoLb",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.1.0.0",
+    "TestingAssemblyVersion": "1.2.0.0",
     "TestingDalamudApiLevel": 15
   },
   "QuestNav": {
