@@ -17,7 +17,7 @@
     "InternalName": "Aetherphone",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.0.3.7",
+    "TestingAssemblyVersion": "1.0.3.8",
     "TestingDalamudApiLevel": 15
   },
   "AnimSync": {
@@ -59,7 +59,7 @@
     "InternalName": "AutoHuntGrinder",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.7.0.0",
+    "TestingAssemblyVersion": "1.8.0.0",
     "TestingDalamudApiLevel": 15
   },
   "AutoHuntTrain": {
@@ -73,7 +73,7 @@
     "InternalName": "AutoPvpSeriesGrind",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "2.7.1.0",
+    "TestingAssemblyVersion": "2.8.0.0",
     "TestingDalamudApiLevel": 15
   },
   "AutoSightseeingLog": {
@@ -416,7 +416,7 @@
     "InternalName": "PvpAutoLb",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.2.0.0",
+    "TestingAssemblyVersion": "1.3.0.0",
     "TestingDalamudApiLevel": 15
   },
   "QuestNav": {
