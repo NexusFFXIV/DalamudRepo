@@ -17,7 +17,7 @@
     "InternalName": "Aetherphone",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.0.3.8",
+    "TestingAssemblyVersion": "1.0.3.9",
     "TestingDalamudApiLevel": 15
   },
   "AnimSync": {
