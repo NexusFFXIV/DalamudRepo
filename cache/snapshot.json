@@ -164,7 +164,7 @@
     "InternalName": "Consolidator",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "1.3.6.1",
+    "TestingAssemblyVersion": "1.3.7.0",
     "TestingDalamudApiLevel": 15
   },
   "CraftingList": {
@@ -486,7 +486,7 @@
     "InternalName": "SmartPings",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "0.3.13.0",
+    "TestingAssemblyVersion": "0.3.14.0",
     "TestingDalamudApiLevel": 15
   },
   "SmartStrafe": {
