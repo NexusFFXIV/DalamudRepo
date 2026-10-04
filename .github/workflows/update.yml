@@ -138,7 +138,7 @@ jobs:
         # Required repo secrets: SMTP_HOST, SMTP_PORT, SMTP_USERNAME,
         # SMTP_PASSWORD, MAIL_TO.
         if: steps.pr.outputs.changed == 'true' && env.SMTP_HOST != ''
-        uses: dawidd6/action-send-mail@v18
+        uses: dawidd6/action-send-mail@v22
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
         with:
