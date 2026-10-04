@@ -92,8 +92,8 @@
     "lastFailure": "2026-09-21T04:29:09.9628286Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/notYuta/ShiroUtils/main/repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-10-03T04:53:14.3523811Z"
+    "failures": 3,
+    "lastFailure": "2026-10-04T05:25:44.3520048Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/postcards114/Hypnotoad-Plugin/master/PluginDir/pluginmaster.json": {
     "failures": 10,
@@ -112,8 +112,8 @@
     "lastFailure": "2026-09-21T04:29:09.969709Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/shironayuta/ShiroUtils/main/repo.json": {
-    "failures": 2,
-    "lastFailure": "2026-10-03T04:53:14.3836719Z"
+    "failures": 3,
+    "lastFailure": "2026-10-04T05:25:44.3845272Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Speshkitty/DalamudPlugins/main/repo.json": {
     "failures": 10,
