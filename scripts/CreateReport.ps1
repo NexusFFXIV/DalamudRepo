@@ -101,20 +101,14 @@ $parts += '<details><summary>Zip-Fallback (' + (Rows $report.ZipFallback).Count 
 $parts += HtmlTable @('Plugin','Status','API','URL') $report.ZipFallback { param($x) @($x.Plugin,$x.Status,$x.Api,$x.Url) }
 $parts += '</details>'
 $parts += '<details><summary>Offizielle Plugin-Ausschlüsse (' + (Rows $report.OfficialExclusions).Count + ' Plugins)</summary>'
-foreach ($source in (Rows $report.OfficialExclusions | Group-Object SourceFile | Sort-Object Name)) {
-    $parts += '<h3>' + (HtmlCell $source.Name) + ' <span class="muted">(' + $source.Count + ' Plugins)</span></h3>'
-    foreach ($repo in ($source.Group | Group-Object RepositoryUrl | Sort-Object Name)) {
-        $parts += '<details><summary>' + (HtmlValue $repo.Name) + ' (' + $repo.Count + ')</summary>'
-        $parts += '<table class="nested"><thead><tr><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th></tr></thead><tbody>'
-        foreach ($plugin in ($repo.Group | Sort-Object InternalName)) {
-            $pluginName = if ($plugin.Plugin) { $plugin.Plugin } else { $plugin.InternalName }
-            $version = if ($plugin.PluginVersion) { $plugin.PluginVersion } else { '-' }
-            $api = if ($plugin.ApiVersion) { $plugin.ApiVersion } else { '-' }
-            $parts += '<tr class="bad"><td>' + (HtmlCell $pluginName) + '</td><td>' + (HtmlCell $plugin.InternalName) + '</td><td>' + (HtmlCell $version) + '</td><td>' + (HtmlCell $api) + '</td></tr>'
-        }
-        $parts += '</tbody></table></details>'
-    }
+$parts += '<table><thead><tr><th>Quelle</th><th>Repository</th><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th></tr></thead><tbody>'
+foreach ($plugin in (Rows $report.OfficialExclusions | Sort-Object SourceFile, RepositoryUrl, InternalName)) {
+    $pluginName = if ($plugin.Plugin) { $plugin.Plugin } else { $plugin.InternalName }
+    $version = if ($plugin.PluginVersion) { $plugin.PluginVersion } else { '-' }
+    $api = if ($plugin.ApiVersion) { $plugin.ApiVersion } else { '-' }
+    $parts += '<tr class="bad"><td>' + (HtmlCell $plugin.SourceFile) + '</td><td>' + (HtmlValue $plugin.RepositoryUrl) + '</td><td>' + (HtmlCell $pluginName) + '</td><td>' + (HtmlCell $plugin.InternalName) + '</td><td>' + (HtmlCell $version) + '</td><td>' + (HtmlCell $api) + '</td></tr>'
 }
+$parts += '</tbody></table>'
 $parts += '</details>'
 $parts += '</details>'
 $parts += '<details><summary>Stage 3: Ausgaben erzeugen (' + (Rows $report.Outputs).Count + ' Ausgaben)</summary>'
