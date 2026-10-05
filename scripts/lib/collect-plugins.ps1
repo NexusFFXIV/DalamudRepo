@@ -16,6 +16,7 @@ $DalamudMasterUrl = "https://kamori.goats.dev/Plugin/PluginMaster"
 # (separate from sources/ which is for plugin source definitions) so it's
 # obviously a build artifact.
 $SnapshotPath = "cache/snapshot.json"
+$script:RepoDedupHeaderWritten = $false
 
 function Invoke-GhApi {
     param([string]$Path)
@@ -24,6 +25,15 @@ function Invoke-GhApi {
         throw "gh api $Path failed with exit code $LASTEXITCODE"
     }
     return $raw | ConvertFrom-Json
+}
+
+function Get-HttpErrorLabel {
+    param([Parameter(Mandatory)]$ErrorRecord)
+    $response = $ErrorRecord.Exception.Response
+    if ($response -and $response.StatusCode) {
+        return ("{0}{1}" -f [int]$response.StatusCode, $response.StatusCode.ToString())
+    }
+    return "RequestError"
 }
 
 function Get-LatestRelease {
@@ -49,7 +59,7 @@ function Get-ManifestFromRelease {
     }
     $tmp = New-TemporaryFile
     try {
-        Invoke-WebRequest -Uri $url -OutFile $tmp.FullName -UseBasicParsing
+        Invoke-WebRequest -Uri $url -OutFile $tmp.FullName -UseBasicParsing -ErrorAction Stop 2>$null
         return Get-Content $tmp.FullName -Raw | ConvertFrom-Json
     } finally {
         Remove-Item $tmp.FullName -ErrorAction SilentlyContinue
@@ -187,7 +197,7 @@ function Get-ZipManifestApiLevel {
     $tmp = $null
     try {
         $tmp = New-TemporaryFile
-        Invoke-WebRequest -Uri $Url -OutFile $tmp.FullName -UseBasicParsing -TimeoutSec 30
+        Invoke-WebRequest -Uri $Url -OutFile $tmp.FullName -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
         Add-Type -AssemblyName System.IO.Compression.FileSystem -ErrorAction SilentlyContinue
         $zip = [System.IO.Compression.ZipFile]::OpenRead($tmp.FullName)
         try {
@@ -201,6 +211,9 @@ function Get-ZipManifestApiLevel {
             }
         } finally { $zip.Dispose() }
     } catch {
+        if ($_.Exception.Response) {
+            Write-Host ("    {0} -> {1}" -f (Get-HttpErrorLabel $_), $Url)
+        }
         Write-Verbose "Zip fallback failed for $Url ($InternalName): $($_.Exception.Message)"
     } finally {
         if ($tmp) { Remove-Item $tmp.FullName -ErrorAction SilentlyContinue }
@@ -486,7 +499,13 @@ function Select-RepoWinners {
         $byName[$name] += $c
     }
     $winners = @()
-    foreach ($name in $byName.Keys) {
+    $duplicateReports = @()
+    if (-not $script:RepoDedupHeaderWritten) {
+        Write-Host ""
+        Write-Host "=== Stage 2: Deduplicate repository candidates ==="
+        $script:RepoDedupHeaderWritten = $true
+    }
+    foreach ($name in ($byName.Keys | Sort-Object)) {
         $group = $byName[$name]
         if ($group.Count -eq 1) {
             $winners += $group[0]
@@ -502,13 +521,20 @@ function Select-RepoWinners {
         $sorted = $scored | Sort-Object @{Expression={ $_.eff };    Descending=$true},
                                          @{Expression={ $_.origin }; Descending=$true}
         $winners += $sorted[0].cand
-        for ($i = 1; $i -lt $sorted.Count; $i++) {
-            Write-Host ("    [dedup] {0} v{1} from {2} dropped (winner: v{3} from {4})" -f `
-                $name, `
-                $sorted[$i].eff, `
-                $sorted[$i].cand.sourceUrl, `
-                $sorted[0].eff, `
-                $sorted[0].cand.sourceUrl)
+        $duplicateReports += [pscustomobject]@{
+            Name = $name
+            Winner = $sorted[0]
+            Candidates = @($sorted)
+        }
+    }
+    foreach ($report in $duplicateReports) {
+        Write-Host ""
+        Write-Host ("  Plugin: {0}" -f $report.Name)
+        Write-Host "    Status   Version       Source"
+        Write-Host "    -------  ------------  ------"
+        foreach ($candidate in $report.Candidates) {
+            $status = if ($candidate -eq $report.Winner) { "WINNER" } else { "drop" }
+            Write-Host ("    {0,-7}  v{1,-11}  {2}" -f $status, $candidate.eff, $candidate.cand.sourceUrl)
         }
     }
     return $winners
@@ -534,26 +560,25 @@ function Collect-RepoUrlsPool {
     $candidates = @()
     $unreachable = @()
     $reachable = @()
+    $repoReports = @()
     $logged = 0
     foreach ($url in $Yaml.externalRepos) {
         if (-not $url) { continue }
         $logged++
         $resp = $null
         try {
-            $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop
+            $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
         } catch {
-            Write-Host "  -> ${url}: (unreachable: $($_.Exception.Message))"
-            Write-Warning "$SectionLabel repo $url unreachable: $($_.Exception.Message)"
+            $label = Get-HttpErrorLabel $_
+            $repoReports += [pscustomobject]@{ Status = $label; Count = 0; Url = $url }
             $unreachable += $url
             continue
         }
         if (-not $resp) {
-            Write-Host "  -> ${url}: (empty response)"
-            Write-Warning "$SectionLabel repo $url returned empty response"
+            $repoReports += [pscustomobject]@{ Status = "EMPTY"; Count = 0; Url = $url }
             $unreachable += $url
             continue
         }
-        $reachable += $url
         $items = if ($resp -is [System.Array]) { $resp } else { @($resp) }
         $hereCount = 0
         foreach ($e in $items) {
@@ -561,9 +586,24 @@ function Collect-RepoUrlsPool {
             $candidates += @{ entry = $e; sourceUrl = $url }
             $hereCount++
         }
-        Write-Host ("  -> ${url}: $hereCount candidate(s)")
+        if ($hereCount -eq 0) {
+            $repoReports += [pscustomobject]@{ Status = "EMPTY"; Count = 0; Url = $url }
+            $unreachable += $url
+        } else {
+            $repoReports += [pscustomobject]@{ Status = "OK"; Count = $hereCount; Url = $url }
+            $reachable += $url
+        }
     }
-    if ($logged -eq 0) { Write-Host "  (none configured)" }
+    if ($logged -eq 0) {
+        Write-Host "  (none configured)"
+    } else {
+        Write-Host "  Source status:"
+        Write-Host "    Status       Candidates  Source"
+        Write-Host "    -----------  ----------  ------"
+        foreach ($report in $repoReports) {
+            Write-Host ("    {0,-11}  {1,10}  {2}" -f $report.Status, $report.Count, $report.Url)
+        }
+    }
 
     $winners = Select-RepoWinners $candidates
 
@@ -583,7 +623,7 @@ function Collect-RepoUrlsPool {
             $tag = $null
             if ($repoMatch.Success) {
                 try {
-                    $release = Invoke-RestMethod -Uri ("https://api.github.com/repos/{0}/{1}/releases/latest" -f $repoMatch.Groups[1].Value, $repoMatch.Groups[2].Value) -Headers @{ 'User-Agent' = 'DalamudRepoGenerator' } -TimeoutSec 20
+                    $release = Invoke-RestMethod -Uri ("https://api.github.com/repos/{0}/{1}/releases/latest" -f $repoMatch.Groups[1].Value, $repoMatch.Groups[2].Value) -Headers @{ 'User-Agent' = 'DalamudRepoGenerator' } -TimeoutSec 20 -ErrorAction Stop 2>$null
                     $tag = [string]$release.tag_name
                 } catch { Write-Warning ("Could not resolve latest release for {0}: {1}" -f $e.InternalName, $_.Exception.Message) }
             }
@@ -591,7 +631,7 @@ function Collect-RepoUrlsPool {
                 $download = [string]$e.DownloadLinkInstall -replace '\{version\}', $tag -replace '\{tag\}', $tag
                 try {
                     $tmpZip = New-TemporaryFile
-                    Invoke-WebRequest -Uri $download -OutFile $tmpZip.FullName -UseBasicParsing -TimeoutSec 30
+                    Invoke-WebRequest -Uri $download -OutFile $tmpZip.FullName -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
                     $tmpDir = Join-Path ([IO.Path]::GetTempPath()) ([IO.Path]::GetRandomFileName())
                     Expand-Archive -LiteralPath $tmpZip.FullName -DestinationPath $tmpDir
                     $dll = Get-ChildItem -LiteralPath $tmpDir -Recurse -Filter ([string]$e.InternalName + '.dll') | Select-Object -First 1

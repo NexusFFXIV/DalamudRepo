@@ -272,7 +272,9 @@ function Build-FullUnion {
     # gets its own standalone gen-repos.json.
     param($NexusEntries, $ExternalPluginEntries, $CommonRepoEntries)
     Write-Host ""
-    Write-Host "Deduping (full pluginmaster, gen excluded):"
+    Write-Host "  Deduplicate merged output (gen excluded):"
+    Write-Host "    Plugin                         Version       Duplicates"
+    Write-Host "    ----------------------------  ------------  ----------"
     $all = @($NexusEntries) + @($ExternalPluginEntries) + @($CommonRepoEntries)
     $before = @($all).Count
     $result = @()
@@ -281,7 +283,7 @@ function Build-FullUnion {
         $winner = $sorted | Select-Object -First 1
         $others = $g.Count - 1
         $suffix = if ($others -gt 0) { "$others other version$(if ($others -ne 1) { 's' }) in list" } else { "unique" }
-        Write-Host ("Added {0} ({1}) ({2})" -f $winner.InternalName, $winner.AssemblyVersion, $suffix)
+        Write-Host ("    {0,-28}  {1,-12}  {2}" -f $winner.InternalName, $winner.AssemblyVersion, $suffix)
         $result += $winner
     }
     return @{ entries = $result; before = $before; after = @($result).Count }
@@ -293,11 +295,12 @@ function Write-BuildSummary {
     )
     Write-Host ""
     Write-Host "Summary:"
+    Write-Host "  Output                              Entries  Status"
+    Write-Host "  ----------------------------------  -------  ------"
     foreach ($o in $Outputs) {
-        $disabled = if (-not $o.enabled) { " (disabled — file not written)" } else { "" }
-        $extra    = if ($o.extra) { " " + $o.extra } else { "" }
         $frozen   = if ($o.frozen) { " [{0} kept as published]" -f $o.frozen } else { "" }
-        Write-Host ("  {0,-40} {1} entries{2}{3}{4}" -f $o.name, $o.count, $frozen, $extra, $disabled)
+        $status = if (-not $o.enabled) { "DISABLED" } elseif ($o.frozen) { "OK/FROZEN" } else { "OK" }
+        Write-Host ("  {0,-34}  {1,7}  {2}{3}" -f $o.name, $o.count, $status, $frozen)
     }
 
     # Without this line, "the run found nothing to publish" and "the republish
@@ -311,8 +314,12 @@ function Write-BuildSummary {
     if (@($script:OfficialRemoved).Count -gt 0) {
         Write-Host ""
         Write-Host ("Excluded official plugins (by source): {0}" -f @($script:OfficialRemoved).Count)
+        Write-Host "  Source                              Count  Status"
+        Write-Host "  ----------------------------------  -----  ----------------"
         foreach ($group in @($script:OfficialRemoved | Group-Object Source | Sort-Object Name)) {
-            Write-Host ("  {0}: {1}" -f $group.Name, (($group.Group | ForEach-Object InternalName | Sort-Object -Unique) -join ', '))
+            $names = (($group.Group | ForEach-Object InternalName | Sort-Object -Unique) -join ', ')
+            Write-Host ("  {0,-34}  {1,5}  OFFICIAL_EXCLUDED" -f $group.Name, $group.Count)
+            Write-Host ("    Plugins: {0}" -f $names)
         }
     }
 }
