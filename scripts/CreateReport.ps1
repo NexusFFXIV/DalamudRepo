@@ -159,7 +159,8 @@ foreach ($x in (Rows $report.ApiResolution | Sort-Object Plugin)) {
 }
 $parts += '</tbody></table>'
 $parts += '</details>'
-$parts += '<details><summary>Zip-Fallback (' + (Rows $report.ZipFallback).Count + ' Versuche)</summary>'
+$parts += '<details><summary><span class="legend-de">Versions- und API-Auflösung – Zip-Fallbacks (' + (Rows $report.ZipFallback).Count + ' Versuche)</span><span class="legend-en">Version and API resolution – Zip fallbacks (' + (Rows $report.ZipFallback).Count + ' attempts)</span></summary>'
+$parts += '<p class="muted"><span class="legend-de">Diese Tabelle enthält alle tatsächlichen Zip-Fallback-Aufrufe – erfolgreiche Auflösungen ebenso wie fehlgeschlagene Versuche. Snapshot-Treffer ohne neuen Download erscheinen nur in der API-Auflösungstabelle.</span><span class="legend-en">This table contains every actual zip fallback call, including successful resolutions and failed attempts. Snapshot hits without a new download are shown only in the API resolution table.</span></p>'
 $dedupMap = @{}
 foreach ($d in (Rows $report.Deduplication)) { $dedupMap[[string]$d.Plugin] = $d }
 $zipRows = foreach ($x in (Rows $report.ZipFallback)) {
