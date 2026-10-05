@@ -57,11 +57,41 @@ Import-Module powershell-yaml
 # Load the official PluginMaster once and use its InternalName set as a
 # deny-list for every generated output. If unavailable, fail safe.
 $officialPluginNames = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::Ordinal)
+$officialMasterEntries = @()
 try {
     $officialMaster = Invoke-RestMethod -Uri $DalamudMasterUrl -UseBasicParsing -TimeoutSec 30
-    foreach ($official in @($officialMaster)) {
+    # PluginMaster currently returns one object whose properties are arrays
+    # (rather than an array of plugin objects). Normalize both response shapes
+    # before building the deny-list and report rows.
+    $officialItems = @()
+    $masterRoot = @($officialMaster)
+    if ($masterRoot.Count -eq 1 -and @($masterRoot[0].InternalName).Count -gt 1) {
+        $root = $masterRoot[0]
+        $rowCount = @($root.InternalName).Count
+        $officialItems = @(for ($i = 0; $i -lt $rowCount; $i++) {
+            [pscustomobject]@{
+                Name = @($root.Name)[$i]
+                InternalName = @($root.InternalName)[$i]
+                AssemblyVersion = @($root.AssemblyVersion)[$i]
+                DalamudApiLevel = @($root.DalamudApiLevel)[$i]
+                RepoUrl = @($root.RepoUrl)[$i]
+            }
+        })
+    } else {
+        $officialItems = @($masterRoot)
+    }
+    foreach ($official in $officialItems) {
         if ($official.InternalName) { [void]$officialPluginNames.Add([string]$official.InternalName) }
     }
+    $officialMasterEntries = @($officialItems | ForEach-Object {
+        [pscustomobject]@{
+            Plugin = if ($_.Name) { [string]$_.Name } else { [string]$_.InternalName }
+            InternalName = [string]$_.InternalName
+            PluginVersion = if ($_.AssemblyVersion) { [string]$_.AssemblyVersion } else { '-' }
+            ApiVersion = if ($null -ne $_.DalamudApiLevel) { [string]$_.DalamudApiLevel } else { '-' }
+            RepositoryUrl = [string]$_.RepoUrl
+        }
+    })
     Write-Host ("Official PluginMaster: {0} plugin names loaded for exclusion" -f $officialPluginNames.Count)
 } catch {
     Write-Warning "Could not load official PluginMaster for exclusion; no official entries will be removed. $($_.Exception.Message)"
@@ -342,6 +372,7 @@ $structuredReport = [ordered]@{
     ApiResolution = @($script:ReportApiResolution)
     ZipFallback = @($zipReportRows)
     OfficialExclusions = @($script:OfficialRemoved)
+    OfficialMaster = @($officialMasterEntries)
     Outputs = @($outputs | ForEach-Object { [pscustomobject]@{ Name = $_.name; Count = $_.count; Status = if ($_.enabled) { 'OK' } else { 'SKIPPED' } } })
     Summary = [ordered]@{
         Filtered = [int]$totalFiltered

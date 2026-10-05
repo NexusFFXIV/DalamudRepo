@@ -11,6 +11,25 @@ param(
 $report = Get-Content -LiteralPath $ReportPath -Raw -Encoding UTF8 | ConvertFrom-Json
 
 function Rows($items) { @($items | Where-Object { $null -ne $_ }) }
+function OfficialMasterRows($value) {
+    $items = @($value | Where-Object { $null -ne $_ })
+    # Older reports (and hand-built reports) may contain one object with
+    # array-valued properties. Expand that shape into one row per plugin.
+    if ($items.Count -eq 1 -and @($items[0].InternalName).Count -gt 1) {
+        $root = $items[0]
+        $count = @($root.InternalName).Count
+        return @(for ($i = 0; $i -lt $count; $i++) {
+            [pscustomobject]@{
+                Plugin = @($root.Plugin)[$i]
+                InternalName = @($root.InternalName)[$i]
+                PluginVersion = @($root.PluginVersion)[$i]
+                ApiVersion = @($root.ApiVersion)[$i]
+                RepositoryUrl = @($root.RepositoryUrl)[$i]
+            }
+        })
+    }
+    return $items
+}
 function HtmlCell([object]$value) { [System.Net.WebUtility]::HtmlEncode([string]$value) }
 function HtmlValue([object]$value) {
     $text = [string]$value
@@ -72,7 +91,7 @@ $parts += '<details><summary>Stage 2: Kandidaten verarbeiten</summary>'
 $officialCatalogForFlow = if ($report.Summary.OfficialCatalog) { [int]$report.Summary.OfficialCatalog } else { 0 }
 $parts += '<p class="muted"><span class="legend-de"><strong>Ablauf:</strong> 1. Offizielle Master-Blacklist laden (' + $officialCatalogForFlow + ' Plugins) → 2. Custom-Repositories sammeln → 3. Offizielle Treffer mit <code>OFFICIAL_MASTER</code> ausschließen → 4. verbleibende Kandidaten deduplizieren und prüfen.</span><span class="legend-en"><strong>Flow:</strong> 1. Load official Master blacklist (' + $officialCatalogForFlow + ' plugins) → 2. Collect custom repositories → 3. Exclude official matches with <code>OFFICIAL_MASTER</code> → 4. deduplicate and validate the remaining candidates.</span></p>'
 $officialRows = Rows $report.OfficialExclusions
-$officialMasterRows = Rows $report.OfficialMaster
+$officialMasterRows = OfficialMasterRows $report.OfficialMaster
 $officialCatalog = if ($report.Summary.OfficialCatalog) { [int]$report.Summary.OfficialCatalog } else { 0 }
 $officialDe = 'Offizielles Master-Repo (' + $officialCatalog + ' Plugins, durch Dedup entfernt (' + $officialRows.Count + '))'
 $officialEn = 'Official Master Repo (' + $officialCatalog + ' Plugins, Removed by dedup (' + $officialRows.Count + '))'
