@@ -154,6 +154,6 @@ jobs:
           to: ${{ secrets.MAIL_TO }}
           from: NexusFFXIV DalamudRepo Bot <${{ secrets.SMTP_USERNAME }}>
           subject: "NexusFFXIV [DalamudRepo] pluginmaster.json refreshed (${{ github.event_name }})"
-          body: file://build-report.html
-          content_type: text/html
+          body: file://build.log
+          html_body: file://build-report.html
           attachments: build-report.json,pluginmaster.json,external-repo.json,common-repo.json,gen-repo.json,all-repo.json,full-repo.json
