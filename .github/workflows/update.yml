@@ -78,6 +78,7 @@ jobs:
             ./scripts/build-pluginmaster.ps1 @buildArgs
             ./scripts/CreateReport.ps1 -ReportPath build-report.json -Format Cli
             Copy-Item -LiteralPath build-report.html -Destination latest-report.html -Force
+            ./scripts/CreateReportStatus.ps1 -ReportPath build-report.json -OutputPath latest-report-status.json
           } finally {
             Stop-Transcript | Out-Null
           }
@@ -104,7 +105,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          PM_FILES="pluginmaster.json external-repo.json common-repo.json gen-repo.json all-repo.json full-repo.json latest-report.html"
+          PM_FILES="pluginmaster.json external-repo.json common-repo.json gen-repo.json all-repo.json full-repo.json latest-report.html latest-report-status.json"
           TRACKED_FILES="$PM_FILES cache/snapshot.json cache/offline-repos-state.json sources/external-repos.yml sources/external-repos-gen.yml sources/offline-repos.yml sources/duplicate-sources.yml"
           # Stage first so newly-created files (not in HEAD) also show up in
           # the diff — plain `git diff` would miss untracked outputs.

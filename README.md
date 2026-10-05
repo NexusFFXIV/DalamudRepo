@@ -5,6 +5,7 @@
 [![Update pluginmaster](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml/badge.svg)](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Dalamud API](https://img.shields.io/badge/Dalamud_API-15-9D5BFF)](https://github.com/goatcorp/Dalamud)
+[![Build report](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/latest-report-status.json)](latest-report.html)
 
 The repository is rebuilt automatically every day. The latest run, including
 the sources that were checked, duplicate decisions, official-plugin exclusions,
