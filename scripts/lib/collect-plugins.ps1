@@ -560,6 +560,7 @@ function Collect-RepoUrlsPool {
     $candidates = @()
     $unreachable = @()
     $reachable = @()
+    $repoReports = @()
     $logged = 0
     foreach ($url in $Yaml.externalRepos) {
         if (-not $url) { continue }
@@ -569,16 +570,15 @@ function Collect-RepoUrlsPool {
             $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
         } catch {
             $label = Get-HttpErrorLabel $_
-            Write-Host ("  {0} -> {1}" -f $label, $url)
+            $repoReports += [pscustomobject]@{ Status = $label; Count = 0; Url = $url }
             $unreachable += $url
             continue
         }
         if (-not $resp) {
-            Write-Host ("  EmptyResponse -> {0}" -f $url)
+            $repoReports += [pscustomobject]@{ Status = "EMPTY"; Count = 0; Url = $url }
             $unreachable += $url
             continue
         }
-        $reachable += $url
         $items = if ($resp -is [System.Array]) { $resp } else { @($resp) }
         $hereCount = 0
         foreach ($e in $items) {
@@ -586,9 +586,24 @@ function Collect-RepoUrlsPool {
             $candidates += @{ entry = $e; sourceUrl = $url }
             $hereCount++
         }
-        Write-Host ("  -> ${url}: $hereCount candidate(s)")
+        if ($hereCount -eq 0) {
+            $repoReports += [pscustomobject]@{ Status = "EMPTY"; Count = 0; Url = $url }
+            $unreachable += $url
+        } else {
+            $repoReports += [pscustomobject]@{ Status = "OK"; Count = $hereCount; Url = $url }
+            $reachable += $url
+        }
     }
-    if ($logged -eq 0) { Write-Host "  (none configured)" }
+    if ($logged -eq 0) {
+        Write-Host "  (none configured)"
+    } else {
+        Write-Host "  Source status:"
+        Write-Host "    Status       Candidates  Source"
+        Write-Host "    -----------  ----------  ------"
+        foreach ($report in $repoReports) {
+            Write-Host ("    {0,-11}  {1,10}  {2}" -f $report.Status, $report.Count, $report.Url)
+        }
+    }
 
     $winners = Select-RepoWinners $candidates
 

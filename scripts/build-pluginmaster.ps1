@@ -259,8 +259,10 @@ $totalFiltered = ($processed | ForEach-Object { $_.filtered } | Measure-Object -
 if ($totalFiltered -gt 0) {
     Write-Host ""
     Write-Host ("Total filtered out (DalamudApiLevel < {0} AND TestingDalamudApiLevel < {1}): {2}" -f $MinDalamudApiLevel, $MinTestingDalamudApiLevel, $totalFiltered)
+    Write-Host "  Source                              Count  Status"
+    Write-Host "  ----------------------------------  -----  ------"
     foreach ($p in $processed) {
-        if ($p.filtered -gt 0) { Write-Host ("  {0}: {1}" -f $p.basename, $p.filtered) }
+        if ($p.filtered -gt 0) { Write-Host ("  {0,-34}  {1,5}  FILTERED" -f $p.basename, $p.filtered) }
     }
 }
 if ($script:ZipFallbackRescued -gt 0) {

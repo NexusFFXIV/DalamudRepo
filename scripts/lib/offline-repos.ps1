@@ -102,7 +102,11 @@ function Test-RepositoryReachable {
     param([Parameter(Mandatory)][string]$Url)
     try {
         $response = Invoke-RestMethod -Uri $Url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
-        return ($null -ne $response)
+        $items = if ($response -is [System.Array]) { @($response) } else { @($response) }
+        $valid = @($items | Where-Object { $_ -and $_.InternalName })
+        if ($valid.Count -gt 0) { return $true }
+        Write-Host ("  EmptyResponse -> {0}" -f $Url)
+        return $false
     } catch {
         Write-Host ("  {0} -> {1}" -f (Get-HttpErrorLabel $_), $Url)
         return $false
