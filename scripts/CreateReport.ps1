@@ -86,14 +86,14 @@ foreach ($d in (Rows $report.Deduplication | Sort-Object Plugin)) {
 $parts += '</tbody></table>'
 $parts += '</details>'
 $parts += '<details><summary>Versions- und API-Auflösung (' + (Rows $report.ApiResolution).Count + ' Plugins)</summary>'
-$parts += '<table><thead><tr><th>Plugin</th><th>Quell-Repository</th><th>Stable</th><th>Testing</th></tr></thead><tbody>'
+$parts += '<table><thead><tr><th>Plugin</th><th>Stable</th><th>Testing</th><th>Quell-Repository</th></tr></thead><tbody>'
 foreach ($x in (Rows $report.ApiResolution | Sort-Object Plugin)) {
     $stable = (HtmlCell $x.StableApi) + ' <span class="muted">[' + (HtmlCell $x.StableSource) + $(if ($x.StableZipStatus) { ': ' + (HtmlCell $x.StableZipStatus) } else { '' }) + ']</span>'
     $testing = (HtmlCell $x.TestingApi) + ' <span class="muted">[' + (HtmlCell $x.TestingSource) + $(if ($x.TestingZipStatus) { ': ' + (HtmlCell $x.TestingZipStatus) } else { '' }) + ']</span>'
     $hasHardError = $x.StableZipStatus -match '^(404|5\d\d|RequestError|PARSE_ERROR|DOWNLOAD_ERROR)' -or $x.TestingZipStatus -match '^(404|5\d\d|RequestError|PARSE_ERROR|DOWNLOAD_ERROR)'
     $hasWarning = $x.StableSource -eq 'unresolved' -or $x.TestingSource -eq 'unresolved' -or $x.StableZipStatus -match '^(EMPTY|API_MISSING)' -or $x.TestingZipStatus -match '^(EMPTY|API_MISSING)'
     $rowClass = if ($hasHardError) { 'bad' } elseif ($hasWarning) { 'warn' } else { 'ok' }
-    $parts += '<tr class="' + $rowClass + '"><td>' + (HtmlCell $x.Plugin) + '</td><td>' + (HtmlValue $x.SourceUrl) + '</td><td>' + $stable + '</td><td>' + $testing + '</td></tr>'
+    $parts += '<tr class="' + $rowClass + '"><td>' + (HtmlCell $x.Plugin) + '</td><td>' + $stable + '</td><td>' + $testing + '</td><td>' + (HtmlValue $x.SourceUrl) + '</td></tr>'
 }
 $parts += '</tbody></table>'
 $parts += '</details>'
@@ -101,18 +101,18 @@ $parts += '<details><summary>Zip-Fallback (' + (Rows $report.ZipFallback).Count 
 $parts += HtmlTable @('Plugin','Status','API','URL') $report.ZipFallback { param($x) @($x.Plugin,$x.Status,$x.Api,$x.Url) }
 $parts += '</details>'
 $parts += '<details><summary>Offizielle Plugin-Ausschlüsse (' + (Rows $report.OfficialExclusions).Count + ' Plugins)</summary>'
-$parts += '<table><thead><tr><th>Quelle</th><th>Repository</th><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th></tr></thead><tbody>'
-foreach ($plugin in (Rows $report.OfficialExclusions | Sort-Object SourceFile, RepositoryUrl, InternalName)) {
+$parts += '<table><thead><tr><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th><th>Quelle</th><th>Repository</th></tr></thead><tbody>'
+foreach ($plugin in (Rows $report.OfficialExclusions | Sort-Object Plugin, InternalName, PluginVersion, SourceFile, RepositoryUrl)) {
     $pluginName = if ($plugin.Plugin) { $plugin.Plugin } else { $plugin.InternalName }
     $version = if ($plugin.PluginVersion) { $plugin.PluginVersion } else { '-' }
     $api = if ($plugin.ApiVersion) { $plugin.ApiVersion } else { '-' }
-    $parts += '<tr class="bad"><td>' + (HtmlCell $plugin.SourceFile) + '</td><td>' + (HtmlValue $plugin.RepositoryUrl) + '</td><td>' + (HtmlCell $pluginName) + '</td><td>' + (HtmlCell $plugin.InternalName) + '</td><td>' + (HtmlCell $version) + '</td><td>' + (HtmlCell $api) + '</td></tr>'
+    $parts += '<tr class="bad"><td>' + (HtmlCell $pluginName) + '</td><td>' + (HtmlCell $plugin.InternalName) + '</td><td>' + (HtmlCell $version) + '</td><td>' + (HtmlCell $api) + '</td><td>' + (HtmlCell $plugin.SourceFile) + '</td><td>' + (HtmlValue $plugin.RepositoryUrl) + '</td></tr>'
 }
 $parts += '</tbody></table>'
 $parts += '</details>'
 $parts += '</details>'
 $parts += '<details><summary>Stage 3: Ausgaben erzeugen (' + (Rows $report.Outputs).Count + ' Ausgaben)</summary>'
-$parts += HtmlTable @('Ausgabe','Einträge','Status') $report.Outputs { param($x) @($x.Name,$x.Count,$x.Status) } -CountDescending
+$parts += HtmlTable @('Status','Ausgabe','Einträge') $report.Outputs { param($x) @($x.Status,$x.Name,$x.Count) } -CountDescending
 $parts += '</details>'
 $summaryRows = @(
     [pscustomobject]@{ Metric = 'Gefiltert'; Value = $report.Summary.Filtered; Meaning = 'Plugins, die weder im Stable- noch im Testing-Kanal das Mindest-API-Level erreichen' }
