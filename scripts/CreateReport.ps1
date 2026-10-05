@@ -118,7 +118,7 @@ foreach ($source in (Rows $report.OfficialExclusions | Group-Object SourceFile |
 $parts += '</details>'
 $parts += '</details>'
 $parts += '<details><summary>Stage 3: Build outputs (' + (Rows $report.Outputs).Count + ' outputs)</summary>'
-$parts += HtmlTable @('Output','Entries','Status') $report.Outputs { param($x) @($x.Name,$x.Count,$x.Status) }
+$parts += HtmlTable @('Output','Entries','Status') $report.Outputs { param($x) @($x.Name,$x.Count,$x.Status) } -CountDescending
 $parts += '</details>'
 $parts += '<details><summary>Stage 4: Summary</summary><pre>' + (HtmlCell (($report.Summary | ConvertTo-Json -Depth 10))) + '</pre></details>'
 $parts += '</body></html>'
