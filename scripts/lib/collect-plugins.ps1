@@ -540,7 +540,7 @@ function Collect-RepoUrlsPool {
         $logged++
         $resp = $null
         try {
-            $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30
+            $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop
         } catch {
             Write-Host "  -> ${url}: (unreachable: $($_.Exception.Message))"
             Write-Warning "$SectionLabel repo $url unreachable: $($_.Exception.Message)"
