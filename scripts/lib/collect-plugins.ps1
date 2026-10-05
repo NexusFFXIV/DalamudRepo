@@ -603,7 +603,7 @@ function Collect-RepoUrlsPool {
             continue
         }
         $resp = $null
-        try { $resp = $http.Content | ConvertFrom-Json } catch { $resp = $null }
+        try { $resp = $http.Content | ConvertFrom-Json -ErrorAction SilentlyContinue } catch { $resp = $null }
         if (-not $resp) {
             $repoReports += [pscustomobject]@{ Status = "EMPTY"; Count = 0; Url = $url }
             $unreachable += $url

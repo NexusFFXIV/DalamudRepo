@@ -101,7 +101,13 @@ function Get-OfflineSectionForUrl {
 function Test-RepositoryReachable {
     param([Parameter(Mandatory)][string]$Url)
     try {
-        $response = Invoke-RestMethod -Uri $Url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
+        $http = Invoke-WebRequest -Uri $Url -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
+        if ([int]$http.StatusCode -lt 200 -or [int]$http.StatusCode -ge 300) {
+            $label = "{0}{1}" -f [int]$http.StatusCode, (($http.StatusDescription -as [string]) -replace '[^A-Za-z0-9]', '')
+            Write-Host ("  {0} -> {1}" -f $label, $Url)
+            return $false
+        }
+        $response = $http.Content | ConvertFrom-Json -ErrorAction SilentlyContinue
         $items = if ($response -is [System.Array]) { @($response) } else { @($response) }
         $valid = @($items | Where-Object { $_ -and $_.InternalName })
         if ($valid.Count -gt 0) { return $true }
