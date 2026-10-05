@@ -613,6 +613,9 @@ function Collect-RepoUrlsPool {
         $hereCount = 0
         foreach ($e in $items) {
             if (-not ($e -and $e.InternalName)) { continue }
+            if (-not $e.PSObject.Properties['__ReportSourceUrl']) {
+                Add-Member -InputObject $e -NotePropertyName __ReportSourceUrl -NotePropertyValue $url
+            } else { $e.__ReportSourceUrl = $url }
             $candidates += @{ entry = $e; sourceUrl = $url }
             $hereCount++
         }
