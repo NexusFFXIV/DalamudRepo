@@ -120,7 +120,19 @@ $parts += '</details>'
 $parts += '<details><summary>Stage 3: Build outputs (' + (Rows $report.Outputs).Count + ' outputs)</summary>'
 $parts += HtmlTable @('Output','Entries','Status') $report.Outputs { param($x) @($x.Name,$x.Count,$x.Status) } -CountDescending
 $parts += '</details>'
-$parts += '<details><summary>Stage 4: Summary</summary><pre>' + (HtmlCell (($report.Summary | ConvertTo-Json -Depth 10))) + '</pre></details>'
+$summaryRows = @(
+    [pscustomobject]@{ Metric = 'Filtered'; Value = $report.Summary.Filtered; Meaning = 'Plugins rejected because neither stable nor testing API met the configured minimum' }
+    [pscustomobject]@{ Metric = 'Zip fallback rescued'; Value = $report.Summary.ZipFallbackRescued; Meaning = 'Plugins kept because their API level was recovered from a zip manifest' }
+    [pscustomobject]@{ Metric = 'Snapshot hits'; Value = $report.Summary.SnapshotHits; Meaning = 'API levels read from the local snapshot cache instead of downloading a zip' }
+    [pscustomobject]@{ Metric = 'Fresh zip downloads'; Value = $report.Summary.ZipDownloads; Meaning = 'Zip files downloaded for API-level resolution' }
+    [pscustomobject]@{ Metric = 'Sources'; Value = $report.Summary.Sources; Meaning = 'Repository source URLs evaluated' }
+    [pscustomobject]@{ Metric = 'Deduplication groups'; Value = $report.Summary.DeduplicationGroups; Meaning = 'Plugins with duplicate candidates grouped during deduplication' }
+    [pscustomobject]@{ Metric = 'Official exclusions'; Value = $report.Summary.OfficialExclusions; Meaning = 'Official plugins removed from external source output' }
+    [pscustomobject]@{ Metric = 'Outputs'; Value = $report.Summary.Outputs; Meaning = 'Generated pluginmaster output files' }
+)
+$parts += '<details><summary>Stage 4: Summary</summary>'
+$parts += HtmlTable @('Metric','Value','Meaning') $summaryRows { param($x) @($x.Metric,$x.Value,$x.Meaning) } -CountDescending
+$parts += '</details>'
 $parts += '</body></html>'
 $html = $parts -join "`n"
 if ($OutputPath) { Set-Content -LiteralPath $OutputPath -Value $html -Encoding UTF8 } else { Write-Output $html }

@@ -311,10 +311,15 @@ $structuredReport = [ordered]@{
     OfficialExclusions = @($script:OfficialRemoved)
     Outputs = @($outputs | ForEach-Object { [pscustomobject]@{ Name = $_.name; Count = $_.count; Status = if ($_.enabled) { 'OK' } else { 'SKIPPED' } } })
     Summary = [ordered]@{
-        Filtered = $totalFiltered
+        Filtered = [int]$totalFiltered
         ZipFallbackRescued = $script:ZipFallbackRescued
         SnapshotHits = $script:SnapshotHits
         ZipDownloads = $script:ZipDownloads
+        Sources = @($script:ReportSources).Count
+        DeduplicationGroups = @($script:ReportDeduplication).Count
+        ApiResolutionEntries = @($script:ReportApiResolution).Count
+        OfficialExclusions = @($script:OfficialRemoved).Count
+        Outputs = @($outputs).Count
     }
 }
 ($structuredReport | ConvertTo-Json -Depth 20) + "`n" | Set-Content -LiteralPath $reportPath -Encoding UTF8 -NoNewline
