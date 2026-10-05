@@ -86,7 +86,7 @@ try { $generatedAt = ([DateTimeOffset]::Parse([string]$report.GeneratedAt)).ToLo
 $parts += '<div class="toolbar"><button id="lang-en" type="button">EN</button><button id="lang-de" type="button">DE</button></div><h1>DalamudRepo-Build-Report <span class="muted">(' + (HtmlCell $generatedAt) + ')</span></h1>'
 $sourceRows = Rows $report.Sources
 $sourceCandidateCount = [int](($sourceRows | ForEach-Object { [int]$_.Count } | Measure-Object -Sum).Sum)
-$parts += '<details><summary>Stage 1: Quellen sammeln (' + $sourceRows.Count + ' Quellen, ' + $sourceCandidateCount + ' Kandidaten)</summary>'
+$parts += '<details><summary><span class="legend-de">Stage 1: Quellen sammeln (' + $sourceRows.Count + ' Quellen, ' + $sourceCandidateCount + ' Kandidaten)</span><span class="legend-en">Stage 1: Collect sources (' + $sourceRows.Count + ' sources, ' + $sourceCandidateCount + ' candidates)</span></summary>'
 $parts += HtmlTable @('Status','Kandidaten','Quelle') $sourceRows { param($x) @($x.Status,$x.Count,$x.Url) } -CountDescending
 $parts += '</details>'
 $parts += '<details><summary>Stage 2: Kandidaten verarbeiten</summary>'
