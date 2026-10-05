@@ -69,6 +69,21 @@ $parts += '<details><summary>Stage 1: Quellen sammeln (' + (Rows $report.Sources
 $parts += HtmlTable @('Status','Kandidaten','Quelle') $report.Sources { param($x) @($x.Status,$x.Count,$x.Url) } -CountDescending
 $parts += '</details>'
 $parts += '<details><summary>Stage 2: Kandidaten verarbeiten</summary>'
+$parts += '<details><summary>Offizielle Plugin-Ausschlüsse (' + (Rows $report.OfficialExclusions).Count + ' Plugins)</summary>'
+$officialGroups = Rows $report.OfficialExclusions | Group-Object SourceFile | Sort-Object Name
+foreach ($sourceGroup in $officialGroups) {
+    $sourceName = HtmlCell $sourceGroup.Name
+    $parts += '<h4><span class="legend-de">Quelle: ' + $sourceName + '</span><span class="legend-en">From source: ' + $sourceName + '</span></h4>'
+    $parts += '<table><thead><tr><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th><th>Repository</th></tr></thead><tbody>'
+    foreach ($plugin in ($sourceGroup.Group | Sort-Object Plugin, InternalName, PluginVersion, RepositoryUrl)) {
+        $pluginName = if ($plugin.Plugin) { $plugin.Plugin } else { $plugin.InternalName }
+        $version = if ($plugin.PluginVersion) { $plugin.PluginVersion } else { '-' }
+        $api = if ($plugin.ApiVersion) { $plugin.ApiVersion } else { '-' }
+        $parts += '<tr class="bad"><td>' + (HtmlCell $pluginName) + '</td><td>' + (HtmlCell $plugin.InternalName) + '</td><td>' + (HtmlCell $version) + '</td><td>' + (HtmlCell $api) + '</td><td>' + (HtmlValue $plugin.RepositoryUrl) + '</td></tr>'
+    }
+    $parts += '</tbody></table>'
+}
+$parts += '</details>'
 $parts += '<details><summary>Deduplication (' + (Rows $report.Deduplication).Count + ' Plugin-Gruppen)</summary>'
 $parts += '<p class="muted"><strong>Legende:</strong><span class="legend-de"> Der WINNER wird weiterhin zuerst nach höchster Version ausgewählt. Die Spalte <code>Bewertung</code> zeigt den stärksten erkannten Indikator in dieser Reihenfolge: <code>AUTHOR_MATCH</code> → <code>UPSTREAM_MATCH</code> → <code>HIGHEST_VERSION</code> → <code>FIRST_INPUT</code>. Drop-Gründe: <code>LOWER_VERSION</code>, <code>UPSTREAM_LOST</code>, <code>AUTHOR_LOST</code> oder <code>FIRST_INPUT_LOST</code>.</span><span class="legend-en"> The WINNER is still selected by highest version first. The Reason column shows the strongest detected indicator in this order: <code>AUTHOR_MATCH</code> → <code>UPSTREAM_MATCH</code> → <code>HIGHEST_VERSION</code> → <code>FIRST_INPUT</code>. Drop reasons: <code>LOWER_VERSION</code>, <code>UPSTREAM_LOST</code>, <code>AUTHOR_LOST</code> or <code>FIRST_INPUT_LOST</code>.</span></p>'
 $parts += '<table><thead><tr><th>Plugin</th><th>Gewinner</th><th>Verworfene Kandidaten</th></tr></thead><tbody>'
@@ -118,16 +133,6 @@ $zipRows = foreach ($x in (Rows $report.ZipFallback)) {
     }
 }
 $parts += HtmlTable @('Status','Plugin','API','Dedup','Kandidaten','Winner-Version','Winner-Repository','Zip-URL') $zipRows { param($x) @($x.Status,$x.Plugin,$x.Api,$x.DedupStatus,$x.DedupCandidates,$x.WinnerVersion,$x.WinnerUrl,$x.Url) }
-$parts += '</details>'
-$parts += '<details><summary>Offizielle Plugin-Ausschlüsse (' + (Rows $report.OfficialExclusions).Count + ' Plugins)</summary>'
-$parts += '<table><thead><tr><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th><th>Quelle</th><th>Repository</th></tr></thead><tbody>'
-foreach ($plugin in (Rows $report.OfficialExclusions | Sort-Object Plugin, InternalName, PluginVersion, SourceFile, RepositoryUrl)) {
-    $pluginName = if ($plugin.Plugin) { $plugin.Plugin } else { $plugin.InternalName }
-    $version = if ($plugin.PluginVersion) { $plugin.PluginVersion } else { '-' }
-    $api = if ($plugin.ApiVersion) { $plugin.ApiVersion } else { '-' }
-    $parts += '<tr class="bad"><td>' + (HtmlCell $pluginName) + '</td><td>' + (HtmlCell $plugin.InternalName) + '</td><td>' + (HtmlCell $version) + '</td><td>' + (HtmlCell $api) + '</td><td>' + (HtmlCell $plugin.SourceFile) + '</td><td>' + (HtmlValue $plugin.RepositoryUrl) + '</td></tr>'
-}
-$parts += '</tbody></table>'
 $parts += '</details>'
 $parts += '</details>'
 $parts += '<details><summary>Stage 3: Ausgaben erzeugen (' + (Rows $report.Outputs).Count + ' Ausgaben)</summary>'

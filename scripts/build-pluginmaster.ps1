@@ -178,7 +178,7 @@ foreach ($file in $sourceFiles) {
             $r = Collect-ExternalPluginPool -Yaml $yaml
         }
         "external-repos" {
-            $r = Collect-RepoUrlsPool -Yaml $yaml -SectionLabel $basename
+            $r = Collect-RepoUrlsPool -Yaml $yaml -SectionLabel $basename -OfficialNames $officialPluginNames
         }
         default {
             Write-Warning "Unknown source type '$type' in $basename — skipping."

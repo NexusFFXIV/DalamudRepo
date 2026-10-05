@@ -647,14 +647,19 @@ function Collect-RepoUrlsPool {
     # Three-phase collection for an `externalRepos:` source:
     #
     #   1. Fetch every URL, gather raw candidates (entry + sourceUrl)
-    #   2. Cross-repo dedup by InternalName → one winner per plugin
+    #   2. Remove official Dalamud plugins before any cross-repo dedup
+    #   3. Cross-repo dedup by InternalName → one winner per plugin
     #      (see Select-RepoWinners for the rules)
-    #   3. Filter winners via Test-MeetsApi
+    #   4. Filter winners via Test-MeetsApi
     #
     # Filtering + cache writes only happen in phase 3, so losing duplicates
     # never touch the snapshot. This stops the cache from being overwritten
     # by whichever source happened to be processed last.
-    param([Parameter(Mandatory)]$Yaml, [Parameter(Mandatory)][string]$SectionLabel)
+    param(
+        [Parameter(Mandatory)]$Yaml,
+        [Parameter(Mandatory)][string]$SectionLabel,
+        [System.Collections.Generic.HashSet[string]]$OfficialNames
+    )
     if (-not $Yaml.externalRepos) {
         Write-Host "  (none configured)"
         return @{ entries = @(); filtered = 0; unreachable = @(); reachable = @() }
@@ -738,6 +743,22 @@ function Collect-RepoUrlsPool {
             $script:ReportSources += [pscustomobject]@{ Status = $report.Status; Count = $report.Count; Url = $report.Url }
             Write-Host ("    {0,-11}  {1,10}  {2}" -f $report.Status, $report.Count, $report.Url)
         }
+    }
+
+    # Exclude official Dalamud plugins before cross-repository deduplication.
+    # They can never be published by this repository, so comparing them during
+    # winner selection only creates work and can hide the useful exclusion
+    # provenance in a later stage.
+    if ($OfficialNames -and $OfficialNames.Count -gt 0) {
+        $officialCandidates = @($candidates | Where-Object {
+            $_.entry.InternalName -and $OfficialNames.Contains([string]$_.entry.InternalName)
+        })
+        foreach ($officialCandidate in $officialCandidates) {
+            [void](Remove-OfficialEntries -Entries @($officialCandidate.entry) -SourceLabel $SectionLabel -OfficialNames $OfficialNames)
+        }
+        $candidates = @($candidates | Where-Object {
+            -not ($_.entry.InternalName -and $OfficialNames.Contains([string]$_.entry.InternalName))
+        })
     }
 
     $winners = Select-RepoWinners $candidates
