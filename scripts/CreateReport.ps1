@@ -18,9 +18,15 @@ function StatusClass([object]$item) {
     if ($status -match '^(EMPTY|API_MISSING|PARSE_ERROR|DOWNLOAD_ERROR|RequestError|\d+)') { return 'bad' }
     return ''
 }
+function StatusRank([object]$item) {
+    $status = [string]$item.Status
+    if ($status -match '^(404|5\d\d|RequestError|DOWNLOAD_ERROR|PARSE_ERROR|API_MISSING|EMPTY)') { return 0 }
+    if ($status -match '^(WARN|WARNING|FILTERED)') { return 1 }
+    return 2
+}
 function HtmlTable([string[]]$Headers, [object[]]$Items, [scriptblock]$Values) {
     $head = ($Headers | ForEach-Object { '<th>' + (HtmlCell $_) + '</th>' }) -join ''
-    $body = foreach ($item in (Rows $Items)) {
+    $body = foreach ($item in (Rows $Items | Sort-Object @{Expression={ StatusRank $_ }; Ascending=$true})) {
         $cells = & $Values $item | ForEach-Object { '<td>' + (HtmlCell $_) + '</td>' }
         '<tr class="' + (StatusClass $item) + '">' + ($cells -join '') + '</tr>'
     }
