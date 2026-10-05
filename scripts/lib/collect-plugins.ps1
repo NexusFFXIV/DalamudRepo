@@ -358,6 +358,8 @@ function Test-MeetsApi {
         $script:ReportApiResolution += [pscustomobject]@{
             Plugin = $Entry.InternalName
             SourceUrl = if ($Entry.__ReportSourceUrl) { $Entry.__ReportSourceUrl } else { $Entry.RepoUrl }
+            StableVersion = if ($Entry.AssemblyVersion) { [string]$Entry.AssemblyVersion } else { $null }
+            TestingVersion = if ($Entry.TestingAssemblyVersion) { [string]$Entry.TestingAssemblyVersion } else { $null }
             StableApi = $resolved.DalamudApiLevel; StableSource = $prodSource; StableZipStatus = if ($prodSource -eq 'zip') { $prodZip } else { '' }
             TestingApi = $resolved.TestingDalamudApiLevel; TestingSource = $testSource; TestingZipStatus = if ($testSource -eq 'zip') { $testZip } else { '' }
         }
