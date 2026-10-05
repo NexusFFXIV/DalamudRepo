@@ -70,11 +70,11 @@ $parts += HtmlTable @('Status','Kandidaten','Quelle') $report.Sources { param($x
 $parts += '</details>'
 $parts += '<details><summary>Stage 2: Kandidaten verarbeiten</summary>'
 $parts += '<details><summary>Deduplication (' + (Rows $report.Deduplication).Count + ' Plugin-Gruppen)</summary>'
-$parts += '<p class="muted"><strong>Legende:</strong> Der WINNER gewinnt innerhalb derselben Plugin-Gruppe gegen alle DROP-Kandidaten. Reihenfolge der Bewertung: <code>HIGHEST_VERSION</code> → <code>UPSTREAM_MATCH</code> → <code>AUTHOR_MATCH</code> → <code>FIRST_INPUT</code>. Drop-Gründe: <code>LOWER_VERSION</code>, <code>UPSTREAM_LOST</code>, <code>AUTHOR_LOST</code> oder <code>FIRST_INPUT_LOST</code>.</p>'
+$parts += '<p class="muted"><strong>Legende:</strong> Der WINNER wird weiterhin zuerst nach höchster Version ausgewählt. Die Spalte <code>Bewertung</code> zeigt den stärksten erkannten Indikator in dieser Reihenfolge: <code>AUTHOR_MATCH</code> → <code>UPSTREAM_MATCH</code> → <code>HIGHEST_VERSION</code> → <code>FIRST_INPUT</code>. Drop-Gründe: <code>LOWER_VERSION</code>, <code>UPSTREAM_LOST</code>, <code>AUTHOR_LOST</code> oder <code>FIRST_INPUT_LOST</code>.</p>'
 $parts += '<table><thead><tr><th>Plugin</th><th>Gewinner</th><th>Verworfene Kandidaten</th></tr></thead><tbody>'
 foreach ($d in (Rows $report.Deduplication | Sort-Object Plugin)) {
     $winner = if ($d.Winner -is [string]) { [pscustomobject]@{ Version = ''; Url = $d.Winner } } else { $d.Winner }
-    $winnerHtml = '<table class="nested"><thead><tr><th>Status</th><th>Bewertung</th><th>Signale</th><th>Version</th><th>Quelle</th></tr></thead><tbody><tr class="ok"><td>WINNER</td><td>' + (HtmlCell $winner.Reason) + '</td><td>' + (HtmlCell $winner.Signals) + '</td><td>' + (HtmlCell $winner.Version) + '</td><td>' + (HtmlValue $winner.Url) + '</td></tr></tbody></table>'
+    $winnerHtml = '<table class="nested"><thead><tr><th>Status</th><th>Bewertung</th><th>Version</th><th>Quelle</th></tr></thead><tbody><tr class="ok"><td>WINNER</td><td>' + (HtmlCell $winner.Reason) + '</td><td>' + (HtmlCell $winner.Version) + '</td><td>' + (HtmlValue $winner.Url) + '</td></tr></tbody></table>'
     $candidateRows = foreach ($candidate in @($d.Candidates | Where-Object { $_.Status -ne 'WINNER' })) {
         if ($candidate -is [string]) {
             '<tr><td>DROP</td><td></td><td></td><td>' + (HtmlValue $candidate) + '</td></tr>'

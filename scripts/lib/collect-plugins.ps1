@@ -598,33 +598,30 @@ function Select-RepoWinners {
                                          @{Expression={ $_.origin }; Descending=$true},
                                          @{Expression={ $_.author }; Descending=$true}
         $winner = $sorted[0]
-        $winnerReason = if (@($sorted | Select-Object -Skip 1 | Where-Object { [string]$_.eff -eq [string]$winner.eff }).Count -eq 0) {
-            'HIGHEST_VERSION'
+        # The winner is still selected by version first. The displayed reason
+        # is the strongest matching indicator, so useful provenance signals
+        # are not hidden behind HIGHEST_VERSION.
+        $winnerReason = if ($winner.author) {
+            'AUTHOR_MATCH'
         } elseif ($winner.origin) {
             'UPSTREAM_MATCH'
-        } elseif ($winner.author) {
-            'AUTHOR_MATCH'
+        } elseif (@($sorted | Select-Object -Skip 1 | Where-Object { [string]$_.eff -eq [string]$winner.eff }).Count -eq 0) {
+            'HIGHEST_VERSION'
         } else {
             'FIRST_INPUT'
         }
-        $winnerSignals = @(
-            if ($winner.origin) { 'UPSTREAM_MATCH' }
-            if ($winner.author) { 'AUTHOR_MATCH' }
-        )
-        if ($winnerSignals.Count -eq 0) { $winnerSignals = @('NONE') }
         $winners += $winner.cand
         $duplicateReports += [pscustomobject]@{
             Name = $name
             Winner = $winner
             WinnerReason = $winnerReason
-            WinnerSignals = $winnerSignals -join ','
             Candidates = @($sorted)
         }
     }
     foreach ($report in $duplicateReports) {
         $script:ReportDeduplication += [pscustomobject]@{
             Plugin = $report.Name
-            Winner = [pscustomobject]@{ Version = [string]$report.Winner.eff; Url = [string]$report.Winner.cand.sourceUrl; Reason = $report.WinnerReason; Signals = $report.WinnerSignals }
+            Winner = [pscustomobject]@{ Version = [string]$report.Winner.eff; Url = [string]$report.Winner.cand.sourceUrl; Reason = $report.WinnerReason }
             Candidates = @($report.Candidates | ForEach-Object {
                 $candidateReason = if ($_ -eq $report.Winner) { $report.WinnerReason }
                     elseif ([string]$_.eff -lt [string]$report.Winner.eff) { 'LOWER_VERSION' }
