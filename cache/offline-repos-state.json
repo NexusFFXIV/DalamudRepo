@@ -1,7 +1,7 @@
 {
   "external-repos-gen|https://puni.sh/api/repository/det": {
-    "failures": 10,
-    "lastFailure": "2026-09-21T04:29:09.8637611Z"
+    "failures": 1,
+    "lastFailure": "2026-10-05T18:35:39.8396098Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/AjisaiMirai/plugins/main/repo.json": {
     "failures": 10,
@@ -84,16 +84,16 @@
     "lastFailure": "2026-09-21T04:29:09.9592459Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Nik-Potokar/MyDalamudPlugins/main/pluginmaster.json": {
-    "failures": 10,
-    "lastFailure": "2026-09-21T04:29:09.9610478Z"
+    "failures": 1,
+    "lastFailure": "2026-10-05T18:35:39.8617390Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Nik-Potokar/Personal/main/pluginmaster.json": {
     "failures": 10,
     "lastFailure": "2026-09-21T04:29:09.9628286Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/notYuta/ShiroUtils/main/repo.json": {
-    "failures": 4,
-    "lastFailure": "2026-10-05T05:09:39.1044690Z"
+    "failures": 5,
+    "lastFailure": "2026-10-05T18:35:39.8642747Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/postcards114/Hypnotoad-Plugin/master/PluginDir/pluginmaster.json": {
     "failures": 10,
@@ -112,8 +112,8 @@
     "lastFailure": "2026-09-21T04:29:09.969709Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/shironayuta/ShiroUtils/main/repo.json": {
-    "failures": 4,
-    "lastFailure": "2026-10-05T05:09:39.1362330Z"
+    "failures": 5,
+    "lastFailure": "2026-10-05T18:35:39.8661521Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Speshkitty/DalamudPlugins/main/repo.json": {
     "failures": 10,

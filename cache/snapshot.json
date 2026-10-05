@@ -563,7 +563,7 @@
     "InternalName": "xivclone",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
-    "TestingAssemblyVersion": "0.0.0.13",
+    "TestingAssemblyVersion": "0.0.0.14",
     "TestingDalamudApiLevel": 15
   },
   "XivMediaPlayer": {

@@ -566,12 +566,12 @@
     "Name": "AlphaChannel",
     "AcceptsFeedback": true,
     "ApplicableVersion": "any",
-    "AssemblyVersion": "2.1.8.2",
+    "AssemblyVersion": "2.1.8.3",
     "DalamudApiLevel": 15,
     "Description": "Renders an in-world video screen and syncs playback with other players running AlphaChannel over a self-hosted relay.\nhttps://raw.githubusercontent.com/Voudi/AlphaChannel/master/pluginmaster.json",
     "DownloadCount": 0,
-    "DownloadLinkInstall": "https://github.com/Voudi/AlphaChannel/releases/download/v2.1.8.2/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/Voudi/AlphaChannel/releases/download/v2.1.8.2/latest.zip",
+    "DownloadLinkInstall": "https://github.com/Voudi/AlphaChannel/releases/download/v2.1.8.3/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Voudi/AlphaChannel/releases/download/v2.1.8.3/latest.zip",
     "InternalName": "AlphaChannel.Plugin",
     "IsHide": false,
     "LastUpdate": 1786073514,
@@ -709,13 +709,13 @@
     "Author": "aniachan",
     "Name": "Anumbra",
     "ApplicableVersion": "any",
-    "AssemblyVersion": "0.0.0.2",
+    "AssemblyVersion": "0.0.0.3",
     "DalamudApiLevel": 15,
     "Description": "Hooks into Penumbra via IPC and renders a scrollable image carousel above the tab bar whenever a mod with an \"images\" subfolder is selected.\nhttps://raw.githubusercontent.com/aniachan/anisplugins/refs/heads/main/repo.json",
     "DownloadCount": 0,
-    "DownloadLinkInstall": "https://github.com/aniachan/anumbra/releases/download/0.0.0.2/Anumbra.zip",
-    "DownloadLinkTesting": "https://github.com/aniachan/anumbra/releases/download/0.0.0.2/Anumbra.zip",
-    "DownloadLinkUpdate": "https://github.com/aniachan/anumbra/releases/download/0.0.0.2/Anumbra.zip",
+    "DownloadLinkInstall": "https://github.com/aniachan/anumbra/releases/download/0.0.0.3/Anumbra.zip",
+    "DownloadLinkTesting": "https://github.com/aniachan/anumbra/releases/download/0.0.0.3/Anumbra.zip",
+    "DownloadLinkUpdate": "https://github.com/aniachan/anumbra/releases/download/0.0.0.3/Anumbra.zip",
     "IconUrl": "https://raw.githubusercontent.com/aniachan/anumbra/main/images/icon.png",
     "InternalName": "Anumbra",
     "IsHide": "False",
@@ -728,7 +728,7 @@
     "Tags": [
       "Ani's Plugins"
     ],
-    "TestingAssemblyVersion": "0.0.0.2",
+    "TestingAssemblyVersion": "0.0.0.3",
     "TestingDalamudApiLevel": 15
   },
   {
@@ -1057,13 +1057,13 @@
     "Author": "aniachan",
     "Name": "Aurum",
     "ApplicableVersion": "any",
-    "AssemblyVersion": "0.0.7",
+    "AssemblyVersion": "0.0.16",
     "DalamudApiLevel": 15,
     "Description": "Smart crafting profit calculator with market demand analysis.\nhttps://raw.githubusercontent.com/aniachan/anisplugins/refs/heads/main/repo.json",
     "DownloadCount": 0,
-    "DownloadLinkInstall": "https://github.com/aniachan/Aurum/releases/download/0.0.7/Aurum.zip",
-    "DownloadLinkTesting": "https://github.com/aniachan/Aurum/releases/download/0.0.7/Aurum.zip",
-    "DownloadLinkUpdate": "https://github.com/aniachan/Aurum/releases/download/0.0.7/Aurum.zip",
+    "DownloadLinkInstall": "https://github.com/aniachan/Aurum/releases/download/0.0.16/Aurum.zip",
+    "DownloadLinkTesting": "https://github.com/aniachan/Aurum/releases/download/0.0.16/Aurum.zip",
+    "DownloadLinkUpdate": "https://github.com/aniachan/Aurum/releases/download/0.0.16/Aurum.zip",
     "IconUrl": "https://raw.githubusercontent.com/aniachan/Aurum/main/Data/logo.png",
     "InternalName": "Aurum",
     "IsHide": "False",
@@ -1076,7 +1076,7 @@
     "Tags": [
       "Ani's Plugins"
     ],
-    "TestingAssemblyVersion": "0.0.7",
+    "TestingAssemblyVersion": "0.0.16",
     "TestingDalamudApiLevel": 15
   },
   {
@@ -1886,24 +1886,24 @@
     "Name": "BardToolbox",
     "AcceptsFeedback": false,
     "ApplicableVersion": "any",
-    "AssemblyVersion": "2.2.7.0",
+    "AssemblyVersion": "3.0.1.0",
     "CanUnloadAsync": false,
     "CategoryTags": [
       "utility",
       "other"
     ],
-    "Changelog": "Update for Dawntrail 7.5, Dalamud API 15 Update\n\nThanks for your support!",
+    "Changelog": "Integrated Macrology into BardToolbox as a full modern UI category. The Macrology Quick Bar can now be embedded in the BTB Quick Controller or opened as its own pop-out window. Added an optional broadcast mode that compiles and sends a macro to every connected local BTB client, including parameter values, submacros, breakpoints, run mode, and safety settings. Added /mmbroadcast for explicit all-client runs and one-time import of an existing standalone Macrology configuration.\n\nDalamud API 15.",
     "DalamudApiLevel": 15,
     "Description": "https://raw.githubusercontent.com/BardToolbox/BardToolbox-Release/master/pluginmaster.json",
     "DownloadCount": 62310,
     "DownloadLinkInstall": "https://raw.githubusercontent.com/BardToolbox/BardToolbox-Release/master/plugins/BardToolbox/latest.zip",
-    "DownloadLinkTesting": "https://raw.githubusercontent.com/BardToolbox/BardToolbox-Release/master/plugins/BardToolbox/testing.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/BardToolbox/BardToolbox-Release/master/plugins/BardToolbox/latest.zip",
     "DownloadLinkUpdate": "https://raw.githubusercontent.com/BardToolbox/BardToolbox-Release/master/plugins/BardToolbox/latest.zip",
     "IconUrl": "https://i.imgur.com/5BsJD3g.png",
     "InternalName": "BardToolbox",
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "LastUpdate": "1780454751",
+    "LastUpdate": "1783473938",
     "LoadPriority": 0,
     "LoadRequiredState": 0,
     "LoadSync": false,
@@ -1957,9 +1957,7 @@
       "btb",
       "plugin",
       "utility"
-    ],
-    "TestingAssemblyVersion": "3.0.0.11",
-    "TestingDalamudApiLevel": "15"
+    ]
   },
   {
     "Author": "Airi Tsukino",
@@ -2443,28 +2441,29 @@
   {
     "Author": "veyn, xan_0",
     "Name": "Boss Mod",
-    "ApplicableVersion": "any",
-    "AssemblyVersion": "7.5.6.9",
-    "Changelog": "",
-    "DalamudApiLevel": "15",
-    "Description": "A bunch of utilities to simplify bosses. Currently supports endwalker content.\nhttps://puni.sh/api/repository/veyn",
-    "DownloadCount": 2630031,
+    "Punchline": "Don't fail at raid mechanics anymore",
+    "Description": "A bunch of utilities to simplify bosses. Currently supports endwalker content.",
+    "Tags": [],
+    "InternalName": "BossMod",
+    "RepoUrl": "https://github.com/awgil/ffxiv_bossmod",
+    "DownloadCount": 2630843,
+    "LastUpdate": 1790090996,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.6.9/install/latest.zip",
-    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.6.16/install/testing.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.6.9/update/latest.zip",
+    "AssemblyVersion": "7.5.6.9",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "",
+    "TestingAssemblyVersion": "7.5.6.17",
+    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.6.17/install/testing.zip",
+    "TestingDalamudApiLevel": "15",
     "IconUrl": "https://puni.sh/api/plugins/icon/30",
     "ImageUrls": [
       "https://s3.puni.sh/media/plugin/30/image-4mbxiq5k4pl.png",
       "https://s3.puni.sh/media/plugin/30/image-nc231jzj2gb.png",
       "https://s3.puni.sh/media/plugin/30/image-3nufuhgwbhl.png"
     ],
-    "InternalName": "BossMod",
-    "LastUpdate": 1790090996,
-    "Punchline": "Don't fail at raid mechanics anymore",
-    "RepoUrl": "https://github.com/awgil/ffxiv_bossmod",
-    "Tags": [],
-    "TestingAssemblyVersion": "7.5.6.16",
-    "TestingDalamudApiLevel": "15"
+    "SourceRepo": "https://puni.sh/api/repository/veyn"
   },
   {
     "Author": "The Combat Reborn Team",
@@ -3091,8 +3090,8 @@
     "AssemblyVersion": "1.0.1.24",
     "Changelog": "API 15 bump",
     "DalamudApiLevel": "15",
-    "Description": "A leve helper that lets you select which ones you want to do, and help turn them in for you. YOU NEED NAVMESH INSTALLED AS AN FYI.\nhttps://puni.sh/api/repository/ice",
-    "DownloadCount": 106757,
+    "Description": "The leve plugin that nobody wanted to make. Will display what leves you need to complete, as well as help automate them for your heart desires (not required though)\nhttps://puni.sh/api/repository/ice",
+    "DownloadCount": 107513,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/68/ChilledLeves/versions/1.0.1.24/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/68/ChilledLeves/versions/1.0.1.24/update/latest.zip",
     "IconUrl": "https://puni.sh/api/plugins/icon/68",
@@ -3854,33 +3853,32 @@
     "TestingAssemblyVersion": "0.1.0.0"
   },
   {
-    "Author": "Risa and Contributors",
-    "Name": "Customize+",
+    "Author": "Risa (patches by aniachan)",
+    "Name": "Customize+ (aniachan ver)",
     "ApplicableVersion": "any",
-    "AssemblyVersion": "2.2.1.3",
+    "AssemblyVersion": "2.2.1.100",
     "DalamudApiLevel": 15,
-    "Description": "A plugin that allows you to customize your character beyond FFXIV limitations by directly editing bone parameters.\nhttps://raw.githubusercontent.com/Ottermandias/SeaOfStars/main/repo.json",
+    "Description": "A plugin that allows you to customize your character beyond FFXIV limitations by directly editing bone parameters.\nhttps://raw.githubusercontent.com/aniachan/anisplugins/refs/heads/main/repo.json",
     "DownloadCount": 0,
-    "DownloadLinkInstall": "https://github.com/Aether-Tools/CustomizePlus/releases/download/2.2.1.3/CustomizePlus.zip",
-    "DownloadLinkTesting": "https://github.com/Aether-Tools/CustomizePlus/releases/download/2.2.1.3/CustomizePlus.zip",
-    "DownloadLinkUpdate": "https://github.com/Aether-Tools/CustomizePlus/releases/download/2.2.1.3/CustomizePlus.zip",
-    "IconUrl": "https://raw.githubusercontent.com/Aether-Tools/CustomizePlus/main/Data/icon.png",
+    "DownloadLinkInstall": "https://github.com/aniachan/CustomizePlus/releases/download/2.2.1.100/CustomizePlus.zip",
+    "DownloadLinkTesting": "https://github.com/aniachan/CustomizePlus/releases/download/2.2.1.100/CustomizePlus.zip",
+    "DownloadLinkUpdate": "https://github.com/aniachan/CustomizePlus/releases/download/2.2.1.100/CustomizePlus.zip",
+    "IconUrl": "https://raw.githubusercontent.com/aniachan/CustomizePlus/main/Data/icon.png",
     "InternalName": "CustomizePlus",
     "IsHide": "False",
     "IsTestingExclusive": "False",
     "LastUpdate": 0,
     "LoadPriority": 0,
     "Punchline": "Customize your character beyond FFXIV's limitations.",
-    "RepoUrl": "https://github.com/Aether-Tools/CustomizePlus",
+    "RepoUrl": "https://github.com/aniachan/CustomizePlus",
     "Tags": [
       "Anamnesis",
       "Customization",
       "Appearance",
       "Character",
-      "Aether Tools",
-      "Sea Of Stars"
+      "Ani's Plugins"
     ],
-    "TestingAssemblyVersion": "2.2.1.3",
+    "TestingAssemblyVersion": "2.2.1.100",
     "TestingDalamudApiLevel": 15
   },
   {
@@ -5021,12 +5019,12 @@
     "Author": "nainaiowo",
     "Name": "Eidos",
     "ApplicableVersion": "any",
-    "AssemblyVersion": "0.1.0.77",
-    "Changelog": "Added independent Eidos lights with live editing, Undo, save/load and session cleanup. Pose files now apply directly from Files; Apply IK has its own visible row. Repaired camera-path seek, restart and camera restoration, and reset clone names each GPose session. Fixed closing the tool window; added compact header collapse through the chevron or double-clicking Eidos, and direct clone buttons in Actors. Retains the startup, cloning, viewport and performance repairs from previous testing builds.",
+    "AssemblyVersion": "0.1.0.78",
+    "Changelog": "Repaired camera/keyframe editing, playback, seeking, Loop, timing, Undo/Redo and camera restoration. Added target-relative XCP placement and synchronized camera preset editing. Quick and Tools now collapse independently. Hand/foot IK works through on-character Move handles. New lights start at the camera; directional transforms and type-specific angle controls are repaired. Leaving GPose clears unsaved drafts, runtime state, history, selections, clipboards and pending imports. Manually saved files remain available for explicit reopening.",
     "DalamudApiLevel": "15",
     "Description": "A Gposing and scene tool.\n\nhttps://puni.sh/api/repository/nainai",
-    "DownloadCount": 222,
-    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/168/Eidos/versions/0.1.0.77/install/testing.zip",
+    "DownloadCount": 237,
+    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/168/Eidos/versions/0.1.0.78/install/testing.zip",
     "InternalName": "Eidos",
     "IsTestingExclusive": true,
     "LastUpdate": 1785334785,
@@ -5038,7 +5036,7 @@
       "scene",
       "studio"
     ],
-    "TestingAssemblyVersion": "0.1.0.77",
+    "TestingAssemblyVersion": "0.1.0.78",
     "TestingDalamudApiLevel": "15"
   },
   {
@@ -5210,12 +5208,12 @@
     "Author": "mirage, min",
     "Name": "Enhanced Context Menu",
     "ApplicableVersion": "any",
-    "AssemblyVersion": "0.1.0.0",
+    "AssemblyVersion": "0.1.1.0",
     "DalamudApiLevel": "15",
     "Description": "Moves context menu entries added through Dalamud into a panel beside the game menu.\nhttps://raw.githubusercontent.com/exatrines/DalamudPlugins/refs/heads/main/pluginmaster.json",
-    "DownloadCount": 0,
-    "DownloadLinkInstall": "https://github.com/exatrines/EnhancedContextMenu/releases/download/v0.1.0/EnhancedContextMenu.zip",
-    "DownloadLinkUpdate": "https://github.com/exatrines/EnhancedContextMenu/releases/download/v0.1.0/EnhancedContextMenu.zip",
+    "DownloadCount": 2,
+    "DownloadLinkInstall": "https://github.com/exatrines/EnhancedContextMenu/releases/download/v0.1.1/EnhancedContextMenu.zip",
+    "DownloadLinkUpdate": "https://github.com/exatrines/EnhancedContextMenu/releases/download/v0.1.1/EnhancedContextMenu.zip",
     "IconUrl": "https://raw.githubusercontent.com/exatrines/EnhancedContextMenu/main/EnhancedContextMenu/Data/plugin-icon.png",
     "ImageUrls": [
       "https://raw.githubusercontent.com/exatrines/EnhancedContextMenu/main/docs/screenshots/hero-1280x720.png"
@@ -5712,25 +5710,26 @@
   {
     "Author": "Steelgunner90",
     "Name": "FFXIV VR",
+    "AcceptsFeedback": true,
     "ApplicableVersion": "any",
-    "AssemblyVersion": "0.0.77.0",
-    "Changelog": "",
+    "AssemblyVersion": "0.0.78.0",
+    "CanUnloadAsync": true,
+    "Changelog": "# Add single pass renderer (#133)\r\n\r\n# Combine build and release workflows, fix release ordering and packaging (#132)",
     "DalamudApiLevel": 15,
-    "Description": "A VR plugin for FFXIV.\nhttps://raw.githubusercontent.com/WesleyLuk90/ffxiv-vr/master/PluginRepo/pluginmaster.json",
-    "DownloadCount": 0,
-    "DownloadLinkInstall": "https://github.com/WesleyLuk90/ffxiv-vr/releases/download/v0.0.77/FfxivVR.zip",
-    "DownloadLinkTesting": "https://github.com/WesleyLuk90/ffxiv-vr/releases/download/v0.0.77/FfxivVR.zip",
-    "DownloadLinkUpdate": "https://github.com/WesleyLuk90/ffxiv-vr/releases/download/v0.0.77/FfxivVR.zip",
-    "IconUrl": "",
+    "Description": "A VR mod for FFXIV. Run /vr to open settings\nhttps://raw.githubusercontent.com/WesleyLuk90/ffxiv-vr/master/PluginRepo/pluginmaster.json",
+    "DownloadLinkInstall": "https://github.com/WesleyLuk90/ffxiv-vr/releases/download/v0.0.78/FfxivVR.zip",
+    "DownloadLinkTesting": "https://github.com/WesleyLuk90/ffxiv-vr/releases/download/v0.0.78/FfxivVR.zip",
+    "DownloadLinkUpdate": "https://github.com/WesleyLuk90/ffxiv-vr/releases/download/v0.0.78/FfxivVR.zip",
     "InternalName": "FfxivVR",
-    "IsHide": false,
-    "IsTestingExclusive": false,
-    "LastUpdated": 1790793130,
+    "LastUpdated": 1791177539,
     "LoadPriority": 69420,
     "LoadRequiredState": 2,
     "LoadSync": true,
-    "Punchline": "A VR plugin for FFXIV.",
-    "RepoUrl": "https://github.com/WesleyLuk90/ffxiv-vr"
+    "Punchline": "A VR mod for FFXIV",
+    "RepoUrl": "https://github.com/WesleyLuk90/ffxiv-vr",
+    "Tags": [
+      "vr"
+    ]
   },
   {
     "Author": "sourpuh",
@@ -5945,7 +5944,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/FuckAnimationLock/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/FuckAnimationLock/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791112511"
+    "LastUpdate": "1791207935"
   },
   {
     "Author": "decorwdyun",
@@ -7895,12 +7894,12 @@
       "jobs",
       "utility"
     ],
-    "Changelog": "v0.1.9.9 (2026-10-03) [testing]\n- **A rare game crash when the plugin updates or reloads while the game is running.** The screen-recorder and agent-probe hooks could still be mid-call on the game's thread at the moment the plugin was unloaded, and the game then closed on an unhandled error. Every hook now counts the calls inside it, the unload waits (up to one second) for them to finish before the hooks are released, and a call that arrives after release returns harmlessly instead of failing.\n- Testing channel only; the production channel is unchanged.\n\nv0.1.9.8 (2026-10-03) [testing]\n- **Need coverage on top of AutoDuty waits for AutoDuty to finish building its selection.** The previous version wrote the correction after AutoDuty's first toggle, when only one familiar was picked; the selection reverted within a fraction of a second and all four allowed corrections were spent in 1.5 seconds, before AutoDuty had even built its team. A fight that needs a dispel (the Strix Piece) then ran with no dispeller on the horn, five fights in a row. The correction now waits until AutoDuty's selection holds three picks (or has been quiet for 1.5 seconds if it stops short) before it is made. The same applies to the run roster, where AutoDuty clears the selection one pick at a time.\n- Testing channel only; the production channel is unchanged.\n\nv0.1.9.7 (2026-10-03) [testing]\n- **One line per fight names what the horn can answer.** When a formation pass settles for an identified fight, a new `HC|` line lists the rows actually standing on the horn and grades the fight's needs against them (`I/D/C:R/U:row` per need, or `miss` when no row answers), including picks an external driver made. The grade is re-stated whenever the settled horn changes while the screen is open, so answer coverage can be read from one line.\n- Testing channel only; the production channel is unchanged.\n\nv0.1.9.6 (2026-10-03) [testing]\n- **Need coverage on top of AutoDuty now reaches the fight's horn slots.** AutoDuty sets its Battlehorn picks one toggle at a time and confirms shortly after the last one. The correction was written once, after the first toggle, and every later toggle overwrote it, so the dispel or interrupt answer a fight calls for never stayed on the horn. The correction is now made again after each AutoDuty toggle (at most four per screen) and the last one lands after AutoDuty's last toggle and before its confirm. The run log's `adn=` field counts the corrections made on a screen.\n- Testing channel only; the production channel is unchanged.\n\nv0.1.9.5 (2026-10-03) [testing]\n- **Quick controls for the Lazy Hub window.** The plugin now offers the selection switches (filling the familiar roster, setting the Battlehorns, picking who rests) and the display switches (opening the guide automatically, announcing picks in chat, recording screens to the log) to Lazy Hub (`/lazy`) over Dalamud IPC, so they can be changed from one window next to the other lalalazy plugins. Each change does exactly what the matching setting in the plugin's own window does.\n- The switches that buy, feed, choose treasure or take loot are not offered.\n- Testing channel only; the production channel is unchanged.\n- Without Lazy Hub installed the plugin behaves exactly as before.\n\nv0.1.9.4 (2026-10-03)\n\n- **Need coverage is corrected on top of AutoDuty's picks.** AutoDuty runs whole boards with its own leveling familiars, and its battlehorn picks and roster rebuilds are blind to what the fights call for: in a full automated evening, every enemy buff that ran its whole duration was a fight where no dispeller was on the horns even though one sat in the roster, and the healer fight often had no interrupter in the roster at all. The plugin no longer stands down entirely while AutoDuty drives: once its selection on a screen has settled (its writes come one toggle at a time), a minimal correction swaps an answerer in for one pick that answers nothing — its leveling picks are otherwise kept, and a fight whose needs are already covered is never touched. The roster gets the same treatment at the board entry: when none of the board's fights' needs has a healthy answerer in the built roster, one is appended (room permitting) or swapped in. The log names every correction (`autoduty-needfix`, with the exact swap) and every need that could not be covered and why (`miss=`). One correction per screen; a later AutoDuty write still wins. Screens played by hand are unchanged.",
+    "Changelog": "v0.1.9.10 (2026-10-05) [testing]\n- **Run-roster need coverage no longer fires while AutoDuty is still building its team.** The roster correction used the battlehorn's three-pick threshold, so any selection of four or more familiars counted as a finished team and the correction could fire in a quarter-second pause mid-rebuild — AutoDuty's continuing build then removed the added rows (five runs on 2026-10-05: every roster correction was torn down and no answerer reached the run). The roster now waits for its own capacity (10/12/14/12/15 per board) to be selected, or for the long quiet, before it corrects. A roster AutoDuty has wiped empty is also left alone: an empty selection is the start of its build, not the end of one.\n- Testing channel only; the production channel is unchanged.\n\nv0.1.9.9 (2026-10-03) [testing]\n- **A rare game crash when the plugin updates or reloads while the game is running.** The screen-recorder and agent-probe hooks could still be mid-call on the game's thread at the moment the plugin was unloaded, and the game then closed on an unhandled error. Every hook now counts the calls inside it, the unload waits (up to one second) for them to finish before the hooks are released, and a call that arrives after release returns harmlessly instead of failing.\n- Testing channel only; the production channel is unchanged.\n\nv0.1.9.8 (2026-10-03) [testing]\n- **Need coverage on top of AutoDuty waits for AutoDuty to finish building its selection.** The previous version wrote the correction after AutoDuty's first toggle, when only one familiar was picked; the selection reverted within a fraction of a second and all four allowed corrections were spent in 1.5 seconds, before AutoDuty had even built its team. A fight that needs a dispel (the Strix Piece) then ran with no dispeller on the horn, five fights in a row. The correction now waits until AutoDuty's selection holds three picks (or has been quiet for 1.5 seconds if it stops short) before it is made. The same applies to the run roster, where AutoDuty clears the selection one pick at a time.\n- Testing channel only; the production channel is unchanged.\n\nv0.1.9.7 (2026-10-03) [testing]\n- **One line per fight names what the horn can answer.** When a formation pass settles for an identified fight, a new `HC|` line lists the rows actually standing on the horn and grades the fight's needs against them (`I/D/C:R/U:row` per need, or `miss` when no row answers), including picks an external driver made. The grade is re-stated whenever the settled horn changes while the screen is open, so answer coverage can be read from one line.\n- Testing channel only; the production channel is unchanged.\n\nv0.1.9.6 (2026-10-03) [testing]\n- **Need coverage on top of AutoDuty now reaches the fight's horn slots.** AutoDuty sets its Battlehorn picks one toggle at a time and confirms shortly after the last one. The correction was written once, after the first toggle, and every later toggle overwrote it, so the dispel or interrupt answer a fight calls for never stayed on the horn. The correction is now made again after each AutoDuty toggle (at most four per screen) and the last one lands after AutoDuty's last toggle and before its confirm. The run log's `adn=` field counts the corrections made on a screen.\n- Testing channel only; the production channel is unchanged.\n\nv0.1.9.5 (2026-10-03) [testing]\n- **Quick controls for the Lazy Hub window.** The plugin now offers the selection switches (filling the familiar roster, setting the Battlehorns, picking who rests) and the display switches (opening the guide automatically, announcing picks in chat, recording screens to the log) to Lazy Hub (`/lazy`) over Dalamud IPC, so they can be changed from one window next to the other lalalazy plugins. Each change does exactly what the matching setting in the plugin's own window does.\n- The switches that buy, feed, choose treasure or take loot are not offered.\n- Testing channel only; the production channel is unchanged.\n- Without Lazy Hub installed the plugin behaves exactly as before.",
     "DalamudApiLevel": 15,
     "Description": "For the Beastmaster duty Crucible of the Unbroken. Fills the ten-familiar run roster at the Bentbranch Meadows entry menu and the three Battlehorn slots before every fight with the familiars that answer that fight's mechanics: elemental weakness, interrupts, dispels, cleanses and crowd control, skipping knocked-out familiars and benching badly hurt ones. Picks are announced in chat. Every automation has its own toggle and manual edits always win. Includes the beast-pick advisor for every board and a read-only recorder that writes each Crucible screen to the Dalamud log. Use /lazycrucible to open.\nhttps://raw.githubusercontent.com/dajoey/lalalazy/main/pluginmaster.json",
     "DownloadCount": 0,
     "DownloadLinkInstall": "https://github.com/dajoey/lalalazy/releases/download/LazyCrucible-v0.1.9.5/LazyCrucible.zip",
-    "DownloadLinkTesting": "https://github.com/dajoey/lalalazy/releases/download/LazyCrucible-v0.1.9.9/LazyCrucible-testing.zip",
+    "DownloadLinkTesting": "https://github.com/dajoey/lalalazy/releases/download/LazyCrucible-v0.1.9.10/LazyCrucible-testing.zip",
     "DownloadLinkUpdate": "https://github.com/dajoey/lalalazy/releases/download/LazyCrucible-v0.1.9.5/LazyCrucible.zip",
     "IconUrl": "https://raw.githubusercontent.com/dajoey/lalalazy/main/LalaImages/lazycrucible-icon.png",
     "ImageUrls": [
@@ -7921,7 +7920,7 @@
       "battlehorn",
       "automation"
     ],
-    "TestingAssemblyVersion": "0.1.9.9",
+    "TestingAssemblyVersion": "0.1.9.10",
     "TestingDalamudApiLevel": 15
   },
   {
@@ -7930,12 +7929,12 @@
     "ApplicableVersion": "any",
     "AssemblyVersion": "1.2.7.2",
     "CategoryTags": null,
-    "Changelog": "v1.2.7.2 (2026-10-03) [testing]\n- **Quick controls for the Lazy Hub window.** The plugin now offers the table switches (ventures, collectables, missing collectables, items of interest, items eligible for sale, hide empty currencies), opening automatically, the minimum sales for the sellable table and the thousands separator to Lazy Hub (`/lazy`) over Dalamud IPC, so they can be changed from one window next to the other lalalazy plugins. Each change does exactly what the matching setting in the plugin's own window does.\n- Testing channel only; the production channel is unchanged.\n- Without Lazy Hub installed the plugin behaves exactly as before.\n\nv1.2.7.1 (2026-09-22)\n\n- Fixed an error the plugin logged on every game close (the type initializer for ECommons.Automation.Callback threw an exception). The bundled support library predated the current game data layout and failed to initialise during shutdown; it is now current with the rest of the plugin family. No change to currency tracking or the spending suggestions.\n\nv1.2.7.0 (2026-09-05)\n\n- Added the in-game \"What's new\" popup. After Lazy Currency Spender updates, its changelog now opens once inside the game so the changes are visible without a trip to GitHub. It waits until the character is logged in and out of combat, duty, cutscenes and zoning; closing it (Got it, X or Escape) marks it read. Type `/cur changelog` any time to reopen it.\n- The existing Changelog tab in the settings window still works exactly as before; this is the pop-up on update, not a replacement for it.\n- No change to currency tracking or the spending suggestions.\n\nv1.2.6.1 - 2026-05-25\n- Added a new \"Equipment and Gear Exchange\" section to the UI to display untradable, non-collectable gear and weapons (like Bygone Brass equipment) purchased with endgame tomestones.\n\nv1.2.6 - 2026-05-25\n- Enabled weekly capped Allagan Tomestones of Mnemonics currency by default.\n- Added automatic SelectedCurrencies migration logic to auto-enable weekly capped tomestones upon updating.\n\nv1.2.5.1 - 2026-05-25\n- Forked from original CurrencySpender by Blackcatz1911.\n- Updated for Dalamud API Level 15 / .NET 10 (FFXIV Patch 7.50 compatibility).\n- Registered new command shortcuts: `/lazycur` and `/lazycurrencyspender`.\n- Custom premium coin-bag icon added.\n- Display clear credits to the original developer inside the settings tab.",
+    "Changelog": "v1.2.7.4 (2026-10-05) [testing]\n- Added map locations for the two shop NPCs at the Gold Saucer that had none: the tack & feed trader at Chocobo Square and the euphoric attendant. Both now draw their Flag and TP buttons like every other listed shop instead of having no buttons at all.\n- Testing channel only; the production channel is unchanged.\n- Five shop NPCs remain without a location on purpose: the game's own data places them nowhere (no Level-sheet placement, no placement dataset entry - campaign and seasonal attendants such as Eirene's Rain Exchange and Ermina that only exist while their event runs). They keep the behaviour introduced in 1.2.7.3: one note at debug level, no buttons.\n\nv1.2.7.3 (2026-10-05) [testing]\n- Fixed the log being flooded with `Location not found!` errors while the spending window was open. Shops run by NPCs that have no entry in the plugin's map-location table (for example Eirene's Rain Exchange and Ermina) logged one error per row on every frame, 159,189 lines in a single session. Such a shop is now noted once at debug level, and its Flag and TP buttons are simply not drawn. Currency tracking, shop listings and the spending suggestions are unchanged.\n- Testing channel only; the production channel is unchanged.\n\nv1.2.7.2 (2026-10-03) [testing]\n- **Quick controls for the Lazy Hub window.** The plugin now offers the table switches (ventures, collectables, missing collectables, items of interest, items eligible for sale, hide empty currencies), opening automatically, the minimum sales for the sellable table and the thousands separator to Lazy Hub (`/lazy`) over Dalamud IPC, so they can be changed from one window next to the other lalalazy plugins. Each change does exactly what the matching setting in the plugin's own window does.\n- Testing channel only; the production channel is unchanged.\n- Without Lazy Hub installed the plugin behaves exactly as before.\n\nv1.2.7.1 (2026-09-22)\n\n- Fixed an error the plugin logged on every game close (the type initializer for ECommons.Automation.Callback threw an exception). The bundled support library predated the current game data layout and failed to initialise during shutdown; it is now current with the rest of the plugin family. No change to currency tracking or the spending suggestions.\n\nv1.2.7.0 (2026-09-05)\n\n- Added the in-game \"What's new\" popup. After Lazy Currency Spender updates, its changelog now opens once inside the game so the changes are visible without a trip to GitHub. It waits until the character is logged in and out of combat, duty, cutscenes and zoning; closing it (Got it, X or Escape) marks it read. Type `/cur changelog` any time to reopen it.\n- The existing Changelog tab in the settings window still works exactly as before; this is the pop-up on update, not a replacement for it.\n- No change to currency tracking or the spending suggestions.\n\nv1.2.6.1 - 2026-05-25\n- Added a new \"Equipment and Gear Exchange\" section to the UI to display untradable, non-collectable gear and weapons (like Bygone Brass equipment) purchased with endgame tomestones.",
     "DalamudApiLevel": 15,
     "Description": "Fork of CurrencySpender by Blackcatz1911. Never wonder 'What should I do with this?' again. Access real-time prices from Universalis, identify missing collectibles tied to your currencies, and unlock new possibilities for utilizing your in-game resources effectively.\nhttps://raw.githubusercontent.com/dajoey/lalalazy/main/pluginmaster.json",
     "DownloadCount": 0,
     "DownloadLinkInstall": "https://github.com/dajoey/lalalazy/releases/download/LazyCurrencySpender-v1.2.7.2/LazyCurrencySpender.zip",
-    "DownloadLinkTesting": "https://github.com/dajoey/lalalazy/releases/download/LazyCurrencySpender-v1.2.7.2/LazyCurrencySpender-testing.zip",
+    "DownloadLinkTesting": "https://github.com/dajoey/lalalazy/releases/download/LazyCurrencySpender-v1.2.7.4/LazyCurrencySpender-testing.zip",
     "DownloadLinkUpdate": "https://github.com/dajoey/lalalazy/releases/download/LazyCurrencySpender-v1.2.7.2/LazyCurrencySpender.zip",
     "IconUrl": "https://raw.githubusercontent.com/dajoey/lalalazy/main/LalaImages/lazycurrencyspender-icon.png",
     "ImageUrls": [
@@ -7953,7 +7952,7 @@
       "tomestone",
       "lazy"
     ],
-    "TestingAssemblyVersion": "1.2.7.2",
+    "TestingAssemblyVersion": "1.2.7.4",
     "TestingDalamudApiLevel": 15
   },
   {
@@ -8481,7 +8480,7 @@
       "customization",
       "sync"
     ],
-    "TestingAssemblyVersion": "3.3.0.72",
+    "TestingAssemblyVersion": "3.3.0.73",
     "TestingDalamudApiLevel": 15
   },
   {
@@ -8665,7 +8664,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/LuckyStar/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/LuckyStar/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791112511"
+    "LastUpdate": "1791207935"
   },
   {
     "Author": "Cyenia",
@@ -8879,7 +8878,7 @@
     "Name": "PlayerSync",
     "AcceptsFeedback": true,
     "ApplicableVersion": "any",
-    "AssemblyVersion": "1.15.5.7",
+    "AssemblyVersion": "1.15.5.9",
     "CanUnloadAsync": false,
     "DalamudApiLevel": 15,
     "Description": "This plugin will synchronize your Penumbra mods and current Glamourer state with other paired clients automatically.\nhttps://sync.playersync.io/download/plugin/repo.json",
@@ -9059,7 +9058,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/MechanicSim/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/MechanicSim/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791112511"
+    "LastUpdate": "1791207935"
   },
   {
     "Author": "Ramen",
@@ -10083,7 +10082,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/NyaDamagePrediction/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/NyaDamagePrediction/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791112511"
+    "LastUpdate": "1791207935"
   },
   {
     "Author": "NiGuangOwO / Small_Miao",
@@ -10103,7 +10102,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/NyaDraw/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/NyaDraw/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791112511"
+    "LastUpdate": "1791207935"
   },
   {
     "Author": "NightmareXIV",
@@ -11639,18 +11638,18 @@
     "Name": "Questionable Companion",
     "AcceptsFeedback": true,
     "ApplicableVersion": "any",
-    "AssemblyVersion": "1.1.25.0",
+    "AssemblyVersion": "1.1.26.0",
     "CanUnloadAsync": false,
-    "Changelog": "No description provided\n",
+    "Changelog": "Normal, unobfuscated release. Includes AethertekUI runtime dependency.\n\nAdded: submarine missing-part/DC columns, FC/character highlights and filters; theme editing; readable character masking; scoped Bug Reports; selected-character DC travel; AutoRetainer Multi/Night controls and work-mode selection.\n\nChanged: UI, Hunt Log mounting/promotion handling, immediate next-character progression on verified empty Expert Delivery lists, and cached Krangle text rendering.\n\nInstall using latest.zip.\n",
     "DalamudApiLevel": 15,
     "Description": "Automated character rotation and quest sequence execution for Questionable.\n\nAutomates multi-character MSQ progression by intelligently switching between characters based on quest completion and level requirements. Features include:\n- Automatic character switching and quest tracking\n- MSQ progression monitoring across all characters\n- Allied Society quest rotation and prioritization\n- Event quest automation with prerequisite checking\n- Chauffeur Mode for following main character through quests\n- Data Center travel automation\n- Stop point configuration for controlled progression\n\nRequired Plugins: Questionable, AutoRetainer\nhttps://aethertek.io/x.json",
-    "DownloadCount": 5657,
-    "DownloadLinkInstall": "https://github.com/MacaronDream/QSTCompanion/releases/download/v1.1.25/QSTCompanion.zip",
-    "DownloadLinkUpdate": "https://github.com/MacaronDream/QSTCompanion/releases/download/v1.1.25/QSTCompanion.zip",
+    "DownloadCount": 5886,
+    "DownloadLinkInstall": "https://github.com/MacaronDream/QSTCompanion/releases/download/v1.1.26/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/MacaronDream/QSTCompanion/releases/download/v1.1.26/latest.zip",
     "IconUrl": "https://raw.githubusercontent.com/MacaronDream/QSTCompanion/main/icon.png",
     "InternalName": "QSTCompanion",
     "IsTestingExclusive": false,
-    "LastUpdate": 1790797329,
+    "LastUpdate": 1791194757,
     "LoadPriority": 0,
     "LoadRequiredState": 0,
     "LoadSync": false,
@@ -12257,16 +12256,16 @@
     "Author": "Kage",
     "Name": "Relic Tracker",
     "ApplicableVersion": "any",
-    "AssemblyVersion": "1.0.2.4",
-    "Changelog": "- Under-the-hood changes.",
+    "AssemblyVersion": "1.0.2.5",
+    "Changelog": "- Tracker now groups what's left by what you do: Buy, Craft, Gather & fish, Farm in content, One-time steps, and Activities. Prefer the old layout? Switch \"Group by\" to \"Relic step\".\n- Buy missing materials with Knightshopper: one button per currency (gil, tomestones, scrips, GC seals, and more). In Knightshopper, enable both IPC permission switches and add RelicTracker to the allowed plugins.\n- More Artisan craft lists: Lucis, Resplendent, Zodiac, Anima, each job's A Relic Reborn weapon, and the Phantom weapon one-time crafts. Needs a newer Artisan; the buttons appear once your Artisan has the lists.\n- Lucis tools: after your first crafter or gatherer Lucis, the rest of that category can be bought from a Calamity Salvager for 1,000 gil. The Tracker counts materials only for the job you pick as your first Lucis.\n- New materials: gatherer and crafter items for Supra and Lucis, each job's A Relic Reborn weapon and materia, and the one-time steps for Resistance and Phantom weapons.\n- Materials shared by several crafters or steps are now counted correctly, and items you own are only counted once.\n- Step notes rewritten as short numbered steps with tips, instead of a wall of text.\n- Relic tab shows where each material comes from, wraps long names, and lists the jobs still to do once a job is finished.\n- Cleaner look: one Overview table, calmer progress and shortfall colours, and a single Integrations list in Settings.\n- Item names show in your game's language.",
     "DalamudApiLevel": "15",
     "Description": "Track relic weapon, tool, and armor progress across every job, with live material counts and optional FFXIV Collect sync.\nhttps://puni.sh/api/repository/kage",
-    "DownloadCount": 4608,
-    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/159/RelicTracker/versions/1.0.2.4/install/latest.zip",
-    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/159/RelicTracker/versions/1.0.2.4/update/latest.zip",
+    "DownloadCount": 4847,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/159/RelicTracker/versions/1.0.2.5/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/159/RelicTracker/versions/1.0.2.5/update/latest.zip",
     "IconUrl": "https://puni.sh/api/plugins/icon/159",
     "InternalName": "RelicTracker",
-    "LastUpdate": 1790929015,
+    "LastUpdate": 1791221980,
     "Punchline": "Track relic materials across inventory and retainers.",
     "RepoUrl": "https://github.com/Kagekazu/RelicTracker",
     "Tags": [
@@ -13573,7 +13572,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/SSMinionBoradcast/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/SSMinionBoradcast/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791112511"
+    "LastUpdate": "1791207935"
   },
   {
     "Author": "NightmareXIV",
@@ -14173,7 +14172,7 @@
     "Author": "Tynia",
     "Name": "Tynia PVP Radar",
     "InternalName": "TyniaPVPRadar",
-    "AssemblyVersion": "1.0.9.6",
+    "AssemblyVersion": "1.0.9.8",
     "Punchline": "PVP小助手（在线安装 Only）",
     "Description": "在PVP地图中显示所有玩家信息，支持连线、标记和关注列表功能",
     "ApplicableVersion": "any",
@@ -15373,13 +15372,13 @@
     "Author": "aniachan",
     "Name": "xivclone",
     "ApplicableVersion": "any",
-    "AssemblyVersion": "0.0.0.13",
+    "AssemblyVersion": "0.0.0.14",
     "DalamudApiLevel": 15,
     "Description": "You know :p\nhttps://raw.githubusercontent.com/aniachan/anisplugins/refs/heads/main/repo.json",
     "DownloadCount": 0,
-    "DownloadLinkInstall": "https://github.com/aniachan/xivclone/releases/download/0.0.0.13/xivclone.zip",
-    "DownloadLinkTesting": "https://github.com/aniachan/xivclone/releases/download/0.0.0.13/xivclone.zip",
-    "DownloadLinkUpdate": "https://github.com/aniachan/xivclone/releases/download/0.0.0.13/xivclone.zip",
+    "DownloadLinkInstall": "https://github.com/aniachan/xivclone/releases/download/0.0.0.14/xivclone.zip",
+    "DownloadLinkTesting": "https://github.com/aniachan/xivclone/releases/download/0.0.0.14/xivclone.zip",
+    "DownloadLinkUpdate": "https://github.com/aniachan/xivclone/releases/download/0.0.0.14/xivclone.zip",
     "IconUrl": "https://raw.githubusercontent.com/aniachan/xivclone/master/images/icon.png",
     "InternalName": "xivclone",
     "IsHide": "False",
@@ -15392,7 +15391,7 @@
     "Tags": [
       "Ani's Plugins"
     ],
-    "TestingAssemblyVersion": "0.0.0.13"
+    "TestingAssemblyVersion": "0.0.0.14"
   },
   {
     "Author": "attick, daemitus, Khayle",
