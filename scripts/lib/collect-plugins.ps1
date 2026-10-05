@@ -496,12 +496,13 @@ function Select-RepoWinners {
         $byName[$name] += $c
     }
     $winners = @()
+    $duplicateReports = @()
     if (-not $script:RepoDedupHeaderWritten) {
         Write-Host ""
         Write-Host "=== Stage 2: Deduplicate repository candidates ==="
         $script:RepoDedupHeaderWritten = $true
     }
-    foreach ($name in $byName.Keys) {
+    foreach ($name in ($byName.Keys | Sort-Object)) {
         $group = $byName[$name]
         if ($group.Count -eq 1) {
             $winners += $group[0]
@@ -517,13 +518,18 @@ function Select-RepoWinners {
         $sorted = $scored | Sort-Object @{Expression={ $_.eff };    Descending=$true},
                                          @{Expression={ $_.origin }; Descending=$true}
         $winners += $sorted[0].cand
-        for ($i = 1; $i -lt $sorted.Count; $i++) {
-            Write-Host ("    {0} v{1} from {2} dropped (winner: v{3} from {4})" -f `
-                $name, `
-                $sorted[$i].eff, `
-                $sorted[$i].cand.sourceUrl, `
-                $sorted[0].eff, `
-                $sorted[0].cand.sourceUrl)
+        $duplicateReports += [pscustomobject]@{
+            Name = $name
+            Winner = $sorted[0]
+            Candidates = @($sorted)
+        }
+    }
+    foreach ($report in $duplicateReports) {
+        Write-Host ("  Winner: {0} v{1} from {2}" -f $report.Name, $report.Winner.eff, $report.Winner.cand.sourceUrl)
+        Write-Host "    Found candidates:"
+        foreach ($candidate in $report.Candidates) {
+            $marker = if ($candidate -eq $report.Winner) { " [winner]" } else { "" }
+            Write-Host ("      - v{0} from {1}{2}" -f $candidate.eff, $candidate.cand.sourceUrl, $marker)
         }
     }
     return $winners
