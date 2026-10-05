@@ -74,30 +74,22 @@ $parts += '<p class="muted"><span class="legend-de"><strong>Ablauf:</strong> 1. 
 $officialRows = Rows $report.OfficialExclusions
 $officialMasterRows = Rows $report.OfficialMaster
 $officialCatalog = if ($report.Summary.OfficialCatalog) { [int]$report.Summary.OfficialCatalog } else { 0 }
-$officialUnique = @($officialRows | ForEach-Object { $_.InternalName } | Where-Object { $_ } | Sort-Object -Unique).Count
 $officialDe = 'Offizielles Master-Repo (' + $officialCatalog + ' Plugins, durch Dedup entfernt (' + $officialRows.Count + '))'
 $officialEn = 'Official Master Repo (' + $officialCatalog + ' Plugins, Removed by dedup (' + $officialRows.Count + '))'
-$parts += '<details><summary>Deduplication (' + (Rows $report.Deduplication).Count + ' Plugin-Gruppen)</summary>'
-$parts += '<p class="muted"><strong>Legende:</strong><span class="legend-de"> Der WINNER wird weiterhin zuerst nach höchster Version ausgewählt. Die Spalte <code>Bewertung</code> zeigt den stärksten erkannten Indikator in dieser Reihenfolge: <code>AUTHOR_MATCH</code> → <code>UPSTREAM_MATCH</code> → <code>HIGHEST_VERSION</code> → <code>FIRST_INPUT</code>. Drop-Gründe: <code>LOWER_VERSION</code>, <code>UPSTREAM_LOST</code>, <code>AUTHOR_LOST</code> oder <code>FIRST_INPUT_LOST</code>.</span><span class="legend-en"> The WINNER is still selected by highest version first. The Reason column shows the strongest detected indicator in this order: <code>AUTHOR_MATCH</code> → <code>UPSTREAM_MATCH</code> → <code>HIGHEST_VERSION</code> → <code>FIRST_INPUT</code>. Drop reasons: <code>LOWER_VERSION</code>, <code>UPSTREAM_LOST</code>, <code>AUTHOR_LOST</code> or <code>FIRST_INPUT_LOST</code>.</span></p>'
-$parts += '<h4><span class="legend-de">' + (HtmlCell $officialDe) + '</span><span class="legend-en">' + (HtmlCell $officialEn) + '</span></h4>'
+$parts += '<details><summary><span class="legend-de">' + (HtmlCell $officialDe) + '</span><span class="legend-en">' + (HtmlCell $officialEn) + '</span></summary>'
 if ($officialMasterRows.Count -gt 0) {
-    $masterSource = if ($officialRows[0].SourceFile) { [string]$officialRows[0].SourceFile } else { 'https://kamori.goats.dev/Plugin/PluginMaster' }
+    $masterSource = 'https://kamori.goats.dev/Plugin/PluginMaster'
     $parts += '<p class="muted"><span class="legend-de">Quelle: ' + (HtmlValue $masterSource) + '</span><span class="legend-en">From source: ' + (HtmlValue $masterSource) + '</span></p>'
-    $removedNames = @{}
-    foreach ($plugin in $officialRows) { $removedNames[[string]$plugin.InternalName] = $true }
-    $removedRepo = @{}
-    foreach ($plugin in $officialRows) { if (-not $removedRepo.ContainsKey([string]$plugin.InternalName)) { $removedRepo[[string]$plugin.InternalName] = [string]$plugin.RepositoryUrl } }
-    $parts += '<table><thead><tr><th>Status</th><th>Reason</th><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th><th>Repository</th></tr></thead><tbody>'
+    $parts += '<table><thead><tr><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th><th>Source</th></tr></thead><tbody>'
     foreach ($plugin in ($officialMasterRows | Sort-Object Plugin, InternalName, PluginVersion, RepositoryUrl)) {
-        $isRemoved = $removedNames.ContainsKey([string]$plugin.InternalName)
-        $status = if ($isRemoved) { 'REMOVED' } else { 'MASTER' }
-        $reason = if ($isRemoved) { 'OFFICIAL_MASTER' } else { '' }
-        $repo = if ($isRemoved -and $removedRepo[[string]$plugin.InternalName]) { $removedRepo[[string]$plugin.InternalName] } else { $plugin.RepositoryUrl }
-        $rowClass = if ($isRemoved) { 'bad' } else { 'ok' }
-        $parts += '<tr class="' + $rowClass + '"><td>' + (HtmlCell $status) + '</td><td>' + (HtmlCell $reason) + '</td><td>' + (HtmlCell $plugin.Plugin) + '</td><td>' + (HtmlCell $plugin.InternalName) + '</td><td>' + (HtmlCell $plugin.PluginVersion) + '</td><td>' + (HtmlCell $plugin.ApiVersion) + '</td><td>' + (HtmlValue $repo) + '</td></tr>'
+        $parts += '<tr><td>' + (HtmlCell $plugin.Plugin) + '</td><td>' + (HtmlCell $plugin.InternalName) + '</td><td>' + (HtmlCell $plugin.PluginVersion) + '</td><td>' + (HtmlCell $plugin.ApiVersion) + '</td><td>' + (HtmlValue $plugin.RepositoryUrl) + '</td></tr>'
     }
     $parts += '</tbody></table>'
 }
+$parts += '</details>'
+$parts += '<details><summary>Deduplication (' + (Rows $report.Deduplication).Count + ' Plugin-Gruppen)</summary>'
+$parts += '<p class="muted"><strong>Legende:</strong><span class="legend-de"> Der WINNER wird weiterhin zuerst nach höchster Version ausgewählt. Die Spalte <code>Bewertung</code> zeigt den stärksten erkannten Indikator in dieser Reihenfolge: <code>AUTHOR_MATCH</code> → <code>UPSTREAM_MATCH</code> → <code>HIGHEST_VERSION</code> → <code>FIRST_INPUT</code>. Drop-Gründe: <code>LOWER_VERSION</code>, <code>UPSTREAM_LOST</code>, <code>AUTHOR_LOST</code> oder <code>FIRST_INPUT_LOST</code>.</span><span class="legend-en"> The WINNER is still selected by highest version first. The Reason column shows the strongest detected indicator in this order: <code>AUTHOR_MATCH</code> → <code>UPSTREAM_MATCH</code> → <code>HIGHEST_VERSION</code> → <code>FIRST_INPUT</code>. Drop reasons: <code>LOWER_VERSION</code>, <code>UPSTREAM_LOST</code>, <code>AUTHOR_LOST</code> or <code>FIRST_INPUT_LOST</code>.</span></p>'
+$parts += '<p class="muted"><span class="legend-de">Zusätzlich wurden ' + $officialRows.Count + ' Einträge mit dem Drop-Grund <code>OFFICIAL_MASTER</code> aus externen Quellen entfernt. Die vollständige Masterliste steht im vorherigen Schritt.</span><span class="legend-en">Additionally, ' + $officialRows.Count + ' entries were removed from external sources with drop reason <code>OFFICIAL_MASTER</code>. The complete Master list is shown in the preceding step.</span></p>'
 $parts += '<table><thead><tr><th>Plugin</th><th>Gewinner</th><th>Verworfene Kandidaten</th></tr></thead><tbody>'
 foreach ($d in (Rows $report.Deduplication | Sort-Object Plugin)) {
     $winner = if ($d.Winner -is [string]) { [pscustomobject]@{ Version = ''; Url = $d.Winner } } else { $d.Winner }
@@ -111,13 +103,6 @@ foreach ($d in (Rows $report.Deduplication | Sort-Object Plugin)) {
     }
     $candidateHtml = '<table class="nested"><thead><tr><th>Status</th><th>Bewertung</th><th>Version</th><th>Quelle</th></tr></thead><tbody>' + ($candidateRows -join '') + '</tbody></table>'
     $parts += '<tr><td>' + (HtmlCell $d.Plugin) + '</td><td>' + $winnerHtml + '</td><td>' + $candidateHtml + '</td></tr>'
-}
-foreach ($plugin in ($officialRows | Sort-Object Plugin, InternalName, PluginVersion, RepositoryUrl)) {
-    $pluginName = if ($plugin.Plugin) { $plugin.Plugin } else { $plugin.InternalName }
-    $version = if ($plugin.PluginVersion) { $plugin.PluginVersion } else { '-' }
-    $reason = if ($plugin.Reason) { $plugin.Reason } else { 'OFFICIAL_MASTER' }
-    $dropHtml = '<table class="nested"><thead><tr><th>Status</th><th>Bewertung</th><th>Version</th><th>Quelle</th></tr></thead><tbody><tr class="bad"><td>DROP</td><td>' + (HtmlCell $reason) + '</td><td>' + (HtmlCell $version) + '</td><td>' + (HtmlValue $plugin.RepositoryUrl) + '</td></tr></tbody></table>'
-    $parts += '<tr class="bad"><td>' + (HtmlCell $pluginName) + '</td><td><code>OFFICIAL_MASTER</code></td><td>' + $dropHtml + '</td></tr>'
 }
 $parts += '</tbody></table>'
 $parts += '</details>'
