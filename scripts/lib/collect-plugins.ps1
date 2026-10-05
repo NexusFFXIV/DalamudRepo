@@ -154,6 +154,9 @@ $script:ZipFallbackRescued = 0
 $script:SnapshotHits = 0
 $script:ZipDownloads = 0
 $script:ZipReports = @()
+$script:ReportSources = @()
+$script:ReportDeduplication = @()
+$script:ReportApiResolution = @()
 
 $script:Snapshot = @{}
 
@@ -323,6 +326,7 @@ function Test-MeetsApi {
     param($Entry)
     if (-not $Entry) { return $false }
     $resolved = Resolve-EntryApiLevels $Entry
+    $script:ReportApiResolution += [pscustomobject]@{ Plugin = $Entry.InternalName; DalamudApiLevel = $resolved.DalamudApiLevel; TestingDalamudApiLevel = $resolved.TestingDalamudApiLevel }
     $prodOk = $false
     $testOk = $false
     if ($null -ne $resolved.DalamudApiLevel) {
@@ -539,6 +543,7 @@ function Select-RepoWinners {
         }
     }
     foreach ($report in $duplicateReports) {
+        $script:ReportDeduplication += [pscustomobject]@{ Plugin = $report.Name; Winner = $report.Winner.cand.sourceUrl; Candidates = @($report.Candidates | ForEach-Object { $_.cand.sourceUrl }) }
         Write-Host ""
         Write-Host ("  Plugin: {0}" -f $report.Name)
         Write-Host "    Status   Version       Source"
@@ -626,6 +631,7 @@ function Collect-RepoUrlsPool {
         Write-Host "    Status       Candidates  Source"
         Write-Host "    -----------  ----------  ------"
         foreach ($report in $repoReports) {
+            $script:ReportSources += [pscustomobject]@{ Status = $report.Status; Count = $report.Count; Url = $report.Url }
             Write-Host ("    {0,-11}  {1,10}  {2}" -f $report.Status, $report.Count, $report.Url)
         }
     }

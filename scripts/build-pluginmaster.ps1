@@ -294,3 +294,23 @@ if ($offlineEnabled) {
     Save-OfflineState
     Write-OfflineSummary
 }
+
+# Persist the data model separately from the human-readable transcript. The
+# renderer can now change CLI/HTML formatting without touching collection code.
+$reportPath = Join-Path (Get-Location) "build-report.json"
+$structuredReport = [ordered]@{
+    Sources = @($script:ReportSources)
+    Deduplication = @($script:ReportDeduplication)
+    ApiResolution = @($script:ReportApiResolution)
+    ZipFallback = @($script:ZipReports)
+    OfficialExclusions = @($script:OfficialRemoved)
+    Outputs = @($outputs | ForEach-Object { [pscustomobject]@{ Name = $_.name; Count = $_.count; Status = if ($_.enabled) { 'OK' } else { 'SKIPPED' } } })
+    Summary = [ordered]@{
+        Filtered = $totalFiltered
+        ZipFallbackRescued = $script:ZipFallbackRescued
+        SnapshotHits = $script:SnapshotHits
+        ZipDownloads = $script:ZipDownloads
+    }
+}
+($structuredReport | ConvertTo-Json -Depth 20) + "`n" | Set-Content -LiteralPath $reportPath -Encoding UTF8 -NoNewline
+& "$PSScriptRoot/CreateReport.ps1" -ReportPath $reportPath -Format Html -OutputPath (Join-Path (Get-Location) "build-report.html")
