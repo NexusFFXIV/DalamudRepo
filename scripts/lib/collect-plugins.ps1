@@ -153,6 +153,10 @@ $script:ZipApiLevelCache = @{}
 $script:ZipFallbackRescued = 0
 $script:SnapshotHits = 0
 $script:ZipDownloads = 0
+$script:ZipReports = @()
+$script:ReportSources = @()
+$script:ReportDeduplication = @()
+$script:ReportApiResolution = @()
 
 $script:Snapshot = @{}
 
@@ -194,10 +198,19 @@ function Get-ZipManifestApiLevel {
 
     $script:ZipDownloads++
     $result = $null
+    $status = "DOWNLOAD_ERROR"
     $tmp = $null
     try {
         $tmp = New-TemporaryFile
-        Invoke-WebRequest -Uri $Url -OutFile $tmp.FullName -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
+        $probe = Invoke-WebRequest -Uri $Url -Method Head -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
+        if ([int]$probe.StatusCode -lt 200 -or [int]$probe.StatusCode -ge 300) {
+            $statusText = if ($probe.StatusDescription) { [string]$probe.StatusDescription } else { "HTTP" }
+            $status = ("{0}{1}" -f [int]$probe.StatusCode, ($statusText -replace '[^A-Za-z0-9]', ''))
+            $script:ZipApiLevelCache[$Url] = $null
+            $script:ZipReports += [pscustomobject]@{ Plugin = $InternalName; Status = $status; Api = "-"; Url = $Url }
+            return $null
+        }
+        Invoke-WebRequest -Uri $Url -OutFile $tmp.FullName -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
         Add-Type -AssemblyName System.IO.Compression.FileSystem -ErrorAction SilentlyContinue
         $zip = [System.IO.Compression.ZipFile]::OpenRead($tmp.FullName)
         try {
@@ -205,19 +218,22 @@ function Get-ZipManifestApiLevel {
             if ($entry) {
                 $reader = New-Object System.IO.StreamReader($entry.Open())
                 try {
-                    $manifest = $reader.ReadToEnd() | ConvertFrom-Json
-                    if ($null -ne $manifest.DalamudApiLevel) { $result = [int]$manifest.DalamudApiLevel }
+                    try { $manifest = $reader.ReadToEnd() | ConvertFrom-Json } catch { $manifest = $null; $status = "PARSE_ERROR" }
+                    if ($manifest -and $null -ne $manifest.DalamudApiLevel) {
+                        $result = [int]$manifest.DalamudApiLevel
+                        $status = "OK"
+                    } elseif ($status -ne "PARSE_ERROR") { $status = "API_MISSING" }
                 } finally { $reader.Dispose() }
+            } else {
+                $status = "API_MISSING"
             }
         } finally { $zip.Dispose() }
     } catch {
-        if ($_.Exception.Response) {
-            Write-Host ("    {0} -> {1}" -f (Get-HttpErrorLabel $_), $Url)
-        }
         Write-Verbose "Zip fallback failed for $Url ($InternalName): $($_.Exception.Message)"
     } finally {
         if ($tmp) { Remove-Item $tmp.FullName -ErrorAction SilentlyContinue }
     }
+    $script:ZipReports += [pscustomobject]@{ Plugin = $InternalName; Status = $status; Api = if ($null -ne $result) { $result } else { "-" }; Url = $Url }
     $script:ZipApiLevelCache[$Url] = $result
     return $result
 }
@@ -252,7 +268,6 @@ function Resolve-EntryApiLevels {
                 $script:ZipFallbackRescued++
                 Write-Host ("    [zip]   {0} prod {1} api={2}" -f $Entry.InternalName, $prodAv, $prodLvl)
             } else {
-                Write-Host ("    [zip-fail] {0} prod {1} (api level could not be read)" -f $Entry.InternalName, $prodAv)
             }
         }
         $prodFromFallback = $true
@@ -269,7 +284,6 @@ function Resolve-EntryApiLevels {
                 $script:ZipFallbackRescued++
                 Write-Host ("    [zip]   {0} test {1} api={2}" -f $Entry.InternalName, $testAv, $testLvl)
             } else {
-                Write-Host ("    [zip-fail] {0} test {1} (api level could not be read)" -f $Entry.InternalName, $testAv)
             }
         }
         $testFromFallback = $true
@@ -312,6 +326,7 @@ function Test-MeetsApi {
     param($Entry)
     if (-not $Entry) { return $false }
     $resolved = Resolve-EntryApiLevels $Entry
+    $script:ReportApiResolution += [pscustomobject]@{ Plugin = $Entry.InternalName; DalamudApiLevel = $resolved.DalamudApiLevel; TestingDalamudApiLevel = $resolved.TestingDalamudApiLevel }
     $prodOk = $false
     $testOk = $false
     if ($null -ne $resolved.DalamudApiLevel) {
@@ -528,6 +543,7 @@ function Select-RepoWinners {
         }
     }
     foreach ($report in $duplicateReports) {
+        $script:ReportDeduplication += [pscustomobject]@{ Plugin = $report.Name; Winner = $report.Winner.cand.sourceUrl; Candidates = @($report.Candidates | ForEach-Object { $_.cand.sourceUrl }) }
         Write-Host ""
         Write-Host ("  Plugin: {0}" -f $report.Name)
         Write-Host "    Status   Version       Source"
@@ -565,15 +581,29 @@ function Collect-RepoUrlsPool {
     foreach ($url in $Yaml.externalRepos) {
         if (-not $url) { continue }
         $logged++
-        $resp = $null
+        # Do not use Invoke-RestMethod with -ErrorAction Stop here. Under
+        # Start-Transcript PowerShell records the terminating error before the
+        # catch block, which leaked a noisy PS>TerminatingError line into mail.
+        # SkipHttpErrorCheck lets us classify the HTTP status ourselves without
+        # emitting a transcript error record.
+        $http = $null
         try {
-            $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
+            $http = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
         } catch {
-            $label = Get-HttpErrorLabel $_
-            $repoReports += [pscustomobject]@{ Status = $label; Count = 0; Url = $url }
+            $repoReports += [pscustomobject]@{ Status = "RequestError"; Count = 0; Url = $url }
             $unreachable += $url
             continue
         }
+        $statusCode = [int]$http.StatusCode
+        if ($statusCode -lt 200 -or $statusCode -ge 300) {
+            $statusText = if ($http.StatusDescription) { [string]$http.StatusDescription } else { "HTTP" }
+            $repoReports += [pscustomobject]@{ Status = ("{0}{1}" -f $statusCode, ($statusText -replace '[^A-Za-z0-9]', '')); Count = 0; Url = $url }
+            $unreachable += $url
+            Write-Host ("  {0} -> {1}" -f ("{0}{1}" -f $statusCode, ($statusText -replace '[^A-Za-z0-9]', '')), $url)
+            continue
+        }
+        $resp = $null
+        try { $resp = $http.Content | ConvertFrom-Json } catch { $resp = $null }
         if (-not $resp) {
             $repoReports += [pscustomobject]@{ Status = "EMPTY"; Count = 0; Url = $url }
             $unreachable += $url
@@ -601,11 +631,15 @@ function Collect-RepoUrlsPool {
         Write-Host "    Status       Candidates  Source"
         Write-Host "    -----------  ----------  ------"
         foreach ($report in $repoReports) {
+            $script:ReportSources += [pscustomobject]@{ Status = $report.Status; Count = $report.Count; Url = $report.Url }
             Write-Host ("    {0,-11}  {1,10}  {2}" -f $report.Status, $report.Count, $report.Url)
         }
     }
 
     $winners = Select-RepoWinners $candidates
+
+    Write-Host ""
+    Write-Host "  === Stage 2b: Resolve versions and API levels ==="
 
     $entries = @()
     $filtered = 0
@@ -631,7 +665,13 @@ function Collect-RepoUrlsPool {
                 $download = [string]$e.DownloadLinkInstall -replace '\{version\}', $tag -replace '\{tag\}', $tag
                 try {
                     $tmpZip = New-TemporaryFile
-                    Invoke-WebRequest -Uri $download -OutFile $tmpZip.FullName -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
+                    $probe = Invoke-WebRequest -Uri $download -Method Head -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
+                    if ([int]$probe.StatusCode -lt 200 -or [int]$probe.StatusCode -ge 300) {
+                        $statusText = if ($probe.StatusDescription) { [string]$probe.StatusDescription } else { "HTTP" }
+                        Write-Host ("    {0} -> {1}" -f ("{0}{1}" -f [int]$probe.StatusCode, ($statusText -replace '[^A-Za-z0-9]', '')), $download)
+                        throw "HTTP $([int]$probe.StatusCode)"
+                    }
+                    Invoke-WebRequest -Uri $download -OutFile $tmpZip.FullName -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
                     $tmpDir = Join-Path ([IO.Path]::GetTempPath()) ([IO.Path]::GetRandomFileName())
                     Expand-Archive -LiteralPath $tmpZip.FullName -DestinationPath $tmpDir
                     $dll = Get-ChildItem -LiteralPath $tmpDir -Recurse -Filter ([string]$e.InternalName + '.dll') | Select-Object -First 1
