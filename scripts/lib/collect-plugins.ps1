@@ -505,7 +505,28 @@ function Test-IsOriginalUpstream {
     param([string]$SourceUrl, $Entry)
     if (-not $Entry.RepoUrl -or -not $SourceUrl) { return $false }
     try {
-        return ([uri]$SourceUrl).Host -eq ([uri]$Entry.RepoUrl).Host
+        $source = [uri]$SourceUrl
+        $repo = [uri]$Entry.RepoUrl
+        if ($source.Host -ne $repo.Host) { return $false }
+        $sourceParts = @($source.AbsolutePath.Trim('/') -split '/')
+        $repoParts = @($repo.AbsolutePath.Trim('/') -split '/')
+        return ($sourceParts.Count -ge 2 -and $repoParts.Count -ge 2 -and
+            $sourceParts[0].Equals($repoParts[0], [StringComparison]::OrdinalIgnoreCase) -and
+            $sourceParts[1].Equals($repoParts[1], [StringComparison]::OrdinalIgnoreCase))
+    } catch { return $false }
+}
+
+function Test-IsAuthorUpstream {
+    param([string]$SourceUrl, $Entry)
+    if (-not $Entry.Author -or -not $SourceUrl) { return $false }
+    try {
+        $uri = [uri]$SourceUrl
+        $parts = @($uri.AbsolutePath.Trim('/') -split '/')
+        if ($parts.Count -lt 1 -or -not $parts[0]) { return $false }
+        $owner = ($parts[0] -replace '[^A-Za-z0-9]', '').ToLowerInvariant()
+        $author = ([string]$Entry.Author -replace '[^A-Za-z0-9]', '').ToLowerInvariant()
+        if (-not $owner -or $author -in @('unknown','anonymous','')) { return $false }
+        return $owner -eq $author
     } catch { return $false }
 }
 
@@ -547,10 +568,12 @@ function Select-RepoWinners {
                 cand   = $c
                 eff    = Resolve-Version $c.entry
                 origin = Test-IsOriginalUpstream -SourceUrl $c.sourceUrl -Entry $c.entry
+                author = Test-IsAuthorUpstream -SourceUrl $c.sourceUrl -Entry $c.entry
             }
         }
         $sorted = $scored | Sort-Object @{Expression={ $_.eff };    Descending=$true},
-                                         @{Expression={ $_.origin }; Descending=$true}
+                                         @{Expression={ $_.origin }; Descending=$true},
+                                         @{Expression={ $_.author }; Descending=$true}
         $winners += $sorted[0].cand
         $duplicateReports += [pscustomobject]@{
             Name = $name
@@ -625,7 +648,15 @@ function Collect-RepoUrlsPool {
             continue
         }
         $resp = $null
-        try { $resp = $http.Content | ConvertFrom-Json -ErrorAction SilentlyContinue } catch { $resp = $null }
+        try {
+            # GitHub raw responses may include an UTF-8 BOM. ConvertFrom-Json
+            # rejects that leading character even though the payload is valid.
+            $jsonText = [string]$http.Content
+            if ($jsonText.Length -gt 0 -and $jsonText[0] -eq [char]0xFEFF) {
+                $jsonText = $jsonText.Substring(1)
+            }
+            $resp = $jsonText | ConvertFrom-Json -ErrorAction Stop
+        } catch { $resp = $null }
         if (-not $resp) {
             $repoReports += [pscustomobject]@{ Status = "EMPTY"; Count = 0; Url = $url }
             $unreachable += $url

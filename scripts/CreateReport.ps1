@@ -98,7 +98,24 @@ foreach ($x in (Rows $report.ApiResolution | Sort-Object Plugin)) {
 $parts += '</tbody></table>'
 $parts += '</details>'
 $parts += '<details><summary>Zip-Fallback (' + (Rows $report.ZipFallback).Count + ' Versuche)</summary>'
-$parts += HtmlTable @('Plugin','Status','API','URL') $report.ZipFallback { param($x) @($x.Plugin,$x.Status,$x.Api,$x.Url) }
+$dedupMap = @{}
+foreach ($d in (Rows $report.Deduplication)) { $dedupMap[[string]$d.Plugin] = $d }
+$zipRows = foreach ($x in (Rows $report.ZipFallback)) {
+    $d = if ($dedupMap.ContainsKey([string]$x.Plugin)) { $dedupMap[[string]$x.Plugin] } else { $null }
+    $winnerUrl = if ($x.WinnerUrl) { $x.WinnerUrl } elseif ($d -and $d.Winner -is [string]) { $d.Winner } elseif ($d -and $d.Winner.Url) { $d.Winner.Url } else { '' }
+    $winnerVersion = if ($x.WinnerVersion) { $x.WinnerVersion } elseif ($d -and $d.Winner -and $d.Winner.Version) { $d.Winner.Version } else { '' }
+    [pscustomobject]@{
+        Status = $x.Status
+        Plugin = $x.Plugin
+        Api = $x.Api
+        DedupStatus = if ($x.DedupStatus) { $x.DedupStatus } elseif ($d) { 'DUPLIKAT' } else { 'EINZELN' }
+        DedupCandidates = if ($x.DedupCandidates) { $x.DedupCandidates } elseif ($d) { @($d.Candidates).Count } else { 1 }
+        WinnerVersion = $winnerVersion
+        WinnerUrl = $winnerUrl
+        Url = $x.Url
+    }
+}
+$parts += HtmlTable @('Status','Plugin','API','Dedup','Kandidaten','Winner-Version','Winner-Repository','Zip-URL') $zipRows { param($x) @($x.Status,$x.Plugin,$x.Api,$x.DedupStatus,$x.DedupCandidates,$x.WinnerVersion,$x.WinnerUrl,$x.Url) }
 $parts += '</details>'
 $parts += '<details><summary>Offizielle Plugin-Ausschlüsse (' + (Rows $report.OfficialExclusions).Count + ' Plugins)</summary>'
 $parts += '<table><thead><tr><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th><th>Quelle</th><th>Repository</th></tr></thead><tbody>'

@@ -303,11 +303,30 @@ if ($offlineEnabled) {
 # Persist the data model separately from the human-readable transcript. The
 # renderer can now change CLI/HTML formatting without touching collection code.
 $reportPath = Join-Path (Get-Location) "build-report.json"
+$dedupByPlugin = @{}
+foreach ($dedup in @($script:ReportDeduplication)) {
+    $dedupByPlugin[[string]$dedup.Plugin] = $dedup
+}
+$zipReportRows = foreach ($zip in @($script:ZipReports)) {
+    $dedup = if ($dedupByPlugin.ContainsKey([string]$zip.Plugin)) { $dedupByPlugin[[string]$zip.Plugin] } else { $null }
+    $winnerVersion = if ($dedup -and $dedup.Winner -and $dedup.Winner.Version) { [string]$dedup.Winner.Version } else { '' }
+    $winnerUrl = if ($dedup -and $dedup.Winner -and $dedup.Winner.Url) { [string]$dedup.Winner.Url } else { '' }
+    [pscustomobject]@{
+        Plugin = $zip.Plugin
+        Status = $zip.Status
+        Api = $zip.Api
+        DedupStatus = if ($dedup) { 'DUPLIKAT' } else { 'EINZELN' }
+        DedupCandidates = if ($dedup) { @($dedup.Candidates).Count } else { 1 }
+        WinnerVersion = $winnerVersion
+        WinnerUrl = $winnerUrl
+        Url = $zip.Url
+    }
+}
 $structuredReport = [ordered]@{
     Sources = @($script:ReportSources)
     Deduplication = @($script:ReportDeduplication)
     ApiResolution = @($script:ReportApiResolution)
-    ZipFallback = @($script:ZipReports)
+    ZipFallback = @($zipReportRows)
     OfficialExclusions = @($script:OfficialRemoved)
     Outputs = @($outputs | ForEach-Object { [pscustomobject]@{ Name = $_.name; Count = $_.count; Status = if ($_.enabled) { 'OK' } else { 'SKIPPED' } } })
     Summary = [ordered]@{
