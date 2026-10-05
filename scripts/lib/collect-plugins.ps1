@@ -153,6 +153,7 @@ $script:ZipApiLevelCache = @{}
 $script:ZipFallbackRescued = 0
 $script:SnapshotHits = 0
 $script:ZipDownloads = 0
+$script:ZipReports = @()
 
 $script:Snapshot = @{}
 
@@ -194,14 +195,16 @@ function Get-ZipManifestApiLevel {
 
     $script:ZipDownloads++
     $result = $null
+    $status = "DOWNLOAD_ERROR"
     $tmp = $null
     try {
         $tmp = New-TemporaryFile
         $probe = Invoke-WebRequest -Uri $Url -Method Head -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
         if ([int]$probe.StatusCode -lt 200 -or [int]$probe.StatusCode -ge 300) {
             $statusText = if ($probe.StatusDescription) { [string]$probe.StatusDescription } else { "HTTP" }
-            Write-Host ("    {0} -> {1}" -f ("{0}{1}" -f [int]$probe.StatusCode, ($statusText -replace '[^A-Za-z0-9]', '')), $Url)
+            $status = ("{0}{1}" -f [int]$probe.StatusCode, ($statusText -replace '[^A-Za-z0-9]', ''))
             $script:ZipApiLevelCache[$Url] = $null
+            $script:ZipReports += [pscustomobject]@{ Plugin = $InternalName; Status = $status; Api = "-"; Url = $Url }
             return $null
         }
         Invoke-WebRequest -Uri $Url -OutFile $tmp.FullName -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
@@ -212,9 +215,14 @@ function Get-ZipManifestApiLevel {
             if ($entry) {
                 $reader = New-Object System.IO.StreamReader($entry.Open())
                 try {
-                    $manifest = $reader.ReadToEnd() | ConvertFrom-Json
-                    if ($null -ne $manifest.DalamudApiLevel) { $result = [int]$manifest.DalamudApiLevel }
+                    try { $manifest = $reader.ReadToEnd() | ConvertFrom-Json } catch { $manifest = $null; $status = "PARSE_ERROR" }
+                    if ($manifest -and $null -ne $manifest.DalamudApiLevel) {
+                        $result = [int]$manifest.DalamudApiLevel
+                        $status = "OK"
+                    } elseif ($status -ne "PARSE_ERROR") { $status = "API_MISSING" }
                 } finally { $reader.Dispose() }
+            } else {
+                $status = "API_MISSING"
             }
         } finally { $zip.Dispose() }
     } catch {
@@ -222,6 +230,7 @@ function Get-ZipManifestApiLevel {
     } finally {
         if ($tmp) { Remove-Item $tmp.FullName -ErrorAction SilentlyContinue }
     }
+    $script:ZipReports += [pscustomobject]@{ Plugin = $InternalName; Status = $status; Api = if ($null -ne $result) { $result } else { "-" }; Url = $Url }
     $script:ZipApiLevelCache[$Url] = $result
     return $result
 }
@@ -256,7 +265,6 @@ function Resolve-EntryApiLevels {
                 $script:ZipFallbackRescued++
                 Write-Host ("    [zip]   {0} prod {1} api={2}" -f $Entry.InternalName, $prodAv, $prodLvl)
             } else {
-                Write-Host ("    [zip-fail] {0} prod {1} (api level could not be read)" -f $Entry.InternalName, $prodAv)
             }
         }
         $prodFromFallback = $true
@@ -273,7 +281,6 @@ function Resolve-EntryApiLevels {
                 $script:ZipFallbackRescued++
                 Write-Host ("    [zip]   {0} test {1} api={2}" -f $Entry.InternalName, $testAv, $testLvl)
             } else {
-                Write-Host ("    [zip-fail] {0} test {1} (api level could not be read)" -f $Entry.InternalName, $testAv)
             }
         }
         $testFromFallback = $true
