@@ -157,6 +157,7 @@ $script:ZipReports = @()
 $script:ReportSources = @()
 $script:ReportDeduplication = @()
 $script:ReportApiResolution = @()
+$script:ApiResolutionSeen = @{}
 
 $script:Snapshot = @{}
 
@@ -326,7 +327,22 @@ function Test-MeetsApi {
     param($Entry)
     if (-not $Entry) { return $false }
     $resolved = Resolve-EntryApiLevels $Entry
-    $script:ReportApiResolution += [pscustomobject]@{ Plugin = $Entry.InternalName; DalamudApiLevel = $resolved.DalamudApiLevel; TestingDalamudApiLevel = $resolved.TestingDalamudApiLevel }
+    $reportKey = "{0}|{1}|{2}" -f $Entry.InternalName, $Entry.AssemblyVersion, $Entry.TestingAssemblyVersion
+    if (-not $script:ApiResolutionSeen.ContainsKey($reportKey)) {
+        $script:ApiResolutionSeen[$reportKey] = $true
+        $prodUrl = if ($Entry.DownloadLinkInstall) { [string]$Entry.DownloadLinkInstall } else { [string]$Entry.DownloadLinkUpdate }
+        $testUrl = [string]$Entry.DownloadLinkTesting
+        $prodSource = if ($null -ne $Entry.DalamudApiLevel) { 'repo.json' } elseif ($script:Snapshot[$Entry.InternalName].DalamudApiLevel) { 'snapshot' } elseif ($prodUrl) { 'zip' } else { 'unresolved' }
+        $testSource = if ($null -ne $Entry.TestingDalamudApiLevel) { 'repo.json' } elseif ($script:Snapshot[$Entry.InternalName].TestingDalamudApiLevel) { 'snapshot' } elseif ($testUrl) { 'zip' } else { 'unresolved' }
+        $prodZip = @($script:ZipReports | Where-Object Url -eq $prodUrl | Select-Object -Last 1).Status
+        $testZip = @($script:ZipReports | Where-Object Url -eq $testUrl | Select-Object -Last 1).Status
+        $script:ReportApiResolution += [pscustomobject]@{
+            Plugin = $Entry.InternalName
+            SourceUrl = if ($Entry.__ReportSourceUrl) { $Entry.__ReportSourceUrl } else { $Entry.RepoUrl }
+            StableApi = $resolved.DalamudApiLevel; StableSource = $prodSource; StableZipStatus = if ($prodSource -eq 'zip') { $prodZip } else { '' }
+            TestingApi = $resolved.TestingDalamudApiLevel; TestingSource = $testSource; TestingZipStatus = if ($testSource -eq 'zip') { $testZip } else { '' }
+        }
+    }
     $prodOk = $false
     $testOk = $false
     if ($null -ne $resolved.DalamudApiLevel) {

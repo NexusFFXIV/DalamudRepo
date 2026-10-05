@@ -189,11 +189,6 @@ foreach ($file in $sourceFiles) {
     if ($officialPluginNames.Count -gt 0) {
         $r.entries = @(Remove-OfficialEntries -Entries $r.entries -SourceLabel $basename -OfficialNames $officialPluginNames)
     }
-    foreach ($entry in @($r.entries)) {
-        if ($entry.PSObject.Properties['__ReportSourceUrl']) {
-            $entry.PSObject.Properties.Remove('__ReportSourceUrl')
-        }
-    }
 
     if ($offlineEnabled -and $type -in @("external-repos", "external-repos-gen")) {
         foreach ($url in @($r.reachable)) { Register-OfflineSuccess -Section $offlineSection -Url $url }
@@ -209,6 +204,11 @@ foreach ($file in $sourceFiles) {
     $keep = Resolve-PublishedEntries -NewEntries $r.entries -Published $published `
                                      -ForceNames $ForcePlugin -ForceAll:$ForceAll
     $r.entries = @($keep.entries)
+    foreach ($entry in @($r.entries)) {
+        if ($entry.PSObject.Properties['__ReportSourceUrl']) {
+            $entry.PSObject.Properties.Remove('__ReportSourceUrl')
+        }
+    }
 
     $deduped = Get-Deduped $r.entries
     Write-Pluginmaster $deduped $out

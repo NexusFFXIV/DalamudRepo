@@ -72,7 +72,14 @@ foreach ($d in (Rows $report.Deduplication | Sort-Object Plugin)) {
 }
 $parts += '</tbody></table>'
 $parts += '<h2>Stage 2b: Version and API resolution</h2>'
-$parts += HtmlTable @('Plugin','Stable API','Testing API') $report.ApiResolution { param($x) @($x.Plugin,$x.DalamudApiLevel,$x.TestingDalamudApiLevel) }
+$parts += '<table><thead><tr><th>Plugin</th><th>Source repository</th><th>Stable</th><th>Testing</th></tr></thead><tbody>'
+foreach ($x in (Rows $report.ApiResolution | Sort-Object Plugin)) {
+    $stable = (HtmlCell $x.StableApi) + ' <span class="muted">[' + (HtmlCell $x.StableSource) + $(if ($x.StableZipStatus) { ': ' + (HtmlCell $x.StableZipStatus) } else { '' }) + ']</span>'
+    $testing = (HtmlCell $x.TestingApi) + ' <span class="muted">[' + (HtmlCell $x.TestingSource) + $(if ($x.TestingZipStatus) { ': ' + (HtmlCell $x.TestingZipStatus) } else { '' }) + ']</span>'
+    $rowClass = if ($x.StableSource -eq 'unresolved' -or $x.TestingSource -eq 'unresolved' -or $x.StableZipStatus -match 'ERROR|404|MISSING' -or $x.TestingZipStatus -match 'ERROR|404|MISSING') { 'bad' } else { 'ok' }
+    $parts += '<tr class="' + $rowClass + '"><td>' + (HtmlCell $x.Plugin) + '</td><td>' + (HtmlCell $x.SourceUrl) + '</td><td>' + $stable + '</td><td>' + $testing + '</td></tr>'
+}
+$parts += '</tbody></table>'
 $parts += '<h2>Stage 2c: Zip fallback</h2>'
 $parts += HtmlTable @('Plugin','Status','API','URL') $report.ZipFallback { param($x) @($x.Plugin,$x.Status,$x.Api,$x.Url) }
 $parts += '<h2>Stage 2d: Official plugin exclusions</h2>'
