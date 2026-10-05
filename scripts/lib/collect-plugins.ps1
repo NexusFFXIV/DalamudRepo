@@ -543,7 +543,13 @@ function Select-RepoWinners {
         }
     }
     foreach ($report in $duplicateReports) {
-        $script:ReportDeduplication += [pscustomobject]@{ Plugin = $report.Name; Winner = $report.Winner.cand.sourceUrl; Candidates = @($report.Candidates | ForEach-Object { $_.cand.sourceUrl }) }
+        $script:ReportDeduplication += [pscustomobject]@{
+            Plugin = $report.Name
+            Winner = [pscustomobject]@{ Version = [string]$report.Winner.eff; Url = [string]$report.Winner.cand.sourceUrl }
+            Candidates = @($report.Candidates | ForEach-Object {
+                [pscustomobject]@{ Version = [string]$_.eff; Url = [string]$_.cand.sourceUrl; Status = if ($_ -eq $report.Winner) { 'WINNER' } else { 'DROP' } }
+            })
+        }
         Write-Host ""
         Write-Host ("  Plugin: {0}" -f $report.Name)
         Write-Host "    Status   Version       Source"
