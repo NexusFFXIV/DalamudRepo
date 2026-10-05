@@ -112,13 +112,6 @@ $parts += '<details><summary>Deduplication (' + (Rows $report.Deduplication).Cou
 $parts += '<p class="muted"><strong><span class="legend-de">Legende:</span><span class="legend-en">Legend:</span></strong><span class="legend-de"> Der WINNER wird weiterhin zuerst nach höchster Version ausgewählt. Die Spalte <code>Bewertung</code> zeigt den stärksten erkannten Indikator in dieser Reihenfolge: <code>AUTHOR_MATCH</code> → <code>UPSTREAM_MATCH</code> → <code>HIGHEST_VERSION</code> → <code>FIRST_INPUT</code>. Drop-Gründe: <code>LOWER_VERSION</code>, <code>UPSTREAM_LOST</code>, <code>AUTHOR_LOST</code> oder <code>FIRST_INPUT_LOST</code>.</span><span class="legend-en"> The WINNER is still selected by highest version first. The Reason column shows the strongest detected indicator in this order: <code>AUTHOR_MATCH</code> → <code>UPSTREAM_MATCH</code> → <code>HIGHEST_VERSION</code> → <code>FIRST_INPUT</code>. Drop reasons: <code>LOWER_VERSION</code>, <code>UPSTREAM_LOST</code>, <code>AUTHOR_LOST</code> or <code>FIRST_INPUT_LOST</code>.</span></p>'
 $parts += '<p class="muted"><span class="legend-de">' + $officialRows.Count + ' Einträge wurden aus externen Quellen entfernt, weil sie im offiziellen Master-Repo gefunden wurden. Jeder entfernte Eintrag ist unten mit dem Drop-Grund <code>OFFICIAL_MASTER</code> aufgeführt.</span><span class="legend-en">' + $officialRows.Count + ' entries were removed from external sources because they are present in the official Master repository. Each removed entry is listed below with drop reason <code>OFFICIAL_MASTER</code>.</span></p>'
 $parts += '<table><thead><tr><th>Plugin</th><th>Gewinner</th><th>Verworfene Kandidaten</th></tr></thead><tbody>'
-if ($officialRows.Count -gt 0) {
-    foreach ($official in ($officialRows | Sort-Object Plugin, InternalName, PluginVersion, RepositoryUrl)) {
-        $officialWinner = '<table class="nested"><thead><tr><th>Status</th><th>Reason</th><th>Version</th><th>Source</th></tr></thead><tbody><tr class="warn"><td>DROPPED</td><td>OFFICIAL_MASTER</td><td>' + (HtmlCell $official.PluginVersion) + '</td><td>' + (HtmlValue $official.SourceFile) + '</td></tr></tbody></table>'
-        $officialCandidate = '<table class="nested"><thead><tr><th>Status</th><th>Reason</th><th>Version</th><th>Source</th></tr></thead><tbody><tr><td>CANDIDATE</td><td>EXTERNAL</td><td>' + (HtmlCell $official.PluginVersion) + '</td><td>' + (HtmlValue $official.RepositoryUrl) + '</td></tr></tbody></table>'
-        $parts += '<tr class="warn"><td>' + (HtmlCell $official.Plugin) + '</td><td>' + $officialWinner + '</td><td>' + $officialCandidate + '</td></tr>'
-    }
-}
 foreach ($d in (Rows $report.Deduplication | Sort-Object Plugin)) {
     $winner = if ($d.Winner -is [string]) { [pscustomobject]@{ Version = ''; Url = $d.Winner } } else { $d.Winner }
     $winnerHtml = '<table class="nested"><thead><tr><th>Status</th><th>Bewertung</th><th>Version</th><th>Quelle</th></tr></thead><tbody><tr class="ok"><td>WINNER</td><td>' + (HtmlCell $winner.Reason) + '</td><td>' + (HtmlCell $winner.Version) + '</td><td>' + (HtmlValue $winner.Url) + '</td></tr></tbody></table>'
@@ -131,6 +124,13 @@ foreach ($d in (Rows $report.Deduplication | Sort-Object Plugin)) {
     }
     $candidateHtml = '<table class="nested"><thead><tr><th>Status</th><th>Bewertung</th><th>Version</th><th>Quelle</th></tr></thead><tbody>' + ($candidateRows -join '') + '</tbody></table>'
     $parts += '<tr><td>' + (HtmlCell $d.Plugin) + '</td><td>' + $winnerHtml + '</td><td>' + $candidateHtml + '</td></tr>'
+}
+if ($officialRows.Count -gt 0) {
+    foreach ($official in ($officialRows | Sort-Object Plugin, InternalName, PluginVersion, RepositoryUrl)) {
+        $officialWinner = '<table class="nested"><thead><tr><th>Status</th><th>Reason</th><th>Version</th><th>Source</th></tr></thead><tbody><tr class="warn"><td>DROPPED</td><td>OFFICIAL_MASTER</td><td>' + (HtmlCell $official.PluginVersion) + '</td><td>' + (HtmlValue $official.SourceFile) + '</td></tr></tbody></table>'
+        $officialCandidate = '<table class="nested"><thead><tr><th>Status</th><th>Reason</th><th>Version</th><th>Source</th></tr></thead><tbody><tr><td>CANDIDATE</td><td>EXTERNAL</td><td>' + (HtmlCell $official.PluginVersion) + '</td><td>' + (HtmlValue $official.RepositoryUrl) + '</td></tr></tbody></table>'
+        $parts += '<tr class="warn"><td>' + (HtmlCell $official.Plugin) + '</td><td>' + $officialWinner + '</td><td>' + $officialCandidate + '</td></tr>'
+    }
 }
 $parts += '</tbody></table>'
 $parts += '</details>'
