@@ -73,6 +73,15 @@ function Get-OfflineKey {
     return "$Section|$Url"
 }
 
+function Get-HttpErrorLabel {
+    param([Parameter(Mandatory)]$ErrorRecord)
+    $response = $ErrorRecord.Exception.Response
+    if ($response -and $response.StatusCode) {
+        return ("{0}{1}" -f [int]$response.StatusCode, $response.StatusCode.ToString())
+    }
+    return "RequestError"
+}
+
 function Get-OfflineUrls {
     param([Parameter(Mandatory)][string]$Section)
     if ($script:OfflineRepos.ContainsKey($Section)) {
@@ -92,9 +101,10 @@ function Get-OfflineSectionForUrl {
 function Test-RepositoryReachable {
     param([Parameter(Mandatory)][string]$Url)
     try {
-        $response = Invoke-RestMethod -Uri $Url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop
+        $response = Invoke-RestMethod -Uri $Url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
         return ($null -ne $response)
     } catch {
+        Write-Host ("  {0} -> {1}" -f (Get-HttpErrorLabel $_), $Url)
         return $false
     }
 }

@@ -26,6 +26,15 @@ function Invoke-GhApi {
     return $raw | ConvertFrom-Json
 }
 
+function Get-HttpErrorLabel {
+    param([Parameter(Mandatory)]$ErrorRecord)
+    $response = $ErrorRecord.Exception.Response
+    if ($response -and $response.StatusCode) {
+        return ("{0}{1}" -f [int]$response.StatusCode, $response.StatusCode.ToString())
+    }
+    return "RequestError"
+}
+
 function Get-LatestRelease {
     param($Releases, [bool]$Prerelease)
     $filtered = @($Releases | Where-Object { -not $_.draft -and $_.prerelease -eq $Prerelease })
@@ -540,10 +549,11 @@ function Collect-RepoUrlsPool {
         $logged++
         $resp = $null
         try {
-            $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop
+            $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
         } catch {
-            Write-Host "  -> ${url}: (unreachable: $($_.Exception.Message))"
-            Write-Warning "$SectionLabel repo $url unreachable: $($_.Exception.Message)"
+            $label = Get-HttpErrorLabel $_
+            Write-Host ("  {0} -> {1}" -f $label, $url)
+            Write-Warning "$SectionLabel repo $url unreachable ($label)"
             $unreachable += $url
             continue
         }
