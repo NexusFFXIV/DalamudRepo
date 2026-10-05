@@ -114,6 +114,9 @@ $sourceFiles = Get-ChildItem -Path $SourcesDir -Filter "*.yml" -File |
 # Per-source results accumulated for the union + summary.
 $processed = @()  # array of @{ basename; type; out; entries; deduped; filtered; enabled; includeInUnion }
 
+Write-Host ""
+Write-Host "=== Stage 1: Collect sources ==="
+
 foreach ($file in $sourceFiles) {
     $basename = $file.Name
     $enabled  = IsSourceEnabled $basename
@@ -218,6 +221,8 @@ foreach ($file in $sourceFiles) {
 }
 
 # ── Curated union (all.json) ─────────────────────────────────────────────────
+Write-Host ""
+Write-Host "=== Stage 3: Build merged outputs ==="
 $unionPool = @()
 foreach ($p in $processed) {
     if ($p.enabled -and $p.includeInUnion) { $unionPool += $p.entries }
@@ -234,6 +239,8 @@ $fullUnion = Build-FullUnion -NexusEntries @() -ExternalPluginEntries @() -Commo
 if ($fullEnabled) { Write-Pluginmaster $fullUnion.entries $fullOut }
 
 # ── Summary ──────────────────────────────────────────────────────────────────
+Write-Host ""
+Write-Host "=== Stage 4: Summary ==="
 $outputs = @()
 foreach ($p in $processed) {
     if ($p.enabled) {

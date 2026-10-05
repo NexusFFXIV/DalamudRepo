@@ -16,6 +16,7 @@ $DalamudMasterUrl = "https://kamori.goats.dev/Plugin/PluginMaster"
 # (separate from sources/ which is for plugin source definitions) so it's
 # obviously a build artifact.
 $SnapshotPath = "cache/snapshot.json"
+$script:RepoDedupHeaderWritten = $false
 
 function Invoke-GhApi {
     param([string]$Path)
@@ -495,6 +496,11 @@ function Select-RepoWinners {
         $byName[$name] += $c
     }
     $winners = @()
+    if (-not $script:RepoDedupHeaderWritten) {
+        Write-Host ""
+        Write-Host "=== Stage 2: Deduplicate repository candidates ==="
+        $script:RepoDedupHeaderWritten = $true
+    }
     foreach ($name in $byName.Keys) {
         $group = $byName[$name]
         if ($group.Count -eq 1) {
@@ -512,7 +518,7 @@ function Select-RepoWinners {
                                          @{Expression={ $_.origin }; Descending=$true}
         $winners += $sorted[0].cand
         for ($i = 1; $i -lt $sorted.Count; $i++) {
-            Write-Host ("    [dedup] {0} v{1} from {2} dropped (winner: v{3} from {4})" -f `
+            Write-Host ("    {0} v{1} from {2} dropped (winner: v{3} from {4})" -f `
                 $name, `
                 $sorted[$i].eff, `
                 $sorted[$i].cand.sourceUrl, `

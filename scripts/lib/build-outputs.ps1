@@ -272,7 +272,7 @@ function Build-FullUnion {
     # gets its own standalone gen-repos.json.
     param($NexusEntries, $ExternalPluginEntries, $CommonRepoEntries)
     Write-Host ""
-    Write-Host "Deduping (full pluginmaster, gen excluded):"
+    Write-Host "  Deduplicate merged output (gen excluded):"
     $all = @($NexusEntries) + @($ExternalPluginEntries) + @($CommonRepoEntries)
     $before = @($all).Count
     $result = @()
