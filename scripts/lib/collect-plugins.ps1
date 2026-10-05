@@ -625,6 +625,9 @@ function Collect-RepoUrlsPool {
 
     $winners = Select-RepoWinners $candidates
 
+    Write-Host ""
+    Write-Host "  === Stage 2b: Resolve versions and API levels ==="
+
     $entries = @()
     $filtered = 0
     $repoMissingFields = @{}
