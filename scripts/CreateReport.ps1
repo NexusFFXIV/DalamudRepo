@@ -69,8 +69,13 @@ $parts += '<details><summary>Stage 1: Quellen sammeln (' + (Rows $report.Sources
 $parts += HtmlTable @('Status','Kandidaten','Quelle') $report.Sources { param($x) @($x.Status,$x.Count,$x.Url) } -CountDescending
 $parts += '</details>'
 $parts += '<details><summary>Stage 2: Kandidaten verarbeiten</summary>'
-$parts += '<details><summary>Offizielle Plugin-Ausschlüsse (' + (Rows $report.OfficialExclusions).Count + ' Plugins)</summary>'
-$officialGroups = Rows $report.OfficialExclusions | Group-Object SourceFile | Sort-Object Name
+$officialRows = Rows $report.OfficialExclusions
+$officialUnique = @($officialRows | ForEach-Object { $_.InternalName } | Where-Object { $_ } | Sort-Object -Unique).Count
+$officialCatalog = if ($report.Summary.OfficialCatalog) { [int]$report.Summary.OfficialCatalog } else { 0 }
+$officialDe = 'Offizielle Plugin-Ausschlüsse (' + $officialRows.Count + ' Treffer; ' + $officialUnique + ' eindeutige Plugins von ' + $officialCatalog + ' offiziellen)'
+$officialEn = 'Official plugin exclusions (' + $officialRows.Count + ' matches; ' + $officialUnique + ' unique plugins of ' + $officialCatalog + ' official)'
+$parts += '<details><summary><span class="legend-de">' + (HtmlCell $officialDe) + '</span><span class="legend-en">' + (HtmlCell $officialEn) + '</span></summary>'
+$officialGroups = $officialRows | Group-Object SourceFile | Sort-Object Name
 foreach ($sourceGroup in $officialGroups) {
     $sourceName = HtmlCell $sourceGroup.Name
     $parts += '<h4><span class="legend-de">Quelle: ' + $sourceName + '</span><span class="legend-en">From source: ' + $sourceName + '</span></h4>'
@@ -146,6 +151,7 @@ $summaryRows = @(
     [pscustomobject]@{ Metric = 'Quellen'; Value = $report.Summary.Sources; Meaning = 'Ausgewertete Repository-Quell-URLs' }
     [pscustomobject]@{ Metric = 'Dedup-Gruppen'; Value = $report.Summary.DeduplicationGroups; Meaning = 'Plugin-Gruppen mit mehreren Kandidaten' }
     [pscustomobject]@{ Metric = 'Offizielle Ausschlüsse'; Value = $report.Summary.OfficialExclusions; Meaning = 'Aus externen Quellen entfernte offizielle Plugins' }
+    [pscustomobject]@{ Metric = 'Offizieller Plugin-Katalog'; Value = $report.Summary.OfficialCatalog; Meaning = 'Plugins, die aktuell aus der offiziellen Dalamud-Masterquelle geladen wurden' }
     [pscustomobject]@{ Metric = 'Ausgabedateien'; Value = $report.Summary.Outputs; Meaning = 'Erzeugte Pluginmaster-Ausgabedateien' }
 )
 $parts += '<script>(function(){function syncLegend(){var en=document.documentElement.lang==="en";document.querySelectorAll(".legend-de").forEach(function(x){x.style.display=en?"none":"inline";});document.querySelectorAll(".legend-en").forEach(function(x){x.style.display=en?"inline":"none";});}new MutationObserver(syncLegend).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});syncLegend();})();</script>'

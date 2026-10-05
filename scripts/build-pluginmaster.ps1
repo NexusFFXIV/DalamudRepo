@@ -346,6 +346,7 @@ $structuredReport = [ordered]@{
         DeduplicationGroups = @($script:ReportDeduplication).Count
         ApiResolutionEntries = @($script:ReportApiResolution).Count
         OfficialExclusions = @($script:OfficialRemoved).Count
+        OfficialCatalog = $officialPluginNames.Count
         Outputs = @($outputs).Count
     }
 }
