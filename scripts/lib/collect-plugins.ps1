@@ -658,7 +658,8 @@ function Collect-RepoUrlsPool {
     param(
         [Parameter(Mandatory)]$Yaml,
         [Parameter(Mandatory)][string]$SectionLabel,
-        [System.Collections.Generic.HashSet[string]]$OfficialNames
+        [System.Collections.Generic.HashSet[string]]$OfficialNames,
+        [string]$OfficialSourceUrl
     )
     if (-not $Yaml.externalRepos) {
         Write-Host "  (none configured)"
@@ -754,7 +755,7 @@ function Collect-RepoUrlsPool {
             $_.entry.InternalName -and $OfficialNames.Contains([string]$_.entry.InternalName)
         })
         foreach ($officialCandidate in $officialCandidates) {
-            [void](Remove-OfficialEntries -Entries @($officialCandidate.entry) -SourceLabel $SectionLabel -OfficialNames $OfficialNames)
+            [void](Remove-OfficialEntries -Entries @($officialCandidate.entry) -SourceLabel $(if ($OfficialSourceUrl) { $OfficialSourceUrl } else { $SectionLabel }) -OfficialNames $OfficialNames)
         }
         $candidates = @($candidates | Where-Object {
             -not ($_.entry.InternalName -and $OfficialNames.Contains([string]$_.entry.InternalName))

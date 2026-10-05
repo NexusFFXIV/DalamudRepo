@@ -178,7 +178,7 @@ foreach ($file in $sourceFiles) {
             $r = Collect-ExternalPluginPool -Yaml $yaml
         }
         "external-repos" {
-            $r = Collect-RepoUrlsPool -Yaml $yaml -SectionLabel $basename -OfficialNames $officialPluginNames
+            $r = Collect-RepoUrlsPool -Yaml $yaml -SectionLabel $basename -OfficialNames $officialPluginNames -OfficialSourceUrl $DalamudMasterUrl
         }
         default {
             Write-Warning "Unknown source type '$type' in $basename — skipping."
@@ -187,7 +187,7 @@ foreach ($file in $sourceFiles) {
     }
 
     if ($officialPluginNames.Count -gt 0) {
-        $r.entries = @(Remove-OfficialEntries -Entries $r.entries -SourceLabel $basename -OfficialNames $officialPluginNames)
+        $r.entries = @(Remove-OfficialEntries -Entries $r.entries -SourceLabel $DalamudMasterUrl -OfficialNames $officialPluginNames)
     }
 
     if ($offlineEnabled -and $type -in @("external-repos", "external-repos-gen")) {
