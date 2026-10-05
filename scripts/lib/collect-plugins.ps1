@@ -185,7 +185,19 @@ function Initialize-Snapshot {
     if (Test-Path $SnapshotPath) {
         try {
             $loaded = Get-Content $SnapshotPath -Raw | ConvertFrom-Json -AsHashtable
-            if ($loaded) { $script:Snapshot = $loaded }
+            if ($loaded) {
+                $legacy = @($loaded.GetEnumerator() | Where-Object {
+                    $v = $_.Value
+                    $v -is [System.Collections.IDictionary] -and
+                    (-not $v.Contains('DownloadUrl') -or -not $v.Contains('TestingDownloadUrl'))
+                }).Count -gt 0
+                if ($legacy) {
+                    Write-Warning "Legacy snapshot schema detected; resetting snapshot cache once."
+                    $script:Snapshot = @{}
+                } else {
+                    $script:Snapshot = $loaded
+                }
+            }
         } catch {
             Write-Warning "Failed to parse snapshot at $SnapshotPath — starting fresh. $($_.Exception.Message)"
         }
@@ -269,21 +281,22 @@ function Resolve-EntryApiLevels {
     }
     $cached  = $script:Snapshot[$Entry.InternalName]
     $prodAv  = if ($Entry.AssemblyVersion)        { [string]$Entry.AssemblyVersion }        else { $null }
+    $prodUrl = if ($Entry.DownloadLinkInstall) { [string]$Entry.DownloadLinkInstall } else { [string]$Entry.DownloadLinkUpdate }
     $prodLvl = $Entry.DalamudApiLevel
     $testAv  = if ($Entry.TestingAssemblyVersion) { [string]$Entry.TestingAssemblyVersion } else { $null }
+    $testUrl = [string]$Entry.DownloadLinkTesting
     $testLvl = $Entry.TestingDalamudApiLevel
 
     $prodFromFallback = $false
     $testFromFallback = $false
 
     if ($null -eq $prodLvl -and $prodAv) {
-        if ($cached -and ([string]$cached.AssemblyVersion -eq $prodAv) -and ($null -ne $cached.DalamudApiLevel)) {
+        if ($cached -and ([string]$cached.AssemblyVersion -eq $prodAv) -and ([string]$cached.DownloadUrl -eq $prodUrl) -and ($null -ne $cached.DalamudApiLevel)) {
             $prodLvl = [int]$cached.DalamudApiLevel
             $script:SnapshotHits++
             Write-Host ("    [cache] {0} prod {1} api={2}" -f $Entry.InternalName, $prodAv, $prodLvl)
         } else {
-            $url = if ($Entry.DownloadLinkInstall) { $Entry.DownloadLinkInstall } else { $Entry.DownloadLinkUpdate }
-            $prodLvl = Get-ZipManifestApiLevel -Url $url -InternalName $Entry.InternalName
+            $prodLvl = Get-ZipManifestApiLevel -Url $prodUrl -InternalName $Entry.InternalName
             if ($null -ne $prodLvl) {
                 $script:ZipFallbackRescued++
                 Write-Host ("    [zip]   {0} prod {1} api={2}" -f $Entry.InternalName, $prodAv, $prodLvl)
@@ -294,12 +307,12 @@ function Resolve-EntryApiLevels {
     }
 
     if ($null -eq $testLvl -and $testAv) {
-        if ($cached -and ([string]$cached.TestingAssemblyVersion -eq $testAv) -and ($null -ne $cached.TestingDalamudApiLevel)) {
+        if ($cached -and ([string]$cached.TestingAssemblyVersion -eq $testAv) -and ([string]$cached.TestingDownloadUrl -eq $testUrl) -and ($null -ne $cached.TestingDalamudApiLevel)) {
             $testLvl = [int]$cached.TestingDalamudApiLevel
             $script:SnapshotHits++
             Write-Host ("    [cache] {0} test {1} api={2}" -f $Entry.InternalName, $testAv, $testLvl)
         } else {
-            $testLvl = Get-ZipManifestApiLevel -Url $Entry.DownloadLinkTesting -InternalName $Entry.InternalName
+            $testLvl = Get-ZipManifestApiLevel -Url $testUrl -InternalName $Entry.InternalName
             if ($null -ne $testLvl) {
                 $script:ZipFallbackRescued++
                 Write-Host ("    [zip]   {0} test {1} api={2}" -f $Entry.InternalName, $testAv, $testLvl)
@@ -323,8 +336,10 @@ function Resolve-EntryApiLevels {
             InternalName           = $Entry.InternalName
             AssemblyVersion        = if ($keepProd) { $prodAv }       else { $null }
             DalamudApiLevel        = if ($keepProd) { [int]$prodLvl } else { $null }
+            DownloadUrl            = if ($keepProd) { $prodUrl }      else { $null }
             TestingAssemblyVersion = if ($keepTest) { $testAv }       else { $null }
             TestingDalamudApiLevel = if ($keepTest) { [int]$testLvl } else { $null }
+            TestingDownloadUrl     = if ($keepTest) { $testUrl }      else { $null }
         }
     } elseif ($cached) {
         $script:Snapshot.Remove($Entry.InternalName) | Out-Null
