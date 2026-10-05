@@ -91,9 +91,12 @@ foreach ($source in (Rows $report.OfficialExclusions | Group-Object SourceFile |
     $parts += '<h3>' + (HtmlCell $source.Name) + ' <span class="muted">(' + $source.Count + ' plugins)</span></h3>'
     foreach ($repo in ($source.Group | Group-Object RepositoryUrl | Sort-Object Name)) {
         $parts += '<details><summary>' + (HtmlCell $repo.Name) + ' (' + $repo.Count + ')</summary>'
-        $parts += '<table class="nested"><thead><tr><th>Plugin</th></tr></thead><tbody>'
+        $parts += '<table class="nested"><thead><tr><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th></tr></thead><tbody>'
         foreach ($plugin in ($repo.Group | Sort-Object InternalName)) {
-            $parts += '<tr class="bad"><td>' + (HtmlCell $plugin.InternalName) + '</td></tr>'
+            $pluginName = if ($plugin.Plugin) { $plugin.Plugin } else { $plugin.InternalName }
+            $version = if ($plugin.PluginVersion) { $plugin.PluginVersion } else { '-' }
+            $api = if ($plugin.ApiVersion) { $plugin.ApiVersion } else { '-' }
+            $parts += '<tr class="bad"><td>' + (HtmlCell $pluginName) + '</td><td>' + (HtmlCell $plugin.InternalName) + '</td><td>' + (HtmlCell $version) + '</td><td>' + (HtmlCell $api) + '</td></tr>'
         }
         $parts += '</tbody></table></details>'
     }

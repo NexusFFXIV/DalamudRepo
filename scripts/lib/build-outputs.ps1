@@ -39,7 +39,10 @@ function Remove-OfficialEntries {
         $name = [string]$entry.InternalName
         if ($name -and $OfficialNames.Contains($name)) {
             $repoUrl = if ($entry.__ReportSourceUrl) { [string]$entry.__ReportSourceUrl } elseif ($entry.RepoUrl) { [string]$entry.RepoUrl } else { "(not provided)" }
-            $script:OfficialRemoved += [pscustomobject]@{ SourceFile = $SourceLabel; RepositoryUrl = $repoUrl; InternalName = $name }
+            $displayName = if ($entry.Name) { [string]$entry.Name } elseif ($entry.PluginName) { [string]$entry.PluginName } else { $name }
+            $version = if ($entry.AssemblyVersion) { [string]$entry.AssemblyVersion } elseif ($entry.TestingAssemblyVersion) { [string]$entry.TestingAssemblyVersion } else { "-" }
+            $api = if ($null -ne $entry.DalamudApiLevel) { [string]$entry.DalamudApiLevel } elseif ($null -ne $entry.TestingDalamudApiLevel) { [string]$entry.TestingDalamudApiLevel } else { "-" }
+            $script:OfficialRemoved += [pscustomobject]@{ SourceFile = $SourceLabel; RepositoryUrl = $repoUrl; Plugin = $displayName; InternalName = $name; PluginVersion = $version; ApiVersion = $api }
             continue
         }
         $kept += $entry
