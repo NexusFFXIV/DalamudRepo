@@ -189,6 +189,11 @@ foreach ($file in $sourceFiles) {
     if ($officialPluginNames.Count -gt 0) {
         $r.entries = @(Remove-OfficialEntries -Entries $r.entries -SourceLabel $basename -OfficialNames $officialPluginNames)
     }
+    foreach ($entry in @($r.entries)) {
+        if ($entry.PSObject.Properties['__ReportSourceUrl']) {
+            $entry.PSObject.Properties.Remove('__ReportSourceUrl')
+        }
+    }
 
     if ($offlineEnabled -and $type -in @("external-repos", "external-repos-gen")) {
         foreach ($url in @($r.reachable)) { Register-OfflineSuccess -Section $offlineSection -Url $url }

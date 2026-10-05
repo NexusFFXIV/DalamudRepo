@@ -38,7 +38,8 @@ function Remove-OfficialEntries {
         if ($null -eq $entry) { continue }
         $name = [string]$entry.InternalName
         if ($name -and $OfficialNames.Contains($name)) {
-            $script:OfficialRemoved += [pscustomobject]@{ Source = $SourceLabel; InternalName = $name }
+            $repoUrl = if ($entry.__ReportSourceUrl) { [string]$entry.__ReportSourceUrl } elseif ($entry.RepoUrl) { [string]$entry.RepoUrl } else { "(not provided)" }
+            $script:OfficialRemoved += [pscustomobject]@{ SourceFile = $SourceLabel; RepositoryUrl = $repoUrl; InternalName = $name }
             continue
         }
         $kept += $entry
@@ -316,7 +317,7 @@ function Write-BuildSummary {
         Write-Host ("Excluded official plugins (by source): {0}" -f @($script:OfficialRemoved).Count)
         Write-Host "  Source                              Count  Status"
         Write-Host "  ----------------------------------  -----  ----------------"
-        foreach ($group in @($script:OfficialRemoved | Group-Object Source | Sort-Object Name)) {
+        foreach ($group in @($script:OfficialRemoved | Group-Object SourceFile | Sort-Object Name)) {
             $names = (($group.Group | ForEach-Object InternalName | Sort-Object -Unique) -join ', ')
             Write-Host ("  {0,-34}  {1,5}  OFFICIAL_EXCLUDED" -f $group.Name, $group.Count)
             Write-Host ("    Plugins: {0}" -f $names)

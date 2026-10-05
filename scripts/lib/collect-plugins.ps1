@@ -603,7 +603,7 @@ function Collect-RepoUrlsPool {
             continue
         }
         $resp = $null
-        try { $resp = $http.Content | ConvertFrom-Json } catch { $resp = $null }
+        try { $resp = $http.Content | ConvertFrom-Json -ErrorAction SilentlyContinue } catch { $resp = $null }
         if (-not $resp) {
             $repoReports += [pscustomobject]@{ Status = "EMPTY"; Count = 0; Url = $url }
             $unreachable += $url
@@ -613,6 +613,9 @@ function Collect-RepoUrlsPool {
         $hereCount = 0
         foreach ($e in $items) {
             if (-not ($e -and $e.InternalName)) { continue }
+            if (-not $e.PSObject.Properties['__ReportSourceUrl']) {
+                Add-Member -InputObject $e -NotePropertyName __ReportSourceUrl -NotePropertyValue $url
+            } else { $e.__ReportSourceUrl = $url }
             $candidates += @{ entry = $e; sourceUrl = $url }
             $hereCount++
         }
