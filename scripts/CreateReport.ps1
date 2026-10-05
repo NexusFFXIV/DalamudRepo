@@ -12,6 +12,13 @@ $report = Get-Content -LiteralPath $ReportPath -Raw -Encoding UTF8 | ConvertFrom
 
 function Rows($items) { @($items | Where-Object { $null -ne $_ }) }
 function HtmlCell([object]$value) { [System.Net.WebUtility]::HtmlEncode([string]$value) }
+function HtmlValue([object]$value) {
+    $text = [string]$value
+    if ($text -match '^https?://') {
+        return '<a href="' + (HtmlCell $text) + '" target="_blank" rel="noopener noreferrer">' + (HtmlCell $text) + '</a>'
+    }
+    return HtmlCell $value
+}
 function StatusClass([object]$item) {
     $status = [string]$item.Status
     if ($status -match '^(OK|WINNER|CACHE)$') { return 'ok' }
@@ -27,7 +34,7 @@ function StatusRank([object]$item) {
 function HtmlTable([string[]]$Headers, [object[]]$Items, [scriptblock]$Values) {
     $head = ($Headers | ForEach-Object { '<th>' + (HtmlCell $_) + '</th>' }) -join ''
     $body = foreach ($item in (Rows $Items | Sort-Object @{Expression={ StatusRank $_ }; Ascending=$true})) {
-        $cells = & $Values $item | ForEach-Object { '<td>' + (HtmlCell $_) + '</td>' }
+        $cells = & $Values $item | ForEach-Object { '<td>' + (HtmlValue $_) + '</td>' }
         '<tr class="' + (StatusClass $item) + '">' + ($cells -join '') + '</tr>'
     }
     return '<table><thead><tr>' + $head + '</tr></thead><tbody>' + ($body -join '') + '</tbody></table>'
@@ -61,12 +68,12 @@ $parts += '<details><summary>Deduplication (' + (Rows $report.Deduplication).Cou
 $parts += '<table><thead><tr><th>Plugin</th><th>Winner</th><th>Dropped candidates</th></tr></thead><tbody>'
 foreach ($d in (Rows $report.Deduplication | Sort-Object Plugin)) {
     $winner = if ($d.Winner -is [string]) { [pscustomobject]@{ Version = ''; Url = $d.Winner } } else { $d.Winner }
-    $winnerHtml = '<table class="nested"><thead><tr><th>Status</th><th>Version</th><th>Source</th></tr></thead><tbody><tr class="ok"><td>WINNER</td><td>' + (HtmlCell $winner.Version) + '</td><td>' + (HtmlCell $winner.Url) + '</td></tr></tbody></table>'
+    $winnerHtml = '<table class="nested"><thead><tr><th>Status</th><th>Version</th><th>Source</th></tr></thead><tbody><tr class="ok"><td>WINNER</td><td>' + (HtmlCell $winner.Version) + '</td><td>' + (HtmlValue $winner.Url) + '</td></tr></tbody></table>'
     $candidateRows = foreach ($candidate in @($d.Candidates | Where-Object { $_.Status -ne 'WINNER' })) {
         if ($candidate -is [string]) {
-            '<tr><td>DROP</td><td></td><td>' + (HtmlCell $candidate) + '</td></tr>'
+            '<tr><td>DROP</td><td></td><td>' + (HtmlValue $candidate) + '</td></tr>'
         } else {
-            '<tr><td>DROP</td><td>' + (HtmlCell $candidate.Version) + '</td><td>' + (HtmlCell $candidate.Url) + '</td></tr>'
+            '<tr><td>DROP</td><td>' + (HtmlCell $candidate.Version) + '</td><td>' + (HtmlValue $candidate.Url) + '</td></tr>'
         }
     }
     $candidateHtml = '<table class="nested"><thead><tr><th>Status</th><th>Version</th><th>Source</th></tr></thead><tbody>' + ($candidateRows -join '') + '</tbody></table>'
@@ -80,7 +87,7 @@ foreach ($x in (Rows $report.ApiResolution | Sort-Object Plugin)) {
     $stable = (HtmlCell $x.StableApi) + ' <span class="muted">[' + (HtmlCell $x.StableSource) + $(if ($x.StableZipStatus) { ': ' + (HtmlCell $x.StableZipStatus) } else { '' }) + ']</span>'
     $testing = (HtmlCell $x.TestingApi) + ' <span class="muted">[' + (HtmlCell $x.TestingSource) + $(if ($x.TestingZipStatus) { ': ' + (HtmlCell $x.TestingZipStatus) } else { '' }) + ']</span>'
     $rowClass = if ($x.StableSource -eq 'unresolved' -or $x.TestingSource -eq 'unresolved' -or $x.StableZipStatus -match 'ERROR|404|MISSING' -or $x.TestingZipStatus -match 'ERROR|404|MISSING') { 'bad' } else { 'ok' }
-    $parts += '<tr class="' + $rowClass + '"><td>' + (HtmlCell $x.Plugin) + '</td><td>' + (HtmlCell $x.SourceUrl) + '</td><td>' + $stable + '</td><td>' + $testing + '</td></tr>'
+    $parts += '<tr class="' + $rowClass + '"><td>' + (HtmlCell $x.Plugin) + '</td><td>' + (HtmlValue $x.SourceUrl) + '</td><td>' + $stable + '</td><td>' + $testing + '</td></tr>'
 }
 $parts += '</tbody></table>'
 $parts += '</details>'
@@ -91,7 +98,7 @@ $parts += '<details><summary>Official plugin exclusions (' + (Rows $report.Offic
 foreach ($source in (Rows $report.OfficialExclusions | Group-Object SourceFile | Sort-Object Name)) {
     $parts += '<h3>' + (HtmlCell $source.Name) + ' <span class="muted">(' + $source.Count + ' plugins)</span></h3>'
     foreach ($repo in ($source.Group | Group-Object RepositoryUrl | Sort-Object Name)) {
-        $parts += '<details><summary>' + (HtmlCell $repo.Name) + ' (' + $repo.Count + ')</summary>'
+        $parts += '<details><summary>' + (HtmlValue $repo.Name) + ' (' + $repo.Count + ')</summary>'
         $parts += '<table class="nested"><thead><tr><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th></tr></thead><tbody>'
         foreach ($plugin in ($repo.Group | Sort-Object InternalName)) {
             $pluginName = if ($plugin.Plugin) { $plugin.Plugin } else { $plugin.InternalName }
