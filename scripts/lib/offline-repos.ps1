@@ -7,6 +7,26 @@ $script:OfflineState = @{}
 $script:OfflineChanges = @()
 $script:OfflineGraceRuns = 10
 
+function Expand-OfflineUrls {
+    param([object[]]$Values)
+
+    # Older runs could serialize a YAML sequence as one concatenated scalar.
+    # Split such legacy values at every embedded URL before using or saving
+    # the archive again.
+    foreach ($value in $Values) {
+        if ($null -eq $value) { continue }
+        foreach ($part in [regex]::Split(([string]$value).Trim(), '(?=https?://)')) {
+            $url = $part.Trim()
+            if (-not $url) { continue }
+            if ($url -notmatch '^https?://[^\s]+$' -or $url -match 'https?://.*https?://') {
+                Write-Warning "Ignoring malformed offline repository URL: $url"
+                continue
+            }
+            $url
+        }
+    }
+}
+
 function Initialize-OfflineRepos {
     param(
         [Parameter(Mandatory)][string]$ReposPath,
@@ -26,11 +46,11 @@ function Initialize-OfflineRepos {
             if ($doc -and $doc.offlineRepos) {
                 if ($doc.offlineRepos -is [System.Collections.IDictionary]) {
                     foreach ($section in $doc.offlineRepos.Keys) {
-                        $script:OfflineRepos[[string]$section] = @($doc.offlineRepos[$section])
+                        $script:OfflineRepos[[string]$section] = @(Expand-OfflineUrls -Values @($doc.offlineRepos[$section]) | Sort-Object -Unique)
                     }
                 } else {
                     foreach ($section in $doc.offlineRepos.PSObject.Properties) {
-                        $script:OfflineRepos[$section.Name] = @($section.Value)
+                        $script:OfflineRepos[$section.Name] = @(Expand-OfflineUrls -Values @($section.Value) | Sort-Object -Unique)
                     }
                 }
             }
@@ -55,7 +75,9 @@ function Get-OfflineKey {
 
 function Get-OfflineUrls {
     param([Parameter(Mandatory)][string]$Section)
-    if ($script:OfflineRepos.ContainsKey($Section)) { return @($script:OfflineRepos[$Section]) }
+    if ($script:OfflineRepos.ContainsKey($Section)) {
+        return @(Expand-OfflineUrls -Values @($script:OfflineRepos[$Section]) | Sort-Object -Unique)
+    }
     return @()
 }
 
@@ -70,7 +92,7 @@ function Get-OfflineSectionForUrl {
 function Test-RepositoryReachable {
     param([Parameter(Mandatory)][string]$Url)
     try {
-        $response = Invoke-RestMethod -Uri $Url -UseBasicParsing -TimeoutSec 30
+        $response = Invoke-RestMethod -Uri $Url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop
         return ($null -ne $response)
     } catch {
         return $false
@@ -106,7 +128,9 @@ function Save-OfflineRepos {
     $sections = @('external-repos', 'external-repos-gen') + @($script:OfflineRepos.Keys | Where-Object { $_ -notin @('external-repos', 'external-repos-gen') } | Sort-Object)
     foreach ($section in $sections) {
         $urls = @()
-        if ($script:OfflineRepos.ContainsKey($section)) { $urls = @($script:OfflineRepos[$section] | Sort-Object -Unique) }
+        if ($script:OfflineRepos.ContainsKey($section)) {
+            $urls = @(Expand-OfflineUrls -Values @($script:OfflineRepos[$section]) | Sort-Object -Unique)
+        }
         if ($urls.Count -eq 0) {
             $lines += "  ${section}: []"
         } else {

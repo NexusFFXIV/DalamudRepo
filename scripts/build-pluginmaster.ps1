@@ -139,7 +139,7 @@ foreach ($file in $sourceFiles) {
 
     $offlineSection = [IO.Path]::GetFileNameWithoutExtension($basename)
     $sourcePath = $file.FullName
-    if ($offlineEnabled -and $type -eq "external-repos") {
+    if ($offlineEnabled -and $type -in @("external-repos", "external-repos-gen")) {
         foreach ($offlineUrl in @(Get-OfflineUrls $offlineSection)) {
             if (Test-RepositoryReachable $offlineUrl) {
                 Restore-OfflineRepository -Section $offlineSection -Url $offlineUrl -SourcePath $sourcePath
@@ -187,7 +187,7 @@ foreach ($file in $sourceFiles) {
         $r.entries = @(Remove-OfficialEntries -Entries $r.entries -SourceLabel $basename -OfficialNames $officialPluginNames)
     }
 
-    if ($offlineEnabled -and $type -eq "external-repos") {
+    if ($offlineEnabled -and $type -in @("external-repos", "external-repos-gen")) {
         foreach ($url in @($r.reachable)) { Register-OfflineSuccess -Section $offlineSection -Url $url }
         foreach ($url in @($r.unreachable)) { Register-OfflineFailure -Section $offlineSection -Url $url -SourcePath $sourcePath }
     }
