@@ -1,0 +1,15 @@
+# Duplicate source URL archive — maintained by NormalizeSources.ps1.
+# These entries are not build inputs; they are retained for traceability.
+duplicateSources:
+  - sourceFile: external-repos-gen.yml
+    url: https://raw.githubusercontent.com/NightmareXIV/MyDalamudPlugins/main/pluginmaster.json
+    canonical: https://raw.githubusercontent.com/NightmareXIV/MyDalamudPlugins/main/pluginmaster.json
+    kept: https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json
+  - sourceFile: external-repos-gen.yml
+    url: https://raw.githubusercontent.com/chalkos/Marketbuddy/main/repo.json
+    canonical: https://raw.githubusercontent.com/chalkos/Marketbuddy/main/repo.json
+    kept: https://raw.githubusercontent.com/Chalkos/Marketbuddy/main/repo.json
+  - sourceFile: external-repos-gen.yml
+    url: https://raw.githubusercontent.com/tssailzz8/MyPlugins/main/pluginmaster.json
+    canonical: https://raw.githubusercontent.com/tssailzz8/MyPlugins/main/pluginmaster.json
+    kept: https://raw.githubusercontent.com/tssailzz8/MyPlugins/main/pluginmaster.json

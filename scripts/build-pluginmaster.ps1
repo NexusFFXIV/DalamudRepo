@@ -11,8 +11,8 @@
   `type:` (nexus / external-plugins / external-repos) and `out:` (filename of
   the per-source output). Optional `includeInUnion: false` keeps the source's
   entries out of the merged `all.json`.
-  `sources/offline-repos.yml` is an archive and is intentionally excluded from
-  source enumeration.
+  `sources/offline-repos.yml` and `sources/duplicate-sources.yml` are archives
+  and are intentionally excluded from source enumeration.
 
   `config.yml` (repo root) controls minDalamudApiLevel /
   minTestingDalamudApiLevel + per-source enable toggles (with a `default:`
@@ -109,7 +109,7 @@ if (-not (Test-Path $SourcesDir)) {
     throw "Sources directory '$SourcesDir' not found."
 }
 $sourceFiles = Get-ChildItem -Path $SourcesDir -Filter "*.yml" -File |
-    Where-Object { $_.Name -ne "offline-repos.yml" } | Sort-Object Name
+    Where-Object { $_.Name -notin @("offline-repos.yml", "duplicate-sources.yml") } | Sort-Object Name
 
 # Per-source results accumulated for the union + summary.
 $processed = @()  # array of @{ basename; type; out; entries; deduped; filtered; enabled; includeInUnion }
@@ -322,8 +322,16 @@ $zipReportRows = foreach ($zip in @($script:ZipReports)) {
         Url = $zip.Url
     }
 }
+$sourceRows = @(
+    $script:ReportSources |
+        Group-Object { Get-CanonicalSourceUrl $_.Url } |
+        ForEach-Object {
+            $_.Group | Sort-Object @{ Expression = { if ($_.Status -eq 'OK') { 0 } else { 1 } } }, Count -Descending | Select-Object -First 1
+        }
+)
 $structuredReport = [ordered]@{
-    Sources = @($script:ReportSources)
+    GeneratedAt = (Get-Date).ToUniversalTime().ToString('o')
+    Sources = $sourceRows
     Deduplication = @($script:ReportDeduplication)
     ApiResolution = @($script:ReportApiResolution)
     ZipFallback = @($zipReportRows)
@@ -334,7 +342,7 @@ $structuredReport = [ordered]@{
         ZipFallbackRescued = $script:ZipFallbackRescued
         SnapshotHits = $script:SnapshotHits
         ZipDownloads = $script:ZipDownloads
-        Sources = @($script:ReportSources).Count
+        Sources = $sourceRows.Count
         DeduplicationGroups = @($script:ReportDeduplication).Count
         ApiResolutionEntries = @($script:ReportApiResolution).Count
         OfficialExclusions = @($script:OfficialRemoved).Count

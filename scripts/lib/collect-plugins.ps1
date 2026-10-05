@@ -18,6 +18,25 @@ $DalamudMasterUrl = "https://kamori.goats.dev/Plugin/PluginMaster"
 $SnapshotPath = "cache/snapshot.json"
 $script:RepoDedupHeaderWritten = $false
 
+function Get-CanonicalSourceUrl {
+    param([string]$Url)
+    if (-not $Url) { return '' }
+    $text = $Url.Trim()
+    if ($text -match '^https?://github\.com/([^/]+)/([^/]+)/raw/([^/]+)(/.*)?$') {
+        $suffix = if ($Matches[4]) { $Matches[4] } else { '' }
+        return ('https://raw.githubusercontent.com/{0}/{1}/{2}{3}' -f $Matches[1], $Matches[2], $Matches[3], $suffix).TrimEnd('/')
+    }
+    try {
+        $uri = [uri]$text
+        $builder = [System.UriBuilder]$uri
+        $builder.Host = $uri.Host.ToLowerInvariant()
+        $builder.Path = $uri.AbsolutePath.TrimEnd('/')
+        return $builder.Uri.AbsoluteUri.TrimEnd('/')
+    } catch {
+        return $text.TrimEnd('/')
+    }
+}
+
 function Invoke-GhApi {
     param([string]$Path)
     $raw = gh api $Path --paginate
@@ -622,9 +641,15 @@ function Collect-RepoUrlsPool {
     $unreachable = @()
     $reachable = @()
     $repoReports = @()
+    $seenSourceUrls = @{}
     $logged = 0
     foreach ($url in $Yaml.externalRepos) {
         if (-not $url) { continue }
+        $canonicalUrl = Get-CanonicalSourceUrl $url
+        if ($seenSourceUrls.ContainsKey($canonicalUrl)) {
+            continue
+        }
+        $seenSourceUrls[$canonicalUrl] = $url
         $logged++
         # Do not use Invoke-RestMethod with -ErrorAction Stop here. Under
         # Start-Transcript PowerShell records the terminating error before the
