@@ -563,3 +563,5 @@ externalRepos:
   - https://kamori.goats.dev/Plugin/PluginMaster
   - https://plugin.lop-sync.com/repo.json
   - https://repo.lightless-sync.org/
+  - https://puni.sh/api/repository/det
+  - https://raw.githubusercontent.com/Nik-Potokar/MyDalamudPlugins/main/pluginmaster.json
