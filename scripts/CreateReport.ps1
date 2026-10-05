@@ -74,7 +74,7 @@ $parts += '<p class="muted"><strong>Legende:</strong> Der WINNER gewinnt innerha
 $parts += '<table><thead><tr><th>Plugin</th><th>Gewinner</th><th>Verworfene Kandidaten</th></tr></thead><tbody>'
 foreach ($d in (Rows $report.Deduplication | Sort-Object Plugin)) {
     $winner = if ($d.Winner -is [string]) { [pscustomobject]@{ Version = ''; Url = $d.Winner } } else { $d.Winner }
-    $winnerHtml = '<table class="nested"><thead><tr><th>Status</th><th>Bewertung</th><th>Version</th><th>Quelle</th></tr></thead><tbody><tr class="ok"><td>WINNER</td><td>' + (HtmlCell $winner.Reason) + '</td><td>' + (HtmlCell $winner.Version) + '</td><td>' + (HtmlValue $winner.Url) + '</td></tr></tbody></table>'
+    $winnerHtml = '<table class="nested"><thead><tr><th>Status</th><th>Bewertung</th><th>Signale</th><th>Version</th><th>Quelle</th></tr></thead><tbody><tr class="ok"><td>WINNER</td><td>' + (HtmlCell $winner.Reason) + '</td><td>' + (HtmlCell $winner.Signals) + '</td><td>' + (HtmlCell $winner.Version) + '</td><td>' + (HtmlValue $winner.Url) + '</td></tr></tbody></table>'
     $candidateRows = foreach ($candidate in @($d.Candidates | Where-Object { $_.Status -ne 'WINNER' })) {
         if ($candidate -is [string]) {
             '<tr><td>DROP</td><td></td><td></td><td>' + (HtmlValue $candidate) + '</td></tr>'
