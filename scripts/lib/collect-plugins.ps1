@@ -593,19 +593,35 @@ function Select-RepoWinners {
         $sorted = $scored | Sort-Object @{Expression={ $_.eff };    Descending=$true},
                                          @{Expression={ $_.origin }; Descending=$true},
                                          @{Expression={ $_.author }; Descending=$true}
-        $winners += $sorted[0].cand
+        $winner = $sorted[0]
+        $winnerReason = if (@($sorted | Select-Object -Skip 1 | Where-Object { [string]$_.eff -eq [string]$winner.eff }).Count -eq 0) {
+            'HIGHEST_VERSION'
+        } elseif ($winner.origin) {
+            'UPSTREAM_MATCH'
+        } elseif ($winner.author) {
+            'AUTHOR_MATCH'
+        } else {
+            'FIRST_INPUT'
+        }
+        $winners += $winner.cand
         $duplicateReports += [pscustomobject]@{
             Name = $name
-            Winner = $sorted[0]
+            Winner = $winner
+            WinnerReason = $winnerReason
             Candidates = @($sorted)
         }
     }
     foreach ($report in $duplicateReports) {
         $script:ReportDeduplication += [pscustomobject]@{
             Plugin = $report.Name
-            Winner = [pscustomobject]@{ Version = [string]$report.Winner.eff; Url = [string]$report.Winner.cand.sourceUrl }
+            Winner = [pscustomobject]@{ Version = [string]$report.Winner.eff; Url = [string]$report.Winner.cand.sourceUrl; Reason = $report.WinnerReason }
             Candidates = @($report.Candidates | ForEach-Object {
-                [pscustomobject]@{ Version = [string]$_.eff; Url = [string]$_.cand.sourceUrl; Status = if ($_ -eq $report.Winner) { 'WINNER' } else { 'DROP' } }
+                $candidateReason = if ($_ -eq $report.Winner) { $report.WinnerReason }
+                    elseif ([string]$_.eff -lt [string]$report.Winner.eff) { 'LOWER_VERSION' }
+                    elseif ($report.Winner.origin -and -not $_.origin) { 'UPSTREAM_LOST' }
+                    elseif ($report.Winner.author -and -not $_.author) { 'AUTHOR_LOST' }
+                    else { 'FIRST_INPUT_LOST' }
+                [pscustomobject]@{ Version = [string]$_.eff; Url = [string]$_.cand.sourceUrl; Status = if ($_ -eq $report.Winner) { 'WINNER' } else { 'DROP' }; Reason = $candidateReason }
             })
         }
         Write-Host ""
