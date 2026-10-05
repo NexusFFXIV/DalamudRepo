@@ -553,13 +553,11 @@ function Collect-RepoUrlsPool {
         } catch {
             $label = Get-HttpErrorLabel $_
             Write-Host ("  {0} -> {1}" -f $label, $url)
-            Write-Warning "$SectionLabel repo $url unreachable ($label)"
             $unreachable += $url
             continue
         }
         if (-not $resp) {
-            Write-Host "  -> ${url}: (empty response)"
-            Write-Warning "$SectionLabel repo $url returned empty response"
+            Write-Host ("  EmptyResponse -> {0}" -f $url)
             $unreachable += $url
             continue
         }
