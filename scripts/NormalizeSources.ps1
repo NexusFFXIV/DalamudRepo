@@ -12,6 +12,7 @@
 param(
     [string]$SourcesDir = "sources",
     [string]$ArchivePath = "",
+    [switch]$CanonicalizeUrls,
     [switch]$Apply
 )
 
@@ -37,23 +38,27 @@ function Get-CanonicalSourceUrl {
 }
 
 $total = 0
+$canonicalized = 0
 $archiveRecords = @()
 if (-not $ArchivePath) { $ArchivePath = Join-Path $SourcesDir 'duplicate-sources.yml' }
 foreach ($file in Get-ChildItem -LiteralPath $SourcesDir -Filter '*.yml' -File | Where-Object Name -notin @('offline-repos.yml','duplicate-sources.yml')) {
     $lines = @(Get-Content -LiteralPath $file.FullName -Encoding UTF8)
     $seen = @{}
     $remove = [System.Collections.Generic.HashSet[int]]::new()
-    $inExternalRepos = $false
     $duplicates = @()
+    $fileCanonicalized = 0
 
     for ($i = 0; $i -lt $lines.Count; $i++) {
         $line = [string]$lines[$i]
-        if ($line -match '^externalRepos:\s*$') { $inExternalRepos = $true; continue }
-        if ($inExternalRepos -and $line -match '^[A-Za-z][A-Za-z0-9_-]*:\s*') { $inExternalRepos = $false; continue }
-        if (-not $inExternalRepos) { continue }
-        if ($line -notmatch '^\s*-\s+(https?://\S+?)(?:\s+#.*)?$') { continue }
+        if ($line -notmatch '^\s*-\s+(https?://\S+)(?:\s+#.*)?$') { continue }
         $url = $Matches[1]
         $canonical = Get-CanonicalSourceUrl $url
+        if ($CanonicalizeUrls -and $Apply -and $canonical -ne $url) {
+            $lines[$i] = $line.Replace($url, $canonical)
+            $url = $canonical
+            $canonicalized++
+            $fileCanonicalized++
+        }
         if ($seen.ContainsKey($canonical)) {
             [void]$remove.Add($i)
             $duplicates += [pscustomobject]@{ Removed = $url; Kept = $seen[$canonical] }
@@ -71,12 +76,15 @@ foreach ($file in Get-ChildItem -LiteralPath $SourcesDir -Filter '*.yml' -File |
             $keptLines = for ($i = 0; $i -lt $lines.Count; $i++) { if (-not $remove.Contains($i)) { $lines[$i] } }
             Set-Content -LiteralPath $file.FullName -Value $keptLines -Encoding UTF8
         }
+    } elseif ($Apply -and $fileCanonicalized -gt 0) {
+        Set-Content -LiteralPath $file.FullName -Value $lines -Encoding UTF8
     }
 }
 
 if ($total -eq 0) { Write-Output 'No duplicate source URLs found.' }
 elseif (-not $Apply) { Write-Output ("Dry run: {0} duplicate(s) found. Use -Apply to remove them." -f $total) }
 else { Write-Output ("Removed {0} duplicate source URL(s)." -f $total) }
+if ($canonicalized -gt 0) { Write-Output ("Canonicalized {0} GitHub source URL(s)." -f $canonicalized) }
 
 if ($Apply -and $archiveRecords.Count -gt 0) {
     $archiveLines = @()

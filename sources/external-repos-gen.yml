@@ -19,8 +19,8 @@ externalRepos:
 
   # ─── GitHub (raw.githubusercontent.com / github.com / gist / github.io) ───
   - https://gist.githubusercontent.com/CaiClone/0aad66569dbf63a9bbeec6a8e95a123f/raw/pluginmaster.json
-  - https://github.com/LiangYuxuan/dalamud-plugin-cn-fetcher/raw/master/pluginmaster_gh.json
-  - https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json
+  - https://raw.githubusercontent.com/LiangYuxuan/dalamud-plugin-cn-fetcher/master/pluginmaster_gh.json
+  - https://raw.githubusercontent.com/NightmareXIV/MyDalamudPlugins/main/pluginmaster.json
   - https://markjsosnowski.github.io/FFXIV/plugin_repo.json
   - https://raw.githubusercontent.com/Aether-Tools/DalamudPlugins/main/repo.json
   - https://raw.githubusercontent.com/Aireil/MyDalamudPlugins/master/pluginmaster.json
@@ -174,7 +174,6 @@ externalRepos:
   - https://raw.githubusercontent.com/sleepykittykat/MyDalamudPlugins/main/pluginmaster.json
   - https://raw.githubusercontent.com/sleepybnuuy/pmp/master/repo.json
   - https://raw.githubusercontent.com/sleepybnuuy/ktisis-testing/main/repo.json
-  - https://raw.githubusercontent.com/shironayuta/ShiroUtils/main/repo.json
   - https://raw.githubusercontent.com/serifine/XIV-Chat-Tools/main/repo.json
   - https://raw.githubusercontent.com/seathasky/ZoneLevelGuide/main/repo.json
   - https://raw.githubusercontent.com/s5bug/AutoTimer/main/repo.json
@@ -204,7 +203,6 @@ externalRepos:
   - https://raw.githubusercontent.com/papapachin/ActionTimelineReplacement/Global/repo.json
   - https://raw.githubusercontent.com/owu4346/DaPCPluginRepo/main/pluginmaster.json
   - https://raw.githubusercontent.com/onrkrr/Penumbra/master/repo.json
-  - https://raw.githubusercontent.com/notYuta/ShiroUtils/main/repo.json
   - https://raw.githubusercontent.com/nomenclature-xiv/Nomenclature/main/repo.json
   - https://raw.githubusercontent.com/natyusha/ffxiv_materialui_accent/master/repo.json
   - https://raw.githubusercontent.com/msew11/IINACT_CN/main/repo.json
@@ -559,6 +557,6 @@ externalRepos:
   - https://kirisamevanilla.github.io/ffxiv/dalamudrepo.json
   - https://kamori.goats.dev/Plugin/PluginMaster
   - https://plugin.lop-sync.com/repo.json
-  - https://repo.lightless-sync.org/
+  - https://repo.lightless-sync.org
   - https://puni.sh/api/repository/det
   - https://raw.githubusercontent.com/Nik-Potokar/MyDalamudPlugins/main/pluginmaster.json

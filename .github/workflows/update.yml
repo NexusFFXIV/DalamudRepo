@@ -54,7 +54,7 @@ jobs:
 
       - name: Normalize duplicate repository sources
         shell: pwsh
-        run: ./scripts/NormalizeSources.ps1 -Apply
+        run: ./scripts/NormalizeSources.ps1 -Apply -CanonicalizeUrls
 
       - name: Rebuild pluginmaster.json
         # Keep the transcript for diagnostics; the mail step uses the
