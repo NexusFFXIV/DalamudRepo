@@ -59,7 +59,7 @@ function Get-ManifestFromRelease {
     }
     $tmp = New-TemporaryFile
     try {
-        Invoke-WebRequest -Uri $url -OutFile $tmp.FullName -UseBasicParsing
+        Invoke-WebRequest -Uri $url -OutFile $tmp.FullName -UseBasicParsing -ErrorAction Stop 2>$null
         return Get-Content $tmp.FullName -Raw | ConvertFrom-Json
     } finally {
         Remove-Item $tmp.FullName -ErrorAction SilentlyContinue
