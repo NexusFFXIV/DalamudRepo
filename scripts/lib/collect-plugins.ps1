@@ -173,6 +173,7 @@ $script:ZipFallbackRescued = 0
 $script:SnapshotHits = 0
 $script:ZipDownloads = 0
 $script:ZipReports = @()
+$script:SnapshotSeen = @{}
 $script:ReportSources = @()
 $script:ReportDeduplication = @()
 $script:ReportApiResolution = @()
@@ -217,6 +218,17 @@ function Save-Snapshot {
     ($sorted | ConvertTo-Json -Depth 5) + "`n" | Set-Content -Path $SnapshotPath -Encoding UTF8 -NoNewline
 }
 
+function Prune-Snapshot {
+    # Remove entries for plugins that no longer occur in any current source.
+    # Resolve-EntryApiLevels already removes channels that became complete in
+    # repo metadata; this pass handles plugins removed entirely from sources.
+    foreach ($key in @($script:Snapshot.Keys)) {
+        if (-not $script:SnapshotSeen.ContainsKey([string]$key)) {
+            $script:Snapshot.Remove($key) | Out-Null
+        }
+    }
+}
+
 function Get-ZipManifestApiLevel {
     # Pure: download the zip, read DalamudApiLevel from the embedded
     # manifest, return it (or $null on any failure). All caching happens at
@@ -224,12 +236,25 @@ function Get-ZipManifestApiLevel {
     # The URL-keyed in-process map is the one piece of dedup that lives here,
     # to cover the (rare) case of two entries pointing at the same zip in
     # one run.
-    param([string]$Url, [string]$InternalName)
+    param(
+        [string]$Url,
+        [string]$InternalName,
+        [string]$Channel = '',
+        [string]$Version = '',
+        [string]$Missing = 'API',
+        [string]$SourceUrl = '',
+        [switch]$IncludeVersion
+    )
     if (-not $Url -or -not $InternalName) { return $null }
-    if ($script:ZipApiLevelCache.ContainsKey($Url)) { return $script:ZipApiLevelCache[$Url] }
+    if ($script:ZipApiLevelCache.ContainsKey($Url)) {
+        $cachedResult = $script:ZipApiLevelCache[$Url]
+        if ($IncludeVersion -and $cachedResult -isnot [System.Collections.IDictionary] -and $cachedResult.PSObject.Properties['Api']) { return $cachedResult }
+        if (-not $IncludeVersion) { return $cachedResult }
+    }
 
     $script:ZipDownloads++
     $result = $null
+    $resultVersion = $null
     $status = "DOWNLOAD_ERROR"
     $tmp = $null
     try {
@@ -239,7 +264,10 @@ function Get-ZipManifestApiLevel {
             $statusText = if ($probe.StatusDescription) { [string]$probe.StatusDescription } else { "HTTP" }
             $status = ("{0}{1}" -f [int]$probe.StatusCode, ($statusText -replace '[^A-Za-z0-9]', ''))
             $script:ZipApiLevelCache[$Url] = $null
-            $script:ZipReports += [pscustomobject]@{ Plugin = $InternalName; Status = $status; Api = "-"; Url = $Url }
+            $script:ZipReports += [pscustomobject]@{ Plugin = $InternalName; Channel = $Channel; Version = ''; Missing = $Missing; SourceUrl = $SourceUrl; Status = $status; Api = "-"; Url = $Url; Resolution = 'FRESH' }
+            $failure = [pscustomobject]@{ Api = $null; Version = $null; Status = $status }
+            $script:ZipApiLevelCache[$Url] = $failure
+            if ($IncludeVersion) { return $failure }
             return $null
         }
         Invoke-WebRequest -Uri $Url -OutFile $tmp.FullName -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
@@ -251,6 +279,7 @@ function Get-ZipManifestApiLevel {
                 $reader = New-Object System.IO.StreamReader($entry.Open())
                 try {
                     try { $manifest = $reader.ReadToEnd() | ConvertFrom-Json } catch { $manifest = $null; $status = "PARSE_ERROR" }
+                    if ($manifest -and $manifest.AssemblyVersion) { $resultVersion = [string]$manifest.AssemblyVersion }
                     if ($manifest -and $null -ne $manifest.DalamudApiLevel) {
                         $result = [int]$manifest.DalamudApiLevel
                         $status = "OK"
@@ -265,8 +294,10 @@ function Get-ZipManifestApiLevel {
     } finally {
         if ($tmp) { Remove-Item $tmp.FullName -ErrorAction SilentlyContinue }
     }
-    $script:ZipReports += [pscustomobject]@{ Plugin = $InternalName; Status = $status; Api = if ($null -ne $result) { $result } else { "-" }; Url = $Url }
-    $script:ZipApiLevelCache[$Url] = $result
+    $script:ZipReports += [pscustomobject]@{ Plugin = $InternalName; Channel = $Channel; Version = if ($resultVersion) { $resultVersion } else { '' }; Missing = $Missing; SourceUrl = $SourceUrl; Status = $status; Api = if ($null -ne $result) { $result } else { "-" }; Url = $Url; Resolution = 'FRESH' }
+    $metadata = [pscustomobject]@{ Api = $result; Version = $resultVersion; Status = $status }
+    $script:ZipApiLevelCache[$Url] = $metadata
+    if ($IncludeVersion) { return $metadata }
     return $result
 }
 
@@ -279,6 +310,8 @@ function Resolve-EntryApiLevels {
     if (-not $Entry -or -not $Entry.InternalName) {
         return [pscustomobject]@{ DalamudApiLevel = $null; TestingDalamudApiLevel = $null }
     }
+    $script:SnapshotSeen[[string]$Entry.InternalName] = $true
+    $sourceUrl = if ($Entry.__ReportSourceUrl) { [string]$Entry.__ReportSourceUrl } else { [string]$Entry.RepoUrl }
     $cached  = $script:Snapshot[$Entry.InternalName]
     $prodAv  = if ($Entry.AssemblyVersion)        { [string]$Entry.AssemblyVersion }        else { $null }
     $prodUrl = if ($Entry.DownloadLinkInstall) { [string]$Entry.DownloadLinkInstall } else { [string]$Entry.DownloadLinkUpdate }
@@ -289,16 +322,27 @@ function Resolve-EntryApiLevels {
 
     $prodFromFallback = $false
     $testFromFallback = $false
+    $prodZipVersion = $null
+    $testZipVersion = $null
+    $prodSource = if ($null -ne $prodLvl) { 'repo' } else { 'unresolved' }
+    $testSource = if ($null -ne $testLvl) { 'repo' } else { 'unresolved' }
 
-    if ($null -eq $prodLvl -and $prodAv) {
-        if ($cached -and ([string]$cached.AssemblyVersion -eq $prodAv) -and ([string]$cached.DownloadUrl -eq $prodUrl) -and ($null -ne $cached.DalamudApiLevel)) {
+    if (($null -eq $prodLvl -or -not $prodAv) -and $prodUrl) {
+        $missingProd = @(); if (-not $prodAv) { $missingProd += 'VERSION' }; if ($null -eq $prodLvl) { $missingProd += 'API' }; $missingProd = $missingProd -join ' + '
+        if ($cached -and ((($prodAv -and [string]$cached.AssemblyVersion -eq $prodAv) -or (-not $prodAv -and $cached.AssemblyVersion))) -and ([string]$cached.DownloadUrl -eq $prodUrl) -and ($null -ne $cached.DalamudApiLevel)) {
             $prodLvl = [int]$cached.DalamudApiLevel
+            if (-not $prodAv -and $cached.AssemblyVersion) { $prodAv = [string]$cached.AssemblyVersion }
             $script:SnapshotHits++
+            $prodSource = 'zip (cached)'
+            $script:ZipReports += [pscustomobject]@{ Plugin = $Entry.InternalName; Channel = 'Stable'; Version = if ($cached.AssemblyVersionFromZip) { [string]$cached.AssemblyVersionFromZip } else { '' }; Missing = $missingProd; SourceUrl = $sourceUrl; Status = 'CACHE'; Api = $prodLvl; Url = $prodUrl; Resolution = 'CACHE' }
             Write-Host ("    [cache] {0} prod {1} api={2}" -f $Entry.InternalName, $prodAv, $prodLvl)
         } else {
-            $prodLvl = Get-ZipManifestApiLevel -Url $prodUrl -InternalName $Entry.InternalName
+            $prodMeta = Get-ZipManifestApiLevel -Url $prodUrl -InternalName $Entry.InternalName -Channel 'Stable' -Version $prodAv -Missing $missingProd -SourceUrl $sourceUrl -IncludeVersion
+            $prodLvl = $prodMeta.Api
+            if ($prodMeta.Version) { $prodZipVersion = [string]$prodMeta.Version; if (-not $prodAv) { $prodAv = $prodZipVersion } }
             if ($null -ne $prodLvl) {
                 $script:ZipFallbackRescued++
+                $prodSource = if ($Entry.DalamudApiLevel -ne $null) { 'repo + zip' } else { 'zip' }
                 Write-Host ("    [zip]   {0} prod {1} api={2}" -f $Entry.InternalName, $prodAv, $prodLvl)
             } else {
             }
@@ -306,15 +350,25 @@ function Resolve-EntryApiLevels {
         $prodFromFallback = $true
     }
 
-    if ($null -eq $testLvl -and $testAv) {
-        if ($cached -and ([string]$cached.TestingAssemblyVersion -eq $testAv) -and ([string]$cached.TestingDownloadUrl -eq $testUrl) -and ($null -ne $cached.TestingDalamudApiLevel)) {
+    # Testing is optional. Only resolve it when the current repository entry
+    # still advertises a testing channel; stale testing snapshot data must not
+    # resurrect a channel that upstream removed.
+    if (($null -eq $testLvl -or -not $testAv) -and ($testAv -or $testUrl)) {
+        $missingTest = @(); if (-not $testAv) { $missingTest += 'VERSION' }; if ($null -eq $testLvl) { $missingTest += 'API' }; $missingTest = $missingTest -join ' + '
+        if ($cached -and ((($testAv -and [string]$cached.TestingAssemblyVersion -eq $testAv) -or (-not $testAv -and $cached.TestingAssemblyVersion))) -and ([string]$cached.TestingDownloadUrl -eq $testUrl) -and ($null -ne $cached.TestingDalamudApiLevel)) {
             $testLvl = [int]$cached.TestingDalamudApiLevel
+            if (-not $testAv -and $cached.TestingAssemblyVersion) { $testAv = [string]$cached.TestingAssemblyVersion }
             $script:SnapshotHits++
+            $testSource = 'zip (cached)'
+            $script:ZipReports += [pscustomobject]@{ Plugin = $Entry.InternalName; Channel = 'Testing'; Version = if ($cached.TestingAssemblyVersionFromZip) { [string]$cached.TestingAssemblyVersionFromZip } else { '' }; Missing = $missingTest; SourceUrl = $sourceUrl; Status = 'CACHE'; Api = $testLvl; Url = $testUrl; Resolution = 'CACHE' }
             Write-Host ("    [cache] {0} test {1} api={2}" -f $Entry.InternalName, $testAv, $testLvl)
         } else {
-            $testLvl = Get-ZipManifestApiLevel -Url $testUrl -InternalName $Entry.InternalName
+            $testMeta = Get-ZipManifestApiLevel -Url $testUrl -InternalName $Entry.InternalName -Channel 'Testing' -Version $testAv -Missing $missingTest -SourceUrl $sourceUrl -IncludeVersion
+            $testLvl = $testMeta.Api
+            if ($testMeta.Version) { $testZipVersion = [string]$testMeta.Version; if (-not $testAv) { $testAv = $testZipVersion } }
             if ($null -ne $testLvl) {
                 $script:ZipFallbackRescued++
+                $testSource = if ($Entry.TestingDalamudApiLevel -ne $null) { 'repo + zip' } else { 'zip' }
                 Write-Host ("    [zip]   {0} test {1} api={2}" -f $Entry.InternalName, $testAv, $testLvl)
             } else {
             }
@@ -337,9 +391,11 @@ function Resolve-EntryApiLevels {
             AssemblyVersion        = if ($keepProd) { $prodAv }       else { $null }
             DalamudApiLevel        = if ($keepProd) { [int]$prodLvl } else { $null }
             DownloadUrl            = if ($keepProd) { $prodUrl }      else { $null }
+            AssemblyVersionFromZip = if ($keepProd) { $prodZipVersion } else { $null }
             TestingAssemblyVersion = if ($keepTest) { $testAv }       else { $null }
             TestingDalamudApiLevel = if ($keepTest) { [int]$testLvl } else { $null }
             TestingDownloadUrl     = if ($keepTest) { $testUrl }      else { $null }
+            TestingAssemblyVersionFromZip = if ($keepTest) { $testZipVersion } else { $null }
         }
     } elseif ($cached) {
         $script:Snapshot.Remove($Entry.InternalName) | Out-Null
@@ -348,6 +404,10 @@ function Resolve-EntryApiLevels {
     return [pscustomobject]@{
         DalamudApiLevel        = $prodLvl
         TestingDalamudApiLevel = $testLvl
+        StableSource           = $prodSource
+        TestingSource          = $testSource
+        StableVersion          = $prodAv
+        TestingVersion         = $testAv
     }
 }
 
@@ -366,17 +426,17 @@ function Test-MeetsApi {
         $script:ApiResolutionSeen[$reportKey] = $true
         $prodUrl = if ($Entry.DownloadLinkInstall) { [string]$Entry.DownloadLinkInstall } else { [string]$Entry.DownloadLinkUpdate }
         $testUrl = [string]$Entry.DownloadLinkTesting
-        $prodSource = if ($null -ne $Entry.DalamudApiLevel) { 'repo.json' } elseif ($script:Snapshot[$Entry.InternalName].DalamudApiLevel) { 'snapshot' } elseif ($prodUrl) { 'zip' } else { 'unresolved' }
-        $testSource = if ($null -ne $Entry.TestingDalamudApiLevel) { 'repo.json' } elseif ($script:Snapshot[$Entry.InternalName].TestingDalamudApiLevel) { 'snapshot' } elseif ($testUrl) { 'zip' } else { 'unresolved' }
+        $prodSource = [string]$resolved.StableSource
+        $testSource = [string]$resolved.TestingSource
         $prodZip = @($script:ZipReports | Where-Object Url -eq $prodUrl | Select-Object -Last 1).Status
         $testZip = @($script:ZipReports | Where-Object Url -eq $testUrl | Select-Object -Last 1).Status
         $script:ReportApiResolution += [pscustomobject]@{
             Plugin = $Entry.InternalName
             SourceUrl = if ($Entry.__ReportSourceUrl) { $Entry.__ReportSourceUrl } else { $Entry.RepoUrl }
-            StableVersion = if ($Entry.AssemblyVersion) { [string]$Entry.AssemblyVersion } else { $null }
-            TestingVersion = if ($Entry.TestingAssemblyVersion) { [string]$Entry.TestingAssemblyVersion } else { $null }
-            StableApi = $resolved.DalamudApiLevel; StableSource = $prodSource; StableZipStatus = if ($prodSource -eq 'zip') { $prodZip } else { '' }
-            TestingApi = $resolved.TestingDalamudApiLevel; TestingSource = $testSource; TestingZipStatus = if ($testSource -eq 'zip') { $testZip } else { '' }
+            StableVersion = if ($resolved.StableVersion) { [string]$resolved.StableVersion } elseif ($Entry.AssemblyVersion) { [string]$Entry.AssemblyVersion } else { $null }
+            TestingVersion = if ($resolved.TestingVersion) { [string]$resolved.TestingVersion } elseif ($Entry.TestingAssemblyVersion) { [string]$Entry.TestingAssemblyVersion } else { $null }
+            StableApi = $resolved.DalamudApiLevel; StableSource = $prodSource; StableZipStatus = if ($prodSource -like 'zip*') { $prodZip } else { '' }
+            TestingApi = $resolved.TestingDalamudApiLevel; TestingSource = $testSource; TestingZipStatus = if ($testSource -like 'zip*') { $testZip } else { '' }
         }
     }
     $prodOk = $false

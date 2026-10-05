@@ -138,13 +138,17 @@ $parts += '</details>'
 $latestApi = if ($report.Summary.MinDalamudApiLevel) { [int]$report.Summary.MinDalamudApiLevel } else { 15 }
 $parts += '<details><summary><span class="legend-de">Versions- und API-Auflösung (' + (Rows $report.ApiResolution).Count + ' Plugins)</span><span class="legend-en">Version and API resolution (' + (Rows $report.ApiResolution).Count + ' plugins)</span></summary>'
 $parts += '<p class="muted"><strong><span class="legend-de">Legende:</span><span class="legend-en">Legend:</span></strong><span class="legend-de"> <span class="ok">Grün</span> = Stable verwendet die aktuelle API ' + $latestApi + '. <span class="beta">Gelb</span> = Testing verwendet die aktuelle API, Stable ist aber noch nicht aktuell (Beta). Fehlendes Testing ist optional und bei aktueller Stable-Version kein Fehler. <span class="bad">Rot</span> = Fehler beim Stable-Abruf oder Parsing.</span><span class="legend-en"> <span class="ok">Green</span> = Stable uses the current API ' + $latestApi + '. <span class="beta">Amber</span> = Testing uses the current API, but Stable is not current yet (beta). Missing Testing is optional and is not an error when Stable is current. <span class="bad">Red</span> = Stable download or parsing error.</span></p>'
-$parts += '<p class="muted"><span class="legend-de"><strong>Aufgelöst durch:</strong> <code>repo</code> = direkt aus dem Repository-Eintrag, <code>snapshot</code> = validierter Cache eines früheren Zip-Befunds, <code>zip</code> = aus dem eingebetteten Plugin-Manifest des ZIP-Downloads, <code>unresolved</code> = konnte nicht ermittelt werden. Version und API-Level werden je Kanal unabhängig aufgelöst.</span><span class="legend-en"><strong>Resolved by:</strong> <code>repo</code> = read directly from the repository entry, <code>snapshot</code> = validated cache of a previous zip result, <code>zip</code> = read from the embedded plugin manifest in the ZIP download, <code>unresolved</code> = could not be determined. Version and API level are resolved independently for each channel.</span></p>'
+$parts += '<p class="muted"><span class="legend-de"><strong>Aufgelöst durch:</strong> <code>repo</code> = direkt aus dem Repository-Eintrag, <code>zip</code> = aus dem eingebetteten Plugin-Manifest des ZIPs, <code>zip (cached)</code> = derselbe validierte ZIP-Befund aus dem Snapshot-Cache ohne neuen Download, <code>unresolved</code> = konnte nicht ermittelt werden. Stable wird nie durch Fallback-Daten überschrieben. Testing ist optional und wird nur aufgelöst, wenn der aktuelle Repo-Eintrag einen Testing-Kanal enthält.</span><span class="legend-en"><strong>Resolved by:</strong> <code>repo</code> = read directly from the repository entry, <code>zip</code> = read from the embedded plugin manifest in the ZIP, <code>zip (cached)</code> = the same validated ZIP result served from the snapshot cache without a new download, <code>unresolved</code> = could not be determined. Stable is never overridden by fallback data. Testing is optional and is resolved only when the current repository entry still contains a testing channel.</span></p>'
 $parts += '<table><thead><tr><th>Plugin</th><th><span class="legend-de">Stable Version</span><span class="legend-en">Stable version</span></th><th><span class="legend-de">Stable API-Version</span><span class="legend-en">Stable API version</span></th><th><span class="legend-de">Stable aufgelöst durch</span><span class="legend-en">Stable resolved by</span></th><th><span class="legend-de">Testing Version</span><span class="legend-en">Testing version</span></th><th><span class="legend-de">Testing API-Version</span><span class="legend-en">Testing API version</span></th><th><span class="legend-de">Testing aufgelöst durch</span><span class="legend-en">Testing resolved by</span></th><th><span class="legend-de">Quell-Repository</span><span class="legend-en">Source repository</span></th></tr></thead><tbody>'
 foreach ($x in (Rows $report.ApiResolution | Sort-Object Plugin)) {
     $stableStatus = if ($x.StableZipStatus) { [string]$x.StableSource + ': ' + [string]$x.StableZipStatus } else { [string]$x.StableSource }
     $testingStatus = if ($x.TestingZipStatus) { [string]$x.TestingSource + ': ' + [string]$x.TestingZipStatus } else { [string]$x.TestingSource }
+    # Stable is mandatory, so an unresolved stable value is actionable and
+    # remains visible. Testing is optional; an absent testing channel is the
+    # normal state and should therefore render as an empty cell instead of an
+    # error-looking status.
     $stableResolution = if ($stableStatus -eq 'unresolved') { 'unresolved' } elseif ($stableStatus.Split(':')[0] -eq 'repo.json') { 'repo' } else { $stableStatus.Split(':')[0] }
-    $testingResolution = if ($testingStatus -eq 'unresolved') { 'unresolved' } elseif ($testingStatus.Split(':')[0] -eq 'repo.json') { 'repo' } else { $testingStatus.Split(':')[0] }
+    $testingResolution = if ($testingStatus -eq 'unresolved') { '' } elseif ($testingStatus.Split(':')[0] -eq 'repo.json') { 'repo' } else { $testingStatus.Split(':')[0] }
     $stable = (HtmlCell $x.StableApi)
     $testing = (HtmlCell $x.TestingApi)
     $stableApi = $null; $testingApi = $null
@@ -159,45 +163,62 @@ foreach ($x in (Rows $report.ApiResolution | Sort-Object Plugin)) {
 }
 $parts += '</tbody></table>'
 $parts += '</details>'
-$parts += '<details><summary><span class="legend-de">Versions- und API-Auflösung – Zip-Fallbacks (' + (Rows $report.ZipFallback).Count + ' Versuche)</span><span class="legend-en">Version and API resolution – Zip fallbacks (' + (Rows $report.ZipFallback).Count + ' attempts)</span></summary>'
-$parts += '<p class="muted"><span class="legend-de">Diese Tabelle enthält alle tatsächlichen Zip-Fallback-Aufrufe – erfolgreiche Auflösungen ebenso wie fehlgeschlagene Versuche. Snapshot-Treffer ohne neuen Download erscheinen nur in der API-Auflösungstabelle.</span><span class="legend-en">This table contains every actual zip fallback call, including successful resolutions and failed attempts. Snapshot hits without a new download are shown only in the API resolution table.</span></p>'
+$zipAttemptCount = (Rows $report.ZipFallback).Count
+$zipFreshCount = if ($report.Summary.ZipDownloads) { [int]$report.Summary.ZipDownloads } else { @($report.ZipFallback | Where-Object { $_.Resolution -ne 'CACHE' }).Count }
+$zipCachedCount = if ($report.Summary.SnapshotHits) { [int]$report.Summary.SnapshotHits } else { @($report.ZipFallback | Where-Object { $_.Resolution -eq 'CACHE' }).Count }
+$parts += '<details><summary><span class="legend-de">Versions- und API-Auflösung – Zip-Fallbacks (' + $zipAttemptCount + ' Versuche: ' + $zipFreshCount + ' frisch, ' + $zipCachedCount + ' aus Cache)</span><span class="legend-en">Version and API resolution – Zip fallbacks (' + $zipAttemptCount + ' attempts: ' + $zipFreshCount + ' fresh, ' + $zipCachedCount + ' cached)</span></summary>'
+$parts += '<p class="muted"><span class="legend-de">Die Zählung im Header umfasst alle Fallback-Versuche; die Tabelle zeigt daraus nur die bereits durch Stage 2 ausgewählten Gewinner. <code>FRESH</code> bedeutet, dass das ZIP in diesem Lauf neu geladen und geprüft wurde. <code>CACHE</code> bedeutet, dass der validierte ZIP-Befund aus dem Snapshot übernommen wurde; dafür wurde kein ZIP neu geladen. <code>Fehlende Daten</code> nennt die konkrete Kombination, z. B. <code>TestingAPI</code> oder <code>StableVersion, StableAPI</code>. Die vier Ergebnis-Spalten werden direkt aus dem ZIP-Manifest befüllt.</span><span class="legend-en">The header count includes all fallback attempts; the table shows only the winners already selected by Stage 2. <code>FRESH</code> means the ZIP was downloaded and checked during this run. <code>CACHE</code> means a validated ZIP result was reused from the snapshot; no ZIP was downloaded for that row. <code>Missing data</code> names the exact combination, for example <code>TestingAPI</code> or <code>StableVersion, StableAPI</code>. The four result columns are populated directly from the ZIP manifest.</span></p>'
 $dedupMap = @{}
 foreach ($d in (Rows $report.Deduplication)) { $dedupMap[[string]$d.Plugin] = $d }
-$zipRows = foreach ($x in (Rows $report.ZipFallback)) {
+$zipRowsAll = foreach ($x in (Rows $report.ZipFallback)) {
     $d = if ($dedupMap.ContainsKey([string]$x.Plugin)) { $dedupMap[[string]$x.Plugin] } else { $null }
-    $winnerUrl = if ($x.WinnerUrl) { $x.WinnerUrl } elseif ($d -and $d.Winner -is [string]) { $d.Winner } elseif ($d -and $d.Winner.Url) { $d.Winner.Url } else { '' }
-    $winnerVersion = if ($x.WinnerVersion) { $x.WinnerVersion } elseif ($d -and $d.Winner -and $d.Winner.Version) { $d.Winner.Version } else { '' }
+    $winnerSource = if ($d -and $d.Winner -and $d.Winner.Url) { [string]$d.Winner.Url } else { '' }
+    $source = if ($x.SourceUrl) { [string]$x.SourceUrl } else { '' }
+    $selected = (-not $winnerSource) -or ($source -and $source -eq $winnerSource)
+    $missingParts = @([string]$x.Missing -split '\s*\+\s*' | Where-Object { $_ }) | ForEach-Object {
+        $field = if ($_ -eq 'VERSION') { 'Version' } elseif ($_ -eq 'API') { 'API' } else { $_ }
+        if ($x.Channel -eq 'Testing') { 'Testing' + $field } else { 'Stable' + $field }
+    }
+    $apiValue = if ([string]$x.Api -eq '-') { '' } else { $x.Api }
+    $zipVersion = if ([string]$x.Status -match '^(404|5\d\d|RequestError|DOWNLOAD_ERROR|PARSE_ERROR)') { '' } else { $x.Version }
     [pscustomobject]@{
+        Selected = $selected
+        Resolution = if ($x.Resolution) { $x.Resolution } elseif ($x.Status -eq 'CACHE') { 'CACHE' } else { 'FRESH' }
         Status = $x.Status
         Plugin = $x.Plugin
-        Api = $x.Api
-        DedupStatus = if ($x.DedupStatus) { $x.DedupStatus } elseif ($d) { 'DUPLIKAT' } else { 'EINZELN' }
-        DedupCandidates = if ($x.DedupCandidates) { $x.DedupCandidates } elseif ($d) { @($d.Candidates).Count } else { 1 }
-        WinnerVersion = $winnerVersion
-        WinnerUrl = $winnerUrl
+        MissingData = ($missingParts -join ', ')
+        StableVersion = if ($x.Channel -eq 'Stable') { $zipVersion } else { '' }
+        StableApi = if ($x.Channel -eq 'Stable') { $apiValue } else { '' }
+        TestingVersion = if ($x.Channel -eq 'Testing') { $zipVersion } else { '' }
+        TestingApi = if ($x.Channel -eq 'Testing') { $apiValue } else { '' }
         Url = $x.Url
     }
 }
-$parts += HtmlTable @('Status','Plugin','API','Dedup','Kandidaten','Winner-Version','Winner-Repository','Zip-URL') $zipRows { param($x) @($x.Status,$x.Plugin,$x.Api,$x.DedupStatus,$x.DedupCandidates,$x.WinnerVersion,$x.WinnerUrl,$x.Url) }
+$zipRows = @($zipRowsAll | Where-Object Selected)
+$parts += HtmlTable @('Run','Status','Plugin','Fehlende Daten','Stable Version','Stable API','Testing Version','Testing API','Zip-URL') $zipRows { param($x) @($x.Resolution,$x.Status,$x.Plugin,$x.MissingData,$x.StableVersion,$x.StableApi,$x.TestingVersion,$x.TestingApi,$x.Url) }
 $parts += '</details>'
 $parts += '</details>'
 $parts += '<details><summary>Stage 3: Ausgaben erzeugen (' + (Rows $report.Outputs).Count + ' Ausgaben)</summary>'
 $parts += HtmlTable @('Status','Ausgabe','Einträge') $report.Outputs { param($x) @($x.Status,$x.Name,$x.Count) } -CountDescending
 $parts += '</details>'
 $summaryRows = @(
-    [pscustomobject]@{ Metric = 'Gefiltert'; Value = $report.Summary.Filtered; Meaning = 'Plugins, die weder im Stable- noch im Testing-Kanal das Mindest-API-Level erreichen' }
-    [pscustomobject]@{ Metric = 'Durch Zip-Fallback gerettet'; Value = $report.Summary.ZipFallbackRescued; Meaning = 'Plugins, deren API-Level aus einem Zip-Manifest gelesen werden konnte' }
-    [pscustomobject]@{ Metric = 'Snapshot-Treffer'; Value = $report.Summary.SnapshotHits; Meaning = 'API-Level aus dem lokalen Snapshot-Cache ohne erneuten Zip-Download' }
-    [pscustomobject]@{ Metric = 'Neue Zip-Downloads'; Value = $report.Summary.ZipDownloads; Meaning = 'Für die API-Auflösung heruntergeladene Zip-Dateien' }
-    [pscustomobject]@{ Metric = 'Quellen'; Value = $report.Summary.Sources; Meaning = 'Ausgewertete Repository-Quell-URLs' }
-    [pscustomobject]@{ Metric = 'Dedup-Gruppen'; Value = $report.Summary.DeduplicationGroups; Meaning = 'Plugin-Gruppen mit mehreren Kandidaten' }
-    [pscustomobject]@{ Metric = 'Offizielle Ausschlüsse'; Value = $report.Summary.OfficialExclusions; Meaning = 'Aus externen Quellen entfernte offizielle Plugins' }
-    [pscustomobject]@{ Metric = 'Offizieller Plugin-Katalog'; Value = $report.Summary.OfficialCatalog; Meaning = 'Plugins, die aktuell aus der offiziellen Dalamud-Masterquelle geladen wurden' }
-    [pscustomobject]@{ Metric = 'Ausgabedateien'; Value = $report.Summary.Outputs; Meaning = 'Erzeugte Pluginmaster-Ausgabedateien' }
+    [pscustomobject]@{ MetricDe = 'Gefiltert'; MetricEn = 'Filtered'; Value = $report.Summary.Filtered; MeaningDe = 'Plugins, die weder im Stable- noch im Testing-Kanal das Mindest-API-Level erreichen'; MeaningEn = 'Plugins that meet neither the Stable nor Testing minimum API level' }
+    [pscustomobject]@{ MetricDe = 'Durch Zip-Fallback gerettet'; MetricEn = 'Rescued by zip fallback'; Value = $report.Summary.ZipFallbackRescued; MeaningDe = 'Plugins, deren API-Level aus einem Zip-Manifest gelesen werden konnte'; MeaningEn = 'Plugins whose API level was read from a ZIP manifest' }
+    [pscustomobject]@{ MetricDe = 'Snapshot-Treffer'; MetricEn = 'Snapshot hits'; Value = $report.Summary.SnapshotHits; MeaningDe = 'API-Level aus dem lokalen Snapshot-Cache ohne erneuten Zip-Download'; MeaningEn = 'API levels served from the local snapshot cache without downloading a new ZIP' }
+    [pscustomobject]@{ MetricDe = 'Neue Zip-Downloads'; MetricEn = 'Fresh ZIP downloads'; Value = $report.Summary.ZipDownloads; MeaningDe = 'Für die API-Auflösung heruntergeladene Zip-Dateien'; MeaningEn = 'ZIP files downloaded for API resolution' }
+    [pscustomobject]@{ MetricDe = 'Quellen'; MetricEn = 'Sources'; Value = $report.Summary.Sources; MeaningDe = 'Ausgewertete Repository-Quell-URLs'; MeaningEn = 'Repository source URLs evaluated' }
+    [pscustomobject]@{ MetricDe = 'Dedup-Gruppen'; MetricEn = 'Dedup groups'; Value = $report.Summary.DeduplicationGroups; MeaningDe = 'Plugin-Gruppen mit mehreren Kandidaten'; MeaningEn = 'Plugin groups with multiple candidates' }
+    [pscustomobject]@{ MetricDe = 'Offizielle Ausschlüsse'; MetricEn = 'Official exclusions'; Value = $report.Summary.OfficialExclusions; MeaningDe = 'Aus externen Quellen entfernte offizielle Plugins'; MeaningEn = 'Official plugins removed from external sources' }
+    [pscustomobject]@{ MetricDe = 'Offizieller Plugin-Katalog'; MetricEn = 'Official plugin catalog'; Value = $report.Summary.OfficialCatalog; MeaningDe = 'Plugins, die aktuell aus der offiziellen Dalamud-Masterquelle geladen wurden'; MeaningEn = 'Plugins currently loaded from the official Dalamud Master source' }
+    [pscustomobject]@{ MetricDe = 'Ausgabedateien'; MetricEn = 'Outputs'; Value = $report.Summary.Outputs; MeaningDe = 'Erzeugte Pluginmaster-Ausgabedateien'; MeaningEn = 'Generated pluginmaster output files' }
 )
 $parts += '<script>(function(){function syncLegend(){var en=document.documentElement.lang==="en";document.querySelectorAll(".legend-de").forEach(function(x){x.style.display=en?"none":"inline";});document.querySelectorAll(".legend-en").forEach(function(x){x.style.display=en?"inline":"none";});}new MutationObserver(syncLegend).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});syncLegend();})();</script>'
 $parts += '<details><summary>Stage 4: Zusammenfassung</summary>'
-$parts += HtmlTable @('Kennzahl','Wert','Bedeutung') $summaryRows { param($x) @($x.Metric,$x.Value,$x.Meaning) } -CountDescending
+$parts += '<table><thead><tr><th><span class="legend-de">Kennzahl</span><span class="legend-en">Metric</span></th><th><span class="legend-de">Wert</span><span class="legend-en">Value</span></th><th><span class="legend-de">Bedeutung</span><span class="legend-en">Meaning</span></th></tr></thead><tbody>'
+foreach ($x in ($summaryRows | Sort-Object @{Expression={ [int]$_.Value }; Descending=$true})) {
+    $parts += '<tr><td><span class="legend-de">' + (HtmlCell $x.MetricDe) + '</span><span class="legend-en">' + (HtmlCell $x.MetricEn) + '</span></td><td>' + (HtmlValue $x.Value) + '</td><td><span class="legend-de">' + (HtmlCell $x.MeaningDe) + '</span><span class="legend-en">' + (HtmlCell $x.MeaningEn) + '</span></td></tr>'
+}
+$parts += '</tbody></table>'
 $parts += '</details>'
 $parts += '<script>(function(){var pairs=[["Stage 1: Quellen sammeln","Stage 1: Collect sources"],["Stage 2: Kandidaten verarbeiten","Stage 2: Process candidates"],["Stage 3: Ausgaben erzeugen","Stage 3: Build outputs"],["Stage 4: Zusammenfassung","Stage 4: Summary"],["Versions- und API-Auflösung","Version and API resolution"],["Offizielle Plugin-Ausschlüsse","Official plugin exclusions"],["Verworfene Kandidaten","Dropped candidates"],["Plugin-Gruppen","plugin groups"],["Quellen","sources"],["Kandidaten","candidates"],["Versuche","attempts"],["Plugins","plugins"],["Ausgaben","outputs"],["Einträge","entries"],["Kennzahl","Metric"],["Bedeutung","Meaning"],["Gewinner","Winner"],["Bewertung","Reason"],["Quelle","Source"],["Repository","Repository"],["Ausgabe","Output"],["Gefiltert","Filtered"],["Durch Zip-Fallback gerettet","Rescued by zip fallback"],["Snapshot-Treffer","Snapshot hits"],["Neue Zip-Downloads","Fresh zip downloads"],["Dedup-Gruppen","Dedup groups"],["Offizielle Ausschlüsse","Official exclusions"],["Ausgabedateien","Output files"],["Der WINNER wird weiterhin zuerst nach höchster Version ausgewählt.","The WINNER is still selected by highest version first."],["Die Spalte","The column"],["zeigt den stärksten erkannten Indikator in dieser Reihenfolge:","shows the strongest detected indicator in this order:"],["Drop-Gründe:","Drop reasons:"],["Klicken zum Sortieren","Click to sort"]];function translate(s,lang){var out=s;for(var i=0;i<pairs.length;i++){var a=lang==="en"?pairs[i][0]:pairs[i][1];var b=lang==="en"?pairs[i][1]:pairs[i][0];out=out.split(a).join(b);}return out;}function setLanguage(lang){document.documentElement.lang=lang;document.querySelectorAll("body *:not(script):not(style)").forEach(function(el){if(el.children.length===0&&el.dataset.originalText===undefined){el.dataset.originalText=el.textContent;}});document.querySelectorAll("[data-original-text]").forEach(function(el){el.textContent=translate(el.dataset.originalText,lang);});document.querySelectorAll("th").forEach(function(h){h.title=lang==="en"?"Click to sort":"Klicken zum Sortieren";});document.getElementById("lang-en").classList.toggle("active",lang==="en");document.getElementById("lang-de").classList.toggle("active",lang==="de");}function sortTable(table,index,ascending){var body=table.tBodies[0];if(!body)return;var rows=Array.from(body.rows).map(function(row,pos){return{row:row,pos:pos,value:row.cells[index]?row.cells[index].textContent.trim():""};});var numeric=rows.every(function(x){return x.value===""||!isNaN(Number(x.value.replace(",",".")));});rows.sort(function(a,b){var av=a.value,bv=b.value,cmp;if(numeric){cmp=Number(av.replace(",","."))-Number(bv.replace(",","."));}else{cmp=av.localeCompare(bv,undefined,{numeric:true,sensitivity:"base"});}return (cmp||a.pos-b.pos)*(ascending?1:-1);});rows.forEach(function(x){body.appendChild(x.row);});}document.querySelectorAll("table").forEach(function(table){var headers=table.querySelectorAll("thead th");headers.forEach(function(header,index){header.dataset.sortAscending="true";header.addEventListener("click",function(){var ascending=header.dataset.sortAscending!=="false";headers.forEach(function(h){delete h.dataset.sortAscending;});header.dataset.sortAscending=ascending?"false":"true";sortTable(table,index,ascending);});});});document.getElementById("lang-en").addEventListener("click",function(){setLanguage("en");});document.getElementById("lang-de").addEventListener("click",function(){setLanguage("de");});setLanguage("en");})();</script></body></html>'
 $html = $parts -join "`n"

@@ -329,6 +329,7 @@ foreach ($name in $ForcePlugin) {
     }
 }
 
+Prune-Snapshot
 Save-Snapshot
 if ($offlineEnabled) {
     Save-OfflineRepos
@@ -349,7 +350,12 @@ $zipReportRows = foreach ($zip in @($script:ZipReports)) {
     $winnerUrl = if ($dedup -and $dedup.Winner -and $dedup.Winner.Url) { [string]$dedup.Winner.Url } else { '' }
     [pscustomobject]@{
         Plugin = $zip.Plugin
+        Channel = $zip.Channel
+        Version = $zip.Version
+        Missing = $zip.Missing
+        SourceUrl = $zip.SourceUrl
         Status = $zip.Status
+        Resolution = if ($zip.Resolution) { [string]$zip.Resolution } elseif ($zip.Status -eq 'CACHE') { 'CACHE' } else { 'FRESH' }
         Api = $zip.Api
         DedupStatus = if ($dedup) { 'DUPLIKAT' } else { 'EINZELN' }
         DedupCandidates = if ($dedup) { @($dedup.Candidates).Count } else { 1 }
