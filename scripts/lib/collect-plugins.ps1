@@ -565,15 +565,29 @@ function Collect-RepoUrlsPool {
     foreach ($url in $Yaml.externalRepos) {
         if (-not $url) { continue }
         $logged++
-        $resp = $null
+        # Do not use Invoke-RestMethod with -ErrorAction Stop here. Under
+        # Start-Transcript PowerShell records the terminating error before the
+        # catch block, which leaked a noisy PS>TerminatingError line into mail.
+        # SkipHttpErrorCheck lets us classify the HTTP status ourselves without
+        # emitting a transcript error record.
+        $http = $null
         try {
-            $resp = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
+            $http = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
         } catch {
-            $label = Get-HttpErrorLabel $_
-            $repoReports += [pscustomobject]@{ Status = $label; Count = 0; Url = $url }
+            $repoReports += [pscustomobject]@{ Status = "RequestError"; Count = 0; Url = $url }
             $unreachable += $url
             continue
         }
+        $statusCode = [int]$http.StatusCode
+        if ($statusCode -lt 200 -or $statusCode -ge 300) {
+            $statusText = if ($http.StatusDescription) { [string]$http.StatusDescription } else { "HTTP" }
+            $repoReports += [pscustomobject]@{ Status = ("{0}{1}" -f $statusCode, ($statusText -replace '[^A-Za-z0-9]', '')); Count = 0; Url = $url }
+            $unreachable += $url
+            Write-Host ("  {0} -> {1}" -f ("{0}{1}" -f $statusCode, ($statusText -replace '[^A-Za-z0-9]', '')), $url)
+            continue
+        }
+        $resp = $null
+        try { $resp = $http.Content | ConvertFrom-Json } catch { $resp = $null }
         if (-not $resp) {
             $repoReports += [pscustomobject]@{ Status = "EMPTY"; Count = 0; Url = $url }
             $unreachable += $url
