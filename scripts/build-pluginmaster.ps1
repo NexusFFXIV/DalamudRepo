@@ -211,6 +211,12 @@ foreach ($file in $sourceFiles) {
     }
 
     $deduped = Get-Deduped $r.entries
+    $officialLeaks = @($deduped | Where-Object {
+        $_.InternalName -and $officialPluginNames.Contains([string]$_.InternalName)
+    })
+    if ($officialLeaks.Count -gt 0) {
+        throw ("Official PluginMaster invariant violated in {0}: {1} entries would be published." -f $basename, $officialLeaks.Count)
+    }
     Write-Pluginmaster $deduped $out
     $processed += @{
         basename       = $basename
