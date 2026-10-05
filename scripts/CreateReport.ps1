@@ -143,8 +143,12 @@ $parts += '<table><thead><tr><th>Plugin</th><th><span class="legend-de">Stable A
 foreach ($x in (Rows $report.ApiResolution | Sort-Object Plugin)) {
     $stableStatus = if ($x.StableZipStatus) { [string]$x.StableSource + ': ' + [string]$x.StableZipStatus } else { [string]$x.StableSource }
     $testingStatus = if ($x.TestingZipStatus) { [string]$x.TestingSource + ': ' + [string]$x.TestingZipStatus } else { [string]$x.TestingSource }
-    $stable = '<span class="legend-de">API-Version ' + (HtmlCell $x.StableApi) + ' <span class="muted">(aufgelöst durch ' + (HtmlCell $stableStatus) + ')</span></span><span class="legend-en">API version ' + (HtmlCell $x.StableApi) + ' <span class="muted">(resolved by ' + (HtmlCell $stableStatus) + ')</span></span>'
-    $testing = '<span class="legend-de">API-Version ' + (HtmlCell $x.TestingApi) + ' <span class="muted">(aufgelöst durch ' + (HtmlCell $testingStatus) + ')</span></span><span class="legend-en">API version ' + (HtmlCell $x.TestingApi) + ' <span class="muted">(resolved by ' + (HtmlCell $testingStatus) + ')</span></span>'
+    $stableResolutionDe = if ($stableStatus -eq 'unresolved') { 'unaufgelöst' } else { 'aufgelöst durch ' + $stableStatus }
+    $stableResolutionEn = if ($stableStatus -eq 'unresolved') { 'unresolved' } else { 'resolved by ' + $stableStatus }
+    $testingResolutionDe = if ($testingStatus -eq 'unresolved') { 'unaufgelöst' } else { 'aufgelöst durch ' + $testingStatus }
+    $testingResolutionEn = if ($testingStatus -eq 'unresolved') { 'unresolved' } else { 'resolved by ' + $testingStatus }
+    $stable = '<span class="legend-de">API-Version ' + (HtmlCell $x.StableApi) + ' <span class="muted">' + (HtmlCell $(if ($stableStatus -eq 'unresolved') { $stableResolutionDe } else { '(' + $stableResolutionDe + ')' })) + '</span></span><span class="legend-en">API version ' + (HtmlCell $x.StableApi) + ' <span class="muted">' + (HtmlCell $(if ($stableStatus -eq 'unresolved') { $stableResolutionEn } else { '(' + $stableResolutionEn + ')' })) + '</span></span>'
+    $testing = '<span class="legend-de">API-Version ' + (HtmlCell $x.TestingApi) + ' <span class="muted">' + (HtmlCell $(if ($testingStatus -eq 'unresolved') { $testingResolutionDe } else { '(' + $testingResolutionDe + ')' })) + '</span></span><span class="legend-en">API version ' + (HtmlCell $x.TestingApi) + ' <span class="muted">' + (HtmlCell $(if ($testingStatus -eq 'unresolved') { $testingResolutionEn } else { '(' + $testingResolutionEn + ')' })) + '</span></span>'
     $stableApi = $null; $testingApi = $null
     try { if ($null -ne $x.StableApi) { $stableApi = [int]$x.StableApi } } catch {}
     try { if ($null -ne $x.TestingApi) { $testingApi = [int]$x.TestingApi } } catch {}
