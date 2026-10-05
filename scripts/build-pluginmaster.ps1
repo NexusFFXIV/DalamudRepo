@@ -384,6 +384,8 @@ $structuredReport = [ordered]@{
         ApiResolutionEntries = @($script:ReportApiResolution).Count
         OfficialExclusions = @($script:OfficialRemoved).Count
         OfficialCatalog = $officialPluginNames.Count
+        MinDalamudApiLevel = $MinDalamudApiLevel
+        MinTestingDalamudApiLevel = $MinTestingDalamudApiLevel
         Outputs = @($outputs).Count
     }
 }

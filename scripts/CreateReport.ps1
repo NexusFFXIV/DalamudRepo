@@ -81,6 +81,7 @@ if ($Format -eq 'Cli') {
 }
 
 $parts = @('<!doctype html><html lang="en"><head><meta charset="utf-8"><style>body{font:14px sans-serif;color:#222}h1{font-size:22px}h2{font-size:17px;margin-top:24px}h3{font-size:15px;margin:12px 0 4px}details{margin:14px 0}details details{margin-left:24px;border-left:3px solid #d7dde3;padding-left:12px}summary{cursor:pointer;font-size:17px;font-weight:600;padding:6px;background:#f1f3f5;border:1px solid #ccc}details details>summary{font-size:15px;background:#fafbfc;border-color:#d7dde3}table{border-collapse:collapse;margin:8px 0 18px;width:100%}th,td{border:1px solid #ccc;padding:4px 8px;text-align:left;vertical-align:top}th{background:#f1f3f5;cursor:pointer;user-select:none}th:hover{background:#e2e6ea}.ok{color:#176b35;background:#effaf2}.warn{color:#856404;background:#fff8d8}.bad{color:#a61b1b;background:#fff0f0}.muted{color:#666}.nested{margin-left:20px;width:calc(100% - 20px)}.toolbar{float:right;margin:4px 0}.toolbar button{border:1px solid #bbb;background:#fff;padding:4px 8px;cursor:pointer}.toolbar button.active{font-weight:700;background:#e2e6ea}.legend-en{display:inline}.legend-de{display:none}</style></head><body>')
+$parts += '<style>.beta{color:#7a4b00;background:#fff3d6}</style>'
 $generatedAt = ''
 try { $generatedAt = ([DateTimeOffset]::Parse([string]$report.GeneratedAt)).ToLocalTime().ToString('dd.MM.yyyy HH:mm:ss') } catch { $generatedAt = (Get-Date).ToString('dd.MM.yyyy HH:mm:ss') }
 $parts += '<div class="toolbar"><button id="lang-en" type="button">EN</button><button id="lang-de" type="button">DE</button></div><h1>DalamudRepo-Build-Report <span class="muted">(' + (HtmlCell $generatedAt) + ')</span></h1>'
@@ -134,14 +135,21 @@ if ($officialRows.Count -gt 0) {
 }
 $parts += '</tbody></table>'
 $parts += '</details>'
-$parts += '<details><summary>Versions- und API-Auflösung (' + (Rows $report.ApiResolution).Count + ' Plugins)</summary>'
+$latestApi = if ($report.Summary.MinDalamudApiLevel) { [int]$report.Summary.MinDalamudApiLevel } else { 15 }
+$parts += '<details><summary><span class="legend-de">Versions- und API-Auflösung (' + (Rows $report.ApiResolution).Count + ' Plugins)</span><span class="legend-en">Version and API resolution (' + (Rows $report.ApiResolution).Count + ' plugins)</span></summary>'
+$parts += '<p class="muted"><strong><span class="legend-de">Legende:</span><span class="legend-en">Legend:</span></strong><span class="legend-de"> <span class="ok">Grün</span> = Stable verwendet die aktuelle API ' + $latestApi + '. <span class="beta">Gelb</span> = Testing verwendet die aktuelle API, Stable ist aber noch nicht aktuell (Beta). Fehlendes Testing ist optional und bei aktueller Stable-Version kein Fehler. <span class="bad">Rot</span> = Fehler beim Stable-Abruf oder Parsing.</span><span class="legend-en"> <span class="ok">Green</span> = Stable uses the current API ' + $latestApi + '. <span class="beta">Amber</span> = Testing uses the current API, but Stable is not current yet (beta). Missing Testing is optional and is not an error when Stable is current. <span class="bad">Red</span> = Stable download or parsing error.</span></p>'
 $parts += '<table><thead><tr><th>Plugin</th><th>Stable</th><th>Testing</th><th>Quell-Repository</th></tr></thead><tbody>'
 foreach ($x in (Rows $report.ApiResolution | Sort-Object Plugin)) {
     $stable = (HtmlCell $x.StableApi) + ' <span class="muted">[' + (HtmlCell $x.StableSource) + $(if ($x.StableZipStatus) { ': ' + (HtmlCell $x.StableZipStatus) } else { '' }) + ']</span>'
     $testing = (HtmlCell $x.TestingApi) + ' <span class="muted">[' + (HtmlCell $x.TestingSource) + $(if ($x.TestingZipStatus) { ': ' + (HtmlCell $x.TestingZipStatus) } else { '' }) + ']</span>'
-    $hasHardError = $x.StableZipStatus -match '^(404|5\d\d|RequestError|PARSE_ERROR|DOWNLOAD_ERROR)' -or $x.TestingZipStatus -match '^(404|5\d\d|RequestError|PARSE_ERROR|DOWNLOAD_ERROR)'
-    $hasWarning = $x.StableSource -eq 'unresolved' -or $x.TestingSource -eq 'unresolved' -or $x.StableZipStatus -match '^(EMPTY|API_MISSING)' -or $x.TestingZipStatus -match '^(EMPTY|API_MISSING)'
-    $rowClass = if ($hasHardError) { 'bad' } elseif ($hasWarning) { 'warn' } else { 'ok' }
+    $stableApi = $null; $testingApi = $null
+    try { if ($null -ne $x.StableApi) { $stableApi = [int]$x.StableApi } } catch {}
+    try { if ($null -ne $x.TestingApi) { $testingApi = [int]$x.TestingApi } } catch {}
+    $stableCurrent = $null -ne $stableApi -and $stableApi -ge $latestApi
+    $testingCurrent = $null -ne $testingApi -and $testingApi -ge $latestApi
+    $stableError = $x.StableZipStatus -match '^(404|5\d\d|RequestError|PARSE_ERROR|DOWNLOAD_ERROR)'
+    $stableWarning = $x.StableSource -eq 'unresolved' -or $x.StableZipStatus -match '^(EMPTY|API_MISSING)'
+    $rowClass = if ($stableError) { 'bad' } elseif ($stableCurrent) { 'ok' } elseif ($testingCurrent) { 'beta' } elseif ($stableWarning) { 'warn' } else { 'warn' }
     $parts += '<tr class="' + $rowClass + '"><td>' + (HtmlCell $x.Plugin) + '</td><td>' + $stable + '</td><td>' + $testing + '</td><td>' + (HtmlValue $x.SourceUrl) + '</td></tr>'
 }
 $parts += '</tbody></table>'
