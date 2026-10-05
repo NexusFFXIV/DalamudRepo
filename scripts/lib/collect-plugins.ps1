@@ -197,7 +197,7 @@ function Get-ZipManifestApiLevel {
     $tmp = $null
     try {
         $tmp = New-TemporaryFile
-        Invoke-WebRequest -Uri $Url -OutFile $tmp.FullName -UseBasicParsing -TimeoutSec 30
+        Invoke-WebRequest -Uri $Url -OutFile $tmp.FullName -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
         Add-Type -AssemblyName System.IO.Compression.FileSystem -ErrorAction SilentlyContinue
         $zip = [System.IO.Compression.ZipFile]::OpenRead($tmp.FullName)
         try {
@@ -211,6 +211,9 @@ function Get-ZipManifestApiLevel {
             }
         } finally { $zip.Dispose() }
     } catch {
+        if ($_.Exception.Response) {
+            Write-Host ("    {0} -> {1}" -f (Get-HttpErrorLabel $_), $Url)
+        }
         Write-Verbose "Zip fallback failed for $Url ($InternalName): $($_.Exception.Message)"
     } finally {
         if ($tmp) { Remove-Item $tmp.FullName -ErrorAction SilentlyContinue }
@@ -525,11 +528,13 @@ function Select-RepoWinners {
         }
     }
     foreach ($report in $duplicateReports) {
-        Write-Host ("  Winner: {0} v{1} from {2}" -f $report.Name, $report.Winner.eff, $report.Winner.cand.sourceUrl)
-        Write-Host "    Found candidates:"
+        Write-Host ""
+        Write-Host ("  Plugin: {0}" -f $report.Name)
+        Write-Host "    Status   Version       Source"
+        Write-Host "    -------  ------------  ------"
         foreach ($candidate in $report.Candidates) {
-            $marker = if ($candidate -eq $report.Winner) { " [winner]" } else { "" }
-            Write-Host ("      - v{0} from {1}{2}" -f $candidate.eff, $candidate.cand.sourceUrl, $marker)
+            $status = if ($candidate -eq $report.Winner) { "WINNER" } else { "drop" }
+            Write-Host ("    {0,-7}  v{1,-11}  {2}" -f $status, $candidate.eff, $candidate.cand.sourceUrl)
         }
     }
     return $winners
@@ -603,7 +608,7 @@ function Collect-RepoUrlsPool {
             $tag = $null
             if ($repoMatch.Success) {
                 try {
-                    $release = Invoke-RestMethod -Uri ("https://api.github.com/repos/{0}/{1}/releases/latest" -f $repoMatch.Groups[1].Value, $repoMatch.Groups[2].Value) -Headers @{ 'User-Agent' = 'DalamudRepoGenerator' } -TimeoutSec 20
+                    $release = Invoke-RestMethod -Uri ("https://api.github.com/repos/{0}/{1}/releases/latest" -f $repoMatch.Groups[1].Value, $repoMatch.Groups[2].Value) -Headers @{ 'User-Agent' = 'DalamudRepoGenerator' } -TimeoutSec 20 -ErrorAction Stop 2>$null
                     $tag = [string]$release.tag_name
                 } catch { Write-Warning ("Could not resolve latest release for {0}: {1}" -f $e.InternalName, $_.Exception.Message) }
             }
@@ -611,7 +616,7 @@ function Collect-RepoUrlsPool {
                 $download = [string]$e.DownloadLinkInstall -replace '\{version\}', $tag -replace '\{tag\}', $tag
                 try {
                     $tmpZip = New-TemporaryFile
-                    Invoke-WebRequest -Uri $download -OutFile $tmpZip.FullName -UseBasicParsing -TimeoutSec 30
+                    Invoke-WebRequest -Uri $download -OutFile $tmpZip.FullName -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
                     $tmpDir = Join-Path ([IO.Path]::GetTempPath()) ([IO.Path]::GetRandomFileName())
                     Expand-Archive -LiteralPath $tmpZip.FullName -DestinationPath $tmpDir
                     $dll = Get-ChildItem -LiteralPath $tmpDir -Recurse -Filter ([string]$e.InternalName + '.dll') | Select-Object -First 1
