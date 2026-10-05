@@ -197,7 +197,14 @@ function Get-ZipManifestApiLevel {
     $tmp = $null
     try {
         $tmp = New-TemporaryFile
-        Invoke-WebRequest -Uri $Url -OutFile $tmp.FullName -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
+        $probe = Invoke-WebRequest -Uri $Url -Method Head -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
+        if ([int]$probe.StatusCode -lt 200 -or [int]$probe.StatusCode -ge 300) {
+            $statusText = if ($probe.StatusDescription) { [string]$probe.StatusDescription } else { "HTTP" }
+            Write-Host ("    {0} -> {1}" -f ("{0}{1}" -f [int]$probe.StatusCode, ($statusText -replace '[^A-Za-z0-9]', '')), $Url)
+            $script:ZipApiLevelCache[$Url] = $null
+            return $null
+        }
+        Invoke-WebRequest -Uri $Url -OutFile $tmp.FullName -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
         Add-Type -AssemblyName System.IO.Compression.FileSystem -ErrorAction SilentlyContinue
         $zip = [System.IO.Compression.ZipFile]::OpenRead($tmp.FullName)
         try {
@@ -211,9 +218,6 @@ function Get-ZipManifestApiLevel {
             }
         } finally { $zip.Dispose() }
     } catch {
-        if ($_.Exception.Response) {
-            Write-Host ("    {0} -> {1}" -f (Get-HttpErrorLabel $_), $Url)
-        }
         Write-Verbose "Zip fallback failed for $Url ($InternalName): $($_.Exception.Message)"
     } finally {
         if ($tmp) { Remove-Item $tmp.FullName -ErrorAction SilentlyContinue }
@@ -645,7 +649,13 @@ function Collect-RepoUrlsPool {
                 $download = [string]$e.DownloadLinkInstall -replace '\{version\}', $tag -replace '\{tag\}', $tag
                 try {
                     $tmpZip = New-TemporaryFile
-                    Invoke-WebRequest -Uri $download -OutFile $tmpZip.FullName -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop 2>$null
+                    $probe = Invoke-WebRequest -Uri $download -Method Head -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
+                    if ([int]$probe.StatusCode -lt 200 -or [int]$probe.StatusCode -ge 300) {
+                        $statusText = if ($probe.StatusDescription) { [string]$probe.StatusDescription } else { "HTTP" }
+                        Write-Host ("    {0} -> {1}" -f ("{0}{1}" -f [int]$probe.StatusCode, ($statusText -replace '[^A-Za-z0-9]', '')), $download)
+                        throw "HTTP $([int]$probe.StatusCode)"
+                    }
+                    Invoke-WebRequest -Uri $download -OutFile $tmpZip.FullName -UseBasicParsing -TimeoutSec 30 -SkipHttpErrorCheck
                     $tmpDir = Join-Path ([IO.Path]::GetTempPath()) ([IO.Path]::GetRandomFileName())
                     Expand-Archive -LiteralPath $tmpZip.FullName -DestinationPath $tmpDir
                     $dll = Get-ChildItem -LiteralPath $tmpDir -Recurse -Filter ([string]$e.InternalName + '.dll') | Select-Object -First 1
