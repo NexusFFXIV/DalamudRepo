@@ -69,6 +69,8 @@ $parts += '<details><summary>Stage 1: Quellen sammeln (' + (Rows $report.Sources
 $parts += HtmlTable @('Status','Kandidaten','Quelle') $report.Sources { param($x) @($x.Status,$x.Count,$x.Url) } -CountDescending
 $parts += '</details>'
 $parts += '<details><summary>Stage 2: Kandidaten verarbeiten</summary>'
+$officialCatalogForFlow = if ($report.Summary.OfficialCatalog) { [int]$report.Summary.OfficialCatalog } else { 0 }
+$parts += '<p class="muted"><span class="legend-de"><strong>Ablauf:</strong> 1. Offizielle Master-Blacklist laden (' + $officialCatalogForFlow + ' Plugins) → 2. Custom-Repositories sammeln → 3. Offizielle Treffer mit <code>OFFICIAL_MASTER</code> ausschließen → 4. verbleibende Kandidaten deduplizieren und prüfen.</span><span class="legend-en"><strong>Flow:</strong> 1. Load official Master blacklist (' + $officialCatalogForFlow + ' plugins) → 2. Collect custom repositories → 3. Exclude official matches with <code>OFFICIAL_MASTER</code> → 4. deduplicate and validate the remaining candidates.</span></p>'
 $officialRows = Rows $report.OfficialExclusions
 $officialUnique = @($officialRows | ForEach-Object { $_.InternalName } | Where-Object { $_ } | Sort-Object -Unique).Count
 $officialCatalog = if ($report.Summary.OfficialCatalog) { [int]$report.Summary.OfficialCatalog } else { 0 }
@@ -79,12 +81,13 @@ $officialGroups = $officialRows | Group-Object SourceFile | Sort-Object Name
 foreach ($sourceGroup in $officialGroups) {
     $sourceName = HtmlCell $sourceGroup.Name
     $parts += '<h4><span class="legend-de">Quelle: ' + $sourceName + '</span><span class="legend-en">From source: ' + $sourceName + '</span></h4>'
-    $parts += '<table><thead><tr><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th><th>Repository</th></tr></thead><tbody>'
+    $parts += '<table><thead><tr><th>Reason</th><th>Plugin</th><th>InternalName</th><th>Version</th><th>API</th><th>Repository</th></tr></thead><tbody>'
     foreach ($plugin in ($sourceGroup.Group | Sort-Object Plugin, InternalName, PluginVersion, RepositoryUrl)) {
         $pluginName = if ($plugin.Plugin) { $plugin.Plugin } else { $plugin.InternalName }
         $version = if ($plugin.PluginVersion) { $plugin.PluginVersion } else { '-' }
         $api = if ($plugin.ApiVersion) { $plugin.ApiVersion } else { '-' }
-        $parts += '<tr class="bad"><td>' + (HtmlCell $pluginName) + '</td><td>' + (HtmlCell $plugin.InternalName) + '</td><td>' + (HtmlCell $version) + '</td><td>' + (HtmlCell $api) + '</td><td>' + (HtmlValue $plugin.RepositoryUrl) + '</td></tr>'
+        $reason = if ($plugin.Reason) { $plugin.Reason } else { 'OFFICIAL_MASTER' }
+        $parts += '<tr class="bad"><td>' + (HtmlCell $reason) + '</td><td>' + (HtmlCell $pluginName) + '</td><td>' + (HtmlCell $plugin.InternalName) + '</td><td>' + (HtmlCell $version) + '</td><td>' + (HtmlCell $api) + '</td><td>' + (HtmlValue $plugin.RepositoryUrl) + '</td></tr>'
     }
     $parts += '</tbody></table>'
 }

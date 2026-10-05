@@ -42,7 +42,7 @@ function Remove-OfficialEntries {
             $displayName = if ($entry.Name) { [string]$entry.Name } elseif ($entry.PluginName) { [string]$entry.PluginName } else { $name }
             $version = if ($entry.AssemblyVersion) { [string]$entry.AssemblyVersion } elseif ($entry.TestingAssemblyVersion) { [string]$entry.TestingAssemblyVersion } else { "-" }
             $api = if ($null -ne $entry.DalamudApiLevel) { [string]$entry.DalamudApiLevel } elseif ($null -ne $entry.TestingDalamudApiLevel) { [string]$entry.TestingDalamudApiLevel } else { "-" }
-            $script:OfficialRemoved += [pscustomobject]@{ SourceFile = $SourceLabel; RepositoryUrl = $repoUrl; Plugin = $displayName; InternalName = $name; PluginVersion = $version; ApiVersion = $api }
+            $script:OfficialRemoved += [pscustomobject]@{ Reason = 'OFFICIAL_MASTER'; SourceFile = $SourceLabel; RepositoryUrl = $repoUrl; Plugin = $displayName; InternalName = $name; PluginVersion = $version; ApiVersion = $api }
             continue
         }
         $kept += $entry
