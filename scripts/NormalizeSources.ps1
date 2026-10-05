@@ -103,3 +103,19 @@ if ($Apply -and $archiveRecords.Count -gt 0) {
     Set-Content -LiteralPath $ArchivePath -Value $archiveLines -Encoding UTF8
     Write-Output ("Archived {0} removed URL(s) in {1}." -f $archiveRecords.Count, $ArchivePath)
 }
+
+if ($Apply -and (Test-Path $ArchivePath)) {
+    $archiveLines = @(Get-Content -LiteralPath $ArchivePath -Encoding UTF8)
+    $archiveBefore = $archiveLines -join "`n"
+    for ($i = 0; $i -lt $archiveLines.Count; $i++) {
+        $archiveLines[$i] = [regex]::Replace([string]$archiveLines[$i], 'https?://[^\s]+', {
+            param($match)
+            $value = Get-CanonicalSourceUrl $match.Value
+            return $value
+        })
+    }
+    if (($archiveLines -join "`n") -ne $archiveBefore) {
+        Set-Content -LiteralPath $ArchivePath -Value $archiveLines -Encoding UTF8
+        Write-Output ("Canonicalized archived URLs in {0}." -f $ArchivePath)
+    }
+}
