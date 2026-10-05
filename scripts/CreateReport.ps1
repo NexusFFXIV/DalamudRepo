@@ -84,8 +84,10 @@ $parts = @('<!doctype html><html lang="en"><head><meta charset="utf-8"><style>bo
 $generatedAt = ''
 try { $generatedAt = ([DateTimeOffset]::Parse([string]$report.GeneratedAt)).ToLocalTime().ToString('dd.MM.yyyy HH:mm:ss') } catch { $generatedAt = (Get-Date).ToString('dd.MM.yyyy HH:mm:ss') }
 $parts += '<div class="toolbar"><button id="lang-en" type="button">EN</button><button id="lang-de" type="button">DE</button></div><h1>DalamudRepo-Build-Report <span class="muted">(' + (HtmlCell $generatedAt) + ')</span></h1>'
-$parts += '<details><summary>Stage 1: Quellen sammeln (' + (Rows $report.Sources).Count + ' Quellen)</summary>'
-$parts += HtmlTable @('Status','Kandidaten','Quelle') $report.Sources { param($x) @($x.Status,$x.Count,$x.Url) } -CountDescending
+$sourceRows = Rows $report.Sources
+$sourceCandidateCount = [int](($sourceRows | ForEach-Object { [int]$_.Count } | Measure-Object -Sum).Sum)
+$parts += '<details><summary>Stage 1: Quellen sammeln (' + $sourceRows.Count + ' Quellen, ' + $sourceCandidateCount + ' Kandidaten)</summary>'
+$parts += HtmlTable @('Status','Kandidaten','Quelle') $sourceRows { param($x) @($x.Status,$x.Count,$x.Url) } -CountDescending
 $parts += '</details>'
 $parts += '<details><summary>Stage 2: Kandidaten verarbeiten</summary>'
 $officialCatalogForFlow = if ($report.Summary.OfficialCatalog) { [int]$report.Summary.OfficialCatalog } else { 0 }
