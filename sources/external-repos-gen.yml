@@ -19,8 +19,8 @@ externalRepos:
 
   # ─── GitHub (raw.githubusercontent.com / github.com / gist / github.io) ───
   - https://gist.githubusercontent.com/CaiClone/0aad66569dbf63a9bbeec6a8e95a123f/raw/pluginmaster.json
-  - https://github.com/LiangYuxuan/dalamud-plugin-cn-fetcher/raw/master/pluginmaster_gh.json
-  - https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json
+  - https://raw.githubusercontent.com/LiangYuxuan/dalamud-plugin-cn-fetcher/master/pluginmaster_gh.json
+  - https://raw.githubusercontent.com/NightmareXIV/MyDalamudPlugins/main/pluginmaster.json
   - https://markjsosnowski.github.io/FFXIV/plugin_repo.json
   - https://raw.githubusercontent.com/Aether-Tools/DalamudPlugins/main/repo.json
   - https://raw.githubusercontent.com/Aireil/MyDalamudPlugins/master/pluginmaster.json
@@ -49,7 +49,6 @@ externalRepos:
   - https://raw.githubusercontent.com/JudyIscariot/MakePlacePlugin/master/MakePlacePlugin.json
   - https://raw.githubusercontent.com/Jukkales/DalamudPlugins/main/repo.json
   - https://raw.githubusercontent.com/Junie-774/CraftingList/main/CraftingList/repo.json
-  - https://raw.githubusercontent.com/Koenari/MyDalamudPlugins/main/pluginmaster.json
   - https://raw.githubusercontent.com/Korosys/MyDalamudPlugins/master/pluginmaster.json
   - https://raw.githubusercontent.com/LaciSynchroni/repo/main/plogonmaster.json
   - https://raw.githubusercontent.com/LeonBlade/DalamudPlugins/main/repo.json
@@ -61,7 +60,6 @@ externalRepos:
   # commit, so the gen pool would see a lagging DownloadCount for our plugin,
   # freeze it under the republish gate, and then advertise a stale count in
   # gen-repo.json indefinitely while pluginmaster.json carries the fresh one.
-  - https://raw.githubusercontent.com/NightmareXIV/MyDalamudPlugins/main/pluginmaster.json
   - https://raw.githubusercontent.com/OpaqueReptile/daemitus_MyDalamudPlugins/master/pluginmaster.json
   - https://raw.githubusercontent.com/Ottermandias/AutoVisor/master/repo.json
   - https://raw.githubusercontent.com/Ottermandias/Glamourer/main/repo.json
@@ -87,7 +85,6 @@ externalRepos:
   - https://raw.githubusercontent.com/arcticnw/DalamudPlugins/main/repo.json
   - https://raw.githubusercontent.com/awgil/ffxiv_plugin_distribution/master/pluginmaster.json
   - https://raw.githubusercontent.com/captainbinary/MyDalamudPlugins/master/pluginmaster.json
-  - https://raw.githubusercontent.com/chalkos/Marketbuddy/main/repo.json
   - https://raw.githubusercontent.com/daemitus/MyDalamudPlugins/master/pluginmaster.json
   - https://raw.githubusercontent.com/dodingdaga/DalamudPlugins/main/PuppetMaster.json
   - https://raw.githubusercontent.com/f0in/DalamudPluginRepo/master/pluginmaster.json
@@ -160,7 +157,6 @@ externalRepos:
   - https://raw.githubusercontent.com/vofgofm/FindingFantasyGit/main/FindingFantasy.json
   - https://raw.githubusercontent.com/uiharuayako/PantsPlugins/master/pluginmaster.json
   - https://raw.githubusercontent.com/uiharuayako/DalamudPlugins/main/pluginmaster.json
-  - https://raw.githubusercontent.com/tssailzz8/MyPlugins/main/pluginmaster.json
   - https://raw.githubusercontent.com/tssailzz8/IINACT/main/repo.json
   - https://raw.githubusercontent.com/tigurand/DalamudPlugins/main/repo.json
   - https://raw.githubusercontent.com/thetrueyoshifan/Glamourer/main/repo.json
@@ -177,7 +173,6 @@ externalRepos:
   - https://raw.githubusercontent.com/sleepykittykat/MyDalamudPlugins/main/pluginmaster.json
   - https://raw.githubusercontent.com/sleepybnuuy/pmp/master/repo.json
   - https://raw.githubusercontent.com/sleepybnuuy/ktisis-testing/main/repo.json
-  - https://raw.githubusercontent.com/shironayuta/ShiroUtils/main/repo.json
   - https://raw.githubusercontent.com/serifine/XIV-Chat-Tools/main/repo.json
   - https://raw.githubusercontent.com/seathasky/ZoneLevelGuide/main/repo.json
   - https://raw.githubusercontent.com/s5bug/AutoTimer/main/repo.json
@@ -207,7 +202,6 @@ externalRepos:
   - https://raw.githubusercontent.com/papapachin/ActionTimelineReplacement/Global/repo.json
   - https://raw.githubusercontent.com/owu4346/DaPCPluginRepo/main/pluginmaster.json
   - https://raw.githubusercontent.com/onrkrr/Penumbra/master/repo.json
-  - https://raw.githubusercontent.com/notYuta/ShiroUtils/main/repo.json
   - https://raw.githubusercontent.com/nomenclature-xiv/Nomenclature/main/repo.json
   - https://raw.githubusercontent.com/natyusha/ffxiv_materialui_accent/master/repo.json
   - https://raw.githubusercontent.com/msew11/IINACT_CN/main/repo.json
@@ -520,6 +514,8 @@ externalRepos:
   - https://raw.githubusercontent.com/AEBus/FFXIV-Login-Commands/master/repo.json
   - https://raw.githubusercontent.com/44451516-ff14/DalamudPlugins/master/pluginmaster.json
   - https://raw.githubusercontent.com/0ceal0t/Dalamud-VFXEditor/main/repo.json
+  - https://raw.githubusercontent.com/Koenari/MyDalamudPlugins/main/pluginmaster.json
+  - https://raw.githubusercontent.com/Nik-Potokar/MyDalamudPlugins/main/pluginmaster.json
 
   # ─── Puni.sh (puni.sh + love.puni.sh) ──────────────────────────────────────
   # Discovery directory: https://puni.sh/directory/repositories
@@ -532,6 +528,7 @@ externalRepos:
   - https://puni.sh/api/repository/asuna
   - https://puni.sh/api/repository/boxu
   - https://puni.sh/api/repository/croizat
+  - https://puni.sh/api/repository/det
   - https://puni.sh/api/repository/erdelf
   - https://puni.sh/api/repository/gid
   - https://puni.sh/api/repository/glyceri
@@ -560,8 +557,5 @@ externalRepos:
   - https://echoxiv.com/pluginmaster.json
   - https://karou.ca/xiv/repo.json
   - https://kirisamevanilla.github.io/ffxiv/dalamudrepo.json
-  - https://kamori.goats.dev/Plugin/PluginMaster
   - https://plugin.lop-sync.com/repo.json
-  - https://repo.lightless-sync.org/
-  - https://puni.sh/api/repository/det
-  - https://raw.githubusercontent.com/Nik-Potokar/MyDalamudPlugins/main/pluginmaster.json
+  - https://repo.lightless-sync.org

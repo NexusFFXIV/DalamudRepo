@@ -11,8 +11,8 @@
   `type:` (nexus / external-plugins / external-repos) and `out:` (filename of
   the per-source output). Optional `includeInUnion: false` keeps the source's
   entries out of the merged `all.json`.
-  `sources/offline-repos.yml` is an archive and is intentionally excluded from
-  source enumeration.
+  `sources/offline-repos.yml` and `sources/duplicate-sources.yml` are archives
+  and are intentionally excluded from source enumeration.
 
   `config.yml` (repo root) controls minDalamudApiLevel /
   minTestingDalamudApiLevel + per-source enable toggles (with a `default:`
@@ -57,11 +57,41 @@ Import-Module powershell-yaml
 # Load the official PluginMaster once and use its InternalName set as a
 # deny-list for every generated output. If unavailable, fail safe.
 $officialPluginNames = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::Ordinal)
+$officialMasterEntries = @()
 try {
     $officialMaster = Invoke-RestMethod -Uri $DalamudMasterUrl -UseBasicParsing -TimeoutSec 30
-    foreach ($official in @($officialMaster)) {
+    # PluginMaster currently returns one object whose properties are arrays
+    # (rather than an array of plugin objects). Normalize both response shapes
+    # before building the deny-list and report rows.
+    $officialItems = @()
+    $masterRoot = @($officialMaster)
+    if ($masterRoot.Count -eq 1 -and @($masterRoot[0].InternalName).Count -gt 1) {
+        $root = $masterRoot[0]
+        $rowCount = @($root.InternalName).Count
+        $officialItems = @(for ($i = 0; $i -lt $rowCount; $i++) {
+            [pscustomobject]@{
+                Name = @($root.Name)[$i]
+                InternalName = @($root.InternalName)[$i]
+                AssemblyVersion = @($root.AssemblyVersion)[$i]
+                DalamudApiLevel = @($root.DalamudApiLevel)[$i]
+                RepoUrl = @($root.RepoUrl)[$i]
+            }
+        })
+    } else {
+        $officialItems = @($masterRoot)
+    }
+    foreach ($official in $officialItems) {
         if ($official.InternalName) { [void]$officialPluginNames.Add([string]$official.InternalName) }
     }
+    $officialMasterEntries = @($officialItems | ForEach-Object {
+        [pscustomobject]@{
+            Plugin = if ($_.Name) { [string]$_.Name } else { [string]$_.InternalName }
+            InternalName = [string]$_.InternalName
+            PluginVersion = if ($_.AssemblyVersion) { [string]$_.AssemblyVersion } else { '-' }
+            ApiVersion = if ($null -ne $_.DalamudApiLevel) { [string]$_.DalamudApiLevel } else { '-' }
+            RepositoryUrl = [string]$_.RepoUrl
+        }
+    })
     Write-Host ("Official PluginMaster: {0} plugin names loaded for exclusion" -f $officialPluginNames.Count)
 } catch {
     Write-Warning "Could not load official PluginMaster for exclusion; no official entries will be removed. $($_.Exception.Message)"
@@ -109,7 +139,7 @@ if (-not (Test-Path $SourcesDir)) {
     throw "Sources directory '$SourcesDir' not found."
 }
 $sourceFiles = Get-ChildItem -Path $SourcesDir -Filter "*.yml" -File |
-    Where-Object { $_.Name -ne "offline-repos.yml" } | Sort-Object Name
+    Where-Object { $_.Name -notin @("offline-repos.yml", "duplicate-sources.yml") } | Sort-Object Name
 
 # Per-source results accumulated for the union + summary.
 $processed = @()  # array of @{ basename; type; out; entries; deduped; filtered; enabled; includeInUnion }
@@ -178,7 +208,7 @@ foreach ($file in $sourceFiles) {
             $r = Collect-ExternalPluginPool -Yaml $yaml
         }
         "external-repos" {
-            $r = Collect-RepoUrlsPool -Yaml $yaml -SectionLabel $basename
+            $r = Collect-RepoUrlsPool -Yaml $yaml -SectionLabel $basename -OfficialNames $officialPluginNames -OfficialSourceUrl $DalamudMasterUrl
         }
         default {
             Write-Warning "Unknown source type '$type' in $basename — skipping."
@@ -187,12 +217,7 @@ foreach ($file in $sourceFiles) {
     }
 
     if ($officialPluginNames.Count -gt 0) {
-        $r.entries = @(Remove-OfficialEntries -Entries $r.entries -SourceLabel $basename -OfficialNames $officialPluginNames)
-    }
-    foreach ($entry in @($r.entries)) {
-        if ($entry.PSObject.Properties['__ReportSourceUrl']) {
-            $entry.PSObject.Properties.Remove('__ReportSourceUrl')
-        }
+        $r.entries = @(Remove-OfficialEntries -Entries $r.entries -SourceLabel $DalamudMasterUrl -OfficialNames $officialPluginNames)
     }
 
     if ($offlineEnabled -and $type -in @("external-repos", "external-repos-gen")) {
@@ -209,8 +234,19 @@ foreach ($file in $sourceFiles) {
     $keep = Resolve-PublishedEntries -NewEntries $r.entries -Published $published `
                                      -ForceNames $ForcePlugin -ForceAll:$ForceAll
     $r.entries = @($keep.entries)
+    foreach ($entry in @($r.entries)) {
+        if ($entry.PSObject.Properties['__ReportSourceUrl']) {
+            $entry.PSObject.Properties.Remove('__ReportSourceUrl')
+        }
+    }
 
     $deduped = Get-Deduped $r.entries
+    $officialLeaks = @($deduped | Where-Object {
+        $_.InternalName -and $officialPluginNames.Contains([string]$_.InternalName)
+    })
+    if ($officialLeaks.Count -gt 0) {
+        throw ("Official PluginMaster invariant violated in {0}: {1} entries would be published." -f $basename, $officialLeaks.Count)
+    }
     Write-Pluginmaster $deduped $out
     $processed += @{
         basename       = $basename
@@ -293,6 +329,7 @@ foreach ($name in $ForcePlugin) {
     }
 }
 
+Prune-Snapshot
 Save-Snapshot
 if ($offlineEnabled) {
     Save-OfflineRepos
@@ -303,18 +340,59 @@ if ($offlineEnabled) {
 # Persist the data model separately from the human-readable transcript. The
 # renderer can now change CLI/HTML formatting without touching collection code.
 $reportPath = Join-Path (Get-Location) "build-report.json"
+$dedupByPlugin = @{}
+foreach ($dedup in @($script:ReportDeduplication)) {
+    $dedupByPlugin[[string]$dedup.Plugin] = $dedup
+}
+$zipReportRows = foreach ($zip in @($script:ZipReports)) {
+    $dedup = if ($dedupByPlugin.ContainsKey([string]$zip.Plugin)) { $dedupByPlugin[[string]$zip.Plugin] } else { $null }
+    $winnerVersion = if ($dedup -and $dedup.Winner -and $dedup.Winner.Version) { [string]$dedup.Winner.Version } else { '' }
+    $winnerUrl = if ($dedup -and $dedup.Winner -and $dedup.Winner.Url) { [string]$dedup.Winner.Url } else { '' }
+    [pscustomobject]@{
+        Plugin = $zip.Plugin
+        Channel = $zip.Channel
+        Version = $zip.Version
+        Missing = $zip.Missing
+        SourceUrl = $zip.SourceUrl
+        Status = $zip.Status
+        Resolution = if ($zip.Resolution) { [string]$zip.Resolution } elseif ($zip.Status -eq 'CACHE') { 'CACHE' } else { 'FRESH' }
+        Api = $zip.Api
+        DedupStatus = if ($dedup) { 'DUPLIKAT' } else { 'EINZELN' }
+        DedupCandidates = if ($dedup) { @($dedup.Candidates).Count } else { 1 }
+        WinnerVersion = $winnerVersion
+        WinnerUrl = $winnerUrl
+        Url = $zip.Url
+    }
+}
+$sourceRows = @(
+    $script:ReportSources |
+        Group-Object { Get-CanonicalSourceUrl $_.Url } |
+        ForEach-Object {
+            $_.Group | Sort-Object @{ Expression = { if ($_.Status -eq 'OK') { 0 } else { 1 } } }, Count -Descending | Select-Object -First 1
+        }
+)
 $structuredReport = [ordered]@{
-    Sources = @($script:ReportSources)
+    GeneratedAt = (Get-Date).ToUniversalTime().ToString('o')
+    Sources = $sourceRows
     Deduplication = @($script:ReportDeduplication)
     ApiResolution = @($script:ReportApiResolution)
-    ZipFallback = @($script:ZipReports)
+    ZipFallback = @($zipReportRows)
     OfficialExclusions = @($script:OfficialRemoved)
+    OfficialMaster = @($officialMasterEntries)
     Outputs = @($outputs | ForEach-Object { [pscustomobject]@{ Name = $_.name; Count = $_.count; Status = if ($_.enabled) { 'OK' } else { 'SKIPPED' } } })
     Summary = [ordered]@{
-        Filtered = $totalFiltered
+        Filtered = [int]$totalFiltered
         ZipFallbackRescued = $script:ZipFallbackRescued
         SnapshotHits = $script:SnapshotHits
         ZipDownloads = $script:ZipDownloads
+        Sources = $sourceRows.Count
+        DeduplicationGroups = @($script:ReportDeduplication).Count
+        ApiResolutionEntries = @($script:ReportApiResolution).Count
+        OfficialExclusions = @($script:OfficialRemoved).Count
+        OfficialCatalog = $officialPluginNames.Count
+        MinDalamudApiLevel = $MinDalamudApiLevel
+        MinTestingDalamudApiLevel = $MinTestingDalamudApiLevel
+        Outputs = @($outputs).Count
     }
 }
 ($structuredReport | ConvertTo-Json -Depth 20) + "`n" | Set-Content -LiteralPath $reportPath -Encoding UTF8 -NoNewline

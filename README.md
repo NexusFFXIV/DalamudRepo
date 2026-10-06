@@ -5,6 +5,13 @@
 [![Update pluginmaster](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml/badge.svg)](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Dalamud API](https://img.shields.io/badge/Dalamud_API-15-9D5BFF)](https://github.com/goatcorp/Dalamud)
+[![Build report](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/latest-report-status.json)](latest-report.html)
+
+The repository is rebuilt automatically every day. The latest run, including
+the sources that were checked, duplicate decisions, official-plugin exclusions,
+zip/API checks and generated outputs, is available in the
+[latest build report](latest-report.html) (English by default; switch to German
+in the report header).
 
 <table>
 <thead>
@@ -101,6 +108,21 @@ https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json
 </tr>
 </tbody>
 </table>
+
+## How the daily update works
+
+Once a day, the automation checks the configured Dalamud repositories, collects
+their current plugin information, removes duplicates and entries that are
+officially provided by Dalamud, and rebuilds the repository files above. It
+also checks plugin API information and download links where possible. When
+something changed, the bot updates the generated files and the
+[latest build report](latest-report.html); the workflow badge at the top shows
+whether the most recent run succeeded.
+
+The same update can also run immediately when a configured plugin publishes a
+release, when source configuration changes, or when a maintainer starts it
+manually. The generated report is intended to make the result understandable
+without reading the workflow logs.
 
 ## Version consistency check
 
