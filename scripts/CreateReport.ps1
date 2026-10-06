@@ -108,8 +108,9 @@ $parts += '<p class="muted"><span class="legend-de"><strong>Ablauf:</strong> 1. 
 $officialRows = Rows $report.OfficialExclusions
 $officialMasterRows = OfficialMasterRows $report.OfficialMaster
 $officialCatalog = if ($report.Summary.OfficialCatalog) { [int]$report.Summary.OfficialCatalog } else { 0 }
-$officialDe = 'Offizielles Master-Repo (' + $officialCatalog + ' Plugins, durch Dedup entfernt (' + $officialRows.Count + '))'
-$officialEn = 'Official Master Repo (' + $officialCatalog + ' Plugins, Removed by dedup (' + $officialRows.Count + '))'
+$officialPluginCount = @($officialRows | Group-Object { [string]$_.Plugin + "|" + [string]$_.InternalName }).Count
+$officialDe = 'Offizielles Master-Repo (' + $officialCatalog + ' Plugins, durch Dedup entfernt (' + $officialPluginCount + ' Plugins))'
+$officialEn = 'Official Master Repo (' + $officialCatalog + ' Plugins, Removed by dedup (' + $officialPluginCount + ' plugins))'
 $parts += '<details><summary><span class="legend-de">' + (HtmlCell $officialDe) + '</span><span class="legend-en">' + (HtmlCell $officialEn) + '</span></summary>'
 if ($officialMasterRows.Count -gt 0) {
     $masterSource = 'https://kamori.goats.dev/Plugin/PluginMaster'
