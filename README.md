@@ -7,11 +7,16 @@
 [![Dalamud API](https://img.shields.io/badge/Dalamud_API-15-9D5BFF)](https://github.com/goatcorp/Dalamud)
 [![Build report](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/latest-report-status.json)](latest-report.html)
 
-The repository is rebuilt automatically every day. The latest run, including
-the sources that were checked, duplicate decisions, official-plugin exclusions,
-zip/API checks and generated outputs, is available in the
-[latest build report](latest-report.html) (English by default; switch to German
-in the report header).
+## Latest build result
+
+The [latest build report](latest-report.html) is the authoritative result of the
+most recent repository update. It shows which sources were reachable, how
+duplicates were resolved, which official plugins were excluded, how versions
+and API levels were checked, and which output files were generated. The report
+opens in English by default and can be switched to German in its header.
+
+The report freshness badge above indicates whether the report is current. Open
+the report first when you want to verify what the repository currently contains.
 
 <table>
 <thead>
@@ -109,30 +114,7 @@ https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json
 </tbody>
 </table>
 
-## How the daily update works
-
-Once a day, the automation checks the configured Dalamud repositories, collects
-their current plugin information, removes duplicates and entries that are
-officially provided by Dalamud, and rebuilds the repository files above. It
-also checks plugin API information and download links where possible. When
-something changed, the bot updates the generated files and the
-[latest build report](latest-report.html); the workflow badge at the top shows
-whether the most recent run succeeded.
-
-The same update can also run immediately when a configured plugin publishes a
-release, when source configuration changes, or when a maintainer starts it
-manually. The generated report is intended to make the result understandable
-without reading the workflow logs.
-
-## Version consistency check
-
-The build script warns when an entry's `AssemblyVersion` or `TestingAssemblyVersion` disagrees with the release tag its download link points at, e.g. a link to `v0.2.0` next to an `AssemblyVersion` of `0.1.2.0`.
-
-That combination is worth flagging because it fails silently. Dalamud decides whether an update exists by comparing the version in this file against the installed assembly, so a stale version means the entry looks healthy, the link points at the new zip, and **no user is ever offered the update**. PlayerNexusTracker v0.2.0 shipped that way once; the plugin repo now gates its own releases on tag/manifest/assembly agreement, and this is the second net.
-
-It stays a warning rather than a hard failure: external plugins are not ours to gate, and some upstreams version their assemblies independently of their tags. Tags that are not plain versions (`release-2024-01`, and similar) are skipped rather than guessed at.
-
-## 📥 Install (as a player)
+## Install (as a player)
 
 1. Open Dalamud's **Settings → Experimental** tab (the ⚠️ icon in the Settings window).
 2. Under **Custom Plugin Repositories**, paste the default URL:
@@ -145,9 +127,50 @@ It stays a warning rather than a hard failure: external plugins are not ours to 
 4. Open `/xlplugins`, switch to **All Plugins**, search for the plugin you want, click Install.
 
 > [!NOTE]
-> **Other scopes** — pick a different URL from the table at the top if you want a narrower view (e.g. only NexusFFXIV plugins).
+> **Other scopes** — pick a different URL from the table above if you want a narrower view (for example, only NexusFFXIV plugins).
 >
 > **Testing builds** — tick **Settings → Experimental → Get plugin testing builds** to surface pre-release versions when available.
+
+## How the daily update works
+
+Once a day, the automation checks the configured Dalamud repositories, collects
+their current plugin information, removes duplicates and entries that are
+officially provided by Dalamud, and rebuilds the repository files in the table
+above. It also checks plugin API information and download links where possible.
+The bot then updates the generated files and the [latest build
+report](latest-report.html). The workflow badge at the top shows whether the
+most recent run succeeded.
+
+The same update can also run immediately when a configured plugin publishes a
+release, when source configuration changes, or when a maintainer starts it
+manually. The generated report is intended to make the result understandable
+without reading the workflow logs.
+
+## Technical validation details
+
+For technically interested readers, the build maintains the source list and
+validates each response before it contributes plugins. Equivalent GitHub URLs
+are normalized and duplicate source entries are archived for traceability.
+Reachable repositories that currently return an empty list remain configured;
+only actual HTTP or transport failures are moved to the offline archive after
+repeated failed checks.
+
+The official Dalamud PluginMaster catalog is loaded first and acts as a
+blacklist for external feeds. Stable data is mandatory and repository metadata
+has priority. Testing data is optional. If a repository entry is missing a
+version or API value, the build may inspect the referenced ZIP manifest. ZIP
+results are validated against the URL and retained in a temporary snapshot
+cache so unchanged fallback checks do not require another download. Failed
+downloads, malformed manifests, missing API data and stale cache entries remain
+visible in the build report.
+
+## Version consistency check
+
+The build script warns when an entry's `AssemblyVersion` or `TestingAssemblyVersion` disagrees with the release tag its download link points at, e.g. a link to `v0.2.0` next to an `AssemblyVersion` of `0.1.2.0`.
+
+That combination is worth flagging because it fails silently. Dalamud decides whether an update exists by comparing the version in this file against the installed assembly, so a stale version means the entry looks healthy, the link points at the new zip, and **no user is ever offered the update**. PlayerNexusTracker v0.2.0 shipped that way once; the plugin repo now gates its own releases on tag/manifest/assembly agreement, and this is the second net.
+
+It stays a warning rather than a hard failure: external plugins are not ours to gate, and some upstreams version their assemblies independently of their tags. Tags that are not plain versions (`release-2024-01`, and similar) are skipped rather than guessed at.
 
 ## Contributing
 
