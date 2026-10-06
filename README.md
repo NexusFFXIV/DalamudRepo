@@ -24,6 +24,7 @@ the report first when you want to verify what the repository currently contains.
 <th>Repo file</th>
 <th>Plugin count</th>
 <th>Scope</th>
+<th>Subscribe URL</th>
 </tr>
 </thead>
 <tbody>
@@ -31,49 +32,37 @@ the report first when you want to verify what the repository currently contains.
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json"><code>pluginmaster.json</code></a></td>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json"><img alt="pluginmaster" src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json&query=$.length&label=pluginmaster&color=blue"></a></td>
 <td><a href="CONTRIBUTING.md#pluginsyml--our-own-plugins">NexusFFXIV plugins only</a></td>
-</tr>
-<tr>
-<td colspan="3"><pre style="margin:0"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json</code></pre></td>
+<td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json</code></a></td>
 </tr>
 <tr>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json"><code>common-repo.json</code></a></td>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json"><img alt="common-repo" src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json&query=$.length&label=common-repo&color=yellow"></a></td>
 <td><a href="CONTRIBUTING.md#external-reposyml--third-party-dalamud-repos">Plugins from selected third-party repos</a></td>
-</tr>
-<tr>
-<td colspan="3"><pre style="margin:0"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json</code></pre></td>
+<td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json</code></a></td>
 </tr>
 <tr>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json"><code>external-repo.json</code></a></td>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json"><img alt="external-repo" src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json&query=$.length&label=external-repo&color=orange"></a></td>
 <td><a href="CONTRIBUTING.md#external-pluginsyml--single-third-party-plugins">Individual third-party plugins</a></td>
-</tr>
-<tr>
-<td colspan="3"><pre style="margin:0"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json</code></pre></td>
+<td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json</code></a></td>
 </tr>
 <tr>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json"><code>all-repo.json</code></a></td>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json"><img alt="all-repo" src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json&query=$.length&label=all-repo&color=brightgreen"></a></td>
 <td><strong>Everything above — default subscribe URL</strong></td>
-</tr>
-<tr>
-<td colspan="3"><pre style="margin:0"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json</code></pre></td>
+<td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json</code></a></td>
 </tr>
 <tr>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json"><code>gen-repo.json</code></a></td>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json"><img alt="gen-repo" src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json&query=$.length&label=gen-repo&color=lightgrey"></a></td>
 <td><a href="CONTRIBUTING.md#external-repos-genyml--auto-discovered-third-party-repos">Auto-discovered third-party repos (standalone, not in <code>all-repo</code>)</a></td>
-</tr>
-<tr>
-<td colspan="3"><pre style="margin:0"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json</code></pre></td>
+<td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json</code></a></td>
 </tr>
 <tr>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json"><code>full-repo.json</code></a></td>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json"><img alt="full-repo" src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json&query=$.length&label=full-repo&color=brightgreen"></a></td>
 <td><strong>Everything above, plus auto-discovered sources</strong></td>
-</tr>
-<tr>
-<td colspan="3"><pre style="margin:0"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json</code></pre></td>
+<td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json</code></a></td>
 </tr>
 </tbody>
 </table>
