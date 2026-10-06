@@ -95,7 +95,25 @@ if ($Format -eq 'Cli') {
 $parts = @('<!doctype html><html lang="en"><head><meta charset="utf-8"><style>body{font:14px sans-serif;color:#222}h1{font-size:22px}h2{font-size:17px;margin-top:24px}h3{font-size:15px;margin:12px 0 4px}details{margin:14px 0}details details{margin-left:24px;border-left:3px solid #d7dde3;padding-left:12px}summary{cursor:pointer;font-size:17px;font-weight:600;padding:6px;background:#f1f3f5;border:1px solid #ccc}details details>summary{font-size:15px;background:#fafbfc;border-color:#d7dde3}table{border-collapse:collapse;margin:8px 0 18px;width:100%}th,td{border:1px solid #ccc;padding:4px 8px;text-align:left;vertical-align:top}th{background:#f1f3f5;cursor:pointer;user-select:none}th:hover{background:#e2e6ea}.ok{color:#176b35;background:#effaf2}.warn{color:#856404;background:#fff8d8}.bad{color:#a61b1b;background:#fff0f0}.muted{color:#666}.nested{margin-left:20px;width:calc(100% - 20px)}.toolbar{float:right;margin:4px 0}.toolbar button,.toolbar a{border:1px solid #bbb;background:#fff;padding:4px 8px;cursor:pointer;text-decoration:none;color:#222}.toolbar button.active{font-weight:700;background:#e2e6ea}.legend-en{display:inline}.legend-de{display:none}</style></head><body>')
 $parts += '<style>.beta{color:#7a4b00;background:#fff3d6}</style>'
 $generatedAt = ''
-try { $generatedAt = ([DateTimeOffset]::Parse([string]$report.GeneratedAt)).ToLocalTime().ToString('dd.MM.yyyy HH:mm:ss') } catch { $generatedAt = (Get-Date).ToString('dd.MM.yyyy HH:mm:ss') }
+# GitHub Actions runners use UTC. The report is intended for the repository's
+# local audience, so render the visible timestamp in Europe/Berlin time while
+# keeping the structured report timestamp in UTC.
+try {
+    $reportTimeZone = $null
+    foreach ($timeZoneId in @('Europe/Berlin', 'W. Europe Standard Time')) {
+        try { $reportTimeZone = [TimeZoneInfo]::FindSystemTimeZoneById($timeZoneId); break } catch {}
+    }
+    $parsedGeneratedAt = if ($report.GeneratedAt -is [DateTime]) {
+        [DateTimeOffset]::new($report.GeneratedAt.ToUniversalTime())
+    } else {
+        [DateTimeOffset]::Parse([string]$report.GeneratedAt).ToUniversalTime()
+    }
+    $generatedAt = if ($reportTimeZone) {
+        [TimeZoneInfo]::ConvertTime($parsedGeneratedAt, $reportTimeZone).ToString('dd.MM.yyyy HH:mm:ss')
+    } else {
+        $parsedGeneratedAt.ToLocalTime().ToString('dd.MM.yyyy HH:mm:ss')
+    }
+} catch { $generatedAt = (Get-Date).ToString('dd.MM.yyyy HH:mm:ss') }
 $parts += '<div class="toolbar"><a href="https://github.com/NexusFFXIV/DalamudRepo/" target="_blank" rel="noopener noreferrer"><span class="legend-de">Zurück zum Repository</span><span class="legend-en">Back to repository</span></a> <button id="lang-en" type="button">EN</button><button id="lang-de" type="button">DE</button></div><h1>DalamudRepo-Build-Report <span class="muted">(' + (HtmlCell $generatedAt) + ')</span></h1>'
 $sourceRows = Rows $report.Sources
 $sourceCandidateCount = [int](($sourceRows | ForEach-Object { [int]$_.Count } | Measure-Object -Sum).Sum)
