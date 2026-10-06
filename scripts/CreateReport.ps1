@@ -139,9 +139,18 @@ foreach ($d in (Rows $report.Deduplication | Sort-Object Plugin)) {
     $parts += '<tr><td>' + (HtmlCell $d.Plugin) + '</td><td>' + $winnerHtml + '</td><td>' + $candidateHtml + '</td></tr>'
 }
 if ($officialRows.Count -gt 0) {
-    foreach ($official in ($officialRows | Sort-Object Plugin, InternalName, PluginVersion, RepositoryUrl)) {
+    # Official exclusions are collected once per external source entry. Group
+    # them by plugin so one plugin row can show all of its removed candidates,
+    # just like the normal deduplication table does.
+    $officialGroups = $officialRows | Group-Object { [string]$_.Plugin + "|" + [string]$_.InternalName } | Sort-Object Name
+    foreach ($group in $officialGroups) {
+        $officialEntries = @($group.Group | Sort-Object PluginVersion, RepositoryUrl)
+        $official = $officialEntries[0]
         $officialWinner = '<table class="nested"><thead><tr><th>Status</th><th>Reason</th><th>Version</th><th>Source</th></tr></thead><tbody><tr class="warn" style="' + (InlineStatusStyle 'warn') + '"><td>DROPPED</td><td>OFFICIAL_MASTER</td><td>' + (HtmlCell $official.PluginVersion) + '</td><td>' + (HtmlValue $official.SourceFile) + '</td></tr></tbody></table>'
-        $officialCandidate = '<table class="nested"><thead><tr><th>Status</th><th>Reason</th><th>Version</th><th>Source</th></tr></thead><tbody><tr><td>CANDIDATE</td><td>EXTERNAL</td><td>' + (HtmlCell $official.PluginVersion) + '</td><td>' + (HtmlValue $official.RepositoryUrl) + '</td></tr></tbody></table>'
+        $officialCandidates = foreach ($entry in $officialEntries) {
+            '<tr><td>DROP</td><td>OFFICIAL_MASTER</td><td>' + (HtmlCell $entry.PluginVersion) + '</td><td>' + (HtmlValue $entry.RepositoryUrl) + '</td></tr>'
+        }
+        $officialCandidate = '<table class="nested"><thead><tr><th>Status</th><th>Reason</th><th>Version</th><th>Source</th></tr></thead><tbody>' + ($officialCandidates -join '') + '</tbody></table>'
         $parts += '<tr class="warn" style="' + (InlineStatusStyle 'warn') + '"><td>' + (HtmlCell $official.Plugin) + '</td><td>' + $officialWinner + '</td><td>' + $officialCandidate + '</td></tr>'
     }
 }
