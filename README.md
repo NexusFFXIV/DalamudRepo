@@ -5,11 +5,11 @@
 [![Update pluginmaster](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml/badge.svg)](https://github.com/NexusFFXIV/DalamudRepo/actions/workflows/update.yml)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Dalamud API](https://img.shields.io/badge/Dalamud_API-15-9D5BFF)](https://github.com/goatcorp/Dalamud)
-[![Build report](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/latest-report-status.json)](https://nexusffxiv.github.io/DalamudRepo/latest-report.html?v=37398827915)
+[![Build report](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/latest-report-status.json)](https://nexusffxiv.github.io/DalamudRepo/latest-report.html?v=37420861052)
 
 ## Latest build result
 
-The [latest build report](https://nexusffxiv.github.io/DalamudRepo/latest-report.html?v=37398827915) is the authoritative result of the
+The [latest build report](https://nexusffxiv.github.io/DalamudRepo/latest-report.html?v=37420861052) is the authoritative result of the
 most recent repository update. It shows which sources were reachable, how
 duplicates were resolved, which official plugins were excluded, how versions
 and API levels were checked, and which output files were generated. The report
@@ -83,7 +83,7 @@ Once a day, the automation checks the configured Dalamud repositories, collects
 their current plugin information, removes duplicates and entries that are
 officially provided by Dalamud, and rebuilds the repository files in the table
 above. It also checks plugin API information and download links where possible.
-The bot then updates the generated files and the [latest build report](https://nexusffxiv.github.io/DalamudRepo/latest-report.html?v=37398827915). The workflow badge at the top shows whether the
+The bot then updates the generated files and the [latest build report](https://nexusffxiv.github.io/DalamudRepo/latest-report.html?v=37420861052). The workflow badge at the top shows whether the
 most recent run succeeded.
 
 The same update can also run immediately when a configured plugin publishes a
@@ -124,4 +124,5 @@ Want to add a plugin, mirror another repo, or understand how the pipeline works?
 ## License
 
 [AGPL-3.0-only](LICENSE) — consistent with the rest of the NexusFFXIV org.
+
 
