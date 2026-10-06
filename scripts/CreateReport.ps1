@@ -52,13 +52,25 @@ function StatusRank([object]$item) {
     if ($status -match '^(EMPTY|API_MISSING|WARN|WARNING|FILTERED)') { return 2 }
     return 3
 }
+function InlineStatusStyle([string]$class) {
+    switch ($class) {
+        'ok'   { return 'color:#176b35;background-color:#effaf2' }
+        'warn' { return 'color:#856404;background-color:#fff8d8' }
+        'bad'  { return 'color:#a61b1b;background-color:#fff0f0' }
+        'beta' { return 'color:#7a4b00;background-color:#fff3d6' }
+        default { return '' }
+    }
+}
 function HtmlTable([string[]]$Headers, [object[]]$Items, [scriptblock]$Values, [switch]$CountDescending) {
     $head = ($Headers | ForEach-Object { '<th>' + (HtmlCell $_) + '</th>' }) -join ''
     $sort = @(@{Expression={ StatusRank $_ }; Ascending=$true })
     if ($CountDescending) { $sort += @{Expression={ [int]$_.Count }; Descending=$true} }
     $body = foreach ($item in (Rows $Items | Sort-Object $sort)) {
         $cells = & $Values $item | ForEach-Object { '<td>' + (HtmlValue $_) + '</td>' }
-        '<tr class="' + (StatusClass $item) + '">' + ($cells -join '') + '</tr>'
+        $class = StatusClass $item
+        $style = InlineStatusStyle $class
+        $styleAttribute = if ($style) { ' style="' + $style + '"' } else { '' }
+        '<tr class="' + $class + '"' + $styleAttribute + '>' + ($cells -join '') + '</tr>'
     }
     return '<table><thead><tr>' + $head + '</tr></thead><tbody>' + ($body -join '') + '</tbody></table>'
 }
@@ -115,7 +127,7 @@ $parts += '<p class="muted"><span class="legend-de">' + $officialRows.Count + ' 
 $parts += '<table><thead><tr><th>Plugin</th><th>Gewinner</th><th>Verworfene Kandidaten</th></tr></thead><tbody>'
 foreach ($d in (Rows $report.Deduplication | Sort-Object Plugin)) {
     $winner = if ($d.Winner -is [string]) { [pscustomobject]@{ Version = ''; Url = $d.Winner } } else { $d.Winner }
-    $winnerHtml = '<table class="nested"><thead><tr><th>Status</th><th>Bewertung</th><th>Version</th><th>Quelle</th></tr></thead><tbody><tr class="ok"><td>WINNER</td><td>' + (HtmlCell $winner.Reason) + '</td><td>' + (HtmlCell $winner.Version) + '</td><td>' + (HtmlValue $winner.Url) + '</td></tr></tbody></table>'
+    $winnerHtml = '<table class="nested"><thead><tr><th>Status</th><th>Bewertung</th><th>Version</th><th>Quelle</th></tr></thead><tbody><tr class="ok" style="' + (InlineStatusStyle 'ok') + '"><td>WINNER</td><td>' + (HtmlCell $winner.Reason) + '</td><td>' + (HtmlCell $winner.Version) + '</td><td>' + (HtmlValue $winner.Url) + '</td></tr></tbody></table>'
     $candidateRows = foreach ($candidate in @($d.Candidates | Where-Object { $_.Status -ne 'WINNER' })) {
         if ($candidate -is [string]) {
             '<tr><td>DROP</td><td></td><td></td><td>' + (HtmlValue $candidate) + '</td></tr>'
@@ -128,9 +140,9 @@ foreach ($d in (Rows $report.Deduplication | Sort-Object Plugin)) {
 }
 if ($officialRows.Count -gt 0) {
     foreach ($official in ($officialRows | Sort-Object Plugin, InternalName, PluginVersion, RepositoryUrl)) {
-        $officialWinner = '<table class="nested"><thead><tr><th>Status</th><th>Reason</th><th>Version</th><th>Source</th></tr></thead><tbody><tr class="warn"><td>DROPPED</td><td>OFFICIAL_MASTER</td><td>' + (HtmlCell $official.PluginVersion) + '</td><td>' + (HtmlValue $official.SourceFile) + '</td></tr></tbody></table>'
+        $officialWinner = '<table class="nested"><thead><tr><th>Status</th><th>Reason</th><th>Version</th><th>Source</th></tr></thead><tbody><tr class="warn" style="' + (InlineStatusStyle 'warn') + '"><td>DROPPED</td><td>OFFICIAL_MASTER</td><td>' + (HtmlCell $official.PluginVersion) + '</td><td>' + (HtmlValue $official.SourceFile) + '</td></tr></tbody></table>'
         $officialCandidate = '<table class="nested"><thead><tr><th>Status</th><th>Reason</th><th>Version</th><th>Source</th></tr></thead><tbody><tr><td>CANDIDATE</td><td>EXTERNAL</td><td>' + (HtmlCell $official.PluginVersion) + '</td><td>' + (HtmlValue $official.RepositoryUrl) + '</td></tr></tbody></table>'
-        $parts += '<tr class="warn"><td>' + (HtmlCell $official.Plugin) + '</td><td>' + $officialWinner + '</td><td>' + $officialCandidate + '</td></tr>'
+        $parts += '<tr class="warn" style="' + (InlineStatusStyle 'warn') + '"><td>' + (HtmlCell $official.Plugin) + '</td><td>' + $officialWinner + '</td><td>' + $officialCandidate + '</td></tr>'
     }
 }
 $parts += '</tbody></table>'
