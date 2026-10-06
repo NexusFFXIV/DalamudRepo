@@ -33,7 +33,7 @@ the report first when you want to verify what the repository currently contains.
 <td><a href="CONTRIBUTING.md#pluginsyml--our-own-plugins">NexusFFXIV plugins only</a></td>
 </tr>
 <tr>
-<td colspan="3"><pre style="margin:0;padding:0;line-height:1.2"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json</code></pre></td>
+<td colspan="3"><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/pluginmaster.json</code></a></td>
 </tr>
 <tr>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json"><code>common-repo.json</code></a></td>
@@ -41,7 +41,7 @@ the report first when you want to verify what the repository currently contains.
 <td><a href="CONTRIBUTING.md#external-reposyml--third-party-dalamud-repos">Plugins from selected third-party repos</a></td>
 </tr>
 <tr>
-<td colspan="3"><pre style="margin:0;padding:0;line-height:1.2"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json</code></pre></td>
+<td colspan="3"><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/common-repo.json</code></a></td>
 </tr>
 <tr>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json"><code>external-repo.json</code></a></td>
@@ -49,7 +49,7 @@ the report first when you want to verify what the repository currently contains.
 <td><a href="CONTRIBUTING.md#external-pluginsyml--single-third-party-plugins">Individual third-party plugins</a></td>
 </tr>
 <tr>
-<td colspan="3"><pre style="margin:0;padding:0;line-height:1.2"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json</code></pre></td>
+<td colspan="3"><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/external-repo.json</code></a></td>
 </tr>
 <tr>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json"><code>all-repo.json</code></a></td>
@@ -57,7 +57,7 @@ the report first when you want to verify what the repository currently contains.
 <td><strong>Everything above — default subscribe URL</strong></td>
 </tr>
 <tr>
-<td colspan="3"><pre style="margin:0;padding:0;line-height:1.2"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json</code></pre></td>
+<td colspan="3"><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json</code></a></td>
 </tr>
 <tr>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json"><code>gen-repo.json</code></a></td>
@@ -65,7 +65,7 @@ the report first when you want to verify what the repository currently contains.
 <td><a href="CONTRIBUTING.md#external-repos-genyml--auto-discovered-third-party-repos">Auto-discovered third-party repos (standalone, not in <code>all-repo</code>)</a></td>
 </tr>
 <tr>
-<td colspan="3"><pre style="margin:0;padding:0;line-height:1.2"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json</code></pre></td>
+<td colspan="3"><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/gen-repo.json</code></a></td>
 </tr>
 <tr>
 <td><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json"><code>full-repo.json</code></a></td>
@@ -73,7 +73,7 @@ the report first when you want to verify what the repository currently contains.
 <td><strong>Everything above, plus auto-discovered sources</strong></td>
 </tr>
 <tr>
-<td colspan="3"><pre style="margin:0;padding:0;line-height:1.2"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json</code></pre></td>
+<td colspan="3"><a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/full-repo.json</code></a></td>
 </tr>
 </tbody>
 </table>
