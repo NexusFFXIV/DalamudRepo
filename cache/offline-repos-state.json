@@ -56,8 +56,8 @@
     "lastFailure": "2026-09-21T04:29:09.9435985Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/h1arc/plugin/main/repo.json": {
-    "failures": 4,
-    "lastFailure": "2026-10-06T01:13:21.7347506Z"
+    "failures": 5,
+    "lastFailure": "2026-10-06T01:19:07.3745734Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Kaedemi/MakePlacePlugin/master/MakePlacePlugin.json": {
     "failures": 10,
