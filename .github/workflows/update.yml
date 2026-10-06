@@ -39,6 +39,13 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
+concurrency:
+  # Several source/script commits can land close together. Keep only the
+  # newest rebuild active so concurrent runs cannot open conflicting refresh
+  # PRs from the same main branch state.
+  group: dalamudrepo-update-main
+  cancel-in-progress: true
+
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
