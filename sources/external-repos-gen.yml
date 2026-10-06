@@ -514,6 +514,8 @@ externalRepos:
   - https://raw.githubusercontent.com/AEBus/FFXIV-Login-Commands/master/repo.json
   - https://raw.githubusercontent.com/44451516-ff14/DalamudPlugins/master/pluginmaster.json
   - https://raw.githubusercontent.com/0ceal0t/Dalamud-VFXEditor/main/repo.json
+  - https://raw.githubusercontent.com/Koenari/MyDalamudPlugins/main/pluginmaster.json
+  - https://raw.githubusercontent.com/Nik-Potokar/MyDalamudPlugins/main/pluginmaster.json
 
   # ─── Puni.sh (puni.sh + love.puni.sh) ──────────────────────────────────────
   # Discovery directory: https://puni.sh/directory/repositories
@@ -526,6 +528,7 @@ externalRepos:
   - https://puni.sh/api/repository/asuna
   - https://puni.sh/api/repository/boxu
   - https://puni.sh/api/repository/croizat
+  - https://puni.sh/api/repository/det
   - https://puni.sh/api/repository/erdelf
   - https://puni.sh/api/repository/gid
   - https://puni.sh/api/repository/glyceri

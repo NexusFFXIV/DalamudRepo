@@ -790,7 +790,11 @@ function Collect-RepoUrlsPool {
         } catch { $resp = $null }
         if (-not $resp) {
             $repoReports += [pscustomobject]@{ Status = "EMPTY"; Count = 0; Url = $url }
-            $unreachable += $url
+            # A reachable endpoint with an empty or non-plugin payload is not
+            # an offline repository. Keep it in the source list and clear any
+            # previous failure counter; only transport/HTTP failures belong in
+            # the offline archive.
+            $reachable += $url
             continue
         }
         $items = if ($resp -is [System.Array]) { $resp } else { @($resp) }
@@ -805,7 +809,11 @@ function Collect-RepoUrlsPool {
         }
         if ($hereCount -eq 0) {
             $repoReports += [pscustomobject]@{ Status = "EMPTY"; Count = 0; Url = $url }
-            $unreachable += $url
+            # Empty repositories are valid reachable responses (for example
+            # an intentionally empty Puni feed), not evidence that the URL is
+            # offline. They must remain configured and must not accumulate
+            # offline grace-run failures.
+            $reachable += $url
         } else {
             $repoReports += [pscustomobject]@{ Status = "OK"; Count = $hereCount; Url = $url }
             $reachable += $url

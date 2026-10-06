@@ -1,8 +1,4 @@
 {
-  "external-repos-gen|https://puni.sh/api/repository/det": {
-    "failures": 10,
-    "lastFailure": "2026-10-05T23:39:50.3601704Z"
-  },
   "external-repos-gen|https://raw.githubusercontent.com/AjisaiMirai/plugins/main/repo.json": {
     "failures": 10,
     "lastFailure": "2026-09-21T04:29:09.9163106Z"
@@ -63,10 +59,6 @@
     "failures": 10,
     "lastFailure": "2026-09-21T04:29:09.9453553Z"
   },
-  "external-repos-gen|https://raw.githubusercontent.com/Koenari/MyDalamudPlugins/main/pluginmaster.json": {
-    "failures": 10,
-    "lastFailure": "2026-10-05T23:42:59.146398Z"
-  },
   "external-repos-gen|https://raw.githubusercontent.com/lolhackjp/MyDalamudPlugins/main/pluginmaster.json": {
     "failures": 10,
     "lastFailure": "2026-09-21T04:29:09.9471394Z"
@@ -86,10 +78,6 @@
   "external-repos-gen|https://raw.githubusercontent.com/neonmaus/RoleplayersToolbox/main/repo.json": {
     "failures": 10,
     "lastFailure": "2026-09-21T04:29:09.9592459Z"
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/Nik-Potokar/MyDalamudPlugins/main/pluginmaster.json": {
-    "failures": 10,
-    "lastFailure": "2026-10-05T23:39:50.4386231Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Nik-Potokar/Personal/main/pluginmaster.json": {
     "failures": 10,

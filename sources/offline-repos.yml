@@ -3,7 +3,6 @@
 offlineRepos:
   external-repos: []
   external-repos-gen:
-    - https://puni.sh/api/repository/det
     - https://raw.githubusercontent.com/AjisaiMirai/plugins/main/repo.json
     - https://raw.githubusercontent.com/aka-tamagotchi/EgirlPlugins/main/repo.json
     - https://raw.githubusercontent.com/Ank164/DalamudRepo/main/pluginmaster.json
@@ -19,13 +18,11 @@ offlineRepos:
     - https://raw.githubusercontent.com/Eclipsum/Astro/main/Astro/Astro.json
     - https://raw.githubusercontent.com/EtheirysIO/repo/master/pluginmaster.json
     - https://raw.githubusercontent.com/Kaedemi/MakePlacePlugin/master/MakePlacePlugin.json
-    - https://raw.githubusercontent.com/Koenari/MyDalamudPlugins/main/pluginmaster.json
     - https://raw.githubusercontent.com/lolhackjp/MyDalamudPlugins/main/pluginmaster.json
     - https://raw.githubusercontent.com/lolhackjp/sl/main/pluginmaster.json
     - https://raw.githubusercontent.com/Matthew-Rennie/BisBunToolkit-distrib/main/pluginmaster.json
     - https://raw.githubusercontent.com/mokyu/MakePlacePlugin/master/MakePlacePlugin.json
     - https://raw.githubusercontent.com/neonmaus/RoleplayersToolbox/main/repo.json
-    - https://raw.githubusercontent.com/Nik-Potokar/MyDalamudPlugins/main/pluginmaster.json
     - https://raw.githubusercontent.com/Nik-Potokar/Personal/main/pluginmaster.json
     - https://raw.githubusercontent.com/postcards114/Hypnotoad-Plugin/master/PluginDir/pluginmaster.json
     - https://raw.githubusercontent.com/PunishedPineapple/DalamudPluginRepo/main/pluginmaster.json
