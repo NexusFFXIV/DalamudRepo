@@ -117,6 +117,14 @@ jobs:
           # Stage first so newly-created files (not in HEAD) also show up in
           # the diff — plain `git diff` would miss untracked outputs.
           git add -- $TRACKED_FILES
+          # Never let a generated refresh branch carry workflow changes. The
+          # repository token cannot push workflow files without the dedicated
+          # Workflows permission, and these files are outside the refresh
+          # output scope anyway.
+          git restore --staged -- .github/workflows 2>/dev/null || true
+          git restore --source=HEAD -- .github/workflows
+          echo "Staged refresh files:"
+          git diff --cached --name-only
           if git diff --cached --quiet -- $TRACKED_FILES; then
             echo "No changes — nothing to commit."
             echo "changed=false" >> "$GITHUB_OUTPUT"
