@@ -86,7 +86,12 @@ jobs:
             ./scripts/CreateReport.ps1 -ReportPath build-report.json -Format Cli
             Copy-Item -LiteralPath build-report.html -Destination latest-report.html -Force
             ./scripts/CreateReportStatus.ps1 -ReportPath build-report.json -OutputPath latest-report-status.json
-            if (-not (git diff --quiet -- latest-report.html latest-report-status.json)) {
+            # `git diff --quiet` returns exit code 1 when changes exist.  In
+            # PowerShell that native non-zero status can fail the whole step,
+            # even though it is the expected branch here.  Query the changed
+            # paths instead; `git diff --name-only` always exits successfully.
+            $reportChanged = @(git diff --name-only -- latest-report.html latest-report-status.json).Count -gt 0
+            if ($reportChanged) {
               $reportLink = "https://nexusffxiv.github.io/DalamudRepo/latest-report.html?v=$env:GITHUB_RUN_ID"
               (Get-Content -LiteralPath README.md -Raw -Encoding UTF8) -replace 'https://nexusffxiv\.github\.io/DalamudRepo/latest-report\.html(?:\?[^)\s]*)?', $reportLink | Set-Content -LiteralPath README.md -Encoding UTF8
             }
