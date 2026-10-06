@@ -83,9 +83,7 @@ the report first when you want to verify what the repository currently contains.
 1. Open Dalamud's **Settings → Experimental** tab (the ⚠️ icon in the Settings window).
 2. Under **Custom Plugin Repositories**, paste the default URL:
 
-   ```
-   https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json
-   ```
+   <a href="https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json"><code>https://raw.githubusercontent.com/NexusFFXIV/DalamudRepo/main/all-repo.json</code></a>
 
 3. Tick the new entry as **Enabled** and hit Save.
 4. Open `/xlplugins`, switch to **All Plugins**, search for the plugin you want, click Install.
