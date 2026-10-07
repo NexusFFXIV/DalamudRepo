@@ -15,6 +15,10 @@
     "failures": 10,
     "lastFailure": "2026-09-21T04:29:09.9221815Z"
   },
+  "external-repos-gen|https://raw.githubusercontent.com/ArcaneAj/WachuMakeyMaking/master/repo.json": {
+    "failures": 1,
+    "lastFailure": "2026-10-07T05:29:22.5171083Z"
+  },
   "external-repos-gen|https://raw.githubusercontent.com/aRkker/DalamudPlugins/master/pluginmaster.json": {
     "failures": 10,
     "lastFailure": "2026-09-21T04:29:09.9239718Z"
@@ -56,8 +60,8 @@
     "lastFailure": "2026-09-21T04:29:09.9435985Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/h1arc/plugin/main/repo.json": {
-    "failures": 7,
-    "lastFailure": "2026-10-06T05:56:30.9850702Z"
+    "failures": 8,
+    "lastFailure": "2026-10-07T05:29:22.5765005Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/Kaedemi/MakePlacePlugin/master/MakePlacePlugin.json": {
     "failures": 10,
@@ -126,6 +130,10 @@
   "external-repos-gen|https://raw.githubusercontent.com/xPumaa/DalamudPlugins/main/pluginmaster.json": {
     "failures": 10,
     "lastFailure": "2026-09-21T04:29:09.9765058Z"
+  },
+  "external-repos-gen|https://raw.githubusercontent.com/Yarukon/MakePlacePlugin/master/MakePlacePlugin.json": {
+    "failures": 1,
+    "lastFailure": "2026-10-07T05:29:22.5784878Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/ykoneee/CraftingList/main/CraftingList/repo.json": {
     "failures": 10,
