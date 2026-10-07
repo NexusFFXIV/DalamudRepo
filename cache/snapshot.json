@@ -71,7 +71,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.1.0.3",
+    "TestingAssemblyVersion": "1.1.0.4",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-Aetherphone/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -580,17 +580,6 @@
     "TestingAssemblyVersion": "1.0.32.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/Aschmies/AschyQOL/releases/download/ba-v1.0.32/BagAssistant-ba-v1.0.32.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
-  "BardToolbox": {
-    "InternalName": "BardToolbox",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "3.0.1.0",
-    "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://raw.githubusercontent.com/BardToolbox/BardToolbox-Release/master/plugins/BardToolbox/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
   "BartenderHelper": {
@@ -2782,6 +2771,17 @@
     "TestingDownloadUrl": "https://github.com/psikerfy/MitigationPlanner/releases/download/test_2/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
+  "Mnemosyne": {
+    "InternalName": "Mnemosyne",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "0.1.0.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/RoseOfficial/Mnemosyne/releases/download/v0.1.0/Mnemosyne.zip",
+    "TestingAssemblyVersionFromZip": "0.1.0.0"
+  },
   "ModSettingCommands": {
     "InternalName": "ModSettingCommands",
     "AssemblyVersion": null,
@@ -4691,10 +4691,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.0.0.14",
+    "TestingAssemblyVersion": "0.0.0.18",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/aniachan/xivclone/releases/download/0.0.0.14/xivclone.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/aniachan/xivclone/releases/download/0.0.0.18/xivclone.zip",
+    "TestingAssemblyVersionFromZip": "0.0.0.18"
   },
   "XIVComboExpanded": {
     "InternalName": "XIVComboExpanded",
