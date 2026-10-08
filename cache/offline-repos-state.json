@@ -1,14 +1,14 @@
 {
   "external-repos-gen|https://raw.githubusercontent.com/ArcaneAj/WachuMakeyMaking/master/repo.json": {
-    "failures": 3,
+    "failures": 4,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-10-08T09:22:18.2975962Z",
+    "lastFailure": "2026-10-08T09:44:58.7864407Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/Yarukon/MakePlacePlugin/master/MakePlacePlugin.json": {
-    "failures": 3,
+    "failures": 4,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-10-08T09:22:18.3167454Z",
+    "lastFailure": "2026-10-08T09:44:58.7893651Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/notYuta/ShiroUtils/main/repo.json": {
@@ -24,15 +24,27 @@
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/h1arc/plugin/main/repo.json": {
-    "failures": 10,
+    "failures": 11,
     "firstFailure": "2026-10-06T00:50:45Z",
-    "lastFailure": "2026-10-08T09:22:18.3006650Z",
+    "lastFailure": "2026-10-08T09:43:57.4478336Z",
+    "disabled": false
+  },
+  "external-repos-gen|https://raw.githubusercontent.com/dodingdaga/DalamudPlugins/main/MidiBard.json": {
+    "failures": 42,
+    "firstFailure": "2026-09-17T11:03:10Z",
+    "lastFailure": "2026-10-08T09:20:55.9885624Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/Kaedemi/MakePlacePlugin/master/MakePlacePlugin.json": {
     "failures": 42,
     "firstFailure": "2026-09-17T11:03:10Z",
     "lastFailure": "2026-10-08T09:20:56.1348372Z",
+    "disabled": false
+  },
+  "external-repos-gen|https://raw.githubusercontent.com/mokyu/MakePlacePlugin/master/MakePlacePlugin.json": {
+    "failures": 42,
+    "firstFailure": "2026-09-17T11:03:10Z",
+    "lastFailure": "2026-10-08T09:20:56.4055531Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/Nik-Potokar/Personal/main/pluginmaster.json": {
@@ -45,18 +57,6 @@
     "failures": 42,
     "firstFailure": "2026-09-17T11:03:10Z",
     "lastFailure": "2026-10-08T09:20:56.8976028Z",
-    "disabled": false
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/dodingdaga/DalamudPlugins/main/MidiBard.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:55.9885624Z",
-    "disabled": false
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/mokyu/MakePlacePlugin/master/MakePlacePlugin.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:56.4055531Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/vamdoza/Dalamud-Repo/main/repo.json": {
@@ -93,6 +93,13 @@
     "disabled": true,
     "disabledReason": "no replacement candidate found yet"
   },
+  "external-repos-gen|https://raw.githubusercontent.com/aka-tamagotchi/EgirlPlugins/main/repo.json": {
+    "failures": 42,
+    "firstFailure": "2026-09-17T11:03:10Z",
+    "lastFailure": "2026-10-08T09:20:55.4063253Z",
+    "disabled": true,
+    "disabledReason": "no replacement candidate found yet"
+  },
   "external-repos-gen|https://raw.githubusercontent.com/Ank164/DalamudRepo/main/pluginmaster.json": {
     "failures": 42,
     "firstFailure": "2026-09-17T11:03:10Z",
@@ -107,34 +114,6 @@
     "disabled": true,
     "disabledReason": "no replacement candidate found yet"
   },
-  "external-repos-gen|https://raw.githubusercontent.com/Eclipsum/Astro/main/Astro/Astro.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:56.0366480Z",
-    "disabled": true,
-    "disabledReason": "no replacement candidate found yet"
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/EtheirysIO/repo/master/pluginmaster.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:56.0792883Z",
-    "disabled": true,
-    "disabledReason": "no replacement candidate found yet"
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/Matthew-Rennie/BisBunToolkit-distrib/main/pluginmaster.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:56.3562867Z",
-    "disabled": true,
-    "disabledReason": "no replacement candidate found yet"
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/PunishedPineapple/DalamudPluginRepo/main/pluginmaster.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:56.8224167Z",
-    "disabled": true,
-    "disabledReason": "no replacement candidate found yet"
-  },
   "external-repos-gen|https://raw.githubusercontent.com/aRkker/DalamudPlugins/master/pluginmaster.json": {
     "failures": 42,
     "firstFailure": "2026-09-17T11:03:10Z",
@@ -142,17 +121,10 @@
     "disabled": true,
     "disabledReason": "no replacement candidate found yet"
   },
-  "external-repos-gen|https://raw.githubusercontent.com/aka-tamagotchi/EgirlPlugins/main/repo.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:55.4063253Z",
-    "disabled": true,
-    "disabledReason": "no replacement candidate found yet"
-  },
   "external-repos-gen|https://raw.githubusercontent.com/ars-magna/MyDalamudPlugins/master/plugins/pluginmaster.json": {
     "failures": 42,
     "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:55.6297180Z",
+    "lastFailure": "2026-10-08T09:20:55.629718Z",
     "disabled": true,
     "disabledReason": "no replacement candidate found yet"
   },
@@ -184,6 +156,20 @@
     "disabled": true,
     "disabledReason": "no replacement candidate found yet"
   },
+  "external-repos-gen|https://raw.githubusercontent.com/Eclipsum/Astro/main/Astro/Astro.json": {
+    "failures": 42,
+    "firstFailure": "2026-09-17T11:03:10Z",
+    "lastFailure": "2026-10-08T09:20:56.036648Z",
+    "disabled": true,
+    "disabledReason": "no replacement candidate found yet"
+  },
+  "external-repos-gen|https://raw.githubusercontent.com/EtheirysIO/repo/master/pluginmaster.json": {
+    "failures": 42,
+    "firstFailure": "2026-09-17T11:03:10Z",
+    "lastFailure": "2026-10-08T09:20:56.0792883Z",
+    "disabled": true,
+    "disabledReason": "no replacement candidate found yet"
+  },
   "external-repos-gen|https://raw.githubusercontent.com/lolhackjp/MyDalamudPlugins/main/pluginmaster.json": {
     "failures": 42,
     "firstFailure": "2026-09-17T11:03:10Z",
@@ -198,6 +184,13 @@
     "disabled": true,
     "disabledReason": "no replacement candidate found yet"
   },
+  "external-repos-gen|https://raw.githubusercontent.com/Matthew-Rennie/BisBunToolkit-distrib/main/pluginmaster.json": {
+    "failures": 42,
+    "firstFailure": "2026-09-17T11:03:10Z",
+    "lastFailure": "2026-10-08T09:20:56.3562867Z",
+    "disabled": true,
+    "disabledReason": "no replacement candidate found yet"
+  },
   "external-repos-gen|https://raw.githubusercontent.com/neonmaus/RoleplayersToolbox/main/repo.json": {
     "failures": 42,
     "firstFailure": "2026-09-17T11:03:10Z",
@@ -209,6 +202,13 @@
     "failures": 42,
     "firstFailure": "2026-09-17T11:03:10Z",
     "lastFailure": "2026-10-08T09:20:56.7439747Z",
+    "disabled": true,
+    "disabledReason": "no replacement candidate found yet"
+  },
+  "external-repos-gen|https://raw.githubusercontent.com/PunishedPineapple/DalamudPluginRepo/main/pluginmaster.json": {
+    "failures": 42,
+    "firstFailure": "2026-09-17T11:03:10Z",
+    "lastFailure": "2026-10-08T09:20:56.8224167Z",
     "disabled": true,
     "disabledReason": "no replacement candidate found yet"
   },
