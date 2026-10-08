@@ -154,16 +154,6 @@
     "firstFailure": "2026-09-17T11:03:10Z",
     "lastFailure": "2026-10-08T05:38:02Z"
   },
-  "external-repos-gen|https://raw.githubusercontent.com/xPumaa/AutoJailMarker/master/AutoJailMarker/repo.json": {
-    "failures": 41,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T05:38:02Z"
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/xPumaa/DalamudPlugins/main/pluginmaster.json": {
-    "failures": 41,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T05:38:02Z"
-  },
   "external-repos-gen|https://raw.githubusercontent.com/Yarukon/MakePlacePlugin/master/MakePlacePlugin.json": {
     "failures": 2,
     "firstFailure": "2026-10-07T05:29:37Z",
