@@ -33,6 +33,8 @@ externalRepos:
   - https://raw.githubusercontent.com/CharlieDelune/DalamudPlugins/master/repo.json
   - https://raw.githubusercontent.com/Cloa/resonant/main/repo/latest.json
   - https://raw.githubusercontent.com/Drakansoul/DisPlace/master/DisPlacePlugin.json
+
+  - https://plugins.xivhub.net/pluginmaster.json
   - https://raw.githubusercontent.com/DreanorFFXIV/MyDalamudPlugins/master/pluginmaster.json
   - https://raw.githubusercontent.com/FFXIV-CombatReborn/CombatRebornRepo/main/pluginmaster.json
   - https://raw.githubusercontent.com/FFXIV-CombatReborn/RotationSolverReborn/main/manifest.json
