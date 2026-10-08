@@ -34,7 +34,6 @@ externalRepos:
   - https://raw.githubusercontent.com/Cloa/resonant/main/repo/latest.json
   - https://raw.githubusercontent.com/Drakansoul/DisPlace/master/DisPlacePlugin.json
 
-  - https://plugins.xivhub.net/pluginmaster.json
   - https://raw.githubusercontent.com/DreanorFFXIV/MyDalamudPlugins/master/pluginmaster.json
   - https://raw.githubusercontent.com/FFXIV-CombatReborn/CombatRebornRepo/main/pluginmaster.json
   - https://raw.githubusercontent.com/FFXIV-CombatReborn/RotationSolverReborn/main/manifest.json
@@ -560,4 +559,5 @@ externalRepos:
   - https://karou.ca/xiv/repo.json
   - https://kirisamevanilla.github.io/ffxiv/dalamudrepo.json
   - https://plugin.lop-sync.com/repo.json
+  - https://plugins.xivhub.net/pluginmaster.json
   - https://repo.lightless-sync.org
