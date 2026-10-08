@@ -29,42 +29,6 @@
     "lastFailure": "2026-10-08T09:22:18.3006650Z",
     "disabled": false
   },
-  "external-repos-gen|https://raw.githubusercontent.com/Kaedemi/MakePlacePlugin/master/MakePlacePlugin.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:56.1348372Z",
-    "disabled": false
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/Nik-Potokar/Personal/main/pluginmaster.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:56.6147285Z",
-    "disabled": false
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/RikaKagurasaka/MyDalamudPlugins/main/pluginmaster.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:56.8976028Z",
-    "disabled": false
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/dodingdaga/DalamudPlugins/main/MidiBard.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:55.9885624Z",
-    "disabled": false
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/mokyu/MakePlacePlugin/master/MakePlacePlugin.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:56.4055531Z",
-    "disabled": false
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/vamdoza/Dalamud-Repo/main/repo.json": {
-    "failures": 42,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:56.9379079Z",
-    "disabled": false
-  },
   "external-repos-gen|https://raw.githubusercontent.com/BrakusTapus/PluginHUB/main/pluginmaster.json": {
     "failures": 35,
     "firstFailure": "2026-09-20T00:27:51Z",
