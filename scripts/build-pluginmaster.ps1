@@ -177,6 +177,11 @@ foreach ($file in $sourceFiles) {
             if (Test-RepositoryReachable $offlineUrl) {
                 Restore-OfflineRepository -Section $offlineSection -Url $offlineUrl -SourcePath $sourcePath
                 $yaml.externalRepos = @($yaml.externalRepos) + $offlineUrl
+            } else {
+                # The URL is already archived, but this recovery probe is still
+                # a real failed check. Keep its failure history and lastFailure
+                # timestamp current without re-running the archive transition.
+                Register-OfflineFailure -Section $offlineSection -Url $offlineUrl -SourcePath $sourcePath -AlreadyArchived
             }
         }
         # A pull request may re-introduce an URL that is already archived, or

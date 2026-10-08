@@ -186,7 +186,12 @@ function Restore-OfflineRepository {
 }
 
 function Register-OfflineFailure {
-    param([string]$Section, [string]$Url, [string]$SourcePath)
+    param(
+        [string]$Section,
+        [string]$Url,
+        [string]$SourcePath,
+        [switch]$AlreadyArchived
+    )
     $key = Get-OfflineKey $Section $Url
     $entry = if ($script:OfflineState.ContainsKey($key)) { $script:OfflineState[$key] } else { [ordered]@{ failures = 0 } }
     $now = [DateTime]::UtcNow.ToString('o')
@@ -199,7 +204,9 @@ function Register-OfflineFailure {
     $script:OfflineState[$key] = $entry
     # Persist each probe result so a cancelled run does not reset the grace counter.
     Save-OfflineState
-    if ($entry.failures -lt $script:OfflineGraceRuns) { return }
+    # Recovery probes already belong to the archive. Keep counting and update
+    # timestamps, but do not repeat the archive transition on every run.
+    if ($AlreadyArchived -or $entry.failures -lt $script:OfflineGraceRuns) { return }
 
     # Persist the archive first. If removal from the source is interrupted,
     # the next run safely filters the duplicate until this transition finishes.
