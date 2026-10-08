@@ -67,15 +67,6 @@ function Initialize-OfflineRepos {
         }
     }
 
-    # `disabled` is an explicit opt-out for repositories that are permanently
-    # offline or have no known replacement. Older state entries default to the
-    # normal recovery behaviour.
-    foreach ($key in @($script:OfflineState.Keys)) {
-        $entry = $script:OfflineState[$key]
-        if ($entry -is [System.Collections.IDictionary] -and -not $entry.ContainsKey('disabled')) {
-            $entry.disabled = $false
-        }
-    }
 }
 
 function Get-OfflineKey {
@@ -211,7 +202,7 @@ function Register-OfflineFailure {
         [switch]$AlreadyArchived
     )
     $key = Get-OfflineKey $Section $Url
-    $entry = if ($script:OfflineState.ContainsKey($key)) { $script:OfflineState[$key] } else { [ordered]@{ failures = 0 } }
+    $entry = if ($script:OfflineState.ContainsKey($key)) { $script:OfflineState[$key] } else { [ordered]@{ failures = 0; disabled = $false } }
     $now = [DateTime]::UtcNow.ToString('o')
     # Keep the first observed failure permanently so the archive can show how
     # long a repository has been failing. Existing entries are migrated in the
