@@ -437,7 +437,7 @@
     "TestingAssemblyVersion": "0.2.2.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://edgl.dev/share/zhyra/autopincher/0.2.2.0.zip",
-    "TestingAssemblyVersionFromZip": "0.2.2.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "AutoPvpSeriesGrind": {
     "InternalName": "AutoPvpSeriesGrind",
@@ -679,7 +679,7 @@
     "TestingAssemblyVersion": "0.6.2.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://edgl.dev/share/zhyra/blackjackadvisor/0.6.2.0.zip",
-    "TestingAssemblyVersionFromZip": "0.6.2.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "BlackjackSolver": {
     "InternalName": "BlackjackSolver",
@@ -1603,7 +1603,7 @@
     "TestingAssemblyVersion": "0.1.8.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://edgl.dev/share/zhyra/fetetimer/0.1.8.0.zip",
-    "TestingAssemblyVersionFromZip": "0.1.8.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "FFFeudPlugin": {
     "InternalName": "FFFeudPlugin",
@@ -1900,7 +1900,7 @@
     "TestingAssemblyVersion": "0.14.14.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://edgl.dev/share/zhyra/gardener/0.14.14.0.zip",
-    "TestingAssemblyVersionFromZip": "0.14.14.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "GateNotifier": {
     "InternalName": "GateNotifier",
@@ -2043,7 +2043,7 @@
     "TestingAssemblyVersion": "0.2.6.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://edgl.dev/share/zhyra/glamourlink/0.2.6.0.zip",
-    "TestingAssemblyVersionFromZip": "0.2.6.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "GlamourThis": {
     "InternalName": "GlamourThis",
@@ -2329,7 +2329,7 @@
     "TestingAssemblyVersion": "0.8.1.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://edgl.dev/share/zhyra/inventorycleaner/0.8.1.0.zip",
-    "TestingAssemblyVersionFromZip": "0.8.1.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "Inviter": {
     "InternalName": "Inviter",
@@ -3869,7 +3869,7 @@
     "TestingAssemblyVersion": "0.11.3.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://edgl.dev/share/zhyra/retainerreach/0.11.3.0.zip",
-    "TestingAssemblyVersionFromZip": "0.11.3.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "RightClickSearchInfo": {
     "InternalName": "RightClickSearchInfo",
@@ -3946,7 +3946,7 @@
     "TestingAssemblyVersion": "0.8.7.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://edgl.dev/share/zhyra/sealhunter/0.8.7.0.zip",
-    "TestingAssemblyVersionFromZip": "0.8.7.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "Search Comment (Ultimate)": {
     "InternalName": "Search Comment (Ultimate)",

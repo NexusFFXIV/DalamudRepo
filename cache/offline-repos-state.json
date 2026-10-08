@@ -1,14 +1,14 @@
 {
   "external-repos-gen|https://raw.githubusercontent.com/ArcaneAj/WachuMakeyMaking/master/repo.json": {
-    "failures": 3,
+    "failures": 4,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-10-08T09:22:18.2975962Z",
+    "lastFailure": "2026-10-08T09:44:58.7864407Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/Yarukon/MakePlacePlugin/master/MakePlacePlugin.json": {
-    "failures": 3,
+    "failures": 4,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-10-08T09:22:18.3167454Z",
+    "lastFailure": "2026-10-08T09:44:58.7893651Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/notYuta/ShiroUtils/main/repo.json": {
@@ -24,9 +24,9 @@
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/h1arc/plugin/main/repo.json": {
-    "failures": 10,
+    "failures": 11,
     "firstFailure": "2026-10-06T00:50:45Z",
-    "lastFailure": "2026-10-08T09:22:18.3006650Z",
+    "lastFailure": "2026-10-08T09:43:57.4478336Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/BrakusTapus/PluginHUB/main/pluginmaster.json": {
@@ -74,7 +74,7 @@
   "external-repos-gen|https://raw.githubusercontent.com/Eclipsum/Astro/main/Astro/Astro.json": {
     "failures": 42,
     "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:56.0366480Z",
+    "lastFailure": "2026-10-08T09:20:56.036648Z",
     "disabled": true,
     "disabledReason": "no replacement candidate found yet"
   },
@@ -116,7 +116,7 @@
   "external-repos-gen|https://raw.githubusercontent.com/ars-magna/MyDalamudPlugins/master/plugins/pluginmaster.json": {
     "failures": 42,
     "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T09:20:55.6297180Z",
+    "lastFailure": "2026-10-08T09:20:55.629718Z",
     "disabled": true,
     "disabledReason": "no replacement candidate found yet"
   },
