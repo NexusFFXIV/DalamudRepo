@@ -173,10 +173,5 @@
     "failures": 41,
     "firstFailure": "2026-09-17T11:03:10Z",
     "lastFailure": "2026-10-08T05:38:02Z"
-  },
-  "external-repos-gen|https://raw.githubusercontent.com/ZhyraPlugins/repo/main/plugins.json": {
-    "failures": 41,
-    "firstFailure": "2026-09-17T11:03:10Z",
-    "lastFailure": "2026-10-08T05:38:02Z"
   }
 }
