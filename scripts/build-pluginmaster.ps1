@@ -380,6 +380,17 @@ $sourceRows = @(
             $_.Group | Sort-Object @{ Expression = { if ($_.Status -eq 'OK') { 0 } else { 1 } } }, Count -Descending | Select-Object -First 1
         }
 )
+$offlineStateRows = @(
+    foreach ($stateEntry in @($script:OfflineState.GetEnumerator())) {
+        [pscustomobject]@{
+            Key = [string]$stateEntry.Key
+            Failures = [int]$stateEntry.Value.failures
+            FirstFailure = [string]$stateEntry.Value.firstFailure
+            LastFailure = [string]$stateEntry.Value.lastFailure
+            Disabled = ($stateEntry.Value.disabled -eq $true)
+        }
+    }
+)
 $structuredReport = [ordered]@{
     GeneratedAt = (Get-Date).ToUniversalTime().ToString('o')
     Sources = $sourceRows
@@ -388,6 +399,7 @@ $structuredReport = [ordered]@{
     ZipFallback = @($zipReportRows)
     OfficialExclusions = @($script:OfficialRemoved)
     OfficialMaster = @($officialMasterEntries)
+    OfflineState = $offlineStateRows
     Outputs = @($outputs | ForEach-Object { [pscustomobject]@{ Name = $_.name; Count = $_.count; Status = if ($_.enabled) { 'OK' } else { 'SKIPPED' } } })
     Summary = [ordered]@{
         Filtered = [int]$totalFiltered

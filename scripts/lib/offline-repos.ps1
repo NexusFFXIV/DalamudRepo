@@ -174,7 +174,11 @@ function Save-OfflineRepos {
 
 function Save-OfflineState {
     $sorted = [ordered]@{}
-    foreach ($key in ($script:OfflineState.Keys | Sort-Object)) { $sorted[$key] = $script:OfflineState[$key] }
+    $orderedKeys = $script:OfflineState.Keys | Sort-Object `
+        @{ Expression = { if ($script:OfflineState[$_].disabled -eq $true) { 1 } else { 0 } } }, `
+        @{ Expression = { [int]$script:OfflineState[$_].failures } }, `
+        @{ Expression = { [string]$_ } }
+    foreach ($key in $orderedKeys) { $sorted[$key] = $script:OfflineState[$key] }
     $parent = Split-Path $script:OfflineStatePath -Parent
     if ($parent -and -not (Test-Path $parent)) { New-Item -ItemType Directory -Path $parent -Force | Out-Null }
     [IO.File]::WriteAllText($script:OfflineStatePath, (($sorted | ConvertTo-Json -Depth 5) + "`n"), (New-Object Text.UTF8Encoding($false)))
