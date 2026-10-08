@@ -174,6 +174,10 @@ foreach ($file in $sourceFiles) {
     $sourcePath = $file.FullName
     if ($offlineEnabled -and $type -in @("external-repos", "external-repos-gen")) {
         foreach ($offlineUrl in @(Get-OfflineUrls $offlineSection)) {
+            if (Test-OfflineDisabled -Section $offlineSection -Url $offlineUrl) {
+                Write-Host ("  DisabledOffline -> {0}" -f $offlineUrl)
+                continue
+            }
             if (Test-RepositoryReachable $offlineUrl) {
                 Restore-OfflineRepository -Section $offlineSection -Url $offlineUrl -SourcePath $sourcePath
                 $yaml.externalRepos = @($yaml.externalRepos) + $offlineUrl

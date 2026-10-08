@@ -66,6 +66,16 @@ function Initialize-OfflineRepos {
             Write-Warning "Could not read $StatePath — starting failure counters from zero. $($_.Exception.Message)"
         }
     }
+
+    # `disabled` is an explicit opt-out for repositories that are permanently
+    # offline or have no known replacement. Older state entries default to the
+    # normal recovery behaviour.
+    foreach ($key in @($script:OfflineState.Keys)) {
+        $entry = $script:OfflineState[$key]
+        if ($entry -is [System.Collections.IDictionary] -and -not $entry.ContainsKey('disabled')) {
+            $entry.disabled = $false
+        }
+    }
 }
 
 function Get-OfflineKey {
@@ -96,6 +106,14 @@ function Get-OfflineSectionForUrl {
         if (@($script:OfflineRepos[$section]) -contains $Url) { return $section }
     }
     return $null
+}
+
+function Test-OfflineDisabled {
+    param([Parameter(Mandatory)][string]$Section, [Parameter(Mandatory)][string]$Url)
+    $key = Get-OfflineKey $Section $Url
+    if (-not $script:OfflineState.ContainsKey($key)) { return $false }
+    $entry = $script:OfflineState[$key]
+    return ($entry -is [System.Collections.IDictionary] -and $entry.ContainsKey('disabled') -and $entry.disabled -eq $true)
 }
 
 function Test-RepositoryReachable {
