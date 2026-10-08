@@ -388,6 +388,7 @@ $offlineStateRows = @(
             FirstFailure = [string]$stateEntry.Value.firstFailure
             LastFailure = [string]$stateEntry.Value.lastFailure
             Disabled = ($stateEntry.Value.disabled -eq $true)
+            DisabledReason = [string]$stateEntry.Value.disabledReason
         }
     }
 )
