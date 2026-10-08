@@ -174,9 +174,18 @@ foreach ($file in $sourceFiles) {
     $sourcePath = $file.FullName
     if ($offlineEnabled -and $type -in @("external-repos", "external-repos-gen")) {
         foreach ($offlineUrl in @(Get-OfflineUrls $offlineSection)) {
+            if (Test-OfflineDisabled -Section $offlineSection -Url $offlineUrl) {
+                Write-Host ("  DisabledOffline -> {0}" -f $offlineUrl)
+                continue
+            }
             if (Test-RepositoryReachable $offlineUrl) {
                 Restore-OfflineRepository -Section $offlineSection -Url $offlineUrl -SourcePath $sourcePath
                 $yaml.externalRepos = @($yaml.externalRepos) + $offlineUrl
+            } else {
+                # The URL is already archived, but this recovery probe is still
+                # a real failed check. Keep its failure history and lastFailure
+                # timestamp current without re-running the archive transition.
+                Register-OfflineFailure -Section $offlineSection -Url $offlineUrl -SourcePath $sourcePath -AlreadyArchived
             }
         }
         # A pull request may re-introduce an URL that is already archived, or
@@ -371,6 +380,17 @@ $sourceRows = @(
             $_.Group | Sort-Object @{ Expression = { if ($_.Status -eq 'OK') { 0 } else { 1 } } }, Count -Descending | Select-Object -First 1
         }
 )
+$offlineStateRows = @(
+    foreach ($stateEntry in @($script:OfflineState.GetEnumerator())) {
+        [pscustomobject]@{
+            Key = [string]$stateEntry.Key
+            Failures = [int]$stateEntry.Value.failures
+            FirstFailure = [string]$stateEntry.Value.firstFailure
+            LastFailure = [string]$stateEntry.Value.lastFailure
+            Disabled = ($stateEntry.Value.disabled -eq $true)
+        }
+    }
+)
 $structuredReport = [ordered]@{
     GeneratedAt = (Get-Date).ToUniversalTime().ToString('o')
     Sources = $sourceRows
@@ -379,6 +399,7 @@ $structuredReport = [ordered]@{
     ZipFallback = @($zipReportRows)
     OfficialExclusions = @($script:OfficialRemoved)
     OfficialMaster = @($officialMasterEntries)
+    OfflineState = $offlineStateRows
     Outputs = @($outputs | ForEach-Object { [pscustomobject]@{ Name = $_.name; Count = $_.count; Status = if ($_.enabled) { 'OK' } else { 'SKIPPED' } } })
     Summary = [ordered]@{
         Filtered = [int]$totalFiltered

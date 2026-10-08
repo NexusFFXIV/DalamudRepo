@@ -258,6 +258,19 @@ $summaryRows = @(
     [pscustomobject]@{ MetricDe = 'Ausgabedateien'; MetricEn = 'Outputs'; Value = $report.Summary.Outputs; MeaningDe = 'Erzeugte Pluginmaster-Ausgabedateien'; MeaningEn = 'Generated pluginmaster output files' }
 )
 $parts += '<script>(function(){function syncLegend(){var en=document.documentElement.lang==="en";document.querySelectorAll(".legend-de").forEach(function(x){x.style.display=en?"none":"inline";});document.querySelectorAll(".legend-en").forEach(function(x){x.style.display=en?"inline":"none";});}function formatLocalTimestamp(){var node=document.getElementById("generated-at");if(!node)return;var date=new Date(node.dataset.utc);if(Number.isNaN(date.getTime()))return;node.textContent=new Intl.DateTimeFormat(undefined,{year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(date);}new MutationObserver(syncLegend).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});syncLegend();formatLocalTimestamp();})();</script>'
+$offlineRows = Rows $report.OfflineState
+$disabledOffline = @($offlineRows | Where-Object { $_.Disabled -eq $true })
+$archivedOffline = @($offlineRows | Where-Object { [int]$_.Failures -gt 10 })
+$parts += '<details><summary><span class="legend-de">Info: Offline-Repository-Status (' + $disabledOffline.Count + ' dauerhaft deaktiviert, ' + $archivedOffline.Count + ' archiviert)</span><span class="legend-en">Info: Offline repository status (' + $disabledOffline.Count + ' permanently disabled, ' + $archivedOffline.Count + ' archived)</span></summary>'
+$parts += '<p class="muted"><span class="legend-de">Dauerhaft deaktivierte Einträge werden nicht mehr geprüft. Archivierte Einträge haben mehr als 10 fehlgeschlagene Prüfungen.</span><span class="legend-en">Permanently disabled entries are no longer probed. Archived entries have more than 10 failed probes.</span></p>'
+$parts += '<table><thead><tr><th>Status</th><th><span class="legend-de">Fehler</span><span class="legend-en">Failures</span></th><th><span class="legend-de">Erster Fehler</span><span class="legend-en">First failure</span></th><th><span class="legend-de">Letzter Fehler</span><span class="legend-en">Last failure</span></th><th><span class="legend-de">Quelle</span><span class="legend-en">Source</span></th></tr></thead><tbody>'
+foreach ($offline in ($offlineRows | Where-Object { $_.Disabled -eq $true -or [int]$_.Failures -gt 10 } | Sort-Object @{Expression={ if ($_.Disabled -eq $true) { 1 } else { 0 } }}, @{Expression={ [int]$_.Failures }}, Key)) {
+    $offlineStatus = if ($offline.Disabled -eq $true) { 'DISABLED' } else { 'ARCHIVED' }
+    $offlineUrl = ([string]$offline.Key -split '\|', 2)[1]
+    $offlineClass = if ($offline.Disabled -eq $true) { 'bad' } else { 'warn' }
+    $parts += '<tr class="' + $offlineClass + '" style="' + (InlineStatusStyle $offlineClass) + '"><td>' + (HtmlCell $offlineStatus) + '</td><td>' + (HtmlCell $offline.Failures) + '</td><td>' + (HtmlCell $offline.FirstFailure) + '</td><td>' + (HtmlCell $offline.LastFailure) + '</td><td>' + (HtmlValue $offlineUrl) + '</td></tr>'
+}
+$parts += '</tbody></table></details>'
 $parts += '<details><summary>Stage 4: Zusammenfassung</summary>'
 $parts += '<table><thead><tr><th><span class="legend-de">Kennzahl</span><span class="legend-en">Metric</span></th><th><span class="legend-de">Wert</span><span class="legend-en">Value</span></th><th><span class="legend-de">Bedeutung</span><span class="legend-en">Meaning</span></th></tr></thead><tbody>'
 foreach ($x in ($summaryRows | Sort-Object @{Expression={ [int]$_.Value }; Descending=$true})) {

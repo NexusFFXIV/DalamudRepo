@@ -66,6 +66,7 @@ function Initialize-OfflineRepos {
             Write-Warning "Could not read $StatePath — starting failure counters from zero. $($_.Exception.Message)"
         }
     }
+
 }
 
 function Get-OfflineKey {
@@ -96,6 +97,14 @@ function Get-OfflineSectionForUrl {
         if (@($script:OfflineRepos[$section]) -contains $Url) { return $section }
     }
     return $null
+}
+
+function Test-OfflineDisabled {
+    param([Parameter(Mandatory)][string]$Section, [Parameter(Mandatory)][string]$Url)
+    $key = Get-OfflineKey $Section $Url
+    if (-not $script:OfflineState.ContainsKey($key)) { return $false }
+    $entry = $script:OfflineState[$key]
+    return ($entry -is [System.Collections.IDictionary] -and $entry.ContainsKey('disabled') -and $entry.disabled -eq $true)
 }
 
 function Test-RepositoryReachable {
@@ -165,7 +174,11 @@ function Save-OfflineRepos {
 
 function Save-OfflineState {
     $sorted = [ordered]@{}
-    foreach ($key in ($script:OfflineState.Keys | Sort-Object)) { $sorted[$key] = $script:OfflineState[$key] }
+    $orderedKeys = $script:OfflineState.Keys | Sort-Object `
+        @{ Expression = { if ($script:OfflineState[$_].disabled -eq $true) { 1 } else { 0 } } }, `
+        @{ Expression = { [int]$script:OfflineState[$_].failures } }, `
+        @{ Expression = { [string]$_ } }
+    foreach ($key in $orderedKeys) { $sorted[$key] = $script:OfflineState[$key] }
     $parent = Split-Path $script:OfflineStatePath -Parent
     if ($parent -and -not (Test-Path $parent)) { New-Item -ItemType Directory -Path $parent -Force | Out-Null }
     [IO.File]::WriteAllText($script:OfflineStatePath, (($sorted | ConvertTo-Json -Depth 5) + "`n"), (New-Object Text.UTF8Encoding($false)))
@@ -186,15 +199,27 @@ function Restore-OfflineRepository {
 }
 
 function Register-OfflineFailure {
-    param([string]$Section, [string]$Url, [string]$SourcePath)
+    param(
+        [string]$Section,
+        [string]$Url,
+        [string]$SourcePath,
+        [switch]$AlreadyArchived
+    )
     $key = Get-OfflineKey $Section $Url
-    $entry = if ($script:OfflineState.ContainsKey($key)) { $script:OfflineState[$key] } else { [ordered]@{ failures = 0 } }
+    $entry = if ($script:OfflineState.ContainsKey($key)) { $script:OfflineState[$key] } else { [ordered]@{ failures = 0; disabled = $false } }
+    $now = [DateTime]::UtcNow.ToString('o')
+    # Keep the first observed failure permanently so the archive can show how
+    # long a repository has been failing. Existing entries are migrated in the
+    # tracked state file; new entries get the timestamp on their first probe.
+    if (-not $entry.firstFailure) { $entry.firstFailure = $now }
     $entry.failures = [int]$entry.failures + 1
-    $entry.lastFailure = [DateTime]::UtcNow.ToString('o')
+    $entry.lastFailure = $now
     $script:OfflineState[$key] = $entry
     # Persist each probe result so a cancelled run does not reset the grace counter.
     Save-OfflineState
-    if ($entry.failures -lt $script:OfflineGraceRuns) { return }
+    # Recovery probes already belong to the archive. Keep counting and update
+    # timestamps, but do not repeat the archive transition on every run.
+    if ($AlreadyArchived -or $entry.failures -lt $script:OfflineGraceRuns) { return }
 
     # Persist the archive first. If removal from the source is interrupted,
     # the next run safely filters the duplicate until this transition finishes.
