@@ -189,8 +189,13 @@ function Register-OfflineFailure {
     param([string]$Section, [string]$Url, [string]$SourcePath)
     $key = Get-OfflineKey $Section $Url
     $entry = if ($script:OfflineState.ContainsKey($key)) { $script:OfflineState[$key] } else { [ordered]@{ failures = 0 } }
+    $now = [DateTime]::UtcNow.ToString('o')
+    # Keep the first observed failure permanently so the archive can show how
+    # long a repository has been failing. Existing entries are migrated in the
+    # tracked state file; new entries get the timestamp on their first probe.
+    if (-not $entry.firstFailure) { $entry.firstFailure = $now }
     $entry.failures = [int]$entry.failures + 1
-    $entry.lastFailure = [DateTime]::UtcNow.ToString('o')
+    $entry.lastFailure = $now
     $script:OfflineState[$key] = $entry
     # Persist each probe result so a cancelled run does not reset the grace counter.
     Save-OfflineState
