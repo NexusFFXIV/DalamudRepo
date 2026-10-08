@@ -1699,10 +1699,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.0.78.0",
+    "TestingAssemblyVersion": "0.0.79.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/WesleyLuk90/ffxiv-vr/releases/download/v0.0.78/FfxivVR.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/WesleyLuk90/ffxiv-vr/releases/download/v0.0.79/FfxivVR.zip",
+    "TestingAssemblyVersionFromZip": "0.0.79.0"
   },
   "findingfantasy": {
     "InternalName": "findingfantasy",
@@ -2780,7 +2780,7 @@
     "TestingAssemblyVersion": "0.1.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/RoseOfficial/Mnemosyne/releases/download/v0.1.0/Mnemosyne.zip",
-    "TestingAssemblyVersionFromZip": "0.1.0.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "ModSettingCommands": {
     "InternalName": "ModSettingCommands",
@@ -4694,7 +4694,7 @@
     "TestingAssemblyVersion": "0.0.0.18",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/aniachan/xivclone/releases/download/0.0.0.18/xivclone.zip",
-    "TestingAssemblyVersionFromZip": "0.0.0.18"
+    "TestingAssemblyVersionFromZip": null
   },
   "XIVComboExpanded": {
     "InternalName": "XIVComboExpanded",
