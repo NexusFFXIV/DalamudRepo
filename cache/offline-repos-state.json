@@ -1,14 +1,14 @@
 {
   "external-repos-gen|https://raw.githubusercontent.com/ArcaneAj/WachuMakeyMaking/master/repo.json": {
-    "failures": 5,
+    "failures": 6,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-10-08T09:51:32.1013814Z",
+    "lastFailure": "2026-10-09T05:43:34.1865132Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/Yarukon/MakePlacePlugin/master/MakePlacePlugin.json": {
-    "failures": 5,
+    "failures": 6,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-10-08T09:51:32.1049681Z",
+    "lastFailure": "2026-10-09T05:43:34.1893939Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/notYuta/ShiroUtils/main/repo.json": {
@@ -24,9 +24,9 @@
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/h1arc/plugin/main/repo.json": {
-    "failures": 12,
+    "failures": 13,
     "firstFailure": "2026-10-06T00:50:45Z",
-    "lastFailure": "2026-10-08T09:50:35.3516156Z",
+    "lastFailure": "2026-10-09T05:40:30.7289966Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/BrakusTapus/PluginHUB/main/pluginmaster.json": {
