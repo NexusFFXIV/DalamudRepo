@@ -313,7 +313,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "2.9.1.0",
+    "TestingAssemblyVersion": "2.10.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoDailyTribes/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -335,7 +335,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "2.17.0.0",
+    "TestingAssemblyVersion": "2.18.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoFATEGrind/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -855,7 +855,7 @@
     "TestingAssemblyVersion": "1.0.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/Valiice/Chaperone/releases/download/v1.0.0/Chaperone.zip",
-    "TestingAssemblyVersionFromZip": "1.0.0.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "CharaCradThief": {
     "InternalName": "CharaCradThief",
@@ -1020,7 +1020,7 @@
     "TestingAssemblyVersion": "2.8.1.6",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/zysilm/FFXIV-CombatSimulator/releases/download/v2.8.1.6/CombatSimulator.zip",
-    "TestingAssemblyVersionFromZip": "2.8.1.6"
+    "TestingAssemblyVersionFromZip": null
   },
   "CombatStatistics": {
     "InternalName": "CombatStatistics",
@@ -1824,6 +1824,17 @@
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/Catphinaud/FreeCompanyHideSpecifcLoginLogout/releases/download/v0.0.0.7/latest.zip",
     "TestingAssemblyVersionFromZip": null
+  },
+  "FrenRider": {
+    "InternalName": "FrenRider",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "2.0.0.7",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/McVaxius/FrenRider/releases/latest/download/latest.zip",
+    "TestingAssemblyVersionFromZip": "2.0.0.7"
   },
   "FullscreenToggle": {
     "InternalName": "FullscreenToggle",
@@ -2967,7 +2978,7 @@
     "TestingAssemblyVersion": "1.0.3.8",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/Zeffuro/NativeMeters/releases/download/1.0.3.8/latest.zip",
-    "TestingAssemblyVersionFromZip": "1.0.3.8"
+    "TestingAssemblyVersionFromZip": null
   },
   "NeevieAutoMammet": {
     "InternalName": "NeevieAutoMammet",
