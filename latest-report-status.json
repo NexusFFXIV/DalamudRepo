@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "label": "Build report",
-  "message": "fresh · 0h old · next 18h",
+  "message": "fresh · built 2026-10-10 14:28 UTC · next 9h",
   "color": "brightgreen",
-  "generatedAt": "2026-10-10T05:25:53.0000000+00:00",
+  "generatedAt": "2026-10-10T14:28:59.0000000+00:00",
   "nextRefreshAt": "2026-10-11T00:00:00.0000000+00:00"
 }
