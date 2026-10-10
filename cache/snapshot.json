@@ -846,6 +846,17 @@
     "TestingDownloadUrl": "https://github.com/moewcorp/DalamudPlugins/raw/main/plugins/Chameleon/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
+  "Chaperone": {
+    "InternalName": "Chaperone",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.0.0.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/Valiice/Chaperone/releases/download/v1.0.0/Chaperone.zip",
+    "TestingAssemblyVersionFromZip": "1.0.0.0"
+  },
   "CharaCradThief": {
     "InternalName": "CharaCradThief",
     "AssemblyVersion": null,
@@ -1006,10 +1017,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "2.8.1.5",
+    "TestingAssemblyVersion": "2.8.1.6",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/zysilm/FFXIV-CombatSimulator/releases/download/v2.8.1.5/CombatSimulator.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/zysilm/FFXIV-CombatSimulator/releases/download/v2.8.1.6/CombatSimulator.zip",
+    "TestingAssemblyVersionFromZip": "2.8.1.6"
   },
   "CombatStatistics": {
     "InternalName": "CombatStatistics",
@@ -2953,10 +2964,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.0.3.7",
+    "TestingAssemblyVersion": "1.0.3.8",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/Zeffuro/NativeMeters/releases/download/1.0.3.7/latest.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/Zeffuro/NativeMeters/releases/download/1.0.3.8/latest.zip",
+    "TestingAssemblyVersionFromZip": "1.0.3.8"
   },
   "NeevieAutoMammet": {
     "InternalName": "NeevieAutoMammet",
