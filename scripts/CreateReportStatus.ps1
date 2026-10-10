@@ -11,7 +11,7 @@ $report = Get-Content -LiteralPath $ReportPath -Raw -Encoding UTF8 | ConvertFrom
 $generated = [DateTimeOffset]::Parse([string]$report.GeneratedAt).ToUniversalTime()
 $now = [DateTimeOffset]::UtcNow
 $age = $now - $generated
-$ageHours = [math]::Max(0, [math]::Floor($age.TotalHours))
+$builtText = $generated.ToString('yyyy-MM-dd HH:mm') + ' UTC'
 
 # The scheduled workflow runs at 00:00 UTC. This is deliberately an estimate:
 # release, source-change and manual runs can refresh the report earlier.
@@ -33,7 +33,10 @@ if ($age.TotalHours -le 30) {
 [pscustomobject]@{
     schemaVersion = 1
     label = 'Build report'
-    message = '{0} · {1}h old · {2}' -f $state, $ageHours, $nextText
+    # Shields reads this file as a static endpoint. Show the immutable build
+    # timestamp instead of an age that would become stale immediately after
+    # the workflow finishes.
+    message = '{0} · built {1} · {2}' -f $state, $builtText, $nextText
     color = $color
     generatedAt = $generated.ToString('o')
     nextRefreshAt = ([DateTimeOffset]$nextRefresh).ToString('o')
