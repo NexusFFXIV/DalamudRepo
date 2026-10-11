@@ -696,7 +696,7 @@
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.12-cn/antiafkkick-dalamud.zip",
     "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.12-cn/antiafkkick-dalamud.zip",
     "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.12-cn/antiafkkick-dalamud.zip",
-    "DownloadCount": 21325
+    "DownloadCount": 21347
   },
   {
     "Author": "aniachan",
@@ -769,7 +769,7 @@
     "TestingDalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 5490,
+    "DownloadCount": 5511,
     "LastUpdate": 0,
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/AQuestReborn/releases/download/0.2.9.8-cn/AQuestReborn.zip",
     "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/AQuestReborn/releases/download/0.2.9.8-cn/AQuestReborn.zip",
@@ -1242,7 +1242,7 @@
     ],
     "InternalName": "AutoHook",
     "RepoUrl": "https://github.com/PunishXIV/AutoHook",
-    "DownloadCount": 2736141,
+    "DownloadCount": 2736204,
     "LastUpdate": 1791717874,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/47/AutoHook/versions/6.0.2.7/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/47/AutoHook/versions/6.0.2.7/update/latest.zip",
@@ -1444,7 +1444,7 @@
     ],
     "InternalName": "Automaton",
     "RepoUrl": "https://github.com/Jaksuhn/Automaton",
-    "DownloadCount": 993777,
+    "DownloadCount": 993825,
     "LastUpdate": 1791750207,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/34/Automaton/versions/69.219/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/34/Automaton/versions/69.219/update/latest.zip",
@@ -2526,7 +2526,7 @@
     "Tags": [],
     "InternalName": "BossMod",
     "RepoUrl": "https://github.com/awgil/ffxiv_bossmod",
-    "DownloadCount": 2641964,
+    "DownloadCount": 2641970,
     "LastUpdate": 1790090996,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.6.9/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.6.9/update/latest.zip",
@@ -6478,7 +6478,7 @@
     "TestingDalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 146908,
+    "DownloadCount": 147056,
     "LastUpdate": 1618608322,
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/Glamourer-CN/releases/download/1.7.1.4-cn/Glamourer.zip",
     "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/Glamourer-CN/releases/download/1.7.1.4-cn/Glamourer.zip",
@@ -7601,7 +7601,7 @@
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/IINACT/releases/download/v2.10.3.9/IINACT.zip",
     "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/IINACT/releases/download/v2.10.3.9/IINACT.zip",
     "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/IINACT/releases/download/v2.10.3.9/IINACT.zip",
-    "DownloadCount": 10717
+    "DownloadCount": 10723
   },
   {
     "Author": "J3",
@@ -9597,7 +9597,7 @@
     "Tags": [
       "Sea Of Stars"
     ],
-    "DownloadCount": 41820
+    "DownloadCount": 41845
   },
   {
     "Author": "Aless",
@@ -10977,7 +10977,7 @@
     "TestingDalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 217248,
+    "DownloadCount": 217483,
     "LastUpdate": 0,
     "LoadPriority": 69420,
     "LoadRequiredState": 2,
@@ -14830,7 +14830,7 @@
     "Tags": [],
     "InternalName": "vfallguy",
     "RepoUrl": null,
-    "DownloadCount": 61370,
+    "DownloadCount": 61394,
     "LastUpdate": 1791755090,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/41/vfallguy/versions/0.0.0.13/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/41/vfallguy/versions/0.0.0.13/update/latest.zip",
@@ -15789,7 +15789,7 @@
     "DalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 1202,
+    "DownloadCount": 1207,
     "LastUpdate": 0,
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/XivMediaPlayer/releases/download/0.1.7.0-cn/XivMediaPlayer.zip",
     "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/XivMediaPlayer/releases/download/0.1.7.0-cn/XivMediaPlayer.zip",
@@ -15949,7 +15949,7 @@
     "TestingDalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 1590,
+    "DownloadCount": 1596,
     "LastUpdate": 1746230400,
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/XIVWindowResizer/releases/download/2.0.0.2-x/XIVWindowResizerX.zip",
     "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/XIVWindowResizer/releases/download/2.0.0.2-x/XIVWindowResizerX.zip",
@@ -15964,7 +15964,7 @@
     "Tags": [],
     "InternalName": "YesAlready",
     "RepoUrl": "https://github.com/PunishXIV/YesAlready",
-    "DownloadCount": 1511395,
+    "DownloadCount": 1511468,
     "LastUpdate": 1791750283,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/26/YesAlready/versions/1.15.7.3/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/26/YesAlready/versions/1.15.7.3/update/latest.zip",
