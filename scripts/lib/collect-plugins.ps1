@@ -530,6 +530,14 @@ function Collect-NexusPool {
             if ($separator.Success) {
                 $releaseChangelog = $releaseChangelog.Substring(0, $separator.Index)
             }
+            $fullChangelog = $releaseChangelog.IndexOf('**Full Changelog**', [StringComparison]::Ordinal)
+            if ($fullChangelog -ge 0) {
+                $releaseChangelog = $releaseChangelog.Substring(0, $fullChangelog)
+            }
+            $releaseChangelog = [regex]::Replace(
+                $releaseChangelog,
+                '(?m)^\*\s+(?:chore\(deps\)|build\(deps\)|Bump |Revert |ci:).*(?:\r?\n|$)',
+                '')
             $releaseChangelog = $releaseChangelog.Trim()
             if ($releaseChangelog.Length -gt 4000) {
                 $releaseChangelog = $releaseChangelog.Substring(0, 3997).TrimEnd() + '...'
