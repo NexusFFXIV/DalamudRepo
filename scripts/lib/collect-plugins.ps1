@@ -536,6 +536,14 @@ function Collect-NexusPool {
             IconUrl = "https://raw.githubusercontent.com/$repo/main/$iconPath"
             AcceptsFeedback = if ($null -ne $primaryManifest.AcceptsFeedback) { $primaryManifest.AcceptsFeedback } else { $true }
             FeedbackMessage = $primaryManifest.FeedbackMessage
+            # GitHub creates the release notes after the plugin artifact is
+            # published. Use those notes for Dalamud's in-game changelog;
+            # retain a manifest changelog as a fallback for older releases.
+            Changelog = if (-not [string]::IsNullOrWhiteSpace([string]$primaryRelease.body)) {
+                [string]$primaryRelease.body
+            } else {
+                $primaryManifest.Changelog
+            }
             IsHide = $false
             IsTestingExclusive = $isTestingExclusive
             LastUpdate = [DateTimeOffset]::Parse($primaryRelease.published_at).ToUnixTimeSeconds()
