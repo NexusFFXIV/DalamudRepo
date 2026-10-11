@@ -522,6 +522,20 @@ function Collect-NexusPool {
         $primaryManifest = Get-ManifestFromRelease -Release $primaryRelease -InternalName $name
         if (-not $primaryManifest) { continue }
 
+        # Keep Dalamud's in-game changelog useful: GitHub's generated body also
+        # contains a full comparison and expanded internal dependency notes.
+        $releaseChangelog = [string]$primaryRelease.body
+        if (-not [string]::IsNullOrWhiteSpace($releaseChangelog)) {
+            $separator = [regex]::Match($releaseChangelog, '(?m)^\s*---\s*$')
+            if ($separator.Success) {
+                $releaseChangelog = $releaseChangelog.Substring(0, $separator.Index)
+            }
+            $releaseChangelog = $releaseChangelog.Trim()
+            if ($releaseChangelog.Length -gt 4000) {
+                $releaseChangelog = $releaseChangelog.Substring(0, 3997).TrimEnd() + '...'
+            }
+        }
+
         $entry = [ordered]@{
             Author = $primaryManifest.Author
             Name = $primaryManifest.Name
@@ -537,10 +551,10 @@ function Collect-NexusPool {
             AcceptsFeedback = if ($null -ne $primaryManifest.AcceptsFeedback) { $primaryManifest.AcceptsFeedback } else { $true }
             FeedbackMessage = $primaryManifest.FeedbackMessage
             # GitHub creates the release notes after the plugin artifact is
-            # published. Use those notes for Dalamud's in-game changelog;
-            # retain a manifest changelog as a fallback for older releases.
-            Changelog = if (-not [string]::IsNullOrWhiteSpace([string]$primaryRelease.body)) {
-                [string]$primaryRelease.body
+            # published. Use their compact first section; retain a manifest
+            # changelog as a fallback for older releases.
+            Changelog = if (-not [string]::IsNullOrWhiteSpace($releaseChangelog)) {
+                $releaseChangelog
             } else {
                 $primaryManifest.Changelog
             }
