@@ -12,21 +12,21 @@
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/ArcaneAj/WachuMakeyMaking/master/repo.json": {
-    "failures": 11,
+    "failures": 12,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-10-11T22:30:25.5149874Z",
+    "lastFailure": "2026-10-11T22:35:45.2831685Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/Yarukon/MakePlacePlugin/master/MakePlacePlugin.json": {
-    "failures": 11,
+    "failures": 12,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-10-11T22:30:25.8727276Z",
+    "lastFailure": "2026-10-11T22:35:45.5491630Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/h1arc/plugin/main/repo.json": {
-    "failures": 18,
+    "failures": 19,
     "firstFailure": "2026-10-06T00:50:45Z",
-    "lastFailure": "2026-10-11T22:30:25.7316851Z",
+    "lastFailure": "2026-10-11T22:35:45.4363110Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/BrakusTapus/PluginHUB/main/pluginmaster.json": {
