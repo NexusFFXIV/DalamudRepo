@@ -77,7 +77,7 @@
     "AssemblyVersion": "7.5.6.1",
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/releases/download/7.5.6.1/ActionTimelineReborn.zip",
     "Changelog": "## What's Changed\r\n* Fixes for status timeline UI, now gets and shows statuses on the fly rather than from curated list by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/pull/21\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/compare/7.5.6.0...7.5.6.1",
-    "DownloadCount": 39196
+    "DownloadCount": 39481
   },
   {
     "Name": "ActionTimelineReplacement(aka. ATR)",
@@ -724,7 +724,7 @@
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.12-cn/antiafkkick-dalamud.zip",
     "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.12-cn/antiafkkick-dalamud.zip",
     "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.12-cn/antiafkkick-dalamud.zip",
-    "DownloadCount": 21347
+    "DownloadCount": 21354
   },
   {
     "Author": "aniachan",
@@ -797,7 +797,7 @@
     "TestingDalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 5511,
+    "DownloadCount": 5517,
     "LastUpdate": 0,
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/AQuestReborn/releases/download/0.2.9.8-cn/AQuestReborn.zip",
     "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/AQuestReborn/releases/download/0.2.9.8-cn/AQuestReborn.zip",
@@ -1100,8 +1100,8 @@
     "Author": "XeldarAlz",
     "Name": "Auto Daily Tribes",
     "InternalName": "AutoDailyTribes",
-    "AssemblyVersion": "2.10.0.0",
-    "TestingAssemblyVersion": "2.10.0.0",
+    "AssemblyVersion": "2.11.0.0",
+    "TestingAssemblyVersion": "2.11.0.0",
     "Description": "Does your daily allied tribe quests for you: tick the tribes, the plugin handles the rest.\n\nPlugin from https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
     "Punchline": "Daily allied tribe quests, done for you.",
     "RepoUrl": "https://github.com/XeldarAlz/FFXIV-AutoDailyTribes",
@@ -1122,8 +1122,8 @@
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoDailyTribes/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
     "AcceptsFeedback": true,
-    "DownloadCount": 29173,
-    "LastUpdate": "1791634649",
+    "DownloadCount": 29421,
+    "LastUpdate": "1791839067",
     "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
   {
@@ -1167,8 +1167,8 @@
     "Author": "XeldarAlz",
     "Name": "Auto FATE Grind",
     "InternalName": "AutoFateGrind",
-    "AssemblyVersion": "2.18.0.0",
-    "TestingAssemblyVersion": "2.18.0.0",
+    "AssemblyVersion": "2.19.0.0",
+    "TestingAssemblyVersion": "2.19.0.0",
     "Description": "Farms FATEs for you: tick the zones, and the plugin teleports in, finds active FATEs, and runs them in a loop until your target is met.\n\nPlugin from https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
     "Punchline": "FATEs, farmed for you.",
     "RepoUrl": "https://github.com/XeldarAlz/FFXIV-AutoFATEGrind",
@@ -1190,8 +1190,8 @@
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoFATEGrind/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
     "AcceptsFeedback": true,
-    "DownloadCount": 62889,
-    "LastUpdate": "1791617793",
+    "DownloadCount": 63196,
+    "LastUpdate": "1791861882",
     "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
   {
@@ -1270,7 +1270,7 @@
     ],
     "InternalName": "AutoHook",
     "RepoUrl": "https://github.com/PunishXIV/AutoHook",
-    "DownloadCount": 2739728,
+    "DownloadCount": 2741623,
     "LastUpdate": 1791717874,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/47/AutoHook/versions/6.0.2.7/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/47/AutoHook/versions/6.0.2.7/update/latest.zip",
@@ -1286,24 +1286,13 @@
   {
     "Author": "XeldarAlz",
     "Name": "Auto Hunt Grinder",
-    "AcceptsFeedback": true,
-    "ApplicableVersion": "any",
-    "AssemblyVersion": "1.8.1.0",
-    "CategoryTags": [
-      "utility"
-    ],
-    "DalamudApiLevel": 15,
-    "Description": "Clears your hunt bills for you: tick the daily and weekly bills you want, and the plugin picks them up at the hunt board, finds every mark, and fights it until each bill is done.\nhttps://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
-    "DownloadCount": 5296,
-    "DownloadLinkInstall": "https://github.com/XeldarAlz/FFXIV-AutoHuntGrinder/releases/latest/download/latest.zip",
-    "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoHuntGrinder/releases/latest/download/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/XeldarAlz/FFXIV-AutoHuntGrinder/releases/latest/download/latest.zip",
-    "IconUrl": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoHuntGrinder/master/AutoHuntGrinder/Images/Icon.png",
     "InternalName": "AutoHuntGrinder",
-    "IsTestingExclusive": false,
-    "LastUpdate": "1790674058",
+    "AssemblyVersion": "1.9.0.0",
+    "TestingAssemblyVersion": "1.9.0.0",
+    "Description": "Clears your hunt bills for you: tick the daily and weekly bills you want, and the plugin picks them up at the hunt board, finds every mark, and fights it until each bill is done.\n\nPlugin from https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
     "Punchline": "Hunt bills, cleared for you.",
     "RepoUrl": "https://github.com/XeldarAlz/FFXIV-AutoHuntGrinder",
+    "ApplicableVersion": "any",
     "Tags": [
       "Hunt",
       "Mark Bills",
@@ -1312,29 +1301,30 @@
       "Sacks of Nuts",
       "Automation"
     ],
-    "TestingAssemblyVersion": "1.8.1.0"
-  },
-  {
-    "Author": "XeldarAlz",
-    "Name": "Auto Hunt Train",
-    "AcceptsFeedback": true,
-    "ApplicableVersion": "any",
-    "AssemblyVersion": "1.0.1.0",
     "CategoryTags": [
       "utility"
     ],
     "DalamudApiLevel": 15,
-    "Description": "Rides hunt trains for you: hears a train being called anywhere in your region, travels to the start aetheryte on that world, follows the conductor's flags from mark to mark, and lands a hit on every A rank before the crowd deletes it.\nhttps://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
-    "DownloadCount": 834,
-    "DownloadLinkInstall": "https://github.com/XeldarAlz/FFXIV-AutoHuntTrain/releases/latest/download/latest.zip",
-    "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoHuntTrain/releases/latest/download/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/XeldarAlz/FFXIV-AutoHuntTrain/releases/latest/download/latest.zip",
-    "IconUrl": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoHuntTrain/master/AutoHuntTrain/Images/Icon.png",
-    "InternalName": "AutoHuntTrain",
+    "IconUrl": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoHuntGrinder/master/AutoHuntGrinder/Images/Icon.png",
+    "DownloadLinkInstall": "https://github.com/XeldarAlz/FFXIV-AutoHuntGrinder/releases/latest/download/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/XeldarAlz/FFXIV-AutoHuntGrinder/releases/latest/download/latest.zip",
+    "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoHuntGrinder/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
-    "LastUpdate": "1790674044",
+    "AcceptsFeedback": true,
+    "DownloadCount": 5412,
+    "LastUpdate": "1791842427",
+    "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
+  },
+  {
+    "Author": "XeldarAlz",
+    "Name": "Auto Hunt Train",
+    "InternalName": "AutoHuntTrain",
+    "AssemblyVersion": "1.1.0.0",
+    "TestingAssemblyVersion": "1.1.0.0",
+    "Description": "Rides hunt trains for you: hears a train being called anywhere in your region, travels to the start aetheryte on that world, follows the conductor's flags from mark to mark, and lands a hit on every A rank before the crowd deletes it.\n\nPlugin from https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
     "Punchline": "Hunt trains, ridden for you.",
     "RepoUrl": "https://github.com/XeldarAlz/FFXIV-AutoHuntTrain",
+    "ApplicableVersion": "any",
     "Tags": [
       "Hunt",
       "Hunt Train",
@@ -1343,7 +1333,19 @@
       "Data Center Travel",
       "Automation"
     ],
-    "TestingAssemblyVersion": "1.0.1.0"
+    "CategoryTags": [
+      "utility"
+    ],
+    "DalamudApiLevel": 15,
+    "IconUrl": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoHuntTrain/master/AutoHuntTrain/Images/Icon.png",
+    "DownloadLinkInstall": "https://github.com/XeldarAlz/FFXIV-AutoHuntTrain/releases/latest/download/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/XeldarAlz/FFXIV-AutoHuntTrain/releases/latest/download/latest.zip",
+    "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoHuntTrain/releases/latest/download/latest.zip",
+    "IsTestingExclusive": false,
+    "AcceptsFeedback": true,
+    "DownloadCount": 916,
+    "LastUpdate": "1790674044",
+    "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
   {
     "Author": "llock",
@@ -1472,7 +1474,7 @@
     ],
     "InternalName": "Automaton",
     "RepoUrl": "https://github.com/Jaksuhn/Automaton",
-    "DownloadCount": 996162,
+    "DownloadCount": 997305,
     "LastUpdate": 1791750207,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/34/Automaton/versions/69.219/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/34/Automaton/versions/69.219/update/latest.zip",
@@ -1564,7 +1566,7 @@
     "DownloadLinkInstall": "https://edgl.dev/share/zhyra/autopincher/0.2.2.0.zip",
     "DownloadLinkUpdate": "https://edgl.dev/share/zhyra/autopincher/0.2.2.0.zip",
     "DownloadLinkTesting": "https://edgl.dev/share/zhyra/autopincher/0.2.2.0.zip",
-    "DownloadCount": 387,
+    "DownloadCount": 388,
     "LastUpdate": 1791045790,
     "IsHide": false,
     "IsTestingExclusive": false,
@@ -1635,7 +1637,7 @@
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoPVPSeriesGrind/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
     "AcceptsFeedback": true,
-    "DownloadCount": 18093,
+    "DownloadCount": 18210,
     "LastUpdate": "1791671529",
     "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
@@ -1683,6 +1685,36 @@
     "DownloadLinkUpdate": "https://github.com/penguin4glte/AutoRetainerSellList/releases/download/1.2.1/latest.zip",
     "Changelog": "Update for latest Dalamud (API 15) and current game patch. Updated ECommons to latest master. Fixed assembly version generation.",
     "DownloadCount": 77
+  },
+  {
+    "Author": "XeldarAlz",
+    "Name": "Auto Shopper",
+    "InternalName": "AutoShopper",
+    "AssemblyVersion": "1.0.0.0",
+    "TestingAssemblyVersion": "1.0.0.0",
+    "Description": "Buys your market board shopping list for you: plans the cheapest route through Universalis prices across the worlds you allow, travels between them with Lifestream, walks to the market board, buys whole listings within your price caps, and confirms every purchase.",
+    "Punchline": "Your market board shopping list, bought for you.",
+    "RepoUrl": "https://github.com/XeldarAlz/FFXIV-AutoShopper",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "Market Board",
+      "Shopping",
+      "Universalis",
+      "Data Center Travel",
+      "Automation"
+    ],
+    "CategoryTags": [
+      "utility"
+    ],
+    "DalamudApiLevel": 15,
+    "IconUrl": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoShopper/master/AutoShopper/Images/Icon.png",
+    "DownloadLinkInstall": "https://github.com/XeldarAlz/FFXIV-AutoShopper/releases/latest/download/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/XeldarAlz/FFXIV-AutoShopper/releases/latest/download/latest.zip",
+    "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoShopper/releases/latest/download/latest.zip",
+    "IsTestingExclusive": false,
+    "AcceptsFeedback": true,
+    "DownloadCount": 0,
+    "LastUpdate": "1791872514"
   },
   {
     "Author": "XeldarAlz",
@@ -1742,8 +1774,41 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/Anomek/AutoTravel/releases/latest/download/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Anomek/AutoTravel/releases/latest/download/latest.zip",
-    "DownloadCount": 958,
+    "DownloadCount": 964,
     "LastUpdate": "1782589111"
+  },
+  {
+    "Author": "XeldarAlz",
+    "Name": "Auto Treasure Maps",
+    "InternalName": "AutoTreasureMaps",
+    "AssemblyVersion": "1.0.0.0",
+    "TestingAssemblyVersion": "1.0.0.0",
+    "Description": "Works through your timeworn maps for you: deciphers each map in your bags, travels to the dig spot, digs up the coffer, fights off its guards and opens it, then moves on to the next map. When your bags run dry it can gather the daily timeworn map as a Miner or Botanist and buy more on the market board under your price caps and gil budget.\n\nPlugin from https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
+    "Punchline": "Treasure maps, dug up for you.",
+    "RepoUrl": "https://github.com/XeldarAlz/FFXIV-AutoTreasureMaps",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "Treasure Hunt",
+      "Timeworn Maps",
+      "Treasure Coffer",
+      "Gil",
+      "Market Board",
+      "Gathering",
+      "Automation"
+    ],
+    "CategoryTags": [
+      "utility"
+    ],
+    "DalamudApiLevel": 15,
+    "IconUrl": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoTreasureMaps/master/AutoTreasureMaps/Images/Icon.png",
+    "DownloadLinkInstall": "https://github.com/XeldarAlz/FFXIV-AutoTreasureMaps/releases/latest/download/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/XeldarAlz/FFXIV-AutoTreasureMaps/releases/latest/download/latest.zip",
+    "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoTreasureMaps/releases/latest/download/latest.zip",
+    "IsTestingExclusive": false,
+    "AcceptsFeedback": true,
+    "DownloadCount": 0,
+    "LastUpdate": "1791869946",
+    "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
   {
     "Author": "Siren",
@@ -1767,24 +1832,13 @@
   {
     "Author": "XeldarAlz",
     "Name": "Auto Triple Triad Grind",
-    "AcceptsFeedback": true,
-    "ApplicableVersion": "any",
-    "AssemblyVersion": "1.1.1.0",
-    "CategoryTags": [
-      "utility"
-    ],
-    "DalamudApiLevel": 15,
-    "Description": "Collects every Triple Triad card NPCs can give you: pick the cards you are missing, and the plugin travels to each NPC, builds a deck for its rules, plays until your cards drop, registers them, and moves on.\nhttps://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
-    "DownloadCount": 1909,
-    "DownloadLinkInstall": "https://github.com/XeldarAlz/FFXIV-AutoTripleTriadGrind/releases/latest/download/latest.zip",
-    "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoTripleTriadGrind/releases/latest/download/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/XeldarAlz/FFXIV-AutoTripleTriadGrind/releases/latest/download/latest.zip",
-    "IconUrl": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoTripleTriadGrind/master/AutoTripleTriadGrind/Images/Icon.png",
     "InternalName": "AutoTripleTriadGrind",
-    "IsTestingExclusive": false,
-    "LastUpdate": "1790674044",
+    "AssemblyVersion": "1.2.0.0",
+    "TestingAssemblyVersion": "1.2.0.0",
+    "Description": "Collects every Triple Triad card NPCs can give you: pick the cards you are missing, and the plugin travels to each NPC, builds a deck for its rules, plays until your cards drop, registers them, and moves on.\n\nPlugin from https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
     "Punchline": "Every NPC card, collected for you.",
     "RepoUrl": "https://github.com/XeldarAlz/FFXIV-AutoTripleTriadGrind",
+    "ApplicableVersion": "any",
     "Tags": [
       "Triple Triad",
       "Cards",
@@ -1793,7 +1847,19 @@
       "Collection",
       "Automation"
     ],
-    "TestingAssemblyVersion": "1.1.1.0"
+    "CategoryTags": [
+      "utility"
+    ],
+    "DalamudApiLevel": 15,
+    "IconUrl": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoTripleTriadGrind/master/AutoTripleTriadGrind/Images/Icon.png",
+    "DownloadLinkInstall": "https://github.com/XeldarAlz/FFXIV-AutoTripleTriadGrind/releases/latest/download/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/XeldarAlz/FFXIV-AutoTripleTriadGrind/releases/latest/download/latest.zip",
+    "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoTripleTriadGrind/releases/latest/download/latest.zip",
+    "IsTestingExclusive": false,
+    "AcceptsFeedback": true,
+    "DownloadCount": 2049,
+    "LastUpdate": "1791860807",
+    "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
   {
     "Author": "Ottermandias",
@@ -2169,7 +2235,7 @@
     "IsHide": "False",
     "IsTestingExclusive": "False",
     "LastUpdated": 1777765848,
-    "DownloadCount": 82452,
+    "DownloadCount": 82486,
     "DownloadLinkInstall": "https://github.com/LeonBlade/BDTHPlugin/releases/download/1.7.4.1/BDTHPlugin.zip",
     "DownloadLinkTesting": "https://github.com/LeonBlade/BDTHPlugin/releases/download/1.7.4.1/BDTHPlugin.zip",
     "DownloadLinkUpdate": "https://github.com/LeonBlade/BDTHPlugin/releases/download/1.7.4.1/BDTHPlugin.zip"
@@ -2554,7 +2620,7 @@
     "Tags": [],
     "InternalName": "BossMod",
     "RepoUrl": "https://github.com/awgil/ffxiv_bossmod",
-    "DownloadCount": 2642628,
+    "DownloadCount": 2643020,
     "LastUpdate": 1790090996,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.6.9/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.6.9/update/latest.zip",
@@ -2588,7 +2654,7 @@
     ],
     "InternalName": "BossModReborn",
     "RepoUrl": "https://github.com/FFXIV-CombatReborn/BossmodReborn",
-    "AssemblyVersion": "7.5.6.34",
+    "AssemblyVersion": "7.5.6.35",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "IconUrl": "https://raw.githubusercontent.com/FFXIV-CombatReborn/RebornAssets/main/IconAssets/BMR_Icon.png",
@@ -2600,7 +2666,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/BossModReborn/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/BossModReborn/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791632574"
+    "LastUpdate": "1791805865"
   },
   {
     "Author": "DhogGPT",
@@ -3795,7 +3861,7 @@
     "IsHide": false,
     "IsTestingExclusive": false,
     "LastUpdate": 1780898814,
-    "DownloadCount": 2587857,
+    "DownloadCount": 2587897,
     "DownloadLinkInstall": "https://github.com/WorkingRobot/Craftimizer/releases/download/2.11.0.2/latestUnofficial.zip",
     "DownloadLinkUpdate": "https://github.com/WorkingRobot/Craftimizer/releases/download/2.11.0.2/latestUnofficial.zip",
     "DownloadLinkTesting": "https://github.com/WorkingRobot/Craftimizer/releases/download/2.11.0.2/latestUnofficial.zip"
@@ -4097,7 +4163,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/SHOEGAZEssb/Dagobert/releases/download/v1.14.1.0/latest.zip",
     "DownloadLinkUpdate": "https://github.com/SHOEGAZEssb/Dagobert/releases/download/v1.14.1.0/latest.zip",
-    "DownloadCount": 23730,
+    "DownloadCount": 23734,
     "LastUpdate": "1781336152"
   },
   {
@@ -5153,7 +5219,7 @@
     ],
     "InternalName": "Eidos",
     "RepoUrl": "https://github.com/Nainaiowo/Eidos",
-    "DownloadCount": 305,
+    "DownloadCount": 307,
     "LastUpdate": 1785334785,
     "TestingAssemblyVersion": "0.1.0.91",
     "DownloadLinkTesting": "https://puni.sh/api/plugins/download/168/Eidos/versions/0.1.0.91/install/testing.zip",
@@ -6094,7 +6160,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/FuckAnimationLock/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/FuckAnimationLock/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791632574"
+    "LastUpdate": "1791805865"
   },
   {
     "Author": "decorwdyun",
@@ -6553,7 +6619,7 @@
     "TestingDalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 147056,
+    "DownloadCount": 147141,
     "LastUpdate": 1618608322,
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/Glamourer-CN/releases/download/1.7.1.4-cn/Glamourer.zip",
     "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/Glamourer-CN/releases/download/1.7.1.4-cn/Glamourer.zip",
@@ -6919,7 +6985,7 @@
     "Punchline": "Various tools to debug things.",
     "AcceptsFeedback": true,
     "Changelog": "- Added: Type redirect for InstanceContentCrucibleOfTheUnbroken.\n- Updated: ClientStructs now at 97a7fc48 (compare).",
-    "DownloadCount": 209,
+    "DownloadCount": 218,
     "LastUpdate": 1791547755,
     "DownloadLinkInstall": "https://github.com/Haselnussbomber/HaselDebug/releases/download/v1.75.2/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Haselnussbomber/HaselDebug/releases/download/v1.75.2/latest.zip"
@@ -7033,7 +7099,7 @@
     "Punchline": "A collection of quality of life tweaks.",
     "AcceptsFeedback": true,
     "Changelog": "HaselTweaks\n\n- Updated ClientStructs for Patch 7.56 HotFix 2.",
-    "DownloadCount": 12128,
+    "DownloadCount": 12150,
     "LastUpdate": 1789650039,
     "DownloadLinkInstall": "https://github.com/Haselnussbomber/HaselTweaks/releases/download/v50.0.2/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Haselnussbomber/HaselTweaks/releases/download/v50.0.2/latest.zip"
@@ -7676,7 +7742,7 @@
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/IINACT/releases/download/v2.10.3.9/IINACT.zip",
     "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/IINACT/releases/download/v2.10.3.9/IINACT.zip",
     "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/IINACT/releases/download/v2.10.3.9/IINACT.zip",
-    "DownloadCount": 10723
+    "DownloadCount": 10726
   },
   {
     "Author": "J3",
@@ -7731,7 +7797,7 @@
     "Author": "WigglyMuffin",
     "DalamudApiLevel": 15,
     "Description": "Uploads your game statistics (such as quest progress, gil, retainer stats) to an InfluxDB or QuestDB instance, making it possible to automatically track your progress through external tools such as Grafana.\n\nOriginally created by Liza Carvelli.",
-    "DownloadCount": 4408,
+    "DownloadCount": 4528,
     "DownloadLinkInstall": "https://github.com/WigglyMuffin/Influx/releases/latest/download/latest.zip",
     "DownloadLinkUpdate": "https://github.com/WigglyMuffin/Influx/releases/latest/download/latest.zip",
     "IconUrl": "https://raw.githubusercontent.com/WigglyMuffin/DalamudPlugins/main/icons/Influx.png",
@@ -8391,7 +8457,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/LazyLoot/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/LazyLoot/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791632574"
+    "LastUpdate": "1791805865"
   },
   {
     "Author": "dajoey",
@@ -8644,7 +8710,7 @@
     "Punchline": "A little helper for Levequests.",
     "AcceptsFeedback": true,
     "Changelog": "- Added: You can now click on the group header in the Type filter to filter for either all Fieldcraft, Tradecraft or Grand Company Leves.\n- Added: When GatherBuddy is installed, the Queue and Recipe Tree now display GatherBuddys tooltip on fish and spearfish, including info about the Bait, Time and Weather restrictions and the next uptimes.  \n  - Please note that GatherBuddy uses the client language, not Dalamuds UI language like LeveHelper. It's out of my control.\n- Fixed: Some gatherables did not show up in the Queue.\n\nRegarding the Levemete filter\n\nThe game's database doesn't list which Levemete issues which Levequests and multiple old NPCs also rotate their Levequests when you complete one.\n\nI used to scrape a wiki to gather this data, but two weeks ago, we added Levequest issuer tracking to the Tracky plugin and already have more entries than the wiki provided!\n\nSome entries that I could confirm through another wiki are still missing, so manually added those back in for now.\n\nIf you'd like to help us, please install the Tracky plugin and enable uploads in its settings.\n\nThank you! :)",
-    "DownloadCount": 1582,
+    "DownloadCount": 1587,
     "LastUpdate": 1789065548,
     "DownloadLinkInstall": "https://github.com/Haselnussbomber/LeveHelper/releases/download/v2.6.0/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Haselnussbomber/LeveHelper/releases/download/v2.6.0/latest.zip"
@@ -8902,7 +8968,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/LuckyStar/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/LuckyStar/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791632574"
+    "LastUpdate": "1791805865"
   },
   {
     "Author": "Cyenia",
@@ -8999,41 +9065,36 @@
   },
   {
     "Author": "XeldarAlz",
-    "Name": "Doman Mahjong Solver",
-    "AcceptsFeedback": true,
-    "ApplicableVersion": "any",
-    "AssemblyVersion": "0.1.2.3",
-    "CanUnloadAsync": false,
-    "CategoryTags": [
-      "Utility"
-    ],
-    "Changelog": "v0.1.2.3: Fix the in-game suggestion highlight after a call. Once you called pon, chi, or kan, the highlight could jump to the wall along the top of the board or land on the wrong tile, because it located your hand by geometry and the shrunken hand let the perfectly-aligned wall slots win. It now anchors to the bottom-most row (your hand is always at the bottom) and ignores melded tiles, so the outline stays on the suggested discard. The hand reading and suggestion were always correct; only the on-tile outline was affected.",
-    "DalamudApiLevel": 15,
-    "Description": "Reads your Doman Mahjong hand and either suggests the best discard or plays the match for you.\nhttps://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
-    "DownloadCount": 10693,
-    "DownloadLinkInstall": "https://github.com/XeldarAlz/FFXIV-DomanMahjongSolver/releases/latest/download/latest.zip",
-    "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-DomanMahjongSolver/releases/latest/download/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/XeldarAlz/FFXIV-DomanMahjongSolver/releases/latest/download/latest.zip",
-    "IconUrl": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-DomanMahjongSolver/main/Mahjong.Plugin.Dalamud/Images/Icon.png",
-    "ImageUrls": [],
+    "Name": "Auto Mahjong Solver",
     "InternalName": "Mahjong.Plugin.Dalamud",
+    "AssemblyVersion": "0.2.0.0",
+    "TestingAssemblyVersion": "0.2.0.0",
     "IsTestingExclusive": false,
-    "LastUpdate": "1779882403",
-    "LoadPriority": 0,
-    "LoadRequiredState": 0,
-    "LoadSync": false,
-    "MinimumDalamudVersion": null,
+    "Description": "Reads Doman Mahjong, computes the best discard and call, shows a suggestion overlay, and can play for you.\n\nPlugin from https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
     "Punchline": "Doman Mahjong, solved for you.",
-    "RepoUrl": "https://github.com/XeldarAlz/FFXIV-DomanMahjongSolver",
+    "Changelog": "Rebranded to Auto Mahjong Solver. Same plugin (InternalName Mahjong.Plugin.Dalamud), so existing installs update in place.",
+    "RepoUrl": "https://github.com/XeldarAlz/FFXIV-AutoMahjongSolver",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "TestingDalamudApiLevel": 15,
     "Tags": [
       "mahjong",
-      "doman",
-      "gold-saucer",
-      "ai",
+      "doman mahjong",
+      "gold saucer",
+      "solver",
       "automation"
     ],
-    "TestingAssemblyVersion": "0.1.2.3",
-    "TestingDalamudApiLevel": 15
+    "CategoryTags": [
+      "utility"
+    ],
+    "IconUrl": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoMahjongSolver/main/AutoMahjongSolver/Images/Icon.png",
+    "DownloadCount": 10830,
+    "DownloadLinkInstall": "https://github.com/XeldarAlz/FFXIV-AutoMahjongSolver/releases/latest/download/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/XeldarAlz/FFXIV-AutoMahjongSolver/releases/latest/download/latest.zip",
+    "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoMahjongSolver/releases/latest/download/latest.zip",
+    "AcceptsFeedback": true,
+    "LastUpdate": "1791862628",
+    "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
   {
     "Author": "Just-Chaldea",
@@ -9144,7 +9205,7 @@
     ],
     "InternalName": "Marketbuddy",
     "RepoUrl": null,
-    "DownloadCount": 23347,
+    "DownloadCount": 23362,
     "LastUpdate": 1777575334,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/131/Marketbuddy/versions/0.2.4.2/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/131/Marketbuddy/versions/0.2.4.2/update/latest.zip",
@@ -9296,7 +9357,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/MechanicSim/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/MechanicSim/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791632574"
+    "LastUpdate": "1791805865"
   },
   {
     "Author": "Ramen",
@@ -9692,7 +9753,7 @@
     "Tags": [
       "Sea Of Stars"
     ],
-    "DownloadCount": 41845
+    "DownloadCount": 41853
   },
   {
     "Author": "Aless",
@@ -10345,7 +10406,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/NyaDamagePrediction/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/NyaDamagePrediction/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791632574"
+    "LastUpdate": "1791805865"
   },
   {
     "Author": "NiGuangOwO / Small_Miao",
@@ -10365,7 +10426,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/NyaDraw/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/NyaDraw/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791632574"
+    "LastUpdate": "1791805865"
   },
   {
     "Author": "NightmareXIV",
@@ -10991,7 +11052,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/anya-hichu/PatMeHonorific/releases/download/0.0.7.0/PatMeHonorific.zip",
     "DownloadLinkUpdate": "https://github.com/anya-hichu/PatMeHonorific/releases/download/0.0.7.0/PatMeHonorific.zip",
-    "DownloadCount": 15917,
+    "DownloadCount": 15922,
     "LastUpdate": 1777789047
   },
   {
@@ -11072,7 +11133,7 @@
     "TestingDalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 217483,
+    "DownloadCount": 217685,
     "LastUpdate": 0,
     "LoadPriority": 69420,
     "LoadRequiredState": 2,
@@ -12018,7 +12079,7 @@
     "Author": "WigglyMuffin, CryoTechnic",
     "DalamudApiLevel": 15,
     "Description": "Questionable now ships as \"WigglyQuest\". Its internal name changed so it no longer shares Dalamud's install and config folders with the PunishXIV fork of Questionable; the plugin you see in the installer is still called Questionable.\n\nThis final build under the old name does no questing. It opens a short guide, installs WigglyQuest from the same repository with one click, and then points you at the plugin installer to remove itself. WigglyQuest copies your settings and local quest files on its first start.",
-    "DownloadCount": 400,
+    "DownloadCount": 403,
     "DownloadLinkInstall": "https://github.com/WigglyMuffin/QuestionableConverter/releases/latest/download/latest.zip",
     "DownloadLinkUpdate": "https://github.com/WigglyMuffin/QuestionableConverter/releases/latest/download/latest.zip",
     "IconUrl": "https://raw.githubusercontent.com/WigglyMuffin/DalamudPlugins/main/icons/Questionable.png",
@@ -12092,24 +12153,24 @@
   {
     "Author": "Kage",
     "Name": "QuickTransfer",
-    "ApplicableVersion": "any",
-    "AssemblyVersion": "1.1.1.1",
-    "Changelog": "**Fixes**\n- **Shortcuts are less likely to stop working after a game patch.** QuickTransfer now has a backup way to connect to the game's item menu if the usual one isn't available.\n- **More quantity prompts get filled in automatically.** Some \"How many?\" prompts were sometimes skipped instead of being filled and confirmed.\n- **Corrected the Debug mode description.** Settings now says debug logs go to `/xllog`, not to chat.\n\n**Improvements**\n- Behind-the-scenes cleanup for better stability and performance, especially when organizing the FC chest.\n- QuickTransfer now frees all of its memory when you disable or update it.",
-    "DalamudApiLevel": "15",
-    "Description": "Automate inventory transfers with Shift/Ctrl/Alt + Right-Click. Trade window, vendor quick sell, FC chest.\nhttps://puni.sh/api/repository/kage",
-    "DownloadCount": 1956,
-    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/144/QuickTransfer/versions/1.1.1.1/install/latest.zip",
-    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/144/QuickTransfer/versions/1.1.1.1/update/latest.zip",
-    "IconUrl": "https://puni.sh/api/plugins/icon/144",
-    "InternalName": "QuickTransfer",
-    "LastUpdate": 1790929684,
     "Punchline": "Quick item transfer + split helpers.",
-    "RepoUrl": "https://github.com/Kagekazu/QuickTransfer",
+    "Description": "Automate inventory transfers with Shift/Ctrl/Alt + Right-Click. Trade window, vendor quick sell, FC chest.",
     "Tags": [
       "inventory",
       "utility",
       "quality of life"
-    ]
+    ],
+    "InternalName": "QuickTransfer",
+    "RepoUrl": "https://github.com/Kagekazu/QuickTransfer",
+    "DownloadCount": 2224,
+    "LastUpdate": 1791810966,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/144/QuickTransfer/versions/1.1.1.2/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/144/QuickTransfer/versions/1.1.1.2/update/latest.zip",
+    "AssemblyVersion": "1.1.1.2",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "",
+    "IconUrl": "https://puni.sh/api/plugins/icon/144"
   },
   {
     "Author": "AemiliusXIV",
@@ -12312,7 +12373,7 @@
   {
     "Name": "Raphael.Dalamud",
     "InternalName": "Raphael.Dalamud",
-    "AssemblyVersion": "1.0.1.0",
+    "AssemblyVersion": "1.0.2.0",
     "Author": "Raphael",
     "Punchline": "Dalamud Wrapper for Craft Solver Raphael / 生产求解器 Raphael 的 Dalamud 包装",
     "Description": "Dalamud Wrapper for Craft Solver Raphael / 生产求解器 Raphael 的 Dalamud 包装\nMainly used to provide IPC for other Dalamud plugins / 主要用于提供 IPC 给其他 Dalamud 插件调用",
@@ -12325,8 +12386,8 @@
     "DalamudApiLevel": 15,
     "AcceptsFeedback": true,
     "RepoUrl": "https://github.com/Dalamud-DailyRoutines/Raphael.Dalamud",
-    "DownloadLinkInstall": "https://github.com/Dalamud-DailyRoutines/Raphael.Dalamud/releases/download/1.0.1.0/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/Dalamud-DailyRoutines/Raphael.Dalamud/releases/download/1.0.1.0/latest.zip"
+    "DownloadLinkInstall": "https://github.com/Dalamud-DailyRoutines/Raphael.Dalamud/releases/download/1.0.2.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Dalamud-DailyRoutines/Raphael.Dalamud/releases/download/1.0.2.0/latest.zip"
   },
   {
     "Author": "UnknownX",
@@ -12362,7 +12423,7 @@
     "Tags": [],
     "InternalName": "ReActionEx",
     "RepoUrl": "https://puni.sh/api/repository/taurenkey",
-    "DownloadCount": 7978,
+    "DownloadCount": 7979,
     "LastUpdate": 1777883909,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/55/ReActionEx/versions/1.0.1.2/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/55/ReActionEx/versions/1.0.1.2/update/latest.zip",
@@ -12460,7 +12521,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/anya-hichu/RecruitmentRefresher/releases/download/0.0.5.0/RecruitmentRefresher.zip",
     "DownloadLinkUpdate": "https://github.com/anya-hichu/RecruitmentRefresher/releases/download/0.0.5.0/RecruitmentRefresher.zip",
-    "DownloadCount": 4009,
+    "DownloadCount": 4011,
     "LastUpdate": 1777966535
   },
   {
@@ -12527,7 +12588,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/anya-hichu/Reggiex/releases/download/0.0.3.0/Reggiex.zip",
     "DownloadLinkUpdate": "https://github.com/anya-hichu/Reggiex/releases/download/0.0.3.0/Reggiex.zip",
-    "DownloadCount": 5458,
+    "DownloadCount": 5459,
     "LastUpdate": 1777755839
   },
   {
@@ -12908,7 +12969,7 @@
     "DownloadLinkTesting": "https://github.com/FFXIV-CombatReborn/RotationSolverReborn/releases/download/7.4.1.2/latest.zip",
     "TestingAssemblyVersion": "7.4.1.2",
     "Changelog": "## What's Changed\r\n* Fixes for Beastmaster, minor UI fixes and misc by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/RotationSolverReborn/pull/1395\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/RotationSolverReborn/compare/7.5.6.23...7.5.6.24",
-    "DownloadCount": 3367489
+    "DownloadCount": 3371402
   },
   {
     "Author": "StarHeartHunt",
@@ -13059,7 +13120,7 @@
     "DownloadLinkInstall": "https://edgl.dev/share/zhyra/sealhunter/0.8.7.0.zip",
     "DownloadLinkUpdate": "https://edgl.dev/share/zhyra/sealhunter/0.8.7.0.zip",
     "DownloadLinkTesting": "https://edgl.dev/share/zhyra/sealhunter/0.8.7.0.zip",
-    "DownloadCount": 268,
+    "DownloadCount": 269,
     "LastUpdate": 1791020691,
     "IsHide": false,
     "IsTestingExclusive": false,
@@ -13933,7 +13994,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/SSMinionBoradcast/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/SSMinionBoradcast/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791632574"
+    "LastUpdate": "1791805865"
   },
   {
     "Author": "NightmareXIV",
@@ -14236,27 +14297,6 @@
     "IconUrl": "https://raw.githubusercontent.com/NightmareXIV/TextAdvance/master/TextAdvance/images/icon.png"
   },
   {
-    "Author": "Karou",
-    "Name": "Texture Overlayer",
-    "InternalName": "TextureOverlayer",
-    "AssemblyVersion": "0.5.4.0",
-    "Punchline": "Overlay textures in-game quickly",
-    "Description": "A relatively robust tool that allows you to non-destructively edit textures.",
-    "ApplicableVersion": "any",
-    "RepoUrl": "https://github.com/Glorou/TextureOverlayer",
-    "Tags": [],
-    "DalamudApiLevel": 15,
-    "LoadPriority": 0,
-    "DownloadCount": 0,
-    "DownloadLinkInstall": "https://github.com/Glorou/TextureOverlayer/releases/download/v0.5.4/latest.zip",
-    "DownloadLinkTesting": "https://github.com/Glorou/TextureOverlayer/releases/download/v0.5.4/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/Glorou/TextureOverlayer/releases/download/v0.5.4/latest.zip",
-    "IconUrl": "",
-    "_isDip17Plugin": false,
-    "_Dip17Channel": null,
-    "Changelog": "## What's Changed\r\n* Fixed for API 15\r\n No new updates as I'm working on Ktisis right now, but I have features planned"
-  },
-  {
     "AssemblyVersion": "0.4.10.0",
     "Punchline": "Plugin that automatically turns in collectables and buys specified scrip items",
     "InternalName": "TheCollector",
@@ -14367,7 +14407,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/Anomek/TomestoneViewer/releases/latest/download/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Anomek/TomestoneViewer/releases/latest/download/latest.zip",
-    "DownloadCount": 2633,
+    "DownloadCount": 2645,
     "LastUpdate": "1782586241"
   },
   {
@@ -14532,7 +14572,7 @@
     "Author": "Tynia",
     "Name": "Tynia PVP Radar",
     "InternalName": "TyniaPVPRadar",
-    "AssemblyVersion": "1.0.9.8",
+    "AssemblyVersion": "1.0.9.9",
     "Punchline": "PVP小助手（在线安装 Only）",
     "Description": "在PVP地图中显示所有玩家信息，支持连线、标记和关注列表功能",
     "ApplicableVersion": "any",
@@ -14960,7 +15000,7 @@
     "Tags": [],
     "InternalName": "vfallguy",
     "RepoUrl": null,
-    "DownloadCount": 62521,
+    "DownloadCount": 63182,
     "LastUpdate": 1791755090,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/41/vfallguy/versions/0.0.0.13/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/41/vfallguy/versions/0.0.0.13/update/latest.zip",
@@ -15245,7 +15285,7 @@
     ],
     "InternalName": "wahbuttons",
     "RepoUrl": "https://github.com/wahtf/wahbuttons",
-    "DownloadCount": 7,
+    "DownloadCount": 14,
     "LastUpdate": 1791727689,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/181/wahbuttons/versions/20.0.0.1/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/181/wahbuttons/versions/20.0.0.1/update/latest.zip",
@@ -15286,7 +15326,7 @@
     ],
     "InternalName": "WahTools",
     "RepoUrl": "https://git.wahapp.com/wah/WahTools",
-    "DownloadCount": 768,
+    "DownloadCount": 778,
     "LastUpdate": 1791638843,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/180/WahTools/versions/20.0.0.9/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/180/WahTools/versions/20.0.0.9/update/latest.zip",
@@ -15351,7 +15391,7 @@
     "IsHide": false,
     "IsTestingExclusive": false,
     "LastUpdate": 1777852470,
-    "DownloadCount": 70747,
+    "DownloadCount": 70755,
     "DownloadLinkInstall": "https://github.com/WorkingRobot/Waitingway/releases/download/2.4.2/latestUnofficial.zip",
     "DownloadLinkUpdate": "https://github.com/WorkingRobot/Waitingway/releases/download/2.4.2/latestUnofficial.zip",
     "DownloadLinkTesting": "https://github.com/WorkingRobot/Waitingway/releases/download/2.4.2/latestUnofficial.zip"
@@ -15497,7 +15537,7 @@
     "Author": "WigglyMuffin, CryoTechnic",
     "DalamudApiLevel": 15,
     "Description": "Automates quests from accept to turn-in - main scenario, class and job, allied society and side quests.\n\nSmart navigation plans the route across zones using aetherytes, aethernet and transports, then walks you to each objective. Dialogue, interactions and turn-ins are handled for you.",
-    "DownloadCount": 14420,
+    "DownloadCount": 14562,
     "DownloadLinkInstall": "https://github.com/WigglyCorp/Questionable/releases/latest/download/latest.zip",
     "DownloadLinkUpdate": "https://github.com/WigglyCorp/Questionable/releases/latest/download/latest.zip",
     "IconUrl": "https://raw.githubusercontent.com/WigglyMuffin/DalamudPlugins/main/icons/Questionable.png",
@@ -15919,7 +15959,7 @@
     "DalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 1207,
+    "DownloadCount": 1210,
     "LastUpdate": 0,
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/XivMediaPlayer/releases/download/0.1.7.0-cn/XivMediaPlayer.zip",
     "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/XivMediaPlayer/releases/download/0.1.7.0-cn/XivMediaPlayer.zip",
@@ -16079,7 +16119,7 @@
     "TestingDalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 1596,
+    "DownloadCount": 1601,
     "LastUpdate": 1746230400,
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/XIVWindowResizer/releases/download/2.0.0.2-x/XIVWindowResizerX.zip",
     "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/XIVWindowResizer/releases/download/2.0.0.2-x/XIVWindowResizerX.zip",
@@ -16094,7 +16134,7 @@
     "Tags": [],
     "InternalName": "YesAlready",
     "RepoUrl": "https://github.com/PunishXIV/YesAlready",
-    "DownloadCount": 1515432,
+    "DownloadCount": 1517454,
     "LastUpdate": 1791750283,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/26/YesAlready/versions/1.15.7.3/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/26/YesAlready/versions/1.15.7.3/update/latest.zip",
