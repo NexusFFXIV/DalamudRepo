@@ -340,6 +340,17 @@
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoFATEGrind/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
+  "AutoGcSupply": {
+    "InternalName": "AutoGcSupply",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.0.0.3",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoGCSupply/releases/latest/download/latest.zip",
+    "TestingAssemblyVersionFromZip": null
+  },
   "AutoHuntGrinder": {
     "InternalName": "AutoHuntGrinder",
     "AssemblyVersion": null,
@@ -489,10 +500,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.0.0.0",
+    "TestingAssemblyVersion": "1.1.0.2",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoShopper/releases/latest/download/latest.zip",
-    "TestingAssemblyVersionFromZip": "1.0.0.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "AutoSightseeingLog": {
     "InternalName": "AutoSightseeingLog",
@@ -643,9 +654,9 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.7.4.1",
+    "TestingAssemblyVersion": "1.7.4.2",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/LeonBlade/BDTHPlugin/releases/download/1.7.4.1/BDTHPlugin.zip",
+    "TestingDownloadUrl": "https://github.com/LeonBlade/BDTHPlugin/releases/download/1.7.4.2/BDTHPlugin.zip",
     "TestingAssemblyVersionFromZip": null
   },
   "BetterFakeName": {
@@ -962,10 +973,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.0.4.16",
+    "TestingAssemblyVersion": "1.0.4.17",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/ProjectChronofoil/Chronofoil.Plugin/releases/download/1.0.4.16/Chronofoil.Plugin.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/ProjectChronofoil/Chronofoil.Plugin/releases/download/1.0.4.17/Chronofoil.Plugin.zip",
+    "TestingAssemblyVersionFromZip": "1.0.4.17"
   },
   "ChronoLog": {
     "InternalName": "ChronoLog",
@@ -2144,6 +2155,17 @@
     "TestingDownloadUrl": "https://github.com/WINDOWCOLLAPSIBLE/someutils/raw/master/plugins/HardwareInfo/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
+  "HaselTweaks": {
+    "InternalName": "HaselTweaks",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "50.0.2.1",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://raw.githubusercontent.com/zhouhuichen741/dalamud-plugins/master/plugins/HaselTweaks/HaselTweaks.zip",
+    "TestingAssemblyVersionFromZip": "50.0.2.1"
+  },
   "HeelsPlugin": {
     "InternalName": "HeelsPlugin",
     "AssemblyVersion": null,
@@ -2337,10 +2359,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "2.10.3.8",
+    "TestingAssemblyVersion": "2.10.3.10",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/marzent/IINACT/releases/download/v2.10.3.8/IINACT.zip",
-    "TestingAssemblyVersionFromZip": "2.10.3.8"
+    "TestingDownloadUrl": "https://github.com/marzent/IINACT/releases/download/v2.10.3.10/IINACT.zip",
+    "TestingAssemblyVersionFromZip": "2.10.3.10"
   },
   "IINACTNativeOverlay": {
     "InternalName": "IINACTNativeOverlay",
@@ -3580,10 +3602,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "2.2.2.1",
+    "TestingAssemblyVersion": "2.2.3.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://files.kinkporium.studio/releases/gagspeak/2.2.2.1.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://files.kinkporium.studio/releases/gagspeak/2.2.3.0.zip",
+    "TestingAssemblyVersionFromZip": "2.2.3.0"
   },
   "ProvokeCounter": {
     "InternalName": "ProvokeCounter",
@@ -4119,9 +4141,9 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.3.14.0",
+    "TestingAssemblyVersion": "0.3.15.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/Ricimon/FFXIV-SmartPings/releases/download/v0.3.14-beta/SmartPings_v0.3.14.zip",
+    "TestingDownloadUrl": "https://github.com/Ricimon/FFXIV-SmartPings/releases/download/v0.3.15-beta/SmartPings_v0.3.15.zip",
     "TestingAssemblyVersionFromZip": null
   },
   "SmartStrafe": {
@@ -4273,10 +4295,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.18.1.0",
+    "TestingAssemblyVersion": "1.18.2.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/Valiice/SpotifyHonorific/releases/download/v1.18.1/SpotifyHonorific.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/Valiice/SpotifyHonorific/releases/download/v1.18.2/SpotifyHonorific.zip",
+    "TestingAssemblyVersionFromZip": "1.18.2.0"
   },
   "StartupCommands": {
     "InternalName": "StartupCommands",
@@ -4376,6 +4398,17 @@
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/paissaheavyindustries/Telesto/releases/download/v1.0.1.0/Telesto_1_0_1_0.zip",
     "TestingAssemblyVersionFromZip": null
+  },
+  "TextureOverlayer": {
+    "InternalName": "TextureOverlayer",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "0.5.4.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/Glorou/TextureOverlayer/releases/download/v0.5.4/latest.zip",
+    "TestingAssemblyVersionFromZip": "0.5.4.0"
   },
   "TheCollector": {
     "InternalName": "TheCollector",
@@ -4922,10 +4955,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.6.0.2",
+    "TestingAssemblyVersion": "1.6.0.3",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/keifufu/XivVoices/releases/download/1.6.0.2/XivVoices.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/keifufu/XivVoices/releases/download/1.6.0.3/XivVoices.zip",
+    "TestingAssemblyVersionFromZip": "1.6.0.3"
   },
   "ZanarkandDoorbell": {
     "InternalName": "ZanarkandDoorbell",
