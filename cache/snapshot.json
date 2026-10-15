@@ -351,6 +351,17 @@
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoGCSupply/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
+  "AutoHouseLottery": {
+    "InternalName": "AutoHouseLottery",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.1.0.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoHouseLottery/releases/latest/download/latest.zip",
+    "TestingAssemblyVersionFromZip": null
+  },
   "AutoHuntGrinder": {
     "InternalName": "AutoHuntGrinder",
     "AssemblyVersion": null,
@@ -500,7 +511,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.1.0.2",
+    "TestingAssemblyVersion": "1.2.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoShopper/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -976,7 +987,7 @@
     "TestingAssemblyVersion": "1.0.4.17",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/ProjectChronofoil/Chronofoil.Plugin/releases/download/1.0.4.17/Chronofoil.Plugin.zip",
-    "TestingAssemblyVersionFromZip": "1.0.4.17"
+    "TestingAssemblyVersionFromZip": null
   },
   "ChronoLog": {
     "InternalName": "ChronoLog",
@@ -2164,7 +2175,7 @@
     "TestingAssemblyVersion": "50.0.2.1",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://raw.githubusercontent.com/zhouhuichen741/dalamud-plugins/master/plugins/HaselTweaks/HaselTweaks.zip",
-    "TestingAssemblyVersionFromZip": "50.0.2.1"
+    "TestingAssemblyVersionFromZip": null
   },
   "HeelsPlugin": {
     "InternalName": "HeelsPlugin",
@@ -3605,7 +3616,7 @@
     "TestingAssemblyVersion": "2.2.3.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://files.kinkporium.studio/releases/gagspeak/2.2.3.0.zip",
-    "TestingAssemblyVersionFromZip": "2.2.3.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "ProvokeCounter": {
     "InternalName": "ProvokeCounter",
@@ -4298,7 +4309,7 @@
     "TestingAssemblyVersion": "1.18.2.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/Valiice/SpotifyHonorific/releases/download/v1.18.2/SpotifyHonorific.zip",
-    "TestingAssemblyVersionFromZip": "1.18.2.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "StartupCommands": {
     "InternalName": "StartupCommands",
@@ -4408,7 +4419,7 @@
     "TestingAssemblyVersion": "0.5.4.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/Glorou/TextureOverlayer/releases/download/v0.5.4/latest.zip",
-    "TestingAssemblyVersionFromZip": "0.5.4.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "TheCollector": {
     "InternalName": "TheCollector",
@@ -4958,7 +4969,7 @@
     "TestingAssemblyVersion": "1.6.0.3",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/keifufu/XivVoices/releases/download/1.6.0.3/XivVoices.zip",
-    "TestingAssemblyVersionFromZip": "1.6.0.3"
+    "TestingAssemblyVersionFromZip": null
   },
   "ZanarkandDoorbell": {
     "InternalName": "ZanarkandDoorbell",
