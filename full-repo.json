@@ -47,7 +47,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/SHOEGAZEssb/AchManager/releases/download/v1.7.0.0/latest.zip",
     "DownloadLinkUpdate": "https://github.com/SHOEGAZEssb/AchManager/releases/download/v1.7.0.0/latest.zip",
-    "DownloadCount": 1537,
+    "DownloadCount": 1538,
     "LastUpdate": "1777995656"
   },
   {
@@ -73,11 +73,11 @@
     "Punchline": "Show your actions in real-time.",
     "RepoUrl": "https://github.com/FFXIV-CombatReborn/ActionTimelineReborn",
     "AcceptsFeedback": true,
-    "DownloadLinkInstall": "https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/releases/download/7.5.6.1/ActionTimelineReborn.zip",
-    "AssemblyVersion": "7.5.6.1",
-    "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/releases/download/7.5.6.1/ActionTimelineReborn.zip",
-    "Changelog": "## What's Changed\r\n* Fixes for status timeline UI, now gets and shows statuses on the fly rather than from curated list by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/pull/21\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/compare/7.5.6.0...7.5.6.1",
-    "DownloadCount": 39721
+    "DownloadLinkInstall": "https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/releases/download/7.5.7.1/ActionTimelineReborn.zip",
+    "AssemblyVersion": "7.5.7.1",
+    "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/releases/download/7.5.7.1/ActionTimelineReborn.zip",
+    "Changelog": "## What's Changed\r\n* Add color options section to timeline settings for each UI element and text by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/pull/23\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/ActionTimelineReborn/compare/7.5.7.0...7.5.7.1",
+    "DownloadCount": 40097
   },
   {
     "Name": "ActionTimelineReplacement(aka. ATR)",
@@ -137,7 +137,7 @@
     ],
     "InternalName": "ActiveVenueFinder",
     "RepoUrl": "https://github.com/NeoGriever/ActiveVenueFinder",
-    "DownloadCount": 868,
+    "DownloadCount": 944,
     "LastUpdate": 1791940244,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/129/ActiveVenueFinder/versions/2.2.0.1/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/129/ActiveVenueFinder/versions/2.2.0.1/update/latest.zip",
@@ -683,7 +683,7 @@
     "Punchline": "Another FFXIV mechanics simulator. Go to an inn and start practice.",
     "Description": "Spawns fake party members and bosses client-side so you can practice raid mechanics without a full party.",
     "InternalName": "AnoMech",
-    "AssemblyVersion": "0.4.2.0",
+    "AssemblyVersion": "0.5.0.0",
     "RepoUrl": "https://github.com/anomek/AnoMech",
     "ApplicableVersion": "any",
     "Tags": [
@@ -705,7 +705,7 @@
     "DownloadLinkTesting": "https://github.com/anomek/AnoMech/releases/latest/download/latest.zip",
     "DownloadLinkUpdate": "https://github.com/anomek/AnoMech/releases/latest/download/latest.zip",
     "DownloadCount": 5464,
-    "LastUpdate": "1790269451"
+    "LastUpdate": "1792032708"
   },
   {
     "Author": "NightmareXIV",
@@ -724,7 +724,7 @@
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.12-cn/antiafkkick-dalamud.zip",
     "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.12-cn/antiafkkick-dalamud.zip",
     "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.12-cn/antiafkkick-dalamud.zip",
-    "DownloadCount": 21361
+    "DownloadCount": 21376
   },
   {
     "Author": "aniachan",
@@ -797,7 +797,7 @@
     "TestingDalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 5519,
+    "DownloadCount": 5526,
     "LastUpdate": 0,
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/AQuestReborn/releases/download/0.2.9.8-cn/AQuestReborn.zip",
     "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/AQuestReborn/releases/download/0.2.9.8-cn/AQuestReborn.zip",
@@ -1122,7 +1122,7 @@
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoDailyTribes/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
     "AcceptsFeedback": true,
-    "DownloadCount": 30537,
+    "DownloadCount": 31555,
     "LastUpdate": "1791839067",
     "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
@@ -1143,14 +1143,14 @@
     ],
     "InternalName": "AutoDuty",
     "RepoUrl": "https://github.com/erdelf/AutoDuty",
-    "DownloadCount": 2216311,
-    "LastUpdate": 1791931791,
-    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/54/AutoDuty/versions/0.0.0.383/install/latest.zip",
-    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/54/AutoDuty/versions/0.0.0.383/update/latest.zip",
-    "AssemblyVersion": "0.0.0.383",
+    "DownloadCount": 2230433,
+    "LastUpdate": 1792017213,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/54/AutoDuty/versions/0.0.0.384/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/54/AutoDuty/versions/0.0.0.384/update/latest.zip",
+    "AssemblyVersion": "0.0.0.384",
     "ApplicableVersion": "any",
     "DalamudApiLevel": "15",
-    "Changelog": "## What's Changed\r\n* Patch 7.57 update by @erdelf in https://github.com/erdelf/AutoDuty/pull/599\r\n* Set Bossmod settings temporarily by @erdelf in https://github.com/erdelf/AutoDuty/pull/600\r\n* Fix transparent overlay background on startup by @osenbei1gou-bit in https://github.com/erdelf/AutoDuty/pull/598\r\n\r\n## New Contributors\r\n* @osenbei1gou-bit made their first contribution in https://github.com/erdelf/AutoDuty/pull/598\r\n\r\n**Full Changelog**: https://github.com/erdelf/AutoDuty/compare/0.0.0.382...0.0.0.383",
+    "Changelog": "## What's Changed\r\n* Termination ilvl cap raised by @erdelf in https://github.com/erdelf/AutoDuty/pull/602\r\n\r\n\r\n**Full Changelog**: https://github.com/erdelf/AutoDuty/compare/0.0.0.383...0.0.0.384",
     "TestingAssemblyVersion": "0.0.0.367",
     "DownloadLinkTesting": "https://puni.sh/api/plugins/download/54/AutoDuty/versions/0.0.0.367/install/testing.zip",
     "TestingDalamudApiLevel": "15",
@@ -1190,7 +1190,7 @@
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoFATEGrind/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
     "AcceptsFeedback": true,
-    "DownloadCount": 65021,
+    "DownloadCount": 66854,
     "LastUpdate": "1791861882",
     "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
@@ -1271,7 +1271,7 @@
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoGCSupply/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
     "AcceptsFeedback": true,
-    "DownloadCount": 41,
+    "DownloadCount": 130,
     "LastUpdate": "1791926276",
     "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
@@ -1303,7 +1303,7 @@
     ],
     "InternalName": "AutoHook",
     "RepoUrl": "https://github.com/PunishXIV/AutoHook",
-    "DownloadCount": 2748149,
+    "DownloadCount": 2754919,
     "LastUpdate": 1791717874,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/47/AutoHook/versions/6.0.2.7/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/47/AutoHook/versions/6.0.2.7/update/latest.zip",
@@ -1315,6 +1315,38 @@
     "DownloadLinkTesting": "https://puni.sh/api/plugins/download/47/AutoHook/versions/6.0.1.2/install/testing.zip",
     "TestingDalamudApiLevel": "15",
     "IconUrl": "https://puni.sh/api/plugins/icon/47"
+  },
+  {
+    "Author": "XeldarAlz",
+    "Name": "Auto House Lottery",
+    "InternalName": "AutoHouseLottery",
+    "AssemblyVersion": "1.1.0.0",
+    "TestingAssemblyVersion": "1.1.0.0",
+    "Description": "Shows empty housing plots on a map from public listings, enters the lottery on the plot you pick or the best match on your shortlist, then checks the result and collects your refund or claims your house.\n\nPlugin from https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
+    "Punchline": "Find an empty plot, enter its housing lottery, collect your refund or claim your house.",
+    "RepoUrl": "https://github.com/XeldarAlz/FFXIV-AutoHouseLottery",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "Housing",
+      "Lottery",
+      "Plot",
+      "Estate",
+      "Free Company",
+      "Automation"
+    ],
+    "CategoryTags": [
+      "utility"
+    ],
+    "DalamudApiLevel": 15,
+    "IconUrl": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoHouseLottery/master/AutoHouseLottery/Images/Icon.png",
+    "DownloadLinkInstall": "https://github.com/XeldarAlz/FFXIV-AutoHouseLottery/releases/latest/download/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/XeldarAlz/FFXIV-AutoHouseLottery/releases/latest/download/latest.zip",
+    "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoHouseLottery/releases/latest/download/latest.zip",
+    "IsTestingExclusive": false,
+    "AcceptsFeedback": true,
+    "DownloadCount": 29,
+    "LastUpdate": "1792003237",
+    "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
   {
     "Author": "XeldarAlz",
@@ -1344,7 +1376,7 @@
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoHuntGrinder/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
     "AcceptsFeedback": true,
-    "DownloadCount": 5990,
+    "DownloadCount": 6502,
     "LastUpdate": "1791842427",
     "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
@@ -1376,7 +1408,7 @@
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoHuntTrain/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
     "AcceptsFeedback": true,
-    "DownloadCount": 1147,
+    "DownloadCount": 1395,
     "LastUpdate": "1791871112",
     "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
@@ -1507,7 +1539,7 @@
     ],
     "InternalName": "Automaton",
     "RepoUrl": "https://github.com/Jaksuhn/Automaton",
-    "DownloadCount": 1000697,
+    "DownloadCount": 1003617,
     "LastUpdate": 1791750207,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/34/Automaton/versions/69.219/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/34/Automaton/versions/69.219/update/latest.zip",
@@ -1599,7 +1631,7 @@
     "DownloadLinkInstall": "https://edgl.dev/share/zhyra/autopincher/0.2.2.0.zip",
     "DownloadLinkUpdate": "https://edgl.dev/share/zhyra/autopincher/0.2.2.0.zip",
     "DownloadLinkTesting": "https://edgl.dev/share/zhyra/autopincher/0.2.2.0.zip",
-    "DownloadCount": 389,
+    "DownloadCount": 390,
     "LastUpdate": 1791045790,
     "IsHide": false,
     "IsTestingExclusive": false,
@@ -1670,7 +1702,7 @@
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoPVPSeriesGrind/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
     "AcceptsFeedback": true,
-    "DownloadCount": 18345,
+    "DownloadCount": 18545,
     "LastUpdate": "1791671529",
     "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
@@ -1717,14 +1749,14 @@
     "DownloadLinkTesting": "https://github.com/penguin4glte/AutoRetainerSellList/releases/download/1.0.0/latest.zip",
     "DownloadLinkUpdate": "https://github.com/penguin4glte/AutoRetainerSellList/releases/download/1.2.1/latest.zip",
     "Changelog": "Update for latest Dalamud (API 15) and current game patch. Updated ECommons to latest master. Fixed assembly version generation.",
-    "DownloadCount": 77
+    "DownloadCount": 78
   },
   {
     "Author": "XeldarAlz",
     "Name": "Auto Shopper",
     "InternalName": "AutoShopper",
-    "AssemblyVersion": "1.1.0.2",
-    "TestingAssemblyVersion": "1.1.0.2",
+    "AssemblyVersion": "1.2.0.0",
+    "TestingAssemblyVersion": "1.2.0.0",
     "Description": "Buys your market board shopping list for you: plans the cheapest route through Universalis prices across the worlds you allow, travels between them with Lifestream, walks to the market board, buys whole listings within your price caps, and confirms every purchase.\n\nPlugin from https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json",
     "Punchline": "Your market board shopping list, bought for you.",
     "RepoUrl": "https://github.com/XeldarAlz/FFXIV-AutoShopper",
@@ -1746,8 +1778,8 @@
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoShopper/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
     "AcceptsFeedback": true,
-    "DownloadCount": 65,
-    "LastUpdate": "1791922891",
+    "DownloadCount": 242,
+    "LastUpdate": "1791999987",
     "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
   {
@@ -1808,7 +1840,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/Anomek/AutoTravel/releases/latest/download/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Anomek/AutoTravel/releases/latest/download/latest.zip",
-    "DownloadCount": 964,
+    "DownloadCount": 972,
     "LastUpdate": "1782589111"
   },
   {
@@ -1840,7 +1872,7 @@
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoTreasureMaps/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
     "AcceptsFeedback": true,
-    "DownloadCount": 40,
+    "DownloadCount": 134,
     "LastUpdate": "1791869946",
     "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
@@ -1891,7 +1923,7 @@
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoTripleTriadGrind/releases/latest/download/latest.zip",
     "IsTestingExclusive": false,
     "AcceptsFeedback": true,
-    "DownloadCount": 2571,
+    "DownloadCount": 3016,
     "LastUpdate": "1791860807",
     "originRepository": "https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json"
   },
@@ -2213,7 +2245,7 @@
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "TestingDalamudApiLevel": 15,
-    "DownloadCount": 23456,
+    "DownloadCount": 23490,
     "LastUpdate": 1784519069,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/Battlevest/releases/download/1.0.2.3/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/Battlevest/releases/download/1.0.2.3/latest.zip",
@@ -2269,7 +2301,7 @@
     "IsHide": "False",
     "IsTestingExclusive": "False",
     "LastUpdated": 1791948307,
-    "DownloadCount": 0,
+    "DownloadCount": 15120,
     "DownloadLinkInstall": "https://github.com/LeonBlade/BDTHPlugin/releases/download/1.7.4.2/BDTHPlugin.zip",
     "DownloadLinkTesting": "https://github.com/LeonBlade/BDTHPlugin/releases/download/1.7.4.2/BDTHPlugin.zip",
     "DownloadLinkUpdate": "https://github.com/LeonBlade/BDTHPlugin/releases/download/1.7.4.2/BDTHPlugin.zip"
@@ -2654,7 +2686,7 @@
     "Tags": [],
     "InternalName": "BossMod",
     "RepoUrl": "https://github.com/awgil/ffxiv_bossmod",
-    "DownloadCount": 2648462,
+    "DownloadCount": 2660056,
     "LastUpdate": 1791936400,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.7.0/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.7.0/update/latest.zip",
@@ -2662,8 +2694,8 @@
     "ApplicableVersion": "any",
     "DalamudApiLevel": "15",
     "Changelog": "",
-    "TestingAssemblyVersion": "7.5.6.23",
-    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.6.23/install/testing.zip",
+    "TestingAssemblyVersion": "7.5.7.1",
+    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/30/BossMod/versions/7.5.7.1/install/testing.zip",
     "TestingDalamudApiLevel": "15",
     "IconUrl": "https://puni.sh/api/plugins/icon/30",
     "ImageUrls": [
@@ -2700,7 +2732,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/BossModReborn/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/BossModReborn/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791805865"
+    "LastUpdate": "1791994438"
   },
   {
     "Author": "DhogGPT",
@@ -3215,7 +3247,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/anya-hichu/ChatDeathRoll/releases/download/0.0.6.0/ChatDeathRoll.zip",
     "DownloadLinkUpdate": "https://github.com/anya-hichu/ChatDeathRoll/releases/download/0.0.6.0/ChatDeathRoll.zip",
-    "DownloadCount": 1349,
+    "DownloadCount": 1358,
     "LastUpdate": 1777755014
   },
   {
@@ -3568,7 +3600,7 @@
     "Name": "Clarion",
     "Punchline": "Save and apply Party Finder recruitment presets instantly.",
     "Description": "Store a full Party Finder recruitment setup (duty, job slots, description, objective, loot rule, one player per job, language, and more) as a named preset and apply it in one go, instead of filling the form out by hand every time.\n\nFill a preset and review it, or fill and post the party in a single click. Optional auto-refresh keeps an active listing alive near the end of its hour, with the windows closed, and leaves your away status alone.\n\nOpen the Recruitment Criteria form (Recruit Members) to save or apply. Use /clarion.",
-    "Changelog": "Presets for hunt trains and other listings that have no specific duty now save under their category name, like The Hunt, instead of showing as unknown, and they apply cleanly.",
+    "Changelog": "Maintenance update for patch 7.57.",
     "Tags": [
       "party",
       "party finder",
@@ -3580,7 +3612,7 @@
       "Utility"
     ],
     "InternalName": "Clarion",
-    "AssemblyVersion": "0.1.0.3",
+    "AssemblyVersion": "0.1.0.4",
     "RepoUrl": "https://github.com/AemiliusXIV/Clarion",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
@@ -3895,7 +3927,7 @@
     "IsHide": false,
     "IsTestingExclusive": false,
     "LastUpdate": 1780898814,
-    "DownloadCount": 2587898,
+    "DownloadCount": 2587956,
     "DownloadLinkInstall": "https://github.com/WorkingRobot/Craftimizer/releases/download/2.11.0.2/latestUnofficial.zip",
     "DownloadLinkUpdate": "https://github.com/WorkingRobot/Craftimizer/releases/download/2.11.0.2/latestUnofficial.zip",
     "DownloadLinkTesting": "https://github.com/WorkingRobot/Craftimizer/releases/download/2.11.0.2/latestUnofficial.zip"
@@ -4197,7 +4229,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/SHOEGAZEssb/Dagobert/releases/download/v1.14.1.0/latest.zip",
     "DownloadLinkUpdate": "https://github.com/SHOEGAZEssb/Dagobert/releases/download/v1.14.1.0/latest.zip",
-    "DownloadCount": 23742,
+    "DownloadCount": 23765,
     "LastUpdate": "1781336152"
   },
   {
@@ -4206,7 +4238,7 @@
     "AssemblyVersion": "2.2.3.4",
     "Author": "AtmoOmen",
     "Punchline": "帮忙解决一些日常重复性劳动 / Help with some of the daily repetitive tasks",
-    "Description": "海量自动化/易用性游戏系统优化模块合集, 帮你从一些无意义的重复性工作中解放出来\nA massive collection of automation / QoL optimization modules to free you from meaningless repetitive tasks.",
+    "Description": "海量自动化/易用性游戏系统优化模块合集, 帮你从一些无意义的重复性工作中解放出来。",
     "ApplicableVersion": "any",
     "LoadPriority": 10000,
     "Tags": [
@@ -4499,7 +4531,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/anya-hichu/DeterministicPose/releases/download/0.0.5.0/DeterministicPose.zip",
     "DownloadLinkUpdate": "https://github.com/anya-hichu/DeterministicPose/releases/download/0.0.5.0/DeterministicPose.zip",
-    "DownloadCount": 5962,
+    "DownloadCount": 5967,
     "LastUpdate": 1777755172
   },
   {
@@ -4618,7 +4650,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/anya-hichu/DiscordActivityHonorific/releases/download/0.0.5.0/DiscordActivityHonorific.zip",
     "DownloadLinkUpdate": "https://github.com/anya-hichu/DiscordActivityHonorific/releases/download/0.0.5.0/DiscordActivityHonorific.zip",
-    "DownloadCount": 9620,
+    "DownloadCount": 9629,
     "LastUpdate": 1777755102
   },
   {
@@ -4830,7 +4862,7 @@
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "TestingDalamudApiLevel": 10,
-    "DownloadCount": 69151,
+    "DownloadCount": 69177,
     "LastUpdate": 1777513729,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/DSREyeLocator/releases/download/2.0.1.10/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/DSREyeLocator/releases/download/2.0.1.10/latest.zip",
@@ -4918,7 +4950,7 @@
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "TestingDalamudApiLevel": 13,
-    "DownloadCount": 154148,
+    "DownloadCount": 154306,
     "LastUpdate": 1789879756,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/DynamicBridge/releases/download/1.0.8.9/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/DynamicBridge/releases/download/1.0.8.9/latest.zip",
@@ -5253,7 +5285,7 @@
     ],
     "InternalName": "Eidos",
     "RepoUrl": "https://github.com/Nainaiowo/Eidos",
-    "DownloadCount": 309,
+    "DownloadCount": 313,
     "LastUpdate": 1785334785,
     "TestingAssemblyVersion": "0.1.0.91",
     "DownloadLinkTesting": "https://puni.sh/api/plugins/download/168/Eidos/versions/0.1.0.91/install/testing.zip",
@@ -6149,7 +6181,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/Catphinaud/FreeCompanyHideSpecifcLoginLogout/releases/download/v0.0.0.7/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Catphinaud/FreeCompanyHideSpecifcLoginLogout/releases/download/v0.0.0.7/latest.zip",
-    "DownloadCount": 40,
+    "DownloadCount": 43,
     "LastUpdate": "1777576587"
   },
   {
@@ -6168,10 +6200,10 @@
       "mount"
     ],
     "RepoUrl": "https://github.com/McVaxius/FrenRider",
-    "AssemblyVersion": "2.1.0.5",
+    "AssemblyVersion": "2.1.0.6",
     "DalamudApiLevel": 15,
-    "DownloadLinkInstall": "https://github.com/McVaxius/FrenRider/releases/download/v2.1.0.5/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/McVaxius/FrenRider/releases/download/v2.1.0.5/latest.zip",
+    "DownloadLinkInstall": "https://github.com/McVaxius/FrenRider/releases/download/v2.1.0.6/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/McVaxius/FrenRider/releases/download/v2.1.0.6/latest.zip",
     "DownloadLinkTesting": "https://github.com/McVaxius/FrenRider/releases/latest/download/latest.zip",
     "IsHide": false,
     "IsTestingExclusive": false,
@@ -6194,7 +6226,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/FuckAnimationLock/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/FuckAnimationLock/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791805865"
+    "LastUpdate": "1791994438"
   },
   {
     "Author": "decorwdyun",
@@ -6600,7 +6632,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/Catphinaud/GlamHouse/releases/download/v1.0.5.0/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Catphinaud/GlamHouse/releases/download/v1.0.5.0/latest.zip",
-    "DownloadCount": 37,
+    "DownloadCount": 39,
     "LastUpdate": "1784228544"
   },
   {
@@ -6653,7 +6685,7 @@
     "TestingDalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 147226,
+    "DownloadCount": 147335,
     "LastUpdate": 1618608322,
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/Glamourer-CN/releases/download/1.7.1.4-cn/Glamourer.zip",
     "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/Glamourer-CN/releases/download/1.7.1.4-cn/Glamourer.zip",
@@ -7019,7 +7051,7 @@
     "Punchline": "Various tools to debug things.",
     "AcceptsFeedback": true,
     "Changelog": "Update for Patch 7.57.\n\n- Updated: ClientStructs now at 78975d83 (compare).",
-    "DownloadCount": 92,
+    "DownloadCount": 207,
     "LastUpdate": 1791925416,
     "DownloadLinkInstall": "https://github.com/Haselnussbomber/HaselDebug/releases/download/v1.75.3/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Haselnussbomber/HaselDebug/releases/download/v1.75.3/latest.zip"
@@ -7363,7 +7395,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/Catphinaud/HousingSweepy/releases/download/v1.1.0.0/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Catphinaud/HousingSweepy/releases/download/v1.1.0.0/latest.zip",
-    "DownloadCount": 58,
+    "DownloadCount": 61,
     "LastUpdate": "1778869498"
   },
   {
@@ -7489,7 +7521,7 @@
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "TestingDalamudApiLevel": 15,
-    "DownloadCount": 152339,
+    "DownloadCount": 152379,
     "LastUpdate": 1782178264,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/HuntTrainAssistant/releases/download/1.0.2.15/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/HuntTrainAssistant/releases/download/1.0.2.15/latest.zip",
@@ -7681,7 +7713,7 @@
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/IINACT/releases/download/v2.10.3.11/IINACT.zip",
     "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/IINACT/releases/download/v2.10.3.11/IINACT.zip",
     "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/IINACT/releases/download/v2.10.3.11/IINACT.zip",
-    "DownloadCount": 10809
+    "DownloadCount": 10873
   },
   {
     "Author": "J3",
@@ -7724,7 +7756,7 @@
     "IsTestingExclusive": false,
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
-    "DownloadCount": 11564,
+    "DownloadCount": 11581,
     "LastUpdate": 1777528106,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/Imagenation/releases/download/1.0.0.11/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/Imagenation/releases/download/1.0.0.11/latest.zip",
@@ -7736,7 +7768,7 @@
     "Author": "WigglyMuffin",
     "DalamudApiLevel": 15,
     "Description": "Uploads your game statistics (such as quest progress, gil, retainer stats) to an InfluxDB or QuestDB instance, making it possible to automatically track your progress through external tools such as Grafana.\n\nOriginally created by Liza Carvelli.",
-    "DownloadCount": 4562,
+    "DownloadCount": 4572,
     "DownloadLinkInstall": "https://github.com/WigglyMuffin/Influx/releases/latest/download/latest.zip",
     "DownloadLinkUpdate": "https://github.com/WigglyMuffin/Influx/releases/latest/download/latest.zip",
     "IconUrl": "https://raw.githubusercontent.com/WigglyMuffin/DalamudPlugins/main/icons/Influx.png",
@@ -7863,7 +7895,7 @@
     "Punchline": "Kill feed in any content.",
     "Changelog": "API 14 update",
     "AcceptsFeedback": true,
-    "DownloadCount": 27,
+    "DownloadCount": 30,
     "LastUpdate": 1788464664,
     "DownloadLinkInstall": "https://github.com/wolfcomp/KillFeed/releases/download/v1.2.3/latest.zip",
     "DownloadLinkUpdate": "https://github.com/wolfcomp/KillFeed/releases/download/v1.2.3/latest.zip"
@@ -8396,7 +8428,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/LazyLoot/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/LazyLoot/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791805865"
+    "LastUpdate": "1791994438"
   },
   {
     "Author": "dajoey",
@@ -8649,7 +8681,7 @@
     "Punchline": "A little helper for Levequests.",
     "AcceptsFeedback": true,
     "Changelog": "- Added: You can now click on the group header in the Type filter to filter for either all Fieldcraft, Tradecraft or Grand Company Leves.\n- Added: When GatherBuddy is installed, the Queue and Recipe Tree now display GatherBuddys tooltip on fish and spearfish, including info about the Bait, Time and Weather restrictions and the next uptimes.  \n  - Please note that GatherBuddy uses the client language, not Dalamuds UI language like LeveHelper. It's out of my control.\n- Fixed: Some gatherables did not show up in the Queue.\n\nRegarding the Levemete filter\n\nThe game's database doesn't list which Levemete issues which Levequests and multiple old NPCs also rotate their Levequests when you complete one.\n\nI used to scrape a wiki to gather this data, but two weeks ago, we added Levequest issuer tracking to the Tracky plugin and already have more entries than the wiki provided!\n\nSome entries that I could confirm through another wiki are still missing, so manually added those back in for now.\n\nIf you'd like to help us, please install the Tracky plugin and enable uploads in its settings.\n\nThank you! :)",
-    "DownloadCount": 1594,
+    "DownloadCount": 1615,
     "LastUpdate": 1789065548,
     "DownloadLinkInstall": "https://github.com/Haselnussbomber/LeveHelper/releases/download/v2.6.0/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Haselnussbomber/LeveHelper/releases/download/v2.6.0/latest.zip"
@@ -8659,21 +8691,22 @@
     "Name": "Lifestream",
     "Punchline": "A plugin to speed up Aethernet travel and World changing.",
     "Description": "- One click to teleport to any world or aethernet destination\n- Click on aetheryte shards inside zone map to teleport to them",
-    "Changelog": "- Fixed an issue where badge overlay wasn't displayed in instances with aetherytes and residential areas",
+    "Changelog": "- Added options \"Auto-open Aethernet Badge when coming close to aetheryte\" and \"Auto-open Instance Badge when coming close to aetheryte\";\r\n- Clicking overlay badge will now close opened badge even in hover mode;\r\n- Added an option \"Minimum Popout Width\";\r\n- Added few one-click badge overlay sizing presets into configuration;\r\n- Old overlay system reactivated in a partial way. It is available only for normal aethernet and instances; it will not be available for worlds. Disabled by default - activate in `/lifestream` - Legacy overlay.",
     "IsHide": false,
     "InternalName": "Lifestream",
     "AssemblyVersion": "2.6.0.5",
-    "TestingAssemblyVersion": "2.5.5.6",
+    "TestingAssemblyVersion": "2.6.0.6",
     "IsTestingExclusive": false,
+    "IsAvailableForTesting": true,
     "RepoUrl": "https://github.com/NightmareXIV/Lifestream",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "TestingDalamudApiLevel": 15,
-    "DownloadCount": 1560728,
-    "LastUpdate": 1791943161,
+    "DownloadCount": 1576848,
+    "LastUpdate": 1792018581,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/Lifestream/releases/download/2.6.0.5/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/Lifestream/releases/download/2.6.0.5/latest.zip",
-    "DownloadLinkTesting": "https://github.com/NightmareXIV/Lifestream/releases/download/2.5.5.6/latest.zip",
+    "DownloadLinkTesting": "https://github.com/NightmareXIV/Lifestream/releases/download/2.6.0.6/latest.zip",
     "SupportsProfiles": true,
     "IconUrl": "https://raw.githubusercontent.com/NightmareXIV/Lifestream/main/Lifestream/images/icon.png"
   },
@@ -8906,7 +8939,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/LuckyStar/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/LuckyStar/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791805865"
+    "LastUpdate": "1791994438"
   },
   {
     "Author": "Cyenia",
@@ -9026,7 +9059,7 @@
       "utility"
     ],
     "IconUrl": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoMahjongSolver/main/AutoMahjongSolver/Images/Icon.png",
-    "DownloadCount": 11907,
+    "DownloadCount": 12803,
     "DownloadLinkInstall": "https://github.com/XeldarAlz/FFXIV-AutoMahjongSolver/releases/latest/download/latest.zip",
     "DownloadLinkUpdate": "https://github.com/XeldarAlz/FFXIV-AutoMahjongSolver/releases/latest/download/latest.zip",
     "DownloadLinkTesting": "https://github.com/XeldarAlz/FFXIV-AutoMahjongSolver/releases/latest/download/latest.zip",
@@ -9143,7 +9176,7 @@
     ],
     "InternalName": "Marketbuddy",
     "RepoUrl": null,
-    "DownloadCount": 23392,
+    "DownloadCount": 23473,
     "LastUpdate": 1777575334,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/131/Marketbuddy/versions/0.2.4.2/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/131/Marketbuddy/versions/0.2.4.2/update/latest.zip",
@@ -9223,7 +9256,7 @@
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "TestingDalamudApiLevel": 15,
-    "DownloadCount": 1901,
+    "DownloadCount": 1911,
     "LastUpdate": 1779699404,
     "DownloadLinkTesting": "https://github.com/NightmareXIV/MaskedCarnivale/releases/download/0.0.0.7/latest.zip",
     "SupportsProfiles": true
@@ -9295,7 +9328,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/MechanicSim/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/MechanicSim/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791805865"
+    "LastUpdate": "1791994438"
   },
   {
     "Author": "Ramen",
@@ -9563,7 +9596,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/anya-hichu/ModSettingCommands/releases/download/0.0.6.0/ModSettingCommands.zip",
     "DownloadLinkUpdate": "https://github.com/anya-hichu/ModSettingCommands/releases/download/0.0.6.0/ModSettingCommands.zip",
-    "DownloadCount": 736,
+    "DownloadCount": 741,
     "LastUpdate": 1777757337
   },
   {
@@ -9691,7 +9724,7 @@
     "Tags": [
       "Sea Of Stars"
     ],
-    "DownloadCount": 41861
+    "DownloadCount": 41870
   },
   {
     "Author": "Aless",
@@ -10344,7 +10377,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/NyaDamagePrediction/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/NyaDamagePrediction/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791805865"
+    "LastUpdate": "1791994438"
   },
   {
     "Author": "NiGuangOwO / Small_Miao",
@@ -10364,7 +10397,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/NyaDraw/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/NyaDraw/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791805865"
+    "LastUpdate": "1791994438"
   },
   {
     "Author": "NightmareXIV",
@@ -10378,7 +10411,7 @@
     "IsTestingExclusive": false,
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
-    "DownloadCount": 12508,
+    "DownloadCount": 12512,
     "LastUpdate": 1777528273,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/ObjectExplorer/releases/download/1.0.0.11/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/ObjectExplorer/releases/download/1.0.0.11/latest.zip",
@@ -10824,20 +10857,8 @@
   {
     "Author": "kawaii, Ice",
     "Name": "Palantir",
-    "ApplicableVersion": "any",
-    "AssemblyVersion": "0.0.0.6",
-    "Changelog": "- Minimap feature ported from Bossmod, thanks xan",
-    "DalamudApiLevel": "15",
-    "Description": "Palantir is a spiritual successor to PalacePal, the popular deep dungeon trap ESP plugin created by Liza Carvelli. It reveals the locations of previously recorded traps and Accursed Hoards from a crowdsourced database.\nhttps://love.puni.sh/ment.json",
-    "DownloadCount": 3531,
-    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/169/Palantir/versions/0.0.0.6/install/latest.zip",
-    "DownloadLinkTesting": "https://puni.sh/api/plugins/download/169/Palantir/versions/0.0.0.7/install/testing.zip",
-    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/169/Palantir/versions/0.0.0.6/update/latest.zip",
-    "IconUrl": "https://puni.sh/api/plugins/icon/169",
-    "InternalName": "Palantir",
-    "LastUpdate": 1791406267,
     "Punchline": "Lost in a deep dungeon with nothing but dry bread and water?",
-    "RepoUrl": "https://github.com/PunishXIV/Palantir",
+    "Description": "Palantir is a spiritual successor to PalacePal, the popular deep dungeon trap ESP plugin created by Liza Carvelli. It reveals the locations of previously recorded traps and Accursed Hoards from a crowdsourced database.",
     "Tags": [
       "deep dungeon",
       "palace of the dead",
@@ -10845,8 +10866,17 @@
       "eureka orthos",
       "pilgrim's traverse"
     ],
-    "TestingAssemblyVersion": "0.0.0.7",
-    "TestingDalamudApiLevel": "15"
+    "InternalName": "Palantir",
+    "RepoUrl": "https://github.com/PunishXIV/Palantir",
+    "DownloadCount": 6414,
+    "LastUpdate": 1792016192,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/169/Palantir/versions/0.0.0.8/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/169/Palantir/versions/0.0.0.8/update/latest.zip",
+    "AssemblyVersion": "0.0.0.8",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "15",
+    "Changelog": "- IPC from cold storage instead of hot",
+    "IconUrl": "https://puni.sh/api/plugins/icon/169"
   },
   {
     "Author": "Taurenkey (Puni.sh),NiGuangOwO (本地化&功能维护)",
@@ -10962,7 +10992,7 @@
     "AssemblyVersion": "7.5.7.0",
     "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/PassportCheckerReborn/releases/download/7.5.7.0/latest.zip",
     "Changelog": "## What's Changed\r\n* Update RebornMaterial, rebuild for 7.57 by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/PassportCheckerReborn/pull/34\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/PassportCheckerReborn/compare/7.5.6.5...7.5.7.0",
-    "DownloadCount": 59597
+    "DownloadCount": 61317
   },
   {
     "Author": "Anya Hichu",
@@ -10990,7 +11020,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/anya-hichu/PatMeHonorific/releases/download/0.0.7.0/PatMeHonorific.zip",
     "DownloadLinkUpdate": "https://github.com/anya-hichu/PatMeHonorific/releases/download/0.0.7.0/PatMeHonorific.zip",
-    "DownloadCount": 15927,
+    "DownloadCount": 15941,
     "LastUpdate": 1777789047
   },
   {
@@ -11071,7 +11101,7 @@
     "TestingDalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 217851,
+    "DownloadCount": 218066,
     "LastUpdate": 0,
     "LoadPriority": 69420,
     "LoadRequiredState": 2,
@@ -11225,7 +11255,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/Catphinaud/PFReport/releases/download/v0.0.0.7/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Catphinaud/PFReport/releases/download/v0.0.0.7/latest.zip",
-    "DownloadCount": 44,
+    "DownloadCount": 46,
     "LastUpdate": "1778693958"
   },
   {
@@ -11724,7 +11754,7 @@
     "RepoUrl": "https://github.com/NightmareXIV/Prioritizer",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
-    "DownloadCount": 27325,
+    "DownloadCount": 27333,
     "LastUpdate": 1777527967,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/Prioritizer/releases/download/2.0.1.4/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/Prioritizer/releases/download/2.0.1.4/latest.zip",
@@ -11818,7 +11848,7 @@
     "AcceptsFeedback": false,
     "LastUpdate": 1777668768,
     "ImageUrls": [],
-    "DownloadCount": 81
+    "DownloadCount": 83
   },
   {
     "Author": "Ricimon",
@@ -11944,38 +11974,27 @@
     "TestingDalamudApiLevel": 15
   },
   {
-    "Author": "MacaronDream, DhogGPT, XA",
-    "Name": "Questionable Companion",
-    "AcceptsFeedback": true,
     "ApplicableVersion": "any",
-    "AssemblyVersion": "1.1.28.0",
-    "CanUnloadAsync": false,
-    "Changelog": "No description provided\n",
+    "AssemblyVersion": "1.1.29.0",
+    "Author": "MacaronDream, DhogGPT, XA",
     "DalamudApiLevel": 15,
-    "Description": "Automated character rotation and quest sequence execution for Questionable.\n\nAutomates multi-character MSQ progression by intelligently switching between characters based on quest completion and level requirements. Features include:\n- Automatic character switching and quest tracking\n- MSQ progression monitoring across all characters\n- Allied Society quest rotation and prioritization\n- Event quest automation with prerequisite checking\n- Chauffeur Mode for following main character through quests\n- Data Center travel automation\n- Stop point configuration for controlled progression\n\nRequired Plugins: Questionable, AutoRetainer\nhttps://aethertek.io/x.json",
-    "DownloadCount": 6147,
-    "DownloadLinkInstall": "https://github.com/MacaronDream/QSTCompanion/releases/download/v1.1.28/QSTCompanion.zip",
-    "DownloadLinkUpdate": "https://github.com/MacaronDream/QSTCompanion/releases/download/v1.1.28/QSTCompanion.zip",
+    "Description": "Automated character rotation and quest sequence execution for Questionable.\n\nAutomates multi-character MSQ progression by intelligently switching between characters based on quest completion and level requirements. Features include:\n- Automatic character switching and quest tracking\n- MSQ progression monitoring across all characters\n- Allied Society quest rotation and prioritization\n- Event quest automation with prerequisite checking\n- Chauffeur Mode for following main character through quests\n- Data Center travel automation\n- Stop point configuration for controlled progression\n\nRequired Plugins: Questionable, AutoRetainer",
+    "DownloadCount": 6319,
+    "DownloadLinkInstall": "https://github.com/MacaronDream/QSTCompanion/releases/latest/download/QSTCompanion.zip",
+    "DownloadLinkUpdate": "https://github.com/MacaronDream/QSTCompanion/releases/latest/download/QSTCompanion.zip",
     "IconUrl": "https://raw.githubusercontent.com/MacaronDream/QSTCompanion/main/icon.png",
     "InternalName": "QSTCompanion",
-    "IsTestingExclusive": false,
-    "LastUpdate": 1791521311,
-    "LoadPriority": 0,
-    "LoadRequiredState": 0,
-    "LoadSync": false,
+    "LastUpdate": "1791985240",
+    "Name": "Questionable Companion",
     "Punchline": "Automated character rotation and quest sequence execution",
-    "RepoTitle": "Matsuuzo",
     "RepoUrl": "https://github.com/MacaronDream/QSTCompanion",
-    "SourceRepoName": "QSTCompanion",
-    "SourceRepoUrl": "https://github.com/MacaronDream/QSTCompanion",
     "Tags": [
       "automation",
       "quests",
       "Companion",
       "character",
       "rotation",
-      "questionable",
-      "aethertek"
+      "questionable"
     ]
   },
   {
@@ -12008,7 +12027,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/anya-hichu/Quack/releases/download/0.1.5.0/Quack.zip",
     "DownloadLinkUpdate": "https://github.com/anya-hichu/Quack/releases/download/0.1.5.0/Quack.zip",
-    "DownloadCount": 4679,
+    "DownloadCount": 4685,
     "LastUpdate": 1777757770
   },
   {
@@ -12017,7 +12036,7 @@
     "Author": "WigglyMuffin, CryoTechnic",
     "DalamudApiLevel": 15,
     "Description": "Questionable now ships as \"WigglyQuest\". Its internal name changed so it no longer shares Dalamud's install and config folders with the PunishXIV fork of Questionable; the plugin you see in the installer is still called Questionable.\n\nThis final build under the old name does no questing. It opens a short guide, installs WigglyQuest from the same repository with one click, and then points you at the plugin installer to remove itself. WigglyQuest copies your settings and local quest files on its first start.",
-    "DownloadCount": 411,
+    "DownloadCount": 422,
     "DownloadLinkInstall": "https://github.com/WigglyMuffin/QuestionableConverter/releases/latest/download/latest.zip",
     "DownloadLinkUpdate": "https://github.com/WigglyMuffin/QuestionableConverter/releases/latest/download/latest.zip",
     "IconUrl": "https://raw.githubusercontent.com/WigglyMuffin/DalamudPlugins/main/icons/Questionable.png",
@@ -12100,7 +12119,7 @@
     ],
     "InternalName": "QuickTransfer",
     "RepoUrl": "https://github.com/Kagekazu/QuickTransfer",
-    "DownloadCount": 2405,
+    "DownloadCount": 2520,
     "LastUpdate": 1791810966,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/144/QuickTransfer/versions/1.1.1.2/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/144/QuickTransfer/versions/1.1.1.2/update/latest.zip",
@@ -12361,7 +12380,7 @@
     "Tags": [],
     "InternalName": "ReActionEx",
     "RepoUrl": "https://puni.sh/api/repository/taurenkey",
-    "DownloadCount": 7982,
+    "DownloadCount": 7989,
     "LastUpdate": 1777883909,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/55/ReActionEx/versions/1.0.1.2/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/55/ReActionEx/versions/1.0.1.2/update/latest.zip",
@@ -12459,7 +12478,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/anya-hichu/RecruitmentRefresher/releases/download/0.0.5.0/RecruitmentRefresher.zip",
     "DownloadLinkUpdate": "https://github.com/anya-hichu/RecruitmentRefresher/releases/download/0.0.5.0/RecruitmentRefresher.zip",
-    "DownloadCount": 4012,
+    "DownloadCount": 4014,
     "LastUpdate": 1777966535
   },
   {
@@ -12526,7 +12545,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/anya-hichu/Reggiex/releases/download/0.0.3.0/Reggiex.zip",
     "DownloadLinkUpdate": "https://github.com/anya-hichu/Reggiex/releases/download/0.0.3.0/Reggiex.zip",
-    "DownloadCount": 5464,
+    "DownloadCount": 5467,
     "LastUpdate": 1777755839
   },
   {
@@ -12901,13 +12920,13 @@
     "Punchline": "Analyses combat information every frame and finds the best action.",
     "RepoUrl": "https://github.com/FFXIV-CombatReborn/RotationSolverReborn",
     "AcceptsFeedback": true,
-    "DownloadLinkInstall": "https://github.com/FFXIV-CombatReborn/RotationSolverReborn/releases/download/7.5.7.0/latest.zip",
-    "AssemblyVersion": "7.5.7.0",
-    "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/RotationSolverReborn/releases/download/7.5.7.0/latest.zip",
+    "DownloadLinkInstall": "https://github.com/FFXIV-CombatReborn/RotationSolverReborn/releases/download/7.5.7.2/latest.zip",
+    "AssemblyVersion": "7.5.7.2",
+    "DownloadLinkUpdate": "https://github.com/FFXIV-CombatReborn/RotationSolverReborn/releases/download/7.5.7.2/latest.zip",
     "DownloadLinkTesting": "https://github.com/FFXIV-CombatReborn/RotationSolverReborn/releases/download/7.4.1.2/latest.zip",
     "TestingAssemblyVersion": "7.4.1.2",
-    "Changelog": "## What's Changed\r\n* 7.57 rebuild and sourcegen update by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/RotationSolverReborn/pull/1396\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/RotationSolverReborn/compare/7.5.6.24...7.5.7.0",
-    "DownloadCount": 3375655
+    "Changelog": "## What's Changed\r\n* Fix issue with off screen pinned window by @LTS-FFXIV in https://github.com/FFXIV-CombatReborn/RotationSolverReborn/pull/1398\r\n\r\n\r\n**Full Changelog**: https://github.com/FFXIV-CombatReborn/RotationSolverReborn/compare/7.5.7.1...7.5.7.2",
+    "DownloadCount": 3387432
   },
   {
     "Author": "StarHeartHunt",
@@ -13058,7 +13077,7 @@
     "DownloadLinkInstall": "https://edgl.dev/share/zhyra/sealhunter/0.8.7.0.zip",
     "DownloadLinkUpdate": "https://edgl.dev/share/zhyra/sealhunter/0.8.7.0.zip",
     "DownloadLinkTesting": "https://edgl.dev/share/zhyra/sealhunter/0.8.7.0.zip",
-    "DownloadCount": 272,
+    "DownloadCount": 274,
     "LastUpdate": 1791020691,
     "IsHide": false,
     "IsTestingExclusive": false,
@@ -13107,7 +13126,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/Catphinaud/SelectNextLootItem/releases/download/v0.0.0.4/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Catphinaud/SelectNextLootItem/releases/download/v0.0.0.4/latest.zip",
-    "DownloadCount": 37,
+    "DownloadCount": 38,
     "LastUpdate": "1777721323"
   },
   {
@@ -13126,7 +13145,7 @@
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "TestingDalamudApiLevel": 15,
-    "DownloadCount": 16575,
+    "DownloadCount": 16611,
     "LastUpdate": 1779087487,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/SelectString/releases/download/1.0.1.12/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/SelectString/releases/download/1.0.1.12/latest.zip",
@@ -13847,14 +13866,14 @@
     ],
     "InternalName": "Splatoon",
     "RepoUrl": "https://github.com/PunishXIV/Splatoon",
-    "DownloadCount": 2306422,
-    "LastUpdate": 1791896098,
-    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/10/Splatoon/versions/3.9.2.30/install/latest.zip",
-    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/10/Splatoon/versions/3.9.2.30/update/latest.zip",
-    "AssemblyVersion": "3.9.2.30",
+    "DownloadCount": 2318824,
+    "LastUpdate": 1792020246,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/10/Splatoon/versions/3.9.2.32/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/10/Splatoon/versions/3.9.2.32/update/latest.zip",
+    "AssemblyVersion": "3.9.2.32",
     "ApplicableVersion": "any",
     "DalamudApiLevel": "15",
-    "Changelog": "- Updated libraries",
+    "Changelog": "- Bugfixes. May introduce new bugs though. ",
     "TestingAssemblyVersion": "3.9.2.31",
     "DownloadLinkTesting": "https://puni.sh/api/plugins/download/10/Splatoon/versions/3.9.2.31/install/testing.zip",
     "TestingDalamudApiLevel": "15",
@@ -13892,7 +13911,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/Valiice/SpotifyHonorific/releases/download/v1.18.2/SpotifyHonorific.zip",
     "DownloadLinkUpdate": "https://github.com/Valiice/SpotifyHonorific/releases/download/v1.18.2/SpotifyHonorific.zip",
-    "DownloadCount": 18107,
+    "DownloadCount": 18371,
     "LastUpdate": 1791890123
   },
   {
@@ -13932,7 +13951,7 @@
     "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/SSMinionBoradcast/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/SSMinionBoradcast/latest.zip",
     "DownloadCount": 0,
-    "LastUpdate": "1791805865"
+    "LastUpdate": "1791994438"
   },
   {
     "Author": "NightmareXIV",
@@ -13947,7 +13966,7 @@
     "RepoUrl": "https://github.com/NightmareXIV/StandalonePluginManager",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
-    "DownloadCount": 7320,
+    "DownloadCount": 7325,
     "LastUpdate": 1777494035,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/StandalonePluginManager/releases/download/1.0.0.4/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/StandalonePluginManager/releases/download/1.0.0.4/latest.zip",
@@ -13997,7 +14016,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/Catphinaud/StatusLinker/releases/download/v1.0.0.7/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Catphinaud/StatusLinker/releases/download/v1.0.0.7/latest.zip",
-    "DownloadCount": 33,
+    "DownloadCount": 34,
     "LastUpdate": "1782163349"
   },
   {
@@ -14055,7 +14074,7 @@
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "TestingDalamudApiLevel": 11,
-    "DownloadCount": 53961,
+    "DownloadCount": 54062,
     "LastUpdate": 1777528451,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/Stylist/releases/download/1.0.0.15/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/Stylist/releases/download/1.0.0.15/latest.zip",
@@ -14113,7 +14132,7 @@
     "AssemblyVersion": "1.0.6.7",
     "DownloadLinkUpdate": "https://github.com/Recursive-Entity-Matrix/SupermarketSweep/releases/download/1.0.6.7/SupermarketSweep.zip",
     "Changelog": "## What's Changed\r\n* Upgrade to Dalamud API Level 15 and update project references by @NostraThomas99 in https://github.com/NostraThomas99/SupermarketSweep/pull/5\r\n\r\n\r\n**Full Changelog**: https://github.com/NostraThomas99/SupermarketSweep/compare/1.0.2.0...1.0.6.7",
-    "DownloadCount": 2710
+    "DownloadCount": 2713
   },
   {
     "Author": "Paparogue",
@@ -14226,7 +14245,7 @@
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "TestingDalamudApiLevel": 10,
-    "DownloadCount": 582685,
+    "DownloadCount": 582906,
     "LastUpdate": 1777491252,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/TextAdvance/releases/download/3.3.0.1/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/TextAdvance/releases/download/3.3.0.1/latest.zip",
@@ -14366,7 +14385,7 @@
     "IsTestingExclusive": false,
     "DownloadLinkTesting": "https://github.com/Anomek/TomestoneViewer/releases/latest/download/latest.zip",
     "DownloadLinkUpdate": "https://github.com/Anomek/TomestoneViewer/releases/latest/download/latest.zip",
-    "DownloadCount": 2646,
+    "DownloadCount": 2661,
     "LastUpdate": "1782586241"
   },
   {
@@ -14531,7 +14550,7 @@
     "Author": "Tynia",
     "Name": "Tynia PVP Radar",
     "InternalName": "TyniaPVPRadar",
-    "AssemblyVersion": "1.0.10.4",
+    "AssemblyVersion": "1.0.10.7",
     "Punchline": "PVP小助手（在线安装 Only）",
     "Description": "在PVP地图中显示所有玩家信息，支持连线、标记和关注列表功能",
     "ApplicableVersion": "any",
@@ -14723,7 +14742,7 @@
     "RepoUrl": "https://github.com/NightmareXIV/UnloadErrorFuckOff",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
-    "DownloadCount": 12088,
+    "DownloadCount": 12093,
     "LastUpdate": 1777527777,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/UnloadErrorFuckOff/releases/download/1.0.0.10/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/UnloadErrorFuckOff/releases/download/1.0.0.10/latest.zip",
@@ -14732,7 +14751,7 @@
   {
     "Name": "Untarnished Heart",
     "InternalName": "UntarnishedHeart",
-    "AssemblyVersion": "1.1.1.0",
+    "AssemblyVersion": "1.1.2.0",
     "Author": "AtmoOmen",
     "Punchline": "自动化副本完成、奖励循环刷取插件",
     "Description": "原本是自动化防护职业副本场次成就刷取工具\n注: 副本战斗需要自行使用其他插件解决, 硬要用本插件写也不是不行",
@@ -14749,8 +14768,8 @@
     "AcceptsFeedback": true,
     "IconUrl": "https://raw.githubusercontent.com/AtmoOmen/UntarnishedHeart/main/Resources/icon.png",
     "RepoUrl": "https://github.com/AtmoOmen/UntarnishedHeart",
-    "DownloadLinkInstall": "https://github.com/AtmoOmen/UntarnishedHeart/releases/download/1.1.1.0/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/AtmoOmen/UntarnishedHeart/releases/download/1.1.1.0/latest.zip"
+    "DownloadLinkInstall": "https://github.com/AtmoOmen/UntarnishedHeart/releases/download/1.1.2.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/AtmoOmen/UntarnishedHeart/releases/download/1.1.2.0/latest.zip"
   },
   {
     "Author": "LittleNightmare,zhouhuichen741(新功能&维护)",
@@ -14959,7 +14978,7 @@
     "Tags": [],
     "InternalName": "vfallguy",
     "RepoUrl": null,
-    "DownloadCount": 64527,
+    "DownloadCount": 65716,
     "LastUpdate": 1791755090,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/41/vfallguy/versions/0.0.0.13/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/41/vfallguy/versions/0.0.0.13/update/latest.zip",
@@ -15244,7 +15263,7 @@
     ],
     "InternalName": "wahbuttons",
     "RepoUrl": "https://github.com/wahtf/wahbuttons",
-    "DownloadCount": 19,
+    "DownloadCount": 22,
     "LastUpdate": 1791727689,
     "DownloadLinkInstall": "https://puni.sh/api/plugins/download/181/wahbuttons/versions/20.0.0.1/install/latest.zip",
     "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/181/wahbuttons/versions/20.0.0.1/update/latest.zip",
@@ -15285,14 +15304,14 @@
     ],
     "InternalName": "WahTools",
     "RepoUrl": "https://git.wahapp.com/wah/WahTools",
-    "DownloadCount": 810,
-    "LastUpdate": 1791638843,
-    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/180/WahTools/versions/20.0.0.9/install/latest.zip",
-    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/180/WahTools/versions/20.0.0.9/update/latest.zip",
-    "AssemblyVersion": "20.0.0.9",
+    "DownloadCount": 901,
+    "LastUpdate": 1792031044,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/180/WahTools/versions/20.0.0.11/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/180/WahTools/versions/20.0.0.11/update/latest.zip",
+    "AssemblyVersion": "20.0.0.11",
     "ApplicableVersion": "any",
     "DalamudApiLevel": "15",
-    "Changelog": "Still not close enough to Dryskthota apparently",
+    "Changelog": "Version 20.0.0.11\n\n- Fixed Ragworm sometimes not getting bought if you were standing near an aetheryte.\n- Plugins which are turned off while running now will re-enable 30 seconds after it stops.\n- Fish and hunt data now come with the plugin, no more downloading.\n- Moon missions got a lot of love:\n    - Fixed the fish lists in 118 missions, which had the wrong fish or were missing one\n    - Uses lures, Surface Slap and Identical Cast where they actually help\n    - Knows the right bait and mooch chain for each fish\n    - Throws back bites it doesn't need and picks Double or Triple Hook based on what's probably biting\n    - Goes after intuition fish faster, and more often in score missions\n- New setting, \"Reel in late casts\": if nothing bites in time, it reels in and tries again.\n- New setting, \"Save a chain fish for when the target can bite\": it keeps a fish with Spareful Hand and fishes with it the moment the big one can bite.\n- The cordial setting is now just \"Never\", \"Smart\" or \"When low on GP\".",
     "IconUrl": "https://puni.sh/api/plugins/icon/180"
   },
   {
@@ -15350,7 +15369,7 @@
     "IsHide": false,
     "IsTestingExclusive": false,
     "LastUpdate": 1777852470,
-    "DownloadCount": 70757,
+    "DownloadCount": 70765,
     "DownloadLinkInstall": "https://github.com/WorkingRobot/Waitingway/releases/download/2.4.2/latestUnofficial.zip",
     "DownloadLinkUpdate": "https://github.com/WorkingRobot/Waitingway/releases/download/2.4.2/latestUnofficial.zip",
     "DownloadLinkTesting": "https://github.com/WorkingRobot/Waitingway/releases/download/2.4.2/latestUnofficial.zip"
@@ -15421,7 +15440,7 @@
     "RepoUrl": "https://github.com/NightmareXIV/WExtras",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
-    "DownloadCount": 15694,
+    "DownloadCount": 15699,
     "LastUpdate": 1777528042,
     "DownloadLinkInstall": "https://github.com/NightmareXIV/WExtras/releases/download/1.0.0.10/latest.zip",
     "DownloadLinkUpdate": "https://github.com/NightmareXIV/WExtras/releases/download/1.0.0.10/latest.zip",
@@ -15496,7 +15515,7 @@
     "Author": "WigglyMuffin, CryoTechnic",
     "DalamudApiLevel": 15,
     "Description": "Automates quests from accept to turn-in - main scenario, class and job, allied society and side quests.\n\nSmart navigation plans the route across zones using aetherytes, aethernet and transports, then walks you to each objective. Dialogue, interactions and turn-ins are handled for you.",
-    "DownloadCount": 14668,
+    "DownloadCount": 14729,
     "DownloadLinkInstall": "https://github.com/WigglyCorp/Questionable/releases/latest/download/latest.zip",
     "DownloadLinkUpdate": "https://github.com/WigglyCorp/Questionable/releases/latest/download/latest.zip",
     "IconUrl": "https://raw.githubusercontent.com/WigglyMuffin/DalamudPlugins/main/icons/Questionable.png",
@@ -15918,7 +15937,7 @@
     "DalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 1213,
+    "DownloadCount": 1216,
     "LastUpdate": 0,
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/XivMediaPlayer/releases/download/0.1.7.0-cn/XivMediaPlayer.zip",
     "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/XivMediaPlayer/releases/download/0.1.7.0-cn/XivMediaPlayer.zip",
@@ -16078,7 +16097,7 @@
     "TestingDalamudApiLevel": 15,
     "IsHide": "False",
     "IsTestingExclusive": "False",
-    "DownloadCount": 1603,
+    "DownloadCount": 1610,
     "LastUpdate": 1746230400,
     "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/XIVWindowResizer/releases/download/2.0.0.2-x/XIVWindowResizerX.zip",
     "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/XIVWindowResizer/releases/download/2.0.0.2-x/XIVWindowResizerX.zip",
@@ -16093,11 +16112,11 @@
     "Tags": [],
     "InternalName": "YesAlready",
     "RepoUrl": "https://github.com/PunishXIV/YesAlready",
-    "DownloadCount": 1523414,
-    "LastUpdate": 1791750283,
-    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/26/YesAlready/versions/1.15.7.3/install/latest.zip",
-    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/26/YesAlready/versions/1.15.7.3/update/latest.zip",
-    "AssemblyVersion": "1.15.7.3",
+    "DownloadCount": 1537144,
+    "LastUpdate": 1791981915,
+    "DownloadLinkInstall": "https://puni.sh/api/plugins/download/26/YesAlready/versions/1.15.7.4/install/latest.zip",
+    "DownloadLinkUpdate": "https://puni.sh/api/plugins/download/26/YesAlready/versions/1.15.7.4/update/latest.zip",
+    "AssemblyVersion": "1.15.7.4",
     "ApplicableVersion": "any",
     "DalamudApiLevel": "15",
     "Changelog": "",
