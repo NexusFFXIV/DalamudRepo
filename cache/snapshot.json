@@ -71,7 +71,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.3.0.0",
+    "TestingAssemblyVersion": "1.3.1.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-Aetherphone/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -346,7 +346,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.0.0.3",
+    "TestingAssemblyVersion": "1.0.0.4",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoGCSupply/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -505,6 +505,17 @@
     "TestingDownloadUrl": "https://github.com/Joshua-XIV/AutoScrip/releases/download/1.1.0.1/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
+  "AutoSeller": {
+    "InternalName": "AutoSeller",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.0.1.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoSeller/releases/latest/download/latest.zip",
+    "TestingAssemblyVersionFromZip": null
+  },
   "AutoShopper": {
     "InternalName": "AutoShopper",
     "AssemblyVersion": null,
@@ -580,28 +591,6 @@
     "TestingAssemblyVersion": "1.4.4.1",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/Ottermandias/AutoVisor/raw/master/AutoVisor.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
-  "AuxEmotion": {
-    "InternalName": "AuxEmotion",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.1.0.0",
-    "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/auxee/AuxEmotion/releases/latest/download/AuxEmotion.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
-  "AuxMarketboard": {
-    "InternalName": "AuxMarketboard",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.1.0.0",
-    "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/auxee/AuxMarketboard/releases/latest/download/AuxMarketboard.zip",
     "TestingAssemblyVersionFromZip": null
   },
   "AygeaChat2": {
@@ -1077,27 +1066,16 @@
     "TestingDownloadUrl": "https://github.com/Aschmies/AschyQOL/releases/download/cs-v1.0.8/CombatStatistics-cs-v1.0.8.zip",
     "TestingAssemblyVersionFromZip": null
   },
-  "CommandPanelPersist": {
-    "InternalName": "CommandPanelPersist",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.1.0.0",
-    "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/Forgotten-Link/CommandPanelPersist/releases/latest/download/CommandPanelPersist.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
   "Consolidator": {
     "InternalName": "Consolidator",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.3.7.0",
+    "TestingAssemblyVersion": "1.8.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/dexcss/Consolidator/releases/latest/download/Consolidator.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingAssemblyVersionFromZip": "1.8.0.0"
   },
   "Copycat": {
     "InternalName": "Copycat",
@@ -1787,10 +1765,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.0.82.0",
+    "TestingAssemblyVersion": "0.0.83.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/WesleyLuk90/ffxiv-vr/releases/download/v0.0.82/FfxivVR.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/WesleyLuk90/ffxiv-vr/releases/download/v0.0.83/FfxivVR.zip",
+    "TestingAssemblyVersionFromZip": "0.0.83.0"
   },
   "findingfantasy": {
     "InternalName": "findingfantasy",
@@ -1867,17 +1845,6 @@
     "TestingAssemblyVersion": "0.0.0.7",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/Catphinaud/FreeCompanyHideSpecifcLoginLogout/releases/download/v0.0.0.7/latest.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
-  "FrenRider": {
-    "InternalName": "FrenRider",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "2.0.0.7",
-    "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/McVaxius/FrenRider/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
   "FullscreenToggle": {
@@ -2810,10 +2777,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.17.2.0",
+    "TestingAssemblyVersion": "1.17.22.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/dexcss/MarketHelper/releases/latest/download/MarketHelper.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingAssemblyVersionFromZip": "1.17.22.0"
   },
   "Mascaron": {
     "InternalName": "Mascaron",
@@ -3030,10 +2997,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.0.3.8",
+    "TestingAssemblyVersion": "1.0.3.9",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/Zeffuro/NativeMeters/releases/download/1.0.3.8/latest.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/Zeffuro/NativeMeters/releases/download/1.0.3.9/latest.zip",
+    "TestingAssemblyVersionFromZip": "1.0.3.9"
   },
   "NeevieAutoMammet": {
     "InternalName": "NeevieAutoMammet",
@@ -4408,17 +4375,6 @@
     "TestingAssemblyVersion": "1.0.1.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/paissaheavyindustries/Telesto/releases/download/v1.0.1.0/Telesto_1_0_1_0.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
-  "TextureOverlayer": {
-    "InternalName": "TextureOverlayer",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.5.4.0",
-    "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/Glorou/TextureOverlayer/releases/download/v0.5.4/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
   "TheCollector": {
