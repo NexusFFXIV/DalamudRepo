@@ -230,17 +230,6 @@
     "TestingDownloadUrl": "https://github.com/NNekoPlugins/AqrNarrator/releases/download/v0.0.0.8/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
-  "Archipendium": {
-    "InternalName": "Archipendium",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "3.0.4.0",
-    "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/andrewbabbittdev/archipendium/releases/download/3.0.4/Archipendium.3.0.4.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
   "ArmouryCleaner": {
     "InternalName": "ArmouryCleaner",
     "AssemblyVersion": null,
@@ -324,7 +313,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "2.11.0.0",
+    "TestingAssemblyVersion": "2.11.2.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoDailyTribes/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -346,7 +335,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "2.21.2.0",
+    "TestingAssemblyVersion": "2.22.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoFATEGrind/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -357,7 +346,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.0.0.4",
+    "TestingAssemblyVersion": "1.1.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoGCSupply/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -368,7 +357,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.1.0.0",
+    "TestingAssemblyVersion": "1.2.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoHouseLottery/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -379,7 +368,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.10.1.0",
+    "TestingAssemblyVersion": "1.11.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoHuntGrinder/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -390,7 +379,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.3.0.0",
+    "TestingAssemblyVersion": "1.4.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoHuntTrain/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -478,7 +467,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "2.11.1.0",
+    "TestingAssemblyVersion": "2.12.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoPVPSeriesGrind/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -522,7 +511,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.0.1.0",
+    "TestingAssemblyVersion": "1.1.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoSeller/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -533,7 +522,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.3.0.0",
+    "TestingAssemblyVersion": "1.4.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoShopper/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -544,7 +533,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.11.1.0",
+    "TestingAssemblyVersion": "1.12.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoSightseeingLog/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -577,7 +566,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.0.0.0",
+    "TestingAssemblyVersion": "1.3.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoTreasureMaps/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -588,7 +577,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.2.1.0",
+    "TestingAssemblyVersion": "1.3.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoTripleTriadGrind/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -987,7 +976,7 @@
     "TestingAssemblyVersion": "1.0.4.18",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/ProjectChronofoil/Chronofoil.Plugin/releases/download/1.0.4.18/Chronofoil.Plugin.zip",
-    "TestingAssemblyVersionFromZip": "1.0.4.18"
+    "TestingAssemblyVersionFromZip": null
   },
   "ChronoLog": {
     "InternalName": "ChronoLog",
@@ -2275,6 +2264,17 @@
     "TestingDalamudApiLevel": 12,
     "TestingDownloadUrl": "https://github.com/thakyZ/HousingTimeoutReminder/releases/download/v1.0.3.4/latest.zip",
     "TestingAssemblyVersionFromZip": null
+  },
+  "HousingUnlocked": {
+    "InternalName": "HousingUnlocked",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.6.0.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/dexcss/HousingUnlocked/releases/latest/download/HousingUnlocked.zip",
+    "TestingAssemblyVersionFromZip": "1.6.0.0"
   },
   "HSC": {
     "InternalName": "HSC",
@@ -3635,7 +3635,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.4.0.0",
+    "TestingAssemblyVersion": "1.4.1.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-AutoPVPLimitBreak/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
