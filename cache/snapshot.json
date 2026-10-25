@@ -2282,10 +2282,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.15.0.0",
+    "TestingAssemblyVersion": "1.15.31.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/dexcss/HousingUnlocked/releases/latest/download/HousingUnlocked.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingAssemblyVersionFromZip": "1.15.31.0"
   },
   "HSC": {
     "InternalName": "HSC",
@@ -2326,10 +2326,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.6.3.8",
+    "TestingAssemblyVersion": "0.6.3.9",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://raw.githubusercontent.com/konvarec/HuntVoidWatcherCustomRepo/v0.6.3.8/latest.zip",
-    "TestingAssemblyVersionFromZip": "0.6.3.8"
+    "TestingDownloadUrl": "https://raw.githubusercontent.com/konvarec/HuntVoidWatcherCustomRepo/v0.6.3.9/latest.zip",
+    "TestingAssemblyVersionFromZip": "0.6.3.9"
   },
   "HypnotoadPlugin": {
     "InternalName": "HypnotoadPlugin",
@@ -4430,7 +4430,7 @@
     "TestingAssemblyVersion": "3.9.0.15",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/LegendsOfTheGame/TimeMemoriaV3/releases/latest/download/latest.zip",
-    "TestingAssemblyVersionFromZip": "3.9.0.15"
+    "TestingAssemblyVersionFromZip": null
   },
   "TinyCmds": {
     "InternalName": "TinyCmds",
