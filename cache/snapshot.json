@@ -71,7 +71,7 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.3.3.0",
+    "TestingAssemblyVersion": "1.4.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/XeldarAlz/FFXIV-Aetherphone/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
@@ -777,8 +777,8 @@
     "AssemblyVersionFromZip": null,
     "TestingAssemblyVersion": "1.0.0.2",
     "TestingDalamudApiLevel": 10,
-    "TestingDownloadUrl": "https://github.com/KirisameVanilla/BreakfastHuntTrainLeader/releases/download/1.0.1.1/latest.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/SparkBarry/BreakfastHuntTrainLeader/releases/download/1.0.1.1/latest.zip",
+    "TestingAssemblyVersionFromZip": "1.0.0.2"
   },
   "BulkDesynth": {
     "InternalName": "BulkDesynth",
@@ -2282,10 +2282,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.15.31.0",
+    "TestingAssemblyVersion": "1.15.37.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/dexcss/HousingUnlocked/releases/latest/download/HousingUnlocked.zip",
-    "TestingAssemblyVersionFromZip": "1.15.31.0"
+    "TestingAssemblyVersionFromZip": "1.15.37.0"
   },
   "HSC": {
     "InternalName": "HSC",
@@ -2306,8 +2306,8 @@
     "AssemblyVersionFromZip": null,
     "TestingAssemblyVersion": "0.0.0.5",
     "TestingDalamudApiLevel": 11,
-    "TestingDownloadUrl": "https://github.com/KirisameVanilla/Marisa-s-HuntKit/releases/download/0.0.0.5/latest.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/SparkBarry/Marisa-s-HuntKit/releases/download/0.0.0.5/latest.zip",
+    "TestingAssemblyVersionFromZip": "0.0.0.5"
   },
   "Huntsman": {
     "InternalName": "Huntsman",
@@ -2329,7 +2329,7 @@
     "TestingAssemblyVersion": "0.6.3.9",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://raw.githubusercontent.com/konvarec/HuntVoidWatcherCustomRepo/v0.6.3.9/latest.zip",
-    "TestingAssemblyVersionFromZip": "0.6.3.9"
+    "TestingAssemblyVersionFromZip": null
   },
   "HypnotoadPlugin": {
     "InternalName": "HypnotoadPlugin",
@@ -4242,8 +4242,8 @@
     "AssemblyVersionFromZip": null,
     "TestingAssemblyVersion": "0.0.0.1",
     "TestingDalamudApiLevel": 10,
-    "TestingDownloadUrl": "https://github.com/KirisameVanilla/SpecialWeaponProgressOverview/releases/download/0.0.0.3/latest.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/SparkBarry/SpecialWeaponProgressOverview/releases/download/0.0.0.3/latest.zip",
+    "TestingAssemblyVersionFromZip": "0.0.0.1"
   },
   "SpiritbondWatcher": {
     "InternalName": "SpiritbondWatcher",
