@@ -1,21 +1,21 @@
 {
   "external-repos-gen|https://karou.ca/xiv/repo.json": {
-    "failures": 2,
+    "failures": 3,
     "disabled": false,
     "firstFailure": "2026-10-27T04:37:03.8884598Z",
-    "lastFailure": "2026-10-28T05:10:52.4179422Z"
+    "lastFailure": "2026-10-29T05:22:15.2155022Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/hocng015/PFRemote-Repo/main/pluginmaster.json": {
-    "failures": 6,
+    "failures": 7,
     "disabled": false,
     "firstFailure": "2026-10-24T04:11:05.4148104Z",
-    "lastFailure": "2026-10-28T05:10:52.4210642Z"
+    "lastFailure": "2026-10-29T05:22:15.2183970Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/hocng015/Tsunippy/main/pluginmaster.json": {
-    "failures": 6,
+    "failures": 7,
     "disabled": false,
     "firstFailure": "2026-10-24T04:11:05.4209269Z",
-    "lastFailure": "2026-10-28T05:10:52.4222171Z"
+    "lastFailure": "2026-10-29T05:22:15.2198140Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/notYuta/ShiroUtils/main/repo.json": {
     "failures": 9,
@@ -30,27 +30,27 @@
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/huntsffxiv/repo/main/repo.json": {
-    "failures": 11,
+    "failures": 12,
     "disabled": false,
     "firstFailure": "2026-10-19T04:14:02.7009789Z",
-    "lastFailure": "2026-10-28T05:08:29.6848188Z"
+    "lastFailure": "2026-10-29T05:20:38.6511806Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/ArcaneAj/WachuMakeyMaking/master/repo.json": {
-    "failures": 31,
+    "failures": 32,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-10-28T05:08:29.3421531Z",
+    "lastFailure": "2026-10-29T05:20:38.4697832Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/Yarukon/MakePlacePlugin/master/MakePlacePlugin.json": {
-    "failures": 31,
+    "failures": 32,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-10-28T05:08:29.7957619Z",
+    "lastFailure": "2026-10-29T05:20:38.7034143Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/h1arc/plugin/main/repo.json": {
-    "failures": 38,
+    "failures": 39,
     "firstFailure": "2026-10-06T00:50:45Z",
-    "lastFailure": "2026-10-28T05:08:29.5855396Z",
+    "lastFailure": "2026-10-29T05:20:38.6024127Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/BrakusTapus/PluginHUB/main/pluginmaster.json": {
