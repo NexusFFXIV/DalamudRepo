@@ -1,21 +1,105 @@
 {
+  "external-repos-gen|https://gitlab.com/Dalamud/DalamudPlugins/-/raw/main/pluginmaster.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:18.5221115Z",
+    "lastFailure": "2026-10-30T05:22:18.5221115Z"
+  },
+  "external-repos-gen|https://gitlab.com/drakakorp/dalamudrepo/-/raw/main/repo.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:18.5295683Z",
+    "lastFailure": "2026-10-30T05:22:18.5295683Z"
+  },
+  "external-repos-gen|https://gitlab.com/joshua.software.dev/LMeter/-/raw/master/repo.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:18.5310403Z",
+    "lastFailure": "2026-10-30T05:22:18.5310403Z"
+  },
+  "external-repos-gen|https://gitlab.com/joshua.software.dev/PixelerPerfect/-/raw/master/repo.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:18.5322822Z",
+    "lastFailure": "2026-10-30T05:22:18.5322822Z"
+  },
+  "external-repos-gen|https://gitlab.com/ryada/LMeter/-/raw/master/repo.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:18.5335676Z",
+    "lastFailure": "2026-10-30T05:22:18.5335676Z"
+  },
+  "external-repos-gen|https://gitlab.com/SiliconExarch/LMeter/-/raw/master/repo.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:18.5348119Z",
+    "lastFailure": "2026-10-30T05:22:18.5348119Z"
+  },
+  "external-repos-gen|https://gitlab.com/silusffxi/dalamud-plugins/-/raw/main/pluginmaster.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:18.5360622Z",
+    "lastFailure": "2026-10-30T05:22:18.5360622Z"
+  },
+  "external-repos-gen|https://gitlab.com/Sylvia-Skrell/sylvs-l-meter-modifications/-/raw/master/repo.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:18.5373219Z",
+    "lastFailure": "2026-10-30T05:22:18.5373219Z"
+  },
+  "external-repos-gen|https://gitlab.com/tancred/mit-display/-/raw/main/repo.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:18.5386159Z",
+    "lastFailure": "2026-10-30T05:22:18.5386159Z"
+  },
+  "external-repos-gen|https://gitlab.com/wingar/LMeter/-/raw/master/repo.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:18.5399017Z",
+    "lastFailure": "2026-10-30T05:22:18.5399017Z"
+  },
+  "external-repos-gen|https://gitlab.com/XenHat/dalamudrepo/-/raw/main/repo.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:18.5411930Z",
+    "lastFailure": "2026-10-30T05:22:18.5411930Z"
+  },
+  "external-repos-gen|https://raw.githubusercontent.com/keifufu/XivVoices/main/repo.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:18.5468863Z",
+    "lastFailure": "2026-10-30T05:22:18.5468863Z"
+  },
+  "external-repos|https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:26.1943374Z",
+    "lastFailure": "2026-10-30T05:22:26.1943374Z"
+  },
+  "external-repos|https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoPVPLimitBreak/master/repo.json": {
+    "failures": 1,
+    "disabled": false,
+    "firstFailure": "2026-10-30T05:22:26.1965429Z",
+    "lastFailure": "2026-10-30T05:22:26.1965429Z"
+  },
   "external-repos-gen|https://karou.ca/xiv/repo.json": {
-    "failures": 3,
+    "failures": 4,
     "disabled": false,
     "firstFailure": "2026-10-27T04:37:03.8884598Z",
-    "lastFailure": "2026-10-29T05:22:15.2155022Z"
+    "lastFailure": "2026-10-30T05:22:18.5425968Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/hocng015/PFRemote-Repo/main/pluginmaster.json": {
-    "failures": 7,
+    "failures": 8,
     "disabled": false,
     "firstFailure": "2026-10-24T04:11:05.4148104Z",
-    "lastFailure": "2026-10-29T05:22:15.2183970Z"
+    "lastFailure": "2026-10-30T05:22:18.5440557Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/hocng015/Tsunippy/main/pluginmaster.json": {
-    "failures": 7,
+    "failures": 8,
     "disabled": false,
     "firstFailure": "2026-10-24T04:11:05.4209269Z",
-    "lastFailure": "2026-10-29T05:22:15.2198140Z"
+    "lastFailure": "2026-10-30T05:22:18.5455286Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/notYuta/ShiroUtils/main/repo.json": {
     "failures": 9,
@@ -30,27 +114,27 @@
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/huntsffxiv/repo/main/repo.json": {
-    "failures": 12,
+    "failures": 13,
     "disabled": false,
     "firstFailure": "2026-10-19T04:14:02.7009789Z",
-    "lastFailure": "2026-10-29T05:20:38.6511806Z"
+    "lastFailure": "2026-10-30T05:20:02.4403291Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/ArcaneAj/WachuMakeyMaking/master/repo.json": {
-    "failures": 32,
+    "failures": 33,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-10-29T05:20:38.4697832Z",
+    "lastFailure": "2026-10-30T05:20:02.1513735Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/Yarukon/MakePlacePlugin/master/MakePlacePlugin.json": {
-    "failures": 32,
+    "failures": 33,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-10-29T05:20:38.7034143Z",
+    "lastFailure": "2026-10-30T05:20:02.5470850Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/h1arc/plugin/main/repo.json": {
-    "failures": 39,
+    "failures": 40,
     "firstFailure": "2026-10-06T00:50:45Z",
-    "lastFailure": "2026-10-29T05:20:38.6024127Z",
+    "lastFailure": "2026-10-30T05:20:02.3330566Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/BrakusTapus/PluginHUB/main/pluginmaster.json": {
