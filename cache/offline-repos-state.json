@@ -71,7 +71,7 @@
     "firstFailure": "2026-10-30T05:22:18.5468863Z",
     "lastFailure": "2026-10-30T05:22:18.5468863Z"
   },
-  "external-repos|https://raw.githubusercontent.com/XeldarAlz/DalamudPlugins/main/repo.json": {
+  "external-repos|https://grindless.pages.dev/repo.json": {
     "failures": 1,
     "disabled": false,
     "firstFailure": "2026-10-30T05:22:26.1943374Z",
