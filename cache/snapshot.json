@@ -2518,6 +2518,17 @@
     "TestingDownloadUrl": "https://github.com/RoseOfficial/Komos/releases/download/v0.2.0/Komos.zip",
     "TestingAssemblyVersionFromZip": null
   },
+  "Kupopop": {
+    "InternalName": "Kupopop",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.0.4.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/cloudesh/kupopop/releases/download/v1.0.4/testing.zip",
+    "TestingAssemblyVersionFromZip": "1.0.4.0"
+  },
   "Laplace": {
     "InternalName": "Laplace",
     "AssemblyVersion": null,
@@ -2824,7 +2835,7 @@
     "TestingAssemblyVersion": "1.17.29.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/dexcss/MarketHelper/releases/latest/download/MarketHelper.zip",
-    "TestingAssemblyVersionFromZip": "1.17.29.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "Mascaron": {
     "InternalName": "Mascaron",
