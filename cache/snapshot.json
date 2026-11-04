@@ -74,7 +74,7 @@
     "TestingAssemblyVersion": "1.4.2.1",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://media.aetherphone.net/guides/plugin-mirror/aetherphone/1.4.2.1/latest.zip",
-    "TestingAssemblyVersionFromZip": "1.4.2.1"
+    "TestingAssemblyVersionFromZip": null
   },
   "AetherRemoteClient": {
     "InternalName": "AetherRemoteClient",
@@ -228,17 +228,6 @@
     "TestingAssemblyVersion": "1.0.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/NNekoPlugins/AqrNarrator/releases/download/v0.0.0.8/latest.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
-  "Archipendium": {
-    "InternalName": "Archipendium",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "3.0.4.0",
-    "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/andrewbabbittdev/archipendium/releases/download/3.0.4/Archipendium.3.0.4.zip",
     "TestingAssemblyVersionFromZip": null
   },
   "ArmouryCleaner": {
@@ -2329,7 +2318,7 @@
     "TestingAssemblyVersion": "0.6.3.13",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://raw.githubusercontent.com/konvarec/HuntVoidWatcherCustomRepo/v0.6.3.13/latest.zip",
-    "TestingAssemblyVersionFromZip": "0.6.3.13"
+    "TestingAssemblyVersionFromZip": null
   },
   "HypnotoadPlugin": {
     "InternalName": "HypnotoadPlugin",
