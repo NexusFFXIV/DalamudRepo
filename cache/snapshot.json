@@ -74,7 +74,7 @@
     "TestingAssemblyVersion": "1.4.2.2",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://media.aetherphone.net/guides/plugin-mirror/aetherphone/1.4.2.2/latest.zip",
-    "TestingAssemblyVersionFromZip": "1.4.2.2"
+    "TestingAssemblyVersionFromZip": null
   },
   "AetherRemoteClient": {
     "InternalName": "AetherRemoteClient",
@@ -239,7 +239,7 @@
     "TestingAssemblyVersion": "3.0.4.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/andrewbabbittdev/archipendium/releases/download/3.0.4/Archipendium.3.0.4.zip",
-    "TestingAssemblyVersionFromZip": "3.0.4.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "ArmouryCleaner": {
     "InternalName": "ArmouryCleaner",
@@ -819,10 +819,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "2.4.0.2",
+    "TestingAssemblyVersion": "2.4.0.3",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/Aspher0/BypassEmote/releases/download/v2.4.0.2/latest.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/Aspher0/BypassEmote/releases/download/v2.4.0.3/latest.zip",
+    "TestingAssemblyVersionFromZip": "2.4.0.3"
   },
   "CactusWatcher": {
     "InternalName": "CactusWatcher",
@@ -1790,7 +1790,7 @@
     "TestingAssemblyVersion": "0.0.84.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/WesleyLuk90/ffxiv-vr/releases/download/v0.0.84/FfxivVR.zip",
-    "TestingAssemblyVersionFromZip": "0.0.84.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "findingfantasy": {
     "InternalName": "findingfantasy",
