@@ -437,7 +437,7 @@
     "TestingAssemblyVersion": "1.1.1.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/amarinne/Auto-Marketbuddy/releases/download/v1.1.1/latest.zip",
-    "TestingAssemblyVersionFromZip": "1.1.1.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "AutomarketPro": {
     "InternalName": "AutomarketPro",
@@ -2326,10 +2326,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.6.3.13",
+    "TestingAssemblyVersion": "0.6.3.14",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://raw.githubusercontent.com/konvarec/HuntVoidWatcherCustomRepo/v0.6.3.13/latest.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://raw.githubusercontent.com/konvarec/HuntVoidWatcherCustomRepo/v0.6.3.14/latest.zip",
+    "TestingAssemblyVersionFromZip": "0.6.3.14"
   },
   "HypnotoadPlugin": {
     "InternalName": "HypnotoadPlugin",
@@ -3528,7 +3528,7 @@
     "TestingAssemblyVersion": "1.1.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/Valiice/PlatePeek/releases/download/v1.1.0/PlatePeek.zip",
-    "TestingAssemblyVersionFromZip": "1.1.0.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "PlayerCoords": {
     "InternalName": "PlayerCoords",
@@ -3627,7 +3627,7 @@
     "TestingAssemblyVersion": "2.2.5.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://files.kinkporium.studio/releases/gagspeak/2.2.5.0.zip",
-    "TestingAssemblyVersionFromZip": "2.2.5.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "ProvokeCounter": {
     "InternalName": "ProvokeCounter",
