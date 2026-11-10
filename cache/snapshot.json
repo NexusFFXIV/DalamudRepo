@@ -2329,7 +2329,7 @@
     "TestingAssemblyVersion": "0.6.3.14",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://raw.githubusercontent.com/konvarec/HuntVoidWatcherCustomRepo/v0.6.3.14/latest.zip",
-    "TestingAssemblyVersionFromZip": "0.6.3.14"
+    "TestingAssemblyVersionFromZip": null
   },
   "HypnotoadPlugin": {
     "InternalName": "HypnotoadPlugin",
@@ -3253,17 +3253,6 @@
     "TestingAssemblyVersion": "3.3.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://raw.githubusercontent.com/mousseng/DalamudPlugins/main/plugins/omgcombo/latest.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
-  "OnionHunter": {
-    "InternalName": "OnionHunter",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.1.2.4",
-    "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://raw.githubusercontent.com/LastOnionKnight/OnionHunter/main/dist/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
   "OnlyTurbo": {
