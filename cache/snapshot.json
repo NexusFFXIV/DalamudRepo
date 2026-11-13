@@ -1207,7 +1207,7 @@
     "TestingAssemblyVersion": "1.15.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/SHOEGAZEssb/Dagobert/releases/download/v1.15.0.0/latest.zip",
-    "TestingAssemblyVersionFromZip": "1.15.0.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "Dalamud.FindEverything": {
     "InternalName": "Dalamud.FindEverything",
@@ -1790,7 +1790,7 @@
     "TestingAssemblyVersion": "0.0.85.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/WesleyLuk90/ffxiv-vr/releases/download/v0.0.85/FfxivVR.zip",
-    "TestingAssemblyVersionFromZip": "0.0.85.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "findingfantasy": {
     "InternalName": "findingfantasy",
@@ -2329,7 +2329,7 @@
     "TestingAssemblyVersion": "0.6.3.15",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://raw.githubusercontent.com/konvarec/HuntVoidWatcherCustomRepo/v0.6.3.15/latest.zip",
-    "TestingAssemblyVersionFromZip": "0.6.3.15"
+    "TestingAssemblyVersionFromZip": null
   },
   "HypnotoadPlugin": {
     "InternalName": "HypnotoadPlugin",
@@ -2517,6 +2517,17 @@
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/RoseOfficial/Komos/releases/download/v0.2.0/Komos.zip",
     "TestingAssemblyVersionFromZip": null
+  },
+  "KtisisPyon": {
+    "InternalName": "KtisisPyon",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "0.4.0.10",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/KtisisPyon.zip",
+    "TestingAssemblyVersionFromZip": "0.4.0.10"
   },
   "Kupopop": {
     "InternalName": "Kupopop",
@@ -3343,6 +3354,28 @@
     "TestingDownloadUrl": "https://github.com/chirpxiv/PalettePlus/releases/download/v0.3.14/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
+  "PartyPyon": {
+    "InternalName": "PartyPyon",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.0.5.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/PartyPyon.zip",
+    "TestingAssemblyVersionFromZip": "1.0.5.0"
+  },
+  "PartyRangePyon": {
+    "InternalName": "PartyRangePyon",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.0.0.2",
+    "TestingDalamudApiLevel": 10,
+    "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/PartyRangePyon.zip",
+    "TestingAssemblyVersionFromZip": "1.0.0.2"
+  },
   "PartySorter": {
     "InternalName": "PartySorter",
     "AssemblyVersion": null,
@@ -3683,6 +3716,39 @@
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/Karlin-Z/DalamudPlugins/raw/main/plugins/PvPSelector/latest.zip",
     "TestingAssemblyVersionFromZip": null
+  },
+  "PvPyon": {
+    "InternalName": "PvPyon",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.0.0.2",
+    "TestingDalamudApiLevel": 9,
+    "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/PvPyon.zip",
+    "TestingAssemblyVersionFromZip": "1.0.0.2"
+  },
+  "PyonCam": {
+    "InternalName": "PyonCam",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "2.1.5.5",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/PyonCam.zip",
+    "TestingAssemblyVersionFromZip": "2.1.5.5"
+  },
+  "PyonPix": {
+    "InternalName": "PyonPix",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.4.0.2",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/PyonPix.zip",
+    "TestingAssemblyVersionFromZip": "1.4.0.2"
   },
   "Quack": {
     "InternalName": "Quack",
@@ -4245,6 +4311,17 @@
     "TestingDownloadUrl": "https://raw.githubusercontent.com/FFXIV-Sonar/SonarRepo/main/plugins/SonarPlugin-preview-kr/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
+  "SoundPyon": {
+    "InternalName": "SoundPyon",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.0.3.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/SoundPyon.zip",
+    "TestingAssemblyVersionFromZip": "1.0.3.0"
+  },
   "SpamrollGiveaway": {
     "InternalName": "SpamrollGiveaway",
     "AssemblyVersion": null,
@@ -4387,6 +4464,17 @@
     "TestingDalamudApiLevel": 13,
     "TestingDownloadUrl": "https://github.com/paissaheavyindustries/Tallafell/releases/download/v1.0.0.6/Tallafell_1_0_0_6.zip",
     "TestingAssemblyVersionFromZip": null
+  },
+  "TargetPyon": {
+    "InternalName": "TargetPyon",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.0.8.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/TargetPyon.zip",
+    "TestingAssemblyVersionFromZip": "1.0.8.0"
   },
   "Teleport": {
     "InternalName": "Teleport",
@@ -4552,6 +4640,17 @@
     "TestingDalamudApiLevel": 11,
     "TestingDownloadUrl": "https://github.com/moewcorp/DalamudPlugins/raw/main/plugins/TreasureBox/latest.zip",
     "TestingAssemblyVersionFromZip": null
+  },
+  "TriggerPyon": {
+    "InternalName": "TriggerPyon",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.2.1.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/TriggerPyon.zip",
+    "TestingAssemblyVersionFromZip": "1.2.1.0"
   },
   "TruePing": {
     "InternalName": "TruePing",
