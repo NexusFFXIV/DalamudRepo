@@ -109,17 +109,6 @@
     "TestingDownloadUrl": "https://github.com/Dregan234/AetherVoice/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
-  "AetheryteLinkInChat": {
-    "InternalName": "AetheryteLinkInChat",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "7.5.1.4",
-    "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://raw.githubusercontent.com/zhouhuichen741/dalamud-plugins/master/plugins/Divination.AetheryteLinkInChat/Divination.AetheryteLinkInChat.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
   "AkashicRecords": {
     "InternalName": "AkashicRecords",
     "AssemblyVersion": null,
@@ -434,10 +423,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.1.1.0",
+    "TestingAssemblyVersion": "1.2.0.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/amarinne/Auto-Marketbuddy/releases/download/v1.1.1/latest.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/amarinne/Auto-Marketbuddy/releases/download/v1.2.0/latest.zip",
+    "TestingAssemblyVersionFromZip": "1.2.0.0"
   },
   "AutomarketPro": {
     "InternalName": "AutomarketPro",
@@ -1204,10 +1193,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.15.0.0",
+    "TestingAssemblyVersion": "1.15.1.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/SHOEGAZEssb/Dagobert/releases/download/v1.15.0.0/latest.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/SHOEGAZEssb/Dagobert/releases/download/v1.15.1.0/latest.zip",
+    "TestingAssemblyVersionFromZip": "1.15.1.0"
   },
   "Dalamud.FindEverything": {
     "InternalName": "Dalamud.FindEverything",
@@ -2527,7 +2516,7 @@
     "TestingAssemblyVersion": "0.4.0.10",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/KtisisPyon.zip",
-    "TestingAssemblyVersionFromZip": "0.4.0.10"
+    "TestingAssemblyVersionFromZip": null
   },
   "Kupopop": {
     "InternalName": "Kupopop",
@@ -3363,7 +3352,7 @@
     "TestingAssemblyVersion": "1.0.5.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/PartyPyon.zip",
-    "TestingAssemblyVersionFromZip": "1.0.5.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "PartyRangePyon": {
     "InternalName": "PartyRangePyon",
@@ -3374,7 +3363,7 @@
     "TestingAssemblyVersion": "1.0.0.2",
     "TestingDalamudApiLevel": 10,
     "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/PartyRangePyon.zip",
-    "TestingAssemblyVersionFromZip": "1.0.0.2"
+    "TestingAssemblyVersionFromZip": null
   },
   "PartySorter": {
     "InternalName": "PartySorter",
@@ -3726,7 +3715,7 @@
     "TestingAssemblyVersion": "1.0.0.2",
     "TestingDalamudApiLevel": 9,
     "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/PvPyon.zip",
-    "TestingAssemblyVersionFromZip": "1.0.0.2"
+    "TestingAssemblyVersionFromZip": null
   },
   "PyonCam": {
     "InternalName": "PyonCam",
@@ -3737,7 +3726,7 @@
     "TestingAssemblyVersion": "2.1.5.5",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/PyonCam.zip",
-    "TestingAssemblyVersionFromZip": "2.1.5.5"
+    "TestingAssemblyVersionFromZip": null
   },
   "PyonPix": {
     "InternalName": "PyonPix",
@@ -3748,7 +3737,7 @@
     "TestingAssemblyVersion": "1.4.0.2",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/PyonPix.zip",
-    "TestingAssemblyVersionFromZip": "1.4.0.2"
+    "TestingAssemblyVersionFromZip": null
   },
   "Quack": {
     "InternalName": "Quack",
@@ -4320,7 +4309,7 @@
     "TestingAssemblyVersion": "1.0.3.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/SoundPyon.zip",
-    "TestingAssemblyVersionFromZip": "1.0.3.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "SpamrollGiveaway": {
     "InternalName": "SpamrollGiveaway",
@@ -4474,7 +4463,7 @@
     "TestingAssemblyVersion": "1.0.8.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/TargetPyon.zip",
-    "TestingAssemblyVersionFromZip": "1.0.8.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "Teleport": {
     "InternalName": "Teleport",
@@ -4650,7 +4639,7 @@
     "TestingAssemblyVersion": "1.2.1.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/priprii/FFXIVPlugins/raw/main/bin/TriggerPyon.zip",
-    "TestingAssemblyVersionFromZip": "1.2.1.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "TruePing": {
     "InternalName": "TruePing",
