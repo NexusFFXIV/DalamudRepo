@@ -426,7 +426,7 @@
     "TestingAssemblyVersion": "1.2.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/amarinne/Auto-Marketbuddy/releases/download/v1.2.0/latest.zip",
-    "TestingAssemblyVersionFromZip": "1.2.0.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "AutomarketPro": {
     "InternalName": "AutomarketPro",
@@ -1061,10 +1061,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "2.8.1.7",
+    "TestingAssemblyVersion": "3.0.0.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/zysilm/FFXIV-CombatSimulator/releases/download/v2.8.1.7/CombatSimulator.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/zysilm/FFXIV-CombatSimulator/releases/download/v3.0.0.0/CombatSimulator.zip",
+    "TestingAssemblyVersionFromZip": "3.0.0.0"
   },
   "CombatStatistics": {
     "InternalName": "CombatStatistics",
@@ -1196,7 +1196,7 @@
     "TestingAssemblyVersion": "1.15.1.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/SHOEGAZEssb/Dagobert/releases/download/v1.15.1.0/latest.zip",
-    "TestingAssemblyVersionFromZip": "1.15.1.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "Dalamud.FindEverything": {
     "InternalName": "Dalamud.FindEverything",
@@ -2843,10 +2843,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.3.3.0",
+    "TestingAssemblyVersion": "0.4.0.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/amatiramisu/mascaron/releases/download/v0.3.3.0/Mascaron.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/amatiramisu/mascaron/releases/download/v0.4.0.0/Mascaron.zip",
+    "TestingAssemblyVersionFromZip": "0.4.0.0"
   },
   "MaskOfKefka": {
     "InternalName": "MaskOfKefka",
@@ -3536,10 +3536,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.1.0.0",
+    "TestingAssemblyVersion": "1.2.0.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/Valiice/PlatePeek/releases/download/v1.1.0/PlatePeek.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/Valiice/PlatePeek/releases/download/v1.2.0/PlatePeek.zip",
+    "TestingAssemblyVersionFromZip": "1.2.0.0"
   },
   "PlayerCoords": {
     "InternalName": "PlayerCoords",
