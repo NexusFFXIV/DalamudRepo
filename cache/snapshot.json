@@ -71,10 +71,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.4.2.2",
+    "TestingAssemblyVersion": "1.4.3.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://media.aetherphone.net/guides/plugin-mirror/aetherphone/1.4.2.2/latest.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://media.aetherphone.net/guides/plugin-mirror/aetherphone/1.4.3.0/latest.zip",
+    "TestingAssemblyVersionFromZip": "1.4.3.0"
   },
   "AetherRemoteClient": {
     "InternalName": "AetherRemoteClient",
@@ -120,6 +120,17 @@
     "TestingDownloadUrl": "https://github.com/NaokiEgusa/NaokiEgusaPlugins/raw/main/plugins/AkashicRecords/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
+  "AlmondChatTranslated": {
+    "InternalName": "AlmondChatTranslated",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "1.0.0.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/hyirax/AlmondPlugins/releases/download/AlmondChatTranslated-v1.0.0/AlmondChatTranslated-1.0.0.zip",
+    "TestingAssemblyVersionFromZip": "1.0.0.0"
+  },
   "AlmondHousing": {
     "InternalName": "AlmondHousing",
     "AssemblyVersion": null,
@@ -129,7 +140,7 @@
     "TestingAssemblyVersion": "1.1.6.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/hyirax/AlmondPlugins/releases/download/AlmondHousing-v1.1.6/AlmondHousing-1.1.6.zip",
-    "TestingAssemblyVersionFromZip": "1.1.6.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "AlmondZoom": {
     "InternalName": "AlmondZoom",
@@ -218,6 +229,17 @@
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/NNekoPlugins/AqrNarrator/releases/download/v0.0.0.8/latest.zip",
     "TestingAssemblyVersionFromZip": null
+  },
+  "Archipendium": {
+    "InternalName": "Archipendium",
+    "AssemblyVersion": null,
+    "DalamudApiLevel": null,
+    "DownloadUrl": null,
+    "AssemblyVersionFromZip": null,
+    "TestingAssemblyVersion": "3.0.4.0",
+    "TestingDalamudApiLevel": 15,
+    "TestingDownloadUrl": "https://github.com/andrewbabbittdev/archipendium/releases/download/3.0.4/Archipendium.3.0.4.zip",
+    "TestingAssemblyVersionFromZip": "3.0.4.0"
   },
   "ArmouryCleaner": {
     "InternalName": "ArmouryCleaner",
@@ -1053,7 +1075,7 @@
     "TestingAssemblyVersion": "3.0.0.1",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/zysilm/FFXIV-CombatSimulator/releases/download/v3.0.0.1/CombatSimulator.zip",
-    "TestingAssemblyVersionFromZip": "3.0.0.1"
+    "TestingAssemblyVersionFromZip": null
   },
   "CombatStatistics": {
     "InternalName": "CombatStatistics",
@@ -1338,8 +1360,8 @@
     "AssemblyVersionFromZip": null,
     "TestingAssemblyVersion": "1.0.8.0",
     "TestingDalamudApiLevel": 11,
-    "TestingDownloadUrl": "https://raw.githubusercontent.com/Bluefissure/DalamudPlugins/9954ba21489b84ffafbcf2eb3bf0361e9b5f9d54/plugins/DoubleWeaver/latest.zip",
-    "TestingAssemblyVersionFromZip": "1.0.8.0"
+    "TestingDownloadUrl": "https://github.com/Bluefissure/DalamudPlugins/raw/Bluefissure/plugins/DoubleWeaver/latest.zip",
+    "TestingAssemblyVersionFromZip": null
   },
   "DozeAnywhere": {
     "InternalName": "DozeAnywhere",
@@ -1616,27 +1638,16 @@
     "TestingDownloadUrl": "https://github.com/richardlh023/FateWalker/raw/main/plugins/FateWalker/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
-  "FCTracker": {
-    "InternalName": "FCTracker",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.10.0.0",
-    "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/dexcss/FCTracker/releases/latest/download/FCTracker.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
   "FeteTimer": {
     "InternalName": "FeteTimer",
     "AssemblyVersion": null,
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.1.8.0",
+    "TestingAssemblyVersion": "0.1.9.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://edgl.dev/share/zhyra/fetetimer/0.1.8.0.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://edgl.dev/share/zhyra/fetetimer/0.1.9.0.zip",
+    "TestingAssemblyVersionFromZip": "0.1.9.0"
   },
   "FFFeudPlugin": {
     "InternalName": "FFFeudPlugin",
@@ -2229,8 +2240,8 @@
     "AssemblyVersionFromZip": null,
     "TestingAssemblyVersion": "1.3.2.0",
     "TestingDalamudApiLevel": 11,
-    "TestingDownloadUrl": "https://raw.githubusercontent.com/Bluefissure/DalamudPlugins/9954ba21489b84ffafbcf2eb3bf0361e9b5f9d54/plugins/HousingPos/latest.zip",
-    "TestingAssemblyVersionFromZip": "1.3.2.0"
+    "TestingDownloadUrl": "https://github.com/Bluefissure/DalamudPlugins/raw/Bluefissure/plugins/HousingPos/latest.zip",
+    "TestingAssemblyVersionFromZip": null
   },
   "HousingSweepy": {
     "InternalName": "HousingSweepy",
@@ -2304,10 +2315,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.6.3.17",
+    "TestingAssemblyVersion": "0.6.3.18",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://raw.githubusercontent.com/konvarec/HuntVoidWatcherCustomRepo/v0.6.3.17/latest.zip",
-    "TestingAssemblyVersionFromZip": "0.6.3.17"
+    "TestingDownloadUrl": "https://raw.githubusercontent.com/konvarec/HuntVoidWatcherCustomRepo/v0.6.3.18/latest.zip",
+    "TestingAssemblyVersionFromZip": "0.6.3.18"
   },
   "HypnotoadPlugin": {
     "InternalName": "HypnotoadPlugin",
@@ -2889,8 +2900,8 @@
     "AssemblyVersionFromZip": null,
     "TestingAssemblyVersion": "3.2.5.6",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://raw.githubusercontent.com/reckhou/DalamudPlugins-Ori/e77dd5dadbbc3375401dab12125914014a11e5ad/plugins/MidiBard2/latest.zip",
-    "TestingAssemblyVersionFromZip": "3.2.5.6"
+    "TestingDownloadUrl": "https://raw.githubusercontent.com/reckhou/DalamudPlugins-Ori/api6/plugins/MidiBard2/latest.zip",
+    "TestingAssemblyVersionFromZip": null
   },
   "MinimapPlugin": {
     "InternalName": "MinimapPlugin",
@@ -3044,7 +3055,7 @@
     "TestingAssemblyVersion": "1.0.3.10",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/Zeffuro/NativeMeters/releases/download/1.0.3.10/latest.zip",
-    "TestingAssemblyVersionFromZip": "1.0.3.10"
+    "TestingAssemblyVersionFromZip": null
   },
   "NeevieAutoMammet": {
     "InternalName": "NeevieAutoMammet",
@@ -3998,10 +4009,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.11.3.0",
+    "TestingAssemblyVersion": "0.11.4.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://edgl.dev/share/zhyra/retainerreach/0.11.3.0.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://edgl.dev/share/zhyra/retainerreach/0.11.4.0.zip",
+    "TestingAssemblyVersionFromZip": "0.11.4.0"
   },
   "RightClickSearchInfo": {
     "InternalName": "RightClickSearchInfo",
@@ -4075,10 +4086,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.8.11.0",
+    "TestingAssemblyVersion": "0.8.12.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://edgl.dev/share/zhyra/sealhunter/0.8.11.0.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://edgl.dev/share/zhyra/sealhunter/0.8.12.0.zip",
+    "TestingAssemblyVersionFromZip": "0.8.12.0"
   },
   "Search Comment (Ultimate)": {
     "InternalName": "Search Comment (Ultimate)",
@@ -4176,7 +4187,7 @@
     "AssemblyVersionFromZip": null,
     "TestingAssemblyVersion": "1.2.3.2",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://raw.githubusercontent.com/a08381/Dalamud.SkipCutscene/3f2e55f615b56c0c8f507020ac717bfbc9a2b5d4/latest.zip",
+    "TestingDownloadUrl": "https://github.com/a08381/Dalamud.SkipCutscene/raw/dist/latest.zip",
     "TestingAssemblyVersionFromZip": "1.2.3.2"
   },
   "SkyeMeter": {
@@ -4641,17 +4652,6 @@
     "TestingDownloadUrl": "https://github.com/doomzao/true-ping/releases/latest/download/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
-  "TruthOrDare": {
-    "InternalName": "TruthOrDare",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.0.0.11",
-    "TestingDalamudApiLevel": 9,
-    "TestingDownloadUrl": "https://github.com/Nay26/TruthOrDare/raw/master/bin/TruthOrDare.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
   "TurboGCD": {
     "InternalName": "TurboGCD",
     "AssemblyVersion": null,
@@ -4957,8 +4957,8 @@
     "AssemblyVersionFromZip": null,
     "TestingAssemblyVersion": "2.0.6.3",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://raw.githubusercontent.com/daemitus/MyDalamudPlugins/bfb70ed178ec6a0e076c6e1a4dc8b17de7cca737/plugins/XIVComboExpanded/latest.zip",
-    "TestingAssemblyVersionFromZip": "2.0.6.3"
+    "TestingDownloadUrl": "https://github.com/daemitus/MyDalamudPlugins/raw/master/plugins/XIVComboExpanded/latest.zip",
+    "TestingAssemblyVersionFromZip": null
   },
   "XIVComboExpandedest": {
     "InternalName": "XIVComboExpandedest",
