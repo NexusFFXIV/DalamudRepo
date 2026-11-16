@@ -660,6 +660,31 @@ function Test-IsAuthorUpstream {
     } catch { return $false }
 }
 
+function Test-IsPuniSource {
+    param([string]$SourceUrl)
+    try {
+        $hostName = ([uri]$SourceUrl).Host.ToLowerInvariant()
+        return ($hostName -eq 'puni.sh' -or $hostName.EndsWith('.puni.sh'))
+    } catch { return $false }
+}
+
+function Test-IsPuniAuthor {
+    param([string]$SourceUrl, $Entry)
+    if (-not (Test-IsPuniSource $SourceUrl) -or -not $Entry.Author) { return $false }
+    try {
+        $uri = [uri]$SourceUrl
+        $match = [regex]::Match($uri.AbsolutePath, '^/api/repository/([^/]+)$', [Text.RegularExpressions.RegexOptions]::IgnoreCase)
+        if (-not $match.Success) { return $false }
+        $slug = ($match.Groups[1].Value -replace '[^A-Za-z0-9]', '').ToLowerInvariant()
+        $authors = [string]$Entry.Author -split '[,;&/|]|\band\b'
+        foreach ($authorValue in $authors) {
+            $author = ($authorValue -replace '[^A-Za-z0-9]', '').ToLowerInvariant()
+            if ($author -and $author -notin @('unknown','anonymous') -and $slug -eq $author) { return $true }
+        }
+    } catch { return $false }
+    return $false
+}
+
 function Select-RepoWinners {
     # Cross-repo dedup for external-repos pools: pick one winner per
     # InternalName so we never merge fields from multiple sources.
@@ -697,18 +722,28 @@ function Select-RepoWinners {
             [pscustomobject]@{
                 cand   = $c
                 eff    = Resolve-Version $c.entry
+                puniAuthor = Test-IsPuniAuthor -SourceUrl $c.sourceUrl -Entry $c.entry
+                puni   = Test-IsPuniSource -SourceUrl $c.sourceUrl
                 origin = Test-IsOriginalUpstream -SourceUrl $c.sourceUrl -Entry $c.entry
                 author = Test-IsAuthorUpstream -SourceUrl $c.sourceUrl -Entry $c.entry
+                priority = if ($c.sourcePriority) { [int]$c.sourcePriority } else { 0 }
             }
         }
         $sorted = $scored | Sort-Object @{Expression={ $_.eff };    Descending=$true},
+                                         @{Expression={ $_.puniAuthor }; Descending=$true},
+                                         @{Expression={ $_.puni };       Descending=$true},
                                          @{Expression={ $_.origin }; Descending=$true},
-                                         @{Expression={ $_.author }; Descending=$true}
+                                         @{Expression={ $_.author }; Descending=$true},
+                                         @{Expression={ $_.priority }; Descending=$true}
         $winner = $sorted[0]
         # The winner is still selected by version first. The displayed reason
         # is the strongest matching indicator, so useful provenance signals
         # are not hidden behind HIGHEST_VERSION.
-        $winnerReason = if ($winner.author) {
+        $winnerReason = if ($winner.puniAuthor) {
+            'PUNI_AUTHOR_MATCH'
+        } elseif ($winner.puni) {
+            'PUNI_SOURCE'
+        } elseif ($winner.author) {
             'AUTHOR_MATCH'
         } elseif ($winner.origin) {
             'UPSTREAM_MATCH'
@@ -732,6 +767,8 @@ function Select-RepoWinners {
             Candidates = @($report.Candidates | ForEach-Object {
                 $candidateReason = if ($_ -eq $report.Winner) { $report.WinnerReason }
                     elseif ([string]$_.eff -lt [string]$report.Winner.eff) { 'LOWER_VERSION' }
+                    elseif ($report.Winner.puniAuthor -and -not $_.puniAuthor) { 'PUNI_AUTHOR_LOST' }
+                    elseif ($report.Winner.puni -and -not $_.puni) { 'PUNI_SOURCE_LOST' }
                     elseif ($report.Winner.origin -and -not $_.origin) { 'UPSTREAM_LOST' }
                     elseif ($report.Winner.author -and -not $_.author) { 'AUTHOR_LOST' }
                     else { 'FIRST_INPUT_LOST' }
@@ -766,7 +803,8 @@ function Collect-RepoUrlsPool {
         [Parameter(Mandatory)]$Yaml,
         [Parameter(Mandatory)][string]$SectionLabel,
         [System.Collections.Generic.HashSet[string]]$OfficialNames,
-        [string]$OfficialSourceUrl
+        [string]$OfficialSourceUrl,
+        [int]$SourcePriority = 0
     )
     if (-not $Yaml.externalRepos) {
         Write-Host "  (none configured)"
@@ -834,7 +872,16 @@ function Collect-RepoUrlsPool {
             if (-not $e.PSObject.Properties['__ReportSourceUrl']) {
                 Add-Member -InputObject $e -NotePropertyName __ReportSourceUrl -NotePropertyValue $url
             } else { $e.__ReportSourceUrl = $url }
-            $candidates += @{ entry = $e; sourceUrl = $url }
+            if (-not $e.PSObject.Properties['__SourcePriority']) {
+                Add-Member -InputObject $e -NotePropertyName __SourcePriority -NotePropertyValue $SourcePriority
+            } else { $e.__SourcePriority = $SourcePriority }
+            if (-not $e.PSObject.Properties['__SourcePuni']) {
+                Add-Member -InputObject $e -NotePropertyName __SourcePuni -NotePropertyValue (Test-IsPuniSource $url)
+            } else { $e.__SourcePuni = (Test-IsPuniSource $url) }
+            if (-not $e.PSObject.Properties['__SourcePuniAuthor']) {
+                Add-Member -InputObject $e -NotePropertyName __SourcePuniAuthor -NotePropertyValue (Test-IsPuniAuthor -SourceUrl $url -Entry $e)
+            } else { $e.__SourcePuniAuthor = (Test-IsPuniAuthor -SourceUrl $url -Entry $e) }
+            $candidates += @{ entry = $e; sourceUrl = $url; sourcePriority = $SourcePriority }
             $hereCount++
         }
         if ($hereCount -eq 0) {
