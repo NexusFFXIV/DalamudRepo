@@ -126,10 +126,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.1.5.0",
+    "TestingAssemblyVersion": "1.1.6.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/hyirax/AlmondPlugins/releases/download/AlmondHousing-v1.1.5/AlmondHousing-1.1.5.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/hyirax/AlmondPlugins/releases/download/AlmondHousing-v1.1.6/AlmondHousing-1.1.6.zip",
+    "TestingAssemblyVersionFromZip": "1.1.6.0"
   },
   "AlmondZoom": {
     "InternalName": "AlmondZoom",
@@ -217,17 +217,6 @@
     "TestingAssemblyVersion": "1.0.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/NNekoPlugins/AqrNarrator/releases/download/v0.0.0.8/latest.zip",
-    "TestingAssemblyVersionFromZip": null
-  },
-  "Archipendium": {
-    "InternalName": "Archipendium",
-    "AssemblyVersion": null,
-    "DalamudApiLevel": null,
-    "DownloadUrl": null,
-    "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "3.0.4.0",
-    "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/andrewbabbittdev/archipendium/releases/download/3.0.4/Archipendium.3.0.4.zip",
     "TestingAssemblyVersionFromZip": null
   },
   "ArmouryCleaner": {
@@ -478,9 +467,9 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "2.16.1.0",
+    "TestingAssemblyVersion": "2.17.0.0",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://grindless.pages.dev/plugins/AutoPvpSeriesGrind/2.16.1.0/latest.zip",
+    "TestingDownloadUrl": "https://grindless.pages.dev/plugins/AutoPvpSeriesGrind/2.17.0.0/latest.zip",
     "TestingAssemblyVersionFromZip": null
   },
   "AutoQuest": {
@@ -1061,10 +1050,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "3.0.0.0",
+    "TestingAssemblyVersion": "3.0.0.1",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/zysilm/FFXIV-CombatSimulator/releases/download/v3.0.0.0/CombatSimulator.zip",
-    "TestingAssemblyVersionFromZip": "3.0.0.0"
+    "TestingDownloadUrl": "https://github.com/zysilm/FFXIV-CombatSimulator/releases/download/v3.0.0.1/CombatSimulator.zip",
+    "TestingAssemblyVersionFromZip": "3.0.0.1"
   },
   "CombatStatistics": {
     "InternalName": "CombatStatistics",
@@ -2315,10 +2304,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "0.6.3.15",
+    "TestingAssemblyVersion": "0.6.3.17",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://raw.githubusercontent.com/konvarec/HuntVoidWatcherCustomRepo/v0.6.3.15/latest.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://raw.githubusercontent.com/konvarec/HuntVoidWatcherCustomRepo/v0.6.3.17/latest.zip",
+    "TestingAssemblyVersionFromZip": "0.6.3.17"
   },
   "HypnotoadPlugin": {
     "InternalName": "HypnotoadPlugin",
@@ -2846,7 +2835,7 @@
     "TestingAssemblyVersion": "0.4.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/amatiramisu/mascaron/releases/download/v0.4.0.0/Mascaron.zip",
-    "TestingAssemblyVersionFromZip": "0.4.0.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "MaskOfKefka": {
     "InternalName": "MaskOfKefka",
@@ -3052,10 +3041,10 @@
     "DalamudApiLevel": null,
     "DownloadUrl": null,
     "AssemblyVersionFromZip": null,
-    "TestingAssemblyVersion": "1.0.3.9",
+    "TestingAssemblyVersion": "1.0.3.10",
     "TestingDalamudApiLevel": 15,
-    "TestingDownloadUrl": "https://github.com/Zeffuro/NativeMeters/releases/download/1.0.3.9/latest.zip",
-    "TestingAssemblyVersionFromZip": null
+    "TestingDownloadUrl": "https://github.com/Zeffuro/NativeMeters/releases/download/1.0.3.10/latest.zip",
+    "TestingAssemblyVersionFromZip": "1.0.3.10"
   },
   "NeevieAutoMammet": {
     "InternalName": "NeevieAutoMammet",
@@ -3539,7 +3528,7 @@
     "TestingAssemblyVersion": "1.2.0.0",
     "TestingDalamudApiLevel": 15,
     "TestingDownloadUrl": "https://github.com/Valiice/PlatePeek/releases/download/v1.2.0/PlatePeek.zip",
-    "TestingAssemblyVersionFromZip": "1.2.0.0"
+    "TestingAssemblyVersionFromZip": null
   },
   "PlayerCoords": {
     "InternalName": "PlayerCoords",

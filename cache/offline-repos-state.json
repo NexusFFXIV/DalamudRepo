@@ -1,15 +1,15 @@
 {
   "external-repos-gen|https://raw.githubusercontent.com/msew11/DalamudPlugins/master/pluginmaster.json": {
-    "failures": 1,
+    "failures": 2,
     "disabled": false,
     "firstFailure": "2026-11-15T05:56:20.9706992Z",
-    "lastFailure": "2026-11-15T05:56:20.9706992Z"
+    "lastFailure": "2026-11-16T05:55:27.1940957Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/msew11/IINACT_CN/main/repo.json": {
-    "failures": 1,
+    "failures": 2,
     "disabled": false,
     "firstFailure": "2026-11-15T05:56:20.9768806Z",
-    "lastFailure": "2026-11-15T05:56:20.9768806Z"
+    "lastFailure": "2026-11-16T05:55:27.1975531Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/notYuta/ShiroUtils/main/repo.json": {
     "failures": 9,
@@ -24,45 +24,45 @@
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/keifufu/XivVoices/main/repo.json": {
-    "failures": 20,
+    "failures": 21,
     "disabled": false,
     "firstFailure": "2026-10-30T05:22:18.5468863Z",
-    "lastFailure": "2026-11-15T05:54:46.5298302Z"
+    "lastFailure": "2026-11-16T05:54:34.8670366Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/hocng015/PFRemote-Repo/main/pluginmaster.json": {
-    "failures": 27,
+    "failures": 28,
     "disabled": false,
     "firstFailure": "2026-10-24T04:11:05.4148104Z",
-    "lastFailure": "2026-11-15T05:54:46.2489917Z"
+    "lastFailure": "2026-11-16T05:54:34.7574668Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/hocng015/Tsunippy/main/pluginmaster.json": {
-    "failures": 27,
+    "failures": 28,
     "disabled": false,
     "firstFailure": "2026-10-24T04:11:05.4209269Z",
-    "lastFailure": "2026-11-15T05:54:46.3356666Z"
+    "lastFailure": "2026-11-16T05:54:34.7846172Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/huntsffxiv/repo/main/repo.json": {
-    "failures": 32,
+    "failures": 33,
     "disabled": false,
     "firstFailure": "2026-10-19T04:14:02.7009789Z",
-    "lastFailure": "2026-11-15T05:54:46.4232231Z"
+    "lastFailure": "2026-11-16T05:54:34.8210074Z"
   },
   "external-repos-gen|https://raw.githubusercontent.com/ArcaneAj/WachuMakeyMaking/master/repo.json": {
-    "failures": 52,
+    "failures": 53,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-11-15T05:54:46.0083536Z",
+    "lastFailure": "2026-11-16T05:54:34.6664395Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/Yarukon/MakePlacePlugin/master/MakePlacePlugin.json": {
-    "failures": 52,
+    "failures": 53,
     "firstFailure": "2026-10-07T05:29:37Z",
-    "lastFailure": "2026-11-15T05:54:46.6248352Z",
+    "lastFailure": "2026-11-16T05:54:34.8940859Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/h1arc/plugin/main/repo.json": {
-    "failures": 59,
+    "failures": 60,
     "firstFailure": "2026-10-06T00:50:45Z",
-    "lastFailure": "2026-11-15T05:54:46.1572504Z",
+    "lastFailure": "2026-11-16T05:54:34.7365850Z",
     "disabled": false
   },
   "external-repos-gen|https://raw.githubusercontent.com/BrakusTapus/PluginHUB/main/pluginmaster.json": {
