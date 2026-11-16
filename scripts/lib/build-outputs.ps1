@@ -259,7 +259,17 @@ function Write-Pluginmaster {
         }
         $valid += $entry
     }
-    $arr = @($valid | Sort-Object -Property InternalName)
+    # Source provenance is build metadata only. Never publish the internal
+    # fields used for trusted-source deduplication into pluginmaster JSON.
+    $clean = foreach ($entry in $valid) {
+        $copy = [ordered]@{}
+        foreach ($prop in $entry.PSObject.Properties) {
+            if ($prop.Name -like '__*') { continue }
+            $copy[$prop.Name] = $prop.Value
+        }
+        [pscustomobject]$copy
+    }
+    $arr = @($clean | Sort-Object -Property InternalName)
     if ($arr.Count -eq 0) {
         Set-Content -Path $Path -Value "[]`n" -NoNewline -Encoding UTF8
         return
@@ -283,7 +293,9 @@ function Build-FullUnion {
     $before = @($all).Count
     $result = @()
     foreach ($g in ($all | Group-Object -Property InternalName)) {
-        $sorted = $g.Group | Sort-Object -Property { Resolve-Version $_ } -Descending
+        $sorted = $g.Group | Sort-Object @{ Expression = { Resolve-Version $_ }; Descending = $true },
+            @{ Expression = { if ($_.__SourcePuniAuthor) { 2 } elseif ($_.__SourcePuni) { 1 } else { 0 } }; Descending = $true },
+            @{ Expression = { if ($_.__SourcePriority) { [int]$_.__SourcePriority } else { 0 } }; Descending = $true }
         $winner = $sorted | Select-Object -First 1
         $others = $g.Count - 1
         $suffix = if ($others -gt 0) { "$others other version$(if ($others -ne 1) { 's' }) in list" } else { "unique" }

@@ -53,6 +53,11 @@ Import-Module powershell-yaml
 . "$PSScriptRoot\lib\build-outputs.ps1"
 . "$PSScriptRoot\lib\offline-repos.ps1"
 
+# Puni.sh author feeds are discovered at build time and passed directly into
+# the normal source collector. No generated YAML/JSON or temporary directory is
+# needed for this runtime-only source.
+$puniRuntimeSource = & "$PSScriptRoot\importPuniRepos.ps1"
+
 # Dalamud rejects third-party repositories that replace an official plugin.
 # Load the official PluginMaster once and use its InternalName set as a
 # deny-list for every generated output. If unavailable, fail safe.
@@ -138,8 +143,14 @@ Write-Host "Config: minDalamudApiLevel=$MinDalamudApiLevel; minTestingDalamudApi
 if (-not (Test-Path $SourcesDir)) {
     throw "Sources directory '$SourcesDir' not found."
 }
-$sourceFiles = Get-ChildItem -Path $SourcesDir -Filter "*.yml" -File |
-    Where-Object { $_.Name -notin @("offline-repos.yml", "duplicate-sources.yml") } | Sort-Object Name
+$sourceFiles = @(Get-ChildItem -Path $SourcesDir -Filter "*.yml" -File |
+    Where-Object { $_.Name -notin @("offline-repos.yml", "duplicate-sources.yml") } | Sort-Object Name)
+$sourceFiles += [pscustomobject]@{
+    Name = 'puni-repos-runtime.yml'
+    FullName = $null
+    RuntimeYaml = $puniRuntimeSource
+    IsRuntime = $true
+}
 
 # Per-source results accumulated for the union + summary.
 $processed = @()  # array of @{ basename; type; out; entries; deduped; filtered; enabled; includeInUnion }
@@ -149,7 +160,9 @@ Write-Host "=== Stage 1: Collect sources ==="
 
 foreach ($file in $sourceFiles) {
     $basename = $file.Name
-    $enabled  = IsSourceEnabled $basename
+    # The runtime-discovered Puni source is intentionally outside the tracked
+    # source tree and must not depend on a config toggle or filename collision.
+    $enabled  = ($file.IsRuntime -eq $true) -or (IsSourceEnabled $basename)
     Write-Host ""
     Write-Host "==> $basename"
 
@@ -160,19 +173,24 @@ foreach ($file in $sourceFiles) {
     }
 
     $yaml = $null
-    try { $yaml = Get-Content $file.FullName -Raw | ConvertFrom-Yaml }
-    catch { Write-Warning "Failed to parse $basename — skipping. $($_.Exception.Message)"; continue }
+    if ($file.IsRuntime -eq $true) {
+        $yaml = $file.RuntimeYaml
+    } else {
+        try { $yaml = Get-Content $file.FullName -Raw | ConvertFrom-Yaml }
+        catch { Write-Warning "Failed to parse $basename — skipping. $($_.Exception.Message)"; continue }
+    }
     if (-not $yaml) { Write-Warning "$basename is empty — skipping."; continue }
 
     $type = [string]$yaml.type
-    $out  = [string]$yaml.out
+    $out  = if ($file.IsRuntime -eq $true) { $null } else { [string]$yaml.out }
     if (-not $type) { Write-Warning "$basename has no 'type' — skipping."; continue }
-    if (-not $out)  { Write-Warning "$basename has no 'out' — skipping."; continue }
+    if (-not $out -and $file.IsRuntime -ne $true) { Write-Warning "$basename has no 'out' — skipping."; continue }
     $includeInUnion = if ($null -eq $yaml.includeInUnion) { $true } else { [bool]$yaml.includeInUnion }
+    $sourcePriority = if ($null -ne $yaml.priority) { [int]$yaml.priority } else { 0 }
 
     $offlineSection = [IO.Path]::GetFileNameWithoutExtension($basename)
     $sourcePath = $file.FullName
-    if ($offlineEnabled -and $type -in @("external-repos", "external-repos-gen")) {
+    if ($offlineEnabled -and -not $file.IsRuntime -and $type -in @("external-repos", "external-repos-gen")) {
         foreach ($offlineUrl in @(Get-OfflineUrls $offlineSection)) {
             if (Test-OfflineDisabled -Section $offlineSection -Url $offlineUrl) {
                 Write-Host ("  DisabledOffline -> {0}" -f $offlineUrl)
@@ -217,7 +235,7 @@ foreach ($file in $sourceFiles) {
             $r = Collect-ExternalPluginPool -Yaml $yaml
         }
         "external-repos" {
-            $r = Collect-RepoUrlsPool -Yaml $yaml -SectionLabel $basename -OfficialNames $officialPluginNames -OfficialSourceUrl $DalamudMasterUrl
+            $r = Collect-RepoUrlsPool -Yaml $yaml -SectionLabel $basename -OfficialNames $officialPluginNames -OfficialSourceUrl $DalamudMasterUrl -SourcePriority $sourcePriority
         }
         default {
             Write-Warning "Unknown source type '$type' in $basename — skipping."
@@ -229,7 +247,7 @@ foreach ($file in $sourceFiles) {
         $r.entries = @(Remove-OfficialEntries -Entries $r.entries -SourceLabel $DalamudMasterUrl -OfficialNames $officialPluginNames)
     }
 
-    if ($offlineEnabled -and $type -in @("external-repos", "external-repos-gen")) {
+    if ($offlineEnabled -and -not $file.IsRuntime -and $type -in @("external-repos", "external-repos-gen")) {
         foreach ($url in @($r.reachable)) { Register-OfflineSuccess -Section $offlineSection -Url $url }
         foreach ($url in @($r.unreachable)) { Register-OfflineFailure -Section $offlineSection -Url $url -SourcePath $sourcePath }
     }
@@ -239,16 +257,39 @@ foreach ($file in $sourceFiles) {
     # pool below see the same objects — that is what keeps all-repo.json
     # consistent with the per-source output for free. The @() wrap matters: a
     # single-element array would otherwise unroll.
-    $published = Get-PublishedEntryMap $out
+    $sourceMetadata = @{}
+    foreach ($entry in @($r.entries)) {
+        if ($entry.InternalName) {
+            $sourceMetadata[[string]$entry.InternalName] = @{
+                Url = if ($entry.__ReportSourceUrl) { [string]$entry.__ReportSourceUrl } else { $null }
+                Priority = $sourcePriority
+            }
+        }
+    }
+    $published = if ($file.IsRuntime -eq $true) { @{} } else { Get-PublishedEntryMap $out }
     $keep = Resolve-PublishedEntries -NewEntries $r.entries -Published $published `
                                      -ForceNames $ForcePlugin -ForceAll:$ForceAll
     $r.entries = @($keep.entries)
+    # Reattach provenance after the republish gate. Reusing an unchanged
+    # published object returns the clean JSON object without internal metadata;
+    # the merged union still needs the trusted-source signal.
     foreach ($entry in @($r.entries)) {
-        if ($entry.PSObject.Properties['__ReportSourceUrl']) {
-            $entry.PSObject.Properties.Remove('__ReportSourceUrl')
+        if (-not $entry.InternalName) { continue }
+        $meta = $sourceMetadata[[string]$entry.InternalName]
+        if (-not $meta) { continue }
+        if (-not $entry.PSObject.Properties['__ReportSourceUrl'] -and $meta.Url) {
+            Add-Member -InputObject $entry -NotePropertyName __ReportSourceUrl -NotePropertyValue $meta.Url
+        }
+        if (-not $entry.PSObject.Properties['__SourcePriority']) {
+            Add-Member -InputObject $entry -NotePropertyName __SourcePriority -NotePropertyValue $meta.Priority
+        }
+        if (-not $entry.PSObject.Properties['__SourcePuni'] -and $meta.Url) {
+            Add-Member -InputObject $entry -NotePropertyName __SourcePuni -NotePropertyValue (Test-IsPuniSource $meta.Url)
+        }
+        if (-not $entry.PSObject.Properties['__SourcePuniAuthor'] -and $meta.Url) {
+            Add-Member -InputObject $entry -NotePropertyName __SourcePuniAuthor -NotePropertyValue (Test-IsPuniAuthor -SourceUrl $meta.Url -Entry $entry)
         }
     }
-
     $deduped = Get-Deduped $r.entries
     $officialLeaks = @($deduped | Where-Object {
         $_.InternalName -and $officialPluginNames.Contains([string]$_.InternalName)
@@ -256,7 +297,7 @@ foreach ($file in $sourceFiles) {
     if ($officialLeaks.Count -gt 0) {
         throw ("Official PluginMaster invariant violated in {0}: {1} entries would be published." -f $basename, $officialLeaks.Count)
     }
-    Write-Pluginmaster $deduped $out
+    if ($file.IsRuntime -ne $true) { Write-Pluginmaster $deduped $out }
     $processed += @{
         basename       = $basename
         type           = $type
