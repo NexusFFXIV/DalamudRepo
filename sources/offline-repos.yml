@@ -25,6 +25,8 @@ offlineRepos:
     - https://raw.githubusercontent.com/lolhackjp/MyDalamudPlugins/main/pluginmaster.json
     - https://raw.githubusercontent.com/lolhackjp/sl/main/pluginmaster.json
     - https://raw.githubusercontent.com/Matthew-Rennie/BisBunToolkit-distrib/main/pluginmaster.json
+    - https://raw.githubusercontent.com/msew11/DalamudPlugins/master/pluginmaster.json
+    - https://raw.githubusercontent.com/msew11/IINACT_CN/main/repo.json
     - https://raw.githubusercontent.com/neonmaus/RoleplayersToolbox/main/repo.json
     - https://raw.githubusercontent.com/postcards114/Hypnotoad-Plugin/master/PluginDir/pluginmaster.json
     - https://raw.githubusercontent.com/PunishedPineapple/DalamudPluginRepo/main/pluginmaster.json
